@@ -1,0 +1,92 @@
+//
+//  smart_basket.cpp
+//  LotteryLibrary
+//
+//  Created by wufan on 15/4/29.
+//  Copyright (c) 2015年 DACAI. All rights reserved.
+//
+
+#include "smart_basket.h"
+#include "error_code.h"
+
+namespace lottlib {
+    
+    int SmartBasket::GetTarget(int index, int &subtype, int &note, int target[CELL_TARGET_NUM_MAX_LEN]) {
+        if (index < 0 || index >= target_container_.size()) {
+            return ERROR_OUT_OF_BOUNDS;
+        }
+        int *store_target = target_container_[index];
+        subtype = store_target[CELL_TARGET_SUBTYPE_BIT];
+        note = store_target[CELL_TARGET_NOTES_BIT];
+        memcpy(target, store_target, sizeof(int) * CELL_TARGET_NUM_MAX_LEN);
+        // 清除标志位
+        target[CELL_TARGET_TYPE_BIT] =
+        target[CELL_TARGET_SUBTYPE_BIT] =
+        target[CELL_TARGET_MARK_BIT] =
+        target[CELL_TARGET_NOTES_BIT] = 0;
+        return 0;
+    }
+    
+    int SmartBasket::AddTarget(int subtype, int note, int target[CELL_TARGET_NUM_MAX_LEN]) {
+        int *store_target = new int[CELL_TARGET_NUM_MAX_LEN];
+        bool mark = false;
+        for (int i = 0; i < CELL_TARGET_NUM_MAX_LEN; i++) {
+            if ((store_target[i] = target[i]) < 0) {    // 是否设胆
+                mark = true;
+            }
+        }
+        store_target[CELL_TARGET_SUBTYPE_BIT] = subtype;
+        store_target[CELL_TARGET_NOTES_BIT] = note;
+        store_target[CELL_TARGET_MARK_BIT] = mark;
+        target_container_.push_back(store_target);
+        return 0;
+    }
+    
+    int SmartBasket::ModifyTarget(int index, int subtype, int note, int target[CELL_TARGET_NUM_MAX_LEN]) {
+        if (index < 0 || index >= target_container_.size()) {
+            return ERROR_OUT_OF_BOUNDS;
+        }
+        int *store_target = target_container_[index];
+        
+        bool mark = false;
+        for (int i = 0; i < CELL_TARGET_NUM_MAX_LEN; i++) {
+            if ((store_target[i] = target[i]) < 0) {    // 是否设胆
+                mark = true;
+            }
+        }
+        store_target[CELL_TARGET_SUBTYPE_BIT] = subtype;
+        store_target[CELL_TARGET_NOTES_BIT] = note;
+        store_target[CELL_TARGET_MARK_BIT] = mark;
+        return 0;
+    }
+    
+    int SmartBasket::DeleteTarget(int index) {
+        if (index < 0 || index >= target_container_.size()) {
+            return ERROR_OUT_OF_BOUNDS;
+        }
+        delete [] target_container_[index];
+        target_container_.erase(target_container_.begin() + index);
+        return 0;
+    }
+    
+    int SmartBasket::RemoveAllTargets() {
+        for (int i = 0; i < target_container_.size(); i++) {
+            delete [] target_container_[i];
+        }
+        target_container_.clear();
+        return 0;
+    }
+    
+    int SmartBasket::GetTargetCount() {
+        return static_cast<int>(target_container_.size());
+    }
+    
+    int SmartBasket::GetTotalNotes() {
+        int total_note = 0;
+        for (int i = 0; i < target_container_.size(); i++) {
+            total_note += target_container_[i][CELL_TARGET_NOTES_BIT];
+        }
+        return total_note;
+    }
+    
+}

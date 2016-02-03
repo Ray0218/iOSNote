@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)http://www.sunyuping.cn/category/%E6%BA%90%E7%A0%81%E5%88%86%E4%BA%AB/page/2/ -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ios源码 | 随心所欲 | Page 2</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://www.sunyuping.cn/xmlrpc.php">
+
+<link rel="alternate" type="application/rss+xml" title="随心所欲 » Feed" href="http://www.sunyuping.cn/feed/">
+<link rel="alternate" type="application/rss+xml" title="随心所欲 » 评论Feed" href="http://www.sunyuping.cn/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="随心所欲 » ios源码分类目录Feed" href="http://www.sunyuping.cn/category/%e6%ba%90%e7%a0%81%e5%88%86%e4%ba%ab/feed/">
+<link rel="stylesheet" id="dynamicnewslite-stylesheet-css" href="./ios源码   随心所欲   Page 2_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="dynamicnewslite-genericons-css" href="./ios源码   随心所欲   Page 2_files/genericons.css" type="text/css" media="all">
+
+<script type="text/javascript" src="./ios源码   随心所欲   Page 2_files/jquery.js"></script>
+<script type="text/javascript" src="./ios源码   随心所欲   Page 2_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="./ios源码   随心所欲   Page 2_files/navigation.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.sunyuping.cn/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.sunyuping.cn/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.0.1">
+	<!--[if lt IE 9]>
+	<script src="http://www.sunyuping.cn/wp-content/themes/dynamic-news-lite/js/html5.js" type="text/javascript"></script>
+	<![endif]-->
+	
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+
+<body class="archive paged category category-2 paged-2 category-paged-2">
+
+
+<div id="wrapper" class="hfeed">
+	
+	<div id="header-wrap">
+	
+		<header id="header" class="container clearfix" role="banner">
+
+			<div id="logo" class="clearfix">
+			
+				<a href="http://www.sunyuping.cn/" title="随心所欲" rel="home">
+					<h1 class="site-title">随心所欲</h1>
+				</a>
+				
+						
+			</div>
+			
+			<div id="header-content" class="clearfix">
+							</div>
+
+		</header>
+	
+	</div>
+	
+	<div id="navi-wrap">
+		<nav id="mainnav" class="container clearfix" role="navigation">
+			<h4 id="mainnav-icon">Menu</h4>
+			<ul id="mainnav-menu" class="menu"><li class="page_item page-item-2"><a href="http://www.sunyuping.cn/sample-page/">京ICP备12026213号</a></li>
+<li class="page_item page-item-6"><a href="http://www.sunyuping.cn/about/">关于</a></li>
+</ul>		</nav>
+	</div>
+	
+			
+
+	<div id="wrap" class="container clearfix">
+		
+		<section id="content" class="primary" role="main">
+
+		<h2 id="category-title" class="archive-title">
+			Category Archives: <span>ios源码</span>		</h2>
+
+				
+	<article id="post-63" class="post-63 post type-post status-publish format-standard hentry category-2">
+		
+		<h2 class="post-title"><a href="http://www.sunyuping.cn/2013/02/ios%e5%b8%b8%e7%94%a8%e7%9a%84%e5%87%a0%e4%b8%aa%e5%8a%a8%e7%94%bb%e4%bb%a3%e7%a0%81/" rel="bookmark">ios常用的几个动画代码</a></h2>
+		
+		<div class="postmeta">		
+		<span class="meta-date">
+		<a href="http://www.sunyuping.cn/2013/02/ios%e5%b8%b8%e7%94%a8%e7%9a%84%e5%87%a0%e4%b8%aa%e5%8a%a8%e7%94%bb%e4%bb%a3%e7%a0%81/" title="5:02 下午" rel="bookmark"><time datetime="2013-02-18T17:02:18+00:00">二月 18, 2013</time></a>		</span>
+		
+		<span class="meta-author sep">
+		<a href="http://www.sunyuping.cn/author/sunyuping/" title="View all posts by sunyuping" rel="author">sunyuping</a>		</span>
+		
+			
+		<span class="meta-comments sep">
+			<a href="http://www.sunyuping.cn/2013/02/ios%e5%b8%b8%e7%94%a8%e7%9a%84%e5%87%a0%e4%b8%aa%e5%8a%a8%e7%94%bb%e4%bb%a3%e7%a0%81/#respond" title="《ios常用的几个动画代码》上的评论">Leave a comment</a>		</span>
+		
+		
+	</div>
+	
+		
+		<a href="http://www.sunyuping.cn/2013/02/ios%e5%b8%b8%e7%94%a8%e7%9a%84%e5%87%a0%e4%b8%aa%e5%8a%a8%e7%94%bb%e4%bb%a3%e7%a0%81/" rel="bookmark">
+					</a>
+
+		
+		<div class="entry clearfix">
+						<p>使用前<br>
+需引入QuartzCore.framework, 并在相关文件中加入 #import “QuartzCore/QuartzCore.h”</p>
+<p>定义</p>
+<p>shakeFeedbackOverlay为UIImageView</p>
+<p>设置</p>
+<p>self.shakeFeedbackOverlay.alpha = 0.0;</p>
+<p>self.shakeFeedbackOverlay.layer.cornerRadius = 10.0; //设置圆角半径</p>
+<p>1、图像左右抖动</p>
+<p>CABasicAnimation* shake = [CABasicAnimation animationWithKeyPath:@”transform.rotation.z”];</p>
+<p>shake.fromValue = [NSNumber numberWithFloat:-M_PI/32];</p>
+<p>shake.toValue = [NSNumber numberWithFloat:+M_PI/32];</p>
+<p>shake.duration = 0.1;</p>
+<p>shake.autoreverses = YES; //是否重复</p>
+<p>shake.repeatCount = 4;</p>
+<p>[self.shakeFeedbackOverlay.layer addAnimation:shake forKey:@”shakeAnimation”];</p>
+<p>self.shakeFeedbackOverlay.alpha = 1.0;</p>
+<p>[UIView animateWithDuration:2.0 delay:0.0 options:UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionAllowUserInteraction animations:^{ self.shakeFeedbackOverlay.alpha = 0.0; //透明度变0则消失 } completion:nil];</p>
+<p>2、图像顺时针旋转</p>
+<p>CABasicAnimation* shake = [CABasicAnimation animationWithKeyPath:@”transform.rotation.z”];</p>
+<p>shake.fromValue = [NSNumber numberWithFloat:0];</p>
+<p>shake.toValue = [NSNumber numberWithFloat:2*M_PI];</p>
+<p>shake.duration = 0.8; shake.autoreverses = NO;</p>
+<p>shake.repeatCount = 1;</p>
+<p>[self.shakeFeedbackOverlay.layer addAnimation:shake forKey:@”shakeAnimation”];</p>
+<p>self.shakeFeedbackOverlay.alpha = 1.0;</p>
+<p>[UIView animateWithDuration:10.0 delay:0.0 options:UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionAllowUserInteraction animations:^{ self.shakeFeedbackOverlay.alpha = 0.0; } completion:nil];</p>
+<p>3、图像关键帧动画</p>
+<p>CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];</p>
+<p>CGMutablePathRef aPath = CGPathCreateMutable();</p>
+<p>CGPathMoveToPoint(aPath, nil, 20, 20);</p>
+<p>CGPathAddCurveToPoint(aPath, nil, 160, 30, 220, 220, 240, 420);</p>
+<p>animation.path = aPath;</p>
+<p>animation.autoreverses = YES;</p>
+<p>animation.duration = 2;</p>
+<p>animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];</p>
+<p>animation.rotationMode = @”auto”;</p>
+<p>[ballView.layer addAnimation:animation forKey:@”position”];</p>
+<p>4、组合动画 CAAnimationGroup</p>
+<p>CABasicAnimation *flip = [CABasicAnimation animationWithKeyPath:@”transform.rotation.y”];</p>
+<p>flip.toValue = [NSNumbernumberWithDouble:-M_PI];</p>
+<p>&nbsp;</p>
+<p>CABasicAnimation *scale= [CABasicAnimation animationWithKeyPath:@”transform.scale”];</p>
+<p>scale.toValue = [NSNumbernumberWithDouble:12];</p>
+<p>scale.duration = 1.5;</p>
+<p>scale.autoreverses = YES;</p>
+<p>&nbsp;</p>
+<p>CAAnimationGroup *group = [CAAnimationGroup animation];</p>
+<p>group.animations = [NSArray arrayWithObjects:flip, scale, nil];</p>
+<p>group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];</p>
+<p>group.duration = 3;</p>
+<p>group.fillMode = kCAFillModeForwards;</p>
+<p>group.removedOnCompletion = NO;</p>
+<p>[ballView.layer addAnimation:group forKey:@”position”];</p>
+<p>5、指定时间内旋转图片</p>
+<p>//启动定时器旋转光圈</p>
+<p>– (void)startRotate</p>
+<p>{</p>
+<p>self.rotateTimer = [NSTimer scheduledTimerWithTimeInterval:0.02</p>
+<p>target:self</p>
+<p>selector:@selector(rotateGraduation)</p>
+<p>userInfo:nil</p>
+<p>repeats:YES];</p>
+<p>}</p>
+<p>//关闭定时器</p>
+<p>– (void)stopTimer</p>
+<p>{</p>
+<p>if ([self.rotateTimerisValid])</p>
+<p>{</p>
+<p>[self.rotateTimerinvalidate];</p>
+<p>self.rotateTimer = nil;</p>
+<p>}</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>//旋转动画</p>
+<p>– (void)rotateGraduation</p>
+<p>{</p>
+<p>self.timeCount–;</p>
+<p>if (self.timeCount == 0)</p>
+<p>{</p>
+<p>[self stopTimer];</p>
+<p>// doSomeThing //旋转完毕 可以干点别的</p>
+<p>self.timeCount = 25;</p>
+<p>}</p>
+<p>else</p>
+<p>{</p>
+<p>//计算角度 旋转</p>
+<p>static CGFloat radian = 150 * (M_2_PI / 360);</p>
+<p>CGAffineTransform transformTmp = self.lightImageView.transform;</p>
+<p>transformTmp = CGAffineTransformRotate(transformTmp, radian);</p>
+<p>self.lightImageView.transform = transformTmp;</p>
+<p>};</p>
+<p>}</p>
+<p>调用方法</p>
+<p>self.timeCount = 25; //动画执行25次</p>
+<p>[self startRotate];</p>
+			<div class="page-links"></div>
+		</div>
+		
+		<div class="postinfo clearfix">
+		<span class="meta-category">
+			<ul class="post-categories">
+	<li><a href="http://www.sunyuping.cn/category/%e6%ba%90%e7%a0%81%e5%88%86%e4%ba%ab/" rel="category tag">ios源码</a></li></ul>		</span>
+
+	</div>
+
+	</article>		
+	<article id="post-61" class="post-61 post type-post status-publish format-standard hentry category-2">
+		
+		<h2 class="post-title"><a href="http://www.sunyuping.cn/2013/02/phonegap%e6%95%99%e7%a8%8b%ef%bc%9a%e4%bd%bf%e7%94%a8phonegap%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%b7%a5%e5%85%b7%e5%bf%ab%e9%80%9f%e5%88%9b%e5%bb%baios-phonegap%e9%a1%b9%e7%9b%ae/" rel="bookmark">PhoneGap教程：使用PhoneGap命令行工具快速创建IOS PhoneGap项目</a></h2>
+		
+		<div class="postmeta">		
+		<span class="meta-date">
+		<a href="http://www.sunyuping.cn/2013/02/phonegap%e6%95%99%e7%a8%8b%ef%bc%9a%e4%bd%bf%e7%94%a8phonegap%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%b7%a5%e5%85%b7%e5%bf%ab%e9%80%9f%e5%88%9b%e5%bb%baios-phonegap%e9%a1%b9%e7%9b%ae/" title="10:14 上午" rel="bookmark"><time datetime="2013-02-02T10:14:02+00:00">二月 2, 2013</time></a>		</span>
+		
+		<span class="meta-author sep">
+		<a href="http://www.sunyuping.cn/author/sunyuping/" title="View all posts by sunyuping" rel="author">sunyuping</a>		</span>
+		
+			
+		<span class="meta-comments sep">
+			<a href="http://www.sunyuping.cn/2013/02/phonegap%e6%95%99%e7%a8%8b%ef%bc%9a%e4%bd%bf%e7%94%a8phonegap%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%b7%a5%e5%85%b7%e5%bf%ab%e9%80%9f%e5%88%9b%e5%bb%baios-phonegap%e9%a1%b9%e7%9b%ae/#respond" title="《PhoneGap教程：使用PhoneGap命令行工具快速创建IOS PhoneGap项目》上的评论">Leave a comment</a>		</span>
+		
+		
+	</div>
+	
+		
+		<a href="http://www.sunyuping.cn/2013/02/phonegap%e6%95%99%e7%a8%8b%ef%bc%9a%e4%bd%bf%e7%94%a8phonegap%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%b7%a5%e5%85%b7%e5%bf%ab%e9%80%9f%e5%88%9b%e5%bb%baios-phonegap%e9%a1%b9%e7%9b%ae/" rel="bookmark">
+					</a>
+
+		
+		<div class="entry clearfix">
+						<h1>说明</h1>
+<p>本文基于Apache Cordova API文档中的“Command Line Usage”一节：<a title="command Line usage" href="http://docs.phonegap.com/en/2.1.0/guide_command-line_index.md.html#Command-Line%20Usage" target="_blank">http://docs.phonegap.com/en/2.1.0/guide_command-line_index.md.html#Command-Line%20Usage</a>。但本文不是对该节的直接翻译。</p>
+<h1>前提要求</h1>
+<p>本文的操作环境需要苹果操作系统，以及XCode软件。你可以在苹果的<a title="下载Xcode" href="http://itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Mac App Store</a>中下载。安装Xcode并不需要购买苹果的开发者账号，但编写的应用只能运行在设备模拟器中。如果你需要在真实的IOS设备中调试应用，则需要购买苹果的开发者账号。本文内容无需开发者账号。</p>
+<h1>安装PhoneGap命令行</h1>
+<h2>下载并安装PhoneGap</h2>
+<p>首先要下载最新版本的PhoneGap。本文使用的是PhoneGap2.1，下载地址：<a title="下载最新版本PhoneGap" href="http://phonegap.com/download">http://phonegap.com/download</a></p>
+<p>选定一个本地目录，并解压下载的zip文件后，可以看到如下目录内容：</p>
+<p><a href="./ios源码   随心所欲   Page 2_files/Snip20121106_9.png"><img title="PhoneGap下载内容" alt="PhoneGap下载内容" src="./ios源码   随心所欲   Page 2_files/Snip20121106_9.png" width="750" height="615"></a></p>
+<p>PhoneGap下载内容</p>
+<p>&nbsp;</p>
+<h2>安装Xcode</h2>
+<p>使用命令行工具创建IOS平台上的PhoneGap应用项目，首先需要安装Apple的开发工具XCode。下载地址如下：<a title="下载Xcode" href="http://itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Mac App Store</a></p>
+<h2>在XCode中安装Apple的Command Line Tools</h2>
+<p>PhoneGap提供的命令行工具是基于苹果Xcode中提供的Command Line Tools的，因此在安装完Xcode后，需要为其安装Command Line Tools。</p>
+<p>启动Xcode，点击左上角的第一个菜单“XCode”，选择“Preference”，即可调出Prederence面板，在Download标签页中，可以找到”Command Line Tools”一项，点击install即可安装或者更新。如下图：</p>
+<p><a href="./ios源码   随心所欲   Page 2_files/Snip20121106_15.png"><img title="为Xcode安装Command Line Tools" alt="为Xcode安装Command Line Tools" src="./ios源码   随心所欲   Page 2_files/Snip20121106_15.png" width="713" height="595"></a></p>
+<p>为Xcode安装Command Line Tools</p>
+<p>&nbsp;</p>
+<p>安装完毕后，你在/Applications/Xcode.app/Contents/Developer/usr/bin/目录下可以找到所有命令行工具，比如Cordova项目要用到的xcode-select和xcodebuild。</p>
+<h1>创建第一个PhoneGap Xcode项目</h1>
+<p>现在已经下载并解压了PhoneGap，安装了Xcode和Xcode命令行工具。我们可以使用PhoneGap的命令行工具创建PhoneGap Xcode项目了。<br>
+打开终端，进入PhoneGap解压目录下的lib/ios/bin目录，运行create命令，如下：</p>
+<blockquote><p>$ ./create 项目目录 com.company.app AppProjectName</p></blockquote>
+<p>其中，三个参数分别为：</p>
+<ol>
+</ol>
+<ol>
+<li>新的Xcode项目目录</li>
+<li>包名，遵循reverse domain命名规范，比如com.company.appname</li>
+<li>项目名称</li>
+</ol>
+<p>回车后，在指定的项目目录下，PhoneGap会自动创建一个模板项目。创建的项目结构如下：</p>
+<p><a href="./ios源码   随心所欲   Page 2_files/Snip20121106_20.png"><img title="create命令创建的项目内容" alt="create命令创建的项目内容" src="./ios源码   随心所欲   Page 2_files/Snip20121106_20.png" width="756" height="396"></a></p>
+<p>create命令创建的项目内容</p>
+<p>&nbsp;</p>
+<h1>编译和运行</h1>
+<p>在新创建的xcode项目下的cordova目录中，提供了debug，emulate和log命令，分别用来进行调试，调用模拟器和日志。</p>
+<p>在第一次运行之前，需要使用debug命令编译项目。不要直接使用Xcode打开项目，然后使用xcode的run按钮来进行编译，这样做通常会遇到错误。</p>
+<p>进入新创建的PhoneGap项目下的cordova目录，运行debug命令，编译项目：</p>
+<blockquote><p>$ ./debug</p></blockquote>
+<p>编译成功后，可看到”** BUILD SUCCEEDED **”结果。此时，即可运行emulate命令，调出模拟器运行应用：</p>
+<blockquote><p>$ ./emulate</p></blockquote>
+<p>运行成功后，可以看到模拟器中显示默认的PhoneGap应用如下：</p>
+<p><a href="./ios源码   随心所欲   Page 2_files/Snip20121106_21.png"><img title="运行在模拟器中的默认PhoneGap应用" alt="运行在模拟器中的默认PhoneGap应用" src="./ios源码   随心所欲   Page 2_files/Snip20121106_21.png" width="368" height="716"></a></p>
+<p>运行在模拟器中的默认PhoneGap应用</p>
+<p>&nbsp;</p>
+<p>至此，第一个PhoneGap IOS项目创建成功了。如果不需要定制phoneGap plugin，您只需要编写www目录下的内容即可完成初步的phoneGap应用。</p>
+<p>&nbsp;</p>
+<p>步骤4　建立新的项目。</p>
+<p>PhoneGap 2.0.0版本提供了批处理文件功能，这简化了安装部署新项目的流程，方法如下：</p>
+<p>将刚才复制的bin目录直接拖入“终端”程序（菜单中选择实用工具，可找到终端）将其打开，或者打开终端进入bin文件夹，运行如下格式的命令：</p>
+<p>./create &lt;项目目录&gt; &lt;项目ID&gt; &lt;项目名称&gt;</p>
+<p>其中&lt;项目目录&gt;为项目的存储目录，这里存放在 ~/Desktop/mycode/HelloWorld。&lt;项目ID&gt;为公司标识及项目ID。上架（发布到App应用商店）是一个关键参数，上架时要填写和官网一样的参数，具体内容可参考第7章，这里输入的是org.adc.HelloWorld。&lt;项目名称&gt;为这个项目的名字，这里输入的是HelloWorld。</p>
+<p>代码如下：</p>
+<p>./create ~/Desktop/mycode/HelloWorld org.adc.HelloWorld HelloWorld</p>
+<p>运行效果如图2-6所示。</p>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/20121229093536526.jpg"><br>
+这时进入刚刚输入的项目目录，本例是~/Desktop/mycode/HelloWorld。双击打开图2-7中所示的HelloWorld.xcodeproj项目文件。</p>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/20121229093550719.jpg"><br>
+在打开的Xcode程序中，应该可以看到刚刚通过命令新建的HelloWorld项目已经在Xcode中了，如图2-8所示。</p>
+<p>步骤5　完成部署。</p>
+<p>如图2-9所示，单击左上角的“Run” 按钮，稍候会弹出设定的iPad/iPhone 模拟器，并且显示图2-10所示的程序运行成功界面。</p>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/20121229093617479.jpg"><br>
+<img alt="" src="./ios源码   随心所欲   Page 2_files/20121229093629929.jpg"><br>
+步骤6　测试HelloWorld。</p>
+<p>打开并编辑www目录下的index.html文件，将如下代码替换至文件并保存。<br>
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&lt;title&gt;test&lt;/title&gt;<br>
+&lt;meta charset=”utf-8″/&gt;<br>
+&lt;script type=”text/javascript”charset=”utf-8″src=”cordova-1.5.0.js”&gt;&lt;/script&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&lt;h1&gt;Hello World！！&lt;/h1&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+再次单击Xcode左上角的“Run”按钮，可以在模拟器中看到图2-11所示的结果。</p>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/20121229093647709.jpg"></p>
+<h1>小结</h1>
+<p>PhoneGap提供的命令行工具非常便捷，在许多情况下，开发者无需打开xcode即可完成编写和调试。在Android平台上也可使用类似的工具。具体可参考PhoneGap站点教程。</p>
+			<div class="page-links"></div>
+		</div>
+		
+		<div class="postinfo clearfix">
+		<span class="meta-category">
+			<ul class="post-categories">
+	<li><a href="http://www.sunyuping.cn/category/%e6%ba%90%e7%a0%81%e5%88%86%e4%ba%ab/" rel="category tag">ios源码</a></li></ul>		</span>
+
+	</div>
+
+	</article>		
+	<article id="post-60" class="post-60 post type-post status-publish format-aside hentry category-2">
+		
+		<h2 class="post-title"><a href="http://www.sunyuping.cn/2013/01/mac%e4%b8%8b%e5%88%a9%e7%94%a8goagent%e7%bf%bb%e5%a2%99%e9%85%8d%e7%bd%ae%e6%95%99%e7%a8%8b/" rel="bookmark">mac下利用goagent翻墙配置教程</a></h2>
+		
+		<div class="postmeta">		
+		<span class="meta-date">
+		<a href="http://www.sunyuping.cn/2013/01/mac%e4%b8%8b%e5%88%a9%e7%94%a8goagent%e7%bf%bb%e5%a2%99%e9%85%8d%e7%bd%ae%e6%95%99%e7%a8%8b/" title="2:14 下午" rel="bookmark"><time datetime="2013-01-22T14:14:48+00:00">一月 22, 2013</time></a>		</span>
+		
+		<span class="meta-author sep">
+		<a href="http://www.sunyuping.cn/author/sunyuping/" title="View all posts by sunyuping" rel="author">sunyuping</a>		</span>
+		
+			
+		<span class="meta-comments sep">
+			<a href="http://www.sunyuping.cn/2013/01/mac%e4%b8%8b%e5%88%a9%e7%94%a8goagent%e7%bf%bb%e5%a2%99%e9%85%8d%e7%bd%ae%e6%95%99%e7%a8%8b/#respond" title="《mac下利用goagent翻墙配置教程》上的评论">Leave a comment</a>		</span>
+		
+		
+	</div>
+	
+		
+		<a href="http://www.sunyuping.cn/2013/01/mac%e4%b8%8b%e5%88%a9%e7%94%a8goagent%e7%bf%bb%e5%a2%99%e9%85%8d%e7%bd%ae%e6%95%99%e7%a8%8b/" rel="bookmark">
+					</a>
+
+		
+		<div class="entry clearfix">
+						<table cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td id="postmessage_1291">(找了些资源写下本教程,亲测,懒得配图了,相信你能看懂,有疑问回复)<br>
+&lt;ignore_js_op&gt;<img id="aimg_483" title="QQ20130122-3.png" alt="QQ20130122-3.png" src="http://www.xcodechina.com/data/attachment/forum/201301/22/140207tfmylc3on4o1n1mm.png" width="469"><br>
+1. 去<a href="http://www.python.org/getit/" target="_blank"><img alt="" src="./ios源码   随心所欲   Page 2_files/safe.png">http://www.python.org/getit/</a>&nbsp;下载最新版python安装<br>
+(本贴附python-3.3.0-macosx10.6.dmg由XcodeChina下载上传分享,需回复可见)<p></p>
+<p>2.&nbsp;<a href="http://appengine.google.com/" target="_blank"><img alt="" src="./ios源码   随心所欲   Page 2_files/safe.png">http://appengine.google.com</a>&nbsp;注册Google App Engine账号(其实就是申请Gmail账号，两者通用, 有了的话直接登录)</p>
+<p>3. 登录后点Creat Application 创建appid(可创建十个appid,每个每天1G流量)</p>
+<p>4. 创建成功后去<a href="http://code.google.com/p/goagent" target="_blank"><img alt="" src="./ios源码   随心所欲   Page 2_files/safe.png">http://code.google.com/p/goagent</a>&nbsp;&nbsp;下载goagent<br>
+(已被墙,本贴附goagent-goagent-v2.1.11-86-g107a853.zip由XcodeChina下载上传分享,需回复可见)</p>
+<p>5. 解压goagent-goagent-v2.1.11-86-g107a853.zip,得到goagent-goagent-107a853目录改名为goagent,复制到你想要存放的任何目录.</p>
+<p>6. 找到goagent目录里的local目录下proxy.ini文件,右击-&gt;打开方式-&gt;其他-&gt;文本编辑.app&nbsp;&nbsp;打开<br>
+找到appid = goagent, 把goagent改成你申请的其中一个appid,保存关闭</p>
+<p>7. 打开应用程序-&gt;实用工具-&gt;终端.app 找到你的goagent/server目录<br>
+l命令pwd为查看当前目录,ls为查看当前目录下有什么文件,cd documents为进入当前目录下的documents目录<br>
+1)如果把goagent文件夹放在文档根目录,则输入 cd /users/mac/documents/goagent/server 回车进入server目录<br>
+2)输入 python uploader.zip 回车根据提示输入APPID后等待,运行一会后会提示输入注册的邮箱地址,和密码,<br>
+直到出现Completed update of app:你的APPID,version: 1为止<br>
+3)命令行继续输入cd /users/mac/documents/goagent/local 回车到达local目录<br>
+4)输入python proxy.py 回车看到你的账号信息为成功,后面要用到Listen Address信息127.0.0.1端口为8087</p>
+<p>8. 点击屏幕左上角苹果logo-&gt;系统偏好设置-&gt;网络-&gt;右下角的高级-&gt;代理<br>
+勾选Web代理(HTTP)和安全Web代理(HTTPS) 这两个的代理服务器都写上Listen Address上写的127.0.0.1 和端口8087<br>
+点好,点应用完成设置.</p>
+<p>9. 去看看能访问了没. 做两次后就熟练了.今天用完1G换个appid就能再用1G</p>
+<p>&nbsp;</p>
+<p>goagent-goagent-v2.1.11-86-g107a853.zip</p>
+<p>地址：http://pan.baidu.com/share/link?shareid=191688&amp;uk=3003230914</p>
+<p>python-3.3.0-macosx10.6.dmg</p>
+<p>地址：http://pan.baidu.com/share/link?shareid=191689&amp;uk=3003230914</p></td>
+</tr>
+</tbody>
+</table>
+			<div class="page-links"></div>
+		</div>
+		
+		<div class="postinfo clearfix">
+		<span class="meta-category">
+			<ul class="post-categories">
+	<li><a href="http://www.sunyuping.cn/category/%e6%ba%90%e7%a0%81%e5%88%86%e4%ba%ab/" rel="category tag">ios源码</a></li></ul>		</span>
+
+	</div>
+
+	</article>		
+	<article id="post-56" class="post-56 post type-post status-publish format-aside hentry category-2">
+		
+		<h2 class="post-title"><a href="http://www.sunyuping.cn/2013/01/%e5%8d%81%e4%b8%aa%e5%a5%bd%e7%94%a8%e7%9a%84ios%e5%bc%80%e5%8f%91%e8%be%85%e5%8a%a9%e5%b7%a5%e5%85%b7%e4%b8%8e%e8%b5%84%e6%ba%90/" rel="bookmark">十个好用的iOS开发辅助工具与资源</a></h2>
+		
+		<div class="postmeta">		
+		<span class="meta-date">
+		<a href="http://www.sunyuping.cn/2013/01/%e5%8d%81%e4%b8%aa%e5%a5%bd%e7%94%a8%e7%9a%84ios%e5%bc%80%e5%8f%91%e8%be%85%e5%8a%a9%e5%b7%a5%e5%85%b7%e4%b8%8e%e8%b5%84%e6%ba%90/" title="6:54 下午" rel="bookmark"><time datetime="2013-01-08T18:54:12+00:00">一月 8, 2013</time></a>		</span>
+		
+		<span class="meta-author sep">
+		<a href="http://www.sunyuping.cn/author/sunyuping/" title="View all posts by sunyuping" rel="author">sunyuping</a>		</span>
+		
+			
+		<span class="meta-comments sep">
+			<a href="http://www.sunyuping.cn/2013/01/%e5%8d%81%e4%b8%aa%e5%a5%bd%e7%94%a8%e7%9a%84ios%e5%bc%80%e5%8f%91%e8%be%85%e5%8a%a9%e5%b7%a5%e5%85%b7%e4%b8%8e%e8%b5%84%e6%ba%90/#respond" title="《十个好用的iOS开发辅助工具与资源》上的评论">Leave a comment</a>		</span>
+		
+		
+	</div>
+	
+		
+		<a href="http://www.sunyuping.cn/2013/01/%e5%8d%81%e4%b8%aa%e5%a5%bd%e7%94%a8%e7%9a%84ios%e5%bc%80%e5%8f%91%e8%be%85%e5%8a%a9%e5%b7%a5%e5%85%b7%e4%b8%8e%e8%b5%84%e6%ba%90/" rel="bookmark">
+					</a>
+
+		
+		<div class="entry clearfix">
+						<p>1.&nbsp;<a href="https://itunes.apple.com/us/app/resizer/id411277085?mt=12" target="_blank">Resizer</a></p>
+<p>将 Retina 使用的图档（档名为 @2x 或 -hd 的图档）快速且完美地产生普通屏幕的图档尺寸。</p>
+<p><a href="http://www.leiphone.com/121128-chibop-10-ios-tool.html/2-730" rel="attachment wp-att-189884"><img title="2" alt="" src="./ios源码   随心所欲   Page 2_files/228.jpg" width="480" height="292"></a></p>
+<p>2.&nbsp;<a href="http://www.zambetti.com/projects/liveview/" target="_blank">LifeView</a></p>
+<p>透过 Wifi 使用 iPhone 或是 iPad 直接预览电脑画面，方便检视图片在 Retina 屏幕中的效果。</p>
+<p><a href="http://www.leiphone.com/121128-chibop-10-ios-tool.html/3-548" rel="attachment wp-att-189885"><img title="3" alt="" src="./ios源码   随心所欲   Page 2_files/36.png" width="500" height="444"></a></p>
+<p>3.&nbsp;<a href="http://www.iconviewer.com/" target="_blank">Icon Viewer</a></p>
+<p>线上快速预览你精心製作的 App 显示 Icon。</p>
+<p><a href="http://www.leiphone.com/121128-chibop-10-ios-tool.html/4-390" rel="attachment wp-att-189886"><img title="4" alt="" src="./ios源码   随心所欲   Page 2_files/41.png" width="575" height="286"></a></p>
+<p>4.&nbsp;<a href="http://www.macupdate.com/app/mac/7197/free-ruler" target="_blank">Free Ruler</a></p>
+<p>快速简单的屏幕量测工具。</p>
+<p><a href="http://www.leiphone.com/121128-chibop-10-ios-tool.html/5-349" rel="attachment wp-att-189887"><img title="5" alt="" src="./ios源码   随心所欲   Page 2_files/57.png" width="517" height="256"></a></p>
+<p>5.&nbsp;<a href="https://www.pieceable.com/" target="_blank">Pieceable Viewer</a></p>
+<p>将你写好的 iOS App 上传至网络云端，其他人可以透过浏览器直接预览试用。</p>
+<p><a href="http://www.leiphone.com/121128-chibop-10-ios-tool.html/6-276" rel="attachment wp-att-189888"><img title="6" alt="" src="./ios源码   随心所欲   Page 2_files/6.png" width="526" height="207"></a></p>
+<p>6.&nbsp;<a href="http://zwopple.com/zwoptex/" target="_blank">Zwoptex</a>&nbsp;(Mac OS)</p>
+<p>方便的连续动画图档制作工具，快速输出合并图档以及资讯清单（.plist）档案。</p>
+<p><a href="http://www.leiphone.com/121128-chibop-10-ios-tool.html/7-240" rel="attachment wp-att-189889"><img title="7" alt="" src="./ios源码   随心所欲   Page 2_files/71.png" width="590" height="393"></a></p>
+<p>7.&nbsp;<a href="http://mschrag.github.com/" target="_blank">Speed Limit</a></p>
+<p>在模拟器中模拟手持装置网络延迟的状态，远离套牢的使用者界面。</p>
+<p><a href="http://www.leiphone.com/121128-chibop-10-ios-tool.html/8-194" rel="attachment wp-att-189897"><img title="8" alt="" src="./ios源码   随心所欲   Page 2_files/82.png" width="590" height="263"></a></p>
+<p>8.&nbsp;<a href="http://www.macupdate.com/app/mac/15563/xnviewmp" target="_blank">XnViewMP</a></p>
+<p>批次更改档案、缩放的好工具，让你省下许多重复的动作与时间。</p>
+<p><a href="http://www.leiphone.com/121128-chibop-10-ios-tool.html/9-165" rel="attachment wp-att-189898"><img title="9" alt="" src="./ios源码   随心所欲   Page 2_files/9.png" width="578" height="333"></a></p>
+<p>9.&nbsp;<a href="http://gesturecons.com/" target="_blank">Gesture Icons</a></p>
+<p>各种触控式屏幕手势代表图示。</p>
+<p><a href="http://www.leiphone.com/121128-chibop-10-ios-tool.html/10-152" rel="attachment wp-att-189899"><img title="10" alt="" src="./ios源码   随心所欲   Page 2_files/10.png" width="590" height="328"></a></p>
+<p>10.&nbsp;<a href="http://www.soundsnap.com/" target="_blank">SoundSnap</a></p>
+<p>为你的 App 加上好莱坞等级的高品质音效，每 30 天可以免费下载 5 个音效。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+			<div class="page-links"></div>
+		</div>
+		
+		<div class="postinfo clearfix">
+		<span class="meta-category">
+			<ul class="post-categories">
+	<li><a href="http://www.sunyuping.cn/category/%e6%ba%90%e7%a0%81%e5%88%86%e4%ba%ab/" rel="category tag">ios源码</a></li></ul>		</span>
+
+	</div>
+
+	</article>		
+	<article id="post-55" class="post-55 post type-post status-publish format-aside hentry category-2">
+		
+		<h2 class="post-title"><a href="http://www.sunyuping.cn/2013/01/%e6%88%90%e5%8a%9f%e6%b3%a8%e5%86%8cappid%e7%9a%84%e7%be%8e%e5%9b%bd%e8%b4%a6%e6%88%b7/" rel="bookmark">成功注册appid的美国账户</a></h2>
+		
+		<div class="postmeta">		
+		<span class="meta-date">
+		<a href="http://www.sunyuping.cn/2013/01/%e6%88%90%e5%8a%9f%e6%b3%a8%e5%86%8cappid%e7%9a%84%e7%be%8e%e5%9b%bd%e8%b4%a6%e6%88%b7/" title="5:24 下午" rel="bookmark"><time datetime="2013-01-07T17:24:19+00:00">一月 7, 2013</time></a>		</span>
+		
+		<span class="meta-author sep">
+		<a href="http://www.sunyuping.cn/author/sunyuping/" title="View all posts by sunyuping" rel="author">sunyuping</a>		</span>
+		
+			
+		<span class="meta-comments sep">
+			<a href="http://www.sunyuping.cn/2013/01/%e6%88%90%e5%8a%9f%e6%b3%a8%e5%86%8cappid%e7%9a%84%e7%be%8e%e5%9b%bd%e8%b4%a6%e6%88%b7/#respond" title="《成功注册appid的美国账户》上的评论">Leave a comment</a>		</span>
+		
+		
+	</div>
+	
+		
+		<a href="http://www.sunyuping.cn/2013/01/%e6%88%90%e5%8a%9f%e6%b3%a8%e5%86%8cappid%e7%9a%84%e7%be%8e%e5%9b%bd%e8%b4%a6%e6%88%b7/" rel="bookmark">
+					</a>
+
+		
+		<div class="entry clearfix">
+						<p><span style="font-size: large;">下面就开始本期教程：手把手教您申请美国账号~~~</span></p>
+<ul type="1">
+<li><span style="font-size: large;">首先打开itunes，在itunes store的右下角点击现有账号的国家，一般人都是香港或者中国账号吧，那就点下中国，进入选择国家界面。大家选择美国United States。</span></li>
+<li><span style="font-size: large;">这时出现了全英文的美国账号界面，大家可以看看多了很多软件和游戏。。。居然极品飞车变速都有免费版的。。。新上市的real soccer也赫然在列。。中国区还没有。。大家点开上面的AppStore的小箭头，选Games游戏（和国内一样），打开的界面右侧有Free Apps，随便选一个，进入后跟国内一样，点击Free App下载！！</span></li>
+<li><span style="font-size: large;">这时会出现让您登录，选择注册一个新账号，然后continue，弹出协议，勾选上同意，点continue继续！</span></li>
+<li><span style="font-size: large;">出现注册页面，从上到下依次是输入您的邮箱，密码（密码最少8位，要有1个小写字母，1个大写字母，例：12345678qQ），再次输入密码，一个问题，答案（尽量长点就行，用英文，比如问题：what‘s your name，答案：abcdcba），然后Month是选择您的出生月份，Day填写日期，Year是年份（麻烦大家添大点年龄，因为美国账号中有 18JIN内容，未成年不让下载^ ^）！！填完这些后点continue继续！</span></li>
+<li><span style="font-size: large;">新进入的界面，大家先选none，这个就免费了，下面要填美国当地人的信息，这个就比较关键了，也是我重点想说的</span></li>
+<li><span style="font-size: large;">首先大家到</span><a href="http://zh-cn.fakenamegenerator.com/" target="_blank"><span style="font-size: large;">http://zh-cn.fakenamegenerator.com/</span></a><span style="font-size: large;">&nbsp;这个网址随机产生一个美国人信息，男女无所谓！！比如我生成这个ps.男女可以看生成的这个美国人的照片。</span><br>
+<span style="font-size: small;"><span style="font-size: large;"><strong>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; Frances J. Gaddy</strong>&nbsp;</span></span><br>
+<span style="font-size: large;">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; 1465 Still Pastures Drive<br>
+Columbia, SC 29201<br>
+网址：&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;MortgageCulture.com<br>
+电子邮件地址：FrancesJGaddy @ example.com<br>
+密码：&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;jeenekahph2Xae<br>
+电话：&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;803-477-1727<br>
+婚前姓氏：&nbsp; &nbsp;&nbsp; &nbsp;Beck<br>
+生日：&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;April 1, 1990<br>
+万事达卡：&nbsp; &nbsp;&nbsp; &nbsp;5410 0706 3329 5817<br>
+到期日：&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;2/2010<br>
+社会保障号 ：&nbsp;&nbsp;247-48-9977<br>
+职业：&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;Applicator<br>
+UPS 追踪号： 1Z 613 699 88 7606 319 3<p></p>
+<p>大家先把salutation选一下：Mr.是先生，Ms.是晓姐，将Frances J.填入Frist Name ，将Gaddy填入Last Name。然后将名字下面的1465 Still Pastures Drive填入Address地址，将Columbia填入City，在State中选择SC，将29201 填入Zip Code，将电话803-477-1727 按照以下格式填入Phone：803&nbsp; &nbsp; 4771727。最后在Code中输入随便一个数，比如123456789，点击continue继续！这时他会弹出Code无效，不用管，继续点击continue，3次后注册成功！！</p></span></li>
+<li><span style="font-size: large;">注册成功后会发送一封邮件到您注册的邮箱中！在邮件中打开苹果的信件，点击Verify Now！ 然后填入您刚注册的账号和密码认证！！</span></li>
+<li><span style="font-size: large;">ok了，注册成功~~~~您可以在美国下载游戏了！</span></li>
+</ul>
+<p><span style="font-size: large;">&nbsp; &nbsp;&nbsp; &nbsp;美国账号中的游戏很多免费的，相当爽，比中国区要多得多。。。 另外，不是说从美国下载了就是英文了，有没有中文是游戏设计的问题，跟你从哪个区下载不同的！！ 好了就写这么多！！</span></p>
+			<div class="page-links"></div>
+		</div>
+		
+		<div class="postinfo clearfix">
+		<span class="meta-category">
+			<ul class="post-categories">
+	<li><a href="http://www.sunyuping.cn/category/%e6%ba%90%e7%a0%81%e5%88%86%e4%ba%ab/" rel="category tag">ios源码</a></li></ul>		</span>
+
+	</div>
+
+	</article>		
+	<article id="post-54" class="post-54 post type-post status-publish format-aside hentry category-2">
+		
+		<h2 class="post-title"><a href="http://www.sunyuping.cn/2013/01/ios-%e5%b8%b8%e7%94%a8%e7%ac%ac%e4%b8%89%e6%96%b9%e7%b1%bb%e5%ba%93/" rel="bookmark">ios 常用第三方类库</a></h2>
+		
+		<div class="postmeta">		
+		<span class="meta-date">
+		<a href="http://www.sunyuping.cn/2013/01/ios-%e5%b8%b8%e7%94%a8%e7%ac%ac%e4%b8%89%e6%96%b9%e7%b1%bb%e5%ba%93/" title="2:34 下午" rel="bookmark"><time datetime="2013-01-06T14:34:45+00:00">一月 6, 2013</time></a>		</span>
+		
+		<span class="meta-author sep">
+		<a href="http://www.sunyuping.cn/author/sunyuping/" title="View all posts by sunyuping" rel="author">sunyuping</a>		</span>
+		
+			
+		<span class="meta-comments sep">
+			<a href="http://www.sunyuping.cn/2013/01/ios-%e5%b8%b8%e7%94%a8%e7%ac%ac%e4%b8%89%e6%96%b9%e7%b1%bb%e5%ba%93/#respond" title="《ios 常用第三方类库》上的评论">Leave a comment</a>		</span>
+		
+		
+	</div>
+	
+		
+		<a href="http://www.sunyuping.cn/2013/01/ios-%e5%b8%b8%e7%94%a8%e7%ac%ac%e4%b8%89%e6%96%b9%e7%b1%bb%e5%ba%93/" rel="bookmark">
+					</a>
+
+		
+		<div class="entry clearfix">
+						<h1 id="subject_tpc"></h1>
+<div>
+<div id="read_tpc">
+<p><b>开发几个常用的开源类库及下载地址:</b></p>
+<p>1.<a id="url_1" href="http://code.google.com/p/json-framework" target="_blank">json</a>&nbsp;json编码解码<br>
+2.<a id="url_2" href="http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/Foundation/?r=87" target="_blank">GTMBase64</a>&nbsp;base64编码解码<br>
+3.<a id="url_3" href="https://github.com/schwa/TouchXML" target="_blank">TouchXML</a>&nbsp;xml解析<br>
+4.<a id="url_4" href="https://github.com/ldandersen/scifihifi-iphone" target="_blank">SFHFKeychainUtils</a>&nbsp;安全保存用户密码到keychain中<br>
+5.<a id="url_5" href="https://github.com/jdg/MBProgressHUD" target="_blank">MBProgressHUD</a>&nbsp;很棒的一个加载等待特效框架<br>
+6.<a id="url_6" href="http://allseeing-i.com/ASIHTTPRequest" target="_blank">ASIHTTPRequest</a>&nbsp;http等相关协议封装<br>
+7.<a id="url_7" href="https://github.com/enormego/EGOTableViewPullRefresh" target="_blank">EGORefreshTableHeaderView</a>&nbsp;下拉刷新代码<br>
+8.<a id="url_8" href="http://www.markj.net/iphone-asynchronous-table-image/" target="_blank">AsyncImageView</a>&nbsp;异步加载图片并缓存代码<br>
+9.<a id="url_9" href="http://blog.blackwhale.at/" target="_blank">类似setting的竖立也分栏程序</a><b>&nbsp;</b><br>
+<b>10.<a id="url_10" href="http://github.com/jdg/MBProgressHUD" target="_blank"><b>MBProgressHUD</b></a></b><b>——进展指示符库</b><br>
+<b>11.<a id="url_11" href="http://www.flurry.com/product/analytics/index.html" target="_blank"><b>Flurry</b></a></b><b>——详尽的使用统计</b><br>
+<b>12.<a id="url_12" href="http://code.google.com/p/core-plot/" target="_blank"><b>CorePlot</b></a></b><b>——2D图形绘图仪</b><br>
+<b>13.<a id="url_13" href="http://code.google.com/p/gdata-objectivec-client/" target="_blank"><b>GData client</b></a></b><b>——iPhone上所有Google相关服务的类库</b><br>
+<b>14.<a id="url_14" href="http://github.com/rs/SDWebImage" target="_blank"><b>SDWebImage</b></a></b><b>——简化网络图片处理</b><br>
+<b>15.<a id="url_15" href="http://regexkit.sourceforge.net/RegexKitLite/" target="_blank"><b>RegexKitLite</b></a></b><b>——正则表达式支持</b></p>
+<p>可能会用到的库：<br>
+１.exif：svn checkout&nbsp;<a id="url_50" href="http://iphone-exif.google.code.com/svn/trunk/" target="_blank">http://iphone-exif.google.code.com/svn/trunk/</a>&nbsp;iphone-exif<br>
+２.图像处理：svn checkout&nbsp;<a id="url_51" href="http://simple-iphone-image-processing.googlecode.com/svn/trunk/" target="_blank">http://simple-iphone-image-processing.googlecode.com/svn/trunk/</a>&nbsp;simple-iphone-image-processing-read-only</p>
+<p><b>AppStore软件排名相关,工欲善其事，必先利其器。</b><br>
+1.下载排名相关:<a id="url_16" href="http://www.appannie.com/" target="_blank">appannie</a><br>
+2.用户行为分析:<a id="url_17" href="http://www.flurry.com/" target="_blank">flurry</a><br>
+3.<a id="url_18" href="http://majicjungle.com/majicrank.html" target="_blank">majicrank</a>-各国排名查询工具 (推荐)<br>
+4.<a id="url_19" href="http://www.cocoachina.com/appstore/sales/2010/0331/890.html" target="_blank">AppViz</a>-App销售统计软件 (推荐)<br>
+5.<a id="url_20" href="http://www.ideaswarm.com/products/appviz/" target="_blank">PodViz</a>-用户评论等查看工具<br>
+6.<a id="url_21" href="https://www.appfigures.com/" target="_blank">appfigures</a>-报表统计分析工具</p>
+<p>开发几个常用的开源类库及下载地址:引用1.json json编码解码2.GTMBase64 base64编码解码3.TouchXML xml解析4.SFHFKeychainUtils 安全保存用户密码到keychain中5.MBProgressHUD 很棒的一个加载等待特效框架6.ASIHTTPRequest http等相关协议封装7.EGORefreshTableHeaderView 下拉刷新代码8.AsyncImageView 异步加载图片并缓存代码9.类似setting的竖立也分栏程序</p>
+<p>扫描wifi信息：</p>
+<p><a id="url_22" href="http://code.google.com/p/uwecaugmentedrealityproject/" target="_blank">http://code.google.com/p/uwecaugmentedrealityproject/</a></p>
+<p><a id="url_23" href="http://code.google.com/p/iphone-wireless/" target="_blank">http://code.google.com/p/iphone-wireless/</a></p>
+<p>条形码扫描：</p>
+<p><a id="url_24" href="http://zbar.sourceforge.net/iphone/sdkdoc/install.html" target="_blank">http://zbar.sourceforge.net/iphone/sdkdoc/install.html</a></p>
+<p>tcp/ip的通讯协议：</p>
+<p><a id="url_25" href="http://code.google.com/p/cocoaasyncsocket/" target="_blank">http://code.google.com/p/cocoaasyncsocket/</a></p>
+<p>voip/sip：</p>
+<p><a id="url_26" href="http://code.google.com/p/siphon/" target="_blank">http://code.google.com/p/siphon/</a></p>
+<p><a id="url_27" href="http://code.google.com/p/asterisk-voicemail-for-iphone/" target="_blank">http://code.google.com/p/asterisk-voicemail-for-iphone/</a></p>
+<p><a id="url_28" href="http://code.google.com/p/voiphone/" target="_blank">http://code.google.com/p/voiphone/</a></p>
+<p>three20</p>
+<p><a id="url_29" href="https://github.com/facebook/three20" target="_blank">https://github.com/facebook/three20</a></p>
+<p>google gdata</p>
+<p><a id="url_30" href="http://code.google.com/p/gdata-objectivec-client/" target="_blank">http://code.google.com/p/gdata-objectivec-client/</a></p>
+<p>720全景显示panoramagl</p>
+<p><a id="url_31" href="http://code.google.com/p/panoramagl/" target="_blank">http://code.google.com/p/panoramagl/</a></p>
+<p>jabber client</p>
+<p><a id="url_32" href="http://code.google.com/p/ichabber/" target="_blank">http://code.google.com/p/ichabber/</a></p>
+<p>PLBlocks</p>
+<p><a id="url_33" href="http://code.google.com/p/plblocks/" target="_blank">http://code.google.com/p/plblocks/</a></p>
+<p>image&nbsp;processing</p>
+<p><a id="url_34" href="http://code.google.com/p/simple-iphone-image-processing/" target="_blank">http://code.google.com/p/simple-iphone-image-processing/</a></p>
+<p>json编码解码:<a id="url_35" href="http://code.google.com/p/json-framework" target="_blank">http://code.google.com/p/json-framework</a></p>
+<p>base64编码解码:<a id="url_36" href="http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/Foundation/?r=87" target="_blank">http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/Foundation/?r=87</a></p>
+<p>xml解析:<a id="url_37" href="https://github.com/schwa/TouchXML" target="_blank">https://github.com/schwa/TouchXML</a></p>
+<p>安全保存用户密码到keychain中:<a id="url_38" href="https://github.com/ldandersen/scifihifi-iphone" target="_blank">https://github.com/ldandersen/scifihifi-iphone</a></p>
+<p>加载等待特效框架(private api):<a id="url_39" href="https://github.com/jdg/MBProgressHUD" target="_blank">https://github.com/jdg/MBProgressHUD</a></p>
+<p>http等相关协议封装:<a id="url_40" href="http://allseeing-i.com/ASIHTTPRequest" target="_blank">http://allseeing-i.com/ASIHTTPRequest</a></p>
+<p>下拉刷新代码:<a id="url_41" href="https://github.com/enormego/EGOTableViewPullRefresh" target="_blank">https://github.com/enormego/EGOTableViewPullRefresh</a></p>
+<p>异步加载图片并缓存代码:<a id="url_42" href="http://www.markj.net/iphone-asynchronous-table-image/" target="_blank">http://www.markj.net/iphone-asynchronous-table-image/</a></p>
+<p>iphone TTS:<a id="url_43" href="https://bitbucket.org/sfoster/iphone-tts" target="_blank">https://bitbucket.org/sfoster/iphone-tts</a></p>
+<p>iphone cook book 源码:<a id="url_44" href="https://github.com/erica/iphone-3.0-cookbook-" target="_blank">https://github.com/erica/iphone-3.0-cookbook-</a><br>
+iphone&nbsp;&nbsp;正则表达式:<a id="url_45" href="http://regexkit.sourceforge.net/RegexKitLite/" target="_blank">http://regexkit.sourceforge.net/RegexKitLite/</a></p>
+<p>OAuth认证:&nbsp;&nbsp;<a id="url_46" href="http://code.google.com/p/oauth/" target="_blank">http://code.google.com/p/oauth/</a><br>
+<a id="url_47" href="http://code.google.com/p/oauthconsumer/" target="_blank">http://code.google.com/p/oauthconsumer/</a></p>
+</div>
+</div>
+			<div class="page-links"></div>
+		</div>
+		
+		<div class="postinfo clearfix">
+		<span class="meta-category">
+			<ul class="post-categories">
+	<li><a href="http://www.sunyuping.cn/category/%e6%ba%90%e7%a0%81%e5%88%86%e4%ba%ab/" rel="category tag">ios源码</a></li></ul>		</span>
+
+	</div>
+
+	</article>		
+	<article id="post-52" class="post-52 post type-post status-publish format-aside hentry category-2">
+		
+		<h2 class="post-title"><a href="http://www.sunyuping.cn/2012/12/%e5%a6%82%e6%9e%9c%e7%88%b1%ef%bc%8c%e8%af%b7%e6%b7%b1%e7%88%b1%ef%bc%9a10%e5%a4%a7ios%e5%bc%80%e5%8f%91%e8%80%85%e6%9c%80%e5%96%9c%e7%88%b1%e7%9a%84%e7%b1%bb%e5%ba%93/" rel="bookmark">如果爱，请深爱：10大iOS开发者最喜爱的类库</a></h2>
+		
+		<div class="postmeta">		
+		<span class="meta-date">
+		<a href="http://www.sunyuping.cn/2012/12/%e5%a6%82%e6%9e%9c%e7%88%b1%ef%bc%8c%e8%af%b7%e6%b7%b1%e7%88%b1%ef%bc%9a10%e5%a4%a7ios%e5%bc%80%e5%8f%91%e8%80%85%e6%9c%80%e5%96%9c%e7%88%b1%e7%9a%84%e7%b1%bb%e5%ba%93/" title="5:48 下午" rel="bookmark"><time datetime="2012-12-28T17:48:52+00:00">十二月 28, 2012</time></a>		</span>
+		
+		<span class="meta-author sep">
+		<a href="http://www.sunyuping.cn/author/sunyuping/" title="View all posts by sunyuping" rel="author">sunyuping</a>		</span>
+		
+			
+		<span class="meta-comments sep">
+			<a href="http://www.sunyuping.cn/2012/12/%e5%a6%82%e6%9e%9c%e7%88%b1%ef%bc%8c%e8%af%b7%e6%b7%b1%e7%88%b1%ef%bc%9a10%e5%a4%a7ios%e5%bc%80%e5%8f%91%e8%80%85%e6%9c%80%e5%96%9c%e7%88%b1%e7%9a%84%e7%b1%bb%e5%ba%93/#respond" title="《如果爱，请深爱：10大iOS开发者最喜爱的类库》上的评论">Leave a comment</a>		</span>
+		
+		
+	</div>
+	
+		
+		<a href="http://www.sunyuping.cn/2012/12/%e5%a6%82%e6%9e%9c%e7%88%b1%ef%bc%8c%e8%af%b7%e6%b7%b1%e7%88%b1%ef%bc%9a10%e5%a4%a7ios%e5%bc%80%e5%8f%91%e8%80%85%e6%9c%80%e5%96%9c%e7%88%b1%e7%9a%84%e7%b1%bb%e5%ba%93/" rel="bookmark">
+					</a>
+
+		
+		<div class="entry clearfix">
+						<p>该10大iOS开发者最喜爱的库由“iOS辅导团队”成员<a href="http://www.raywenderlich.com/about#marcelofabri" target="_blank">Marcelo Fabri</a>组织投票选举而得，参与者包括开发者团队，iOS辅导团队以及行业嘉宾。每个团队都要根据以下规则选出五个最好的库：1）不能投自己写的库；2）排除大的架构，比如游戏类架构；3）排除不在设备上运行的库，例如<a href="http://cocoapods.org/" target="_blank">CocoaPods</a>或者<a href="https://github.com/mattt/rack-core-data" target="_blank">Rack::CoreData</a>也排除在外。</p>
+<p>最终评选出了如下10大iOS开发者最喜爱的库：</p>
+<p><strong>1）</strong><a href="http://sstoolk.it/%20Sam%20Soffes" target="_blank"><strong>SSToolkit</strong></a></p>
+<p>Sam Soffes简直就是一个Objective-C天才，SSToolkit就是个例子。作者将他在App中实现的各种各样的UI效果做成个代码库，方便其他人使用。</p>
+<ul>
+<li>SSToolkit一些基础的类包括SSCollectionView，SSGradientView</li>
+<li>从UI部件到便利的Foundation类别都经过精心设计并记录在案，帮助开发者解决一些普遍问题，比如追踪一款设备是否有视网膜显示屏或者是否能剪裁图片</li>
+</ul>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/178_121107105053_1_lit.jpg" width="500" height="329" border="0"></p>
+<p><strong>2）</strong><a href="https://github.com/BradLarson/GPUImage" target="_blank"><strong>GPUImage</strong></a></p>
+<p>GPUImage一个功能十分强大又十分易用的<strong>图像处理库</strong>。</p>
+<ul>
+<li>提供各种各样的图像处理滤镜，并且支持照相机和摄像机的实时滤镜</li>
+<li>是基于GPU的图像加速，图像处理速度超快，并且能够自定义图像滤镜</li>
+<li>支持ARC</li>
+</ul>
+<p>不过现在还缺少一些Core Image拥有的一些先进功能，比如面部探测。</p>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/178_121107105123_1_lit.jpg" width="500" height="317" border="0"></p>
+<p>滤镜效果图</p>
+<p><strong>3）</strong><a href="https://github.com/square/SocketRocket" target="_blank"><strong>SocketRocket</strong></a></p>
+<p>SocketRocket是一个<strong>WebSocket客户端</strong>（WebSocket是适用于Web应用的下一代全双工通讯协议，被称为“Web的TCP”，它实现了浏览器与服务器的双向通信），采用Object-C编写。超级稳固又简单易用，简直就是实时应用的最佳拍档。</p>
+<ul>
+<li>SocketRocket遵循最新的WebSocket规范RFC 6455</li>
+<li>只有部分比较新的浏览器比如Chrome支持这个库</li>
+<li>支持TLS (wss)，iOS 4.x系统</li>
+<li>使用NSStream/CFNetworking（可免费享用）、使用ARC</li>
+<li>采用并行架构</li>
+<li>大部分的工作由后端的工作完成、基于委托编程。无任何UI包依赖。</li>
+</ul>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/178_121107105154_1_lit.jpg" width="344" height="300" border="0"></p>
+<p><a href="http://www.iteye.com/news/24176" target="_blank">因为Square，才有了SocketRocket</a></p>
+<p><strong>4）<a href="http://hockeykit.net/" target="_blank">HockeyKit</a></strong></p>
+<p>HockeyKit是一个iOS Ad-Hoc自动更新框架。所有的苹果店中的App都可以使用它，它<strong>能</strong><strong>显著提高整个Beta测试过程</strong>，分为两部分：服务器和客户端框架。服务端组件不需要客户端库就能单独工作。</p>
+<ul>
+<li>只需在服务器上安装一次服务端，就可以处理bundle identifier不同的多个应用程序(有<a href="http://hockeykit.net/" target="_blank">开发者</a>强烈建议对Debug、AdHocBeta和AppStore发布版使用不同的Bundle identifier）</li>
+<li>默认当App启动或唤醒时，客户端会从服务器检测更新，用户可以在设置对话框中修改这个设置：一天一次或手动检测更新</li>
+<li>除了支持iOS，HokeyKit也支持Android平台，不过Android版还处在Alpha阶段，支持OTA及应用内更新</li>
+<li>为HockeyKit用户提供服务器托管服务</li>
+</ul>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/178_121107105344_1.jpg" width="414" height="447" border="0"></p>
+<p>Beta测试演示</p>
+<p><strong>5）</strong><a href="https://github.com/johnezang/JSONKit" target="_blank"><strong>JSONKit</strong></a></p>
+<p>JSONKit是Objective C平台上比较常用的<strong>JSON数据访问工具。</strong></p>
+<ul>
+<li>JSONKit能在运行的情况下与libz.dylib自动连接而无须人工连接</li>
+<li>在解析期间，如果检测到有gzip文件，JSONKit能自动解压</li>
+<li>速度超快，支持之前的iOS版本（但要注意一点，从iOS 5开始，iOS就已经有本地JSON解析工具了）</li>
+<li>JSONKit的性能远优于JSON-Framework（即SBJSON），JSONKit使用起来也非常简单，表现性能比苹果iOS 5.0中的NSJSONSerialization还要好，速度比NSJSONSerialization快上&nbsp;25% to 40%，已经是非常大的一个差距了</li>
+</ul>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/178_121107150424_1_lit.jpg" width="600" height="219" border="0"></p>
+<p>Benchmark测试结果图</p>
+<p><strong>6）<a href="https://github.com/magicalpanda/MagicalRecord" target="_blank">MagicalRecord</a></strong></p>
+<p>使用Core Data时会用到许多引用代码，让工作变得很复杂，让人有种挫败感，MagicalRecord的出现就是解决这些问题的。</p>
+<ul>
+<li>不但<strong>能清理Core Data代码</strong>，还可在必要的时候进行NSFetchRequest修改</li>
+<li>需要iOS 5.0及以上版本，Mac OS 10.7及以上版本</li>
+<li>使用ARC</li>
+<li>能利用iCloud同步Core Data商店</li>
+</ul>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/178_121107112539_1.jpg" width="450" height="337" border="0"></p>
+<p><strong>7）<a href="http://restkit.org/" target="_blank">RestKit</a></strong></p>
+<p>Restkit是一个开源的Objective-C框架。</p>
+<ul>
+<li>可在iOS和Mac OS X的Objective-C中与RESTful Web服务进行简单交互</li>
+<li>包含简单的HTTP request/response API</li>
+<li>带有强大的对象映射系统，用于减少代码长度</li>
+<li><strong>RestKit可降低JSON/XML的处理的资源消耗</strong>，支持通过SBJSON和YAJL进行JSON解析</li>
+</ul>
+<p>当你的应用需要与一个REST远程API整合的时候，RestKit就会派上用场，帮你减少工作量（<a href="http://www.raywenderlich.com/13097/intro-to-restkit-tutorial" target="_blank">教程指导</a>）。</p>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/178_121107111741_1.jpg" width="500" height="346" border="0"></p>
+<p>添加Restkit</p>
+<p><strong>8）<a href="https://testflightapp.com/" target="_blank">TestFlight</a></strong></p>
+<p>要想轻松发送并公测应用？用TestFlight吧，<strong>无须通过iTunes</strong>，<a href="http://www.diwublog.com/archives/157" target="_blank">有人</a>曾经整理出了它的三大杀手锏：</p>
+<ul>
+<li>轻松采集测试用户的UDID和iOS 版本、硬件版本，并发送给开发者。在接收到开发者的TestFlight邀请之后，用户只需拿自己的iPhone即可打开邀请中的链接，注册账号，注册硬件</li>
+<li>有了测试包以后，不用一个个发邮件，只需要将IPA上传到TestFlight网站，然后勾选合适的测试用户，点击确认，你就完事了，用户会马上收到TestFlight的更新通知，然后只需在他的iPhone上登录TestFlight网站，TestFlight就会自动将测试IPA安装到他的iPhone上</li>
+<li>不用担心用户没有成功安装，Testfligh能够给你实时反馈最新统计数据</li>
+</ul>
+<p>现在还推出了桌面App，用起来更快更方便了。</p>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/178_121107150650_1_lit.jpg" width="500" height="287" border="0"></p>
+<p><strong>9）<a href="https://github.com/jdg/MBProgressHUD" target="_blank">MBProgressHUD</a></strong></p>
+<p>苹果的应用程序一般都会用一种半透明的进度显示效果，不过这个API是不公开的，因此你要是用了，很可能被踢出AppStore。而<a href="http://www.baidu.com/link?url=aac69b30fc293c5e471ef23de092fddc99fdd6886802aae824cc8788ab9544267a50e0f563d5bc9a7feb0d926ce2d9030dad465bec6d8faa864aeced090d4741826e69c6c1f9fed0b3347beac4b1c51c7449425c7d96" target="_blank">MBProgressHUD</a>提供了一个替代方案，实现的效果根本看不出和官方程序有什么差别。</p>
+<ul>
+<li>同时还提供了其他附加功能，比如虚拟进展指示符，以及完成提示信息</li>
+<li>你也可以安装其他东西，比如需要显示的文本，动画，x及y设置等等，有许多iOS辅导员都在用它，一般用来作应用内购买</li>
+<li>MBProgressHUD适用于任何iOS版本，需要LLVM 3.0及以上编译器架构，兼容ARC及非ARC项目，这得取决于苹果的以下架构：</li>
+</ul>
+<ol>
+<li>Foundation.架构</li>
+<li>UIKit.架构</li>
+<li>CoreGraphics.架构</li>
+</ol>
+<p><img alt="" src="./ios源码   随心所欲   Page 2_files/178_121107110740_1.JPG" width="450" height="274" border="0"></p>
+<p>透明进度效果</p>
+<p><strong>10）<a href="https://github.com/AFNetworking/AFNetworking" target="_blank">AFNetworking</a></strong></p>
+<p>AFNetworking是一个轻量级的<strong>iOS网络服务类库</strong>。它建立在NSURLConnection和NSOperation等类库的基础上，让很多网络通信功能的实现变得十分简单。</p>
+<ul>
+<li>支持HTTP请求和基于REST的网络服务（包括GET、POST、 PUT、DELETE等）</li>
+<li>支持ARC</li>
+<li>要求iOS 5.0及以上版本</li>
+<li>有一些插件扩展已有的功能，还有一个功能齐全的API</li>
+<li>从URL中获取JSON特别简单，简单到什么程度？看下面几行代码</li>
+</ul>
+<ol>
+<li>NSURL&nbsp;*url&nbsp;=&nbsp;[NSURL&nbsp;URLWithString:@”https://alpha-api.app.net/stream/0/posts/stream/global”];</li>
+<li>NSURLRequest&nbsp;*request&nbsp;=&nbsp;[NSURLRequest&nbsp;requestWithURL:url];</li>
+<li>AFJSONRequestOperation&nbsp;*operation&nbsp;=&nbsp;[AFJSONRequestOperation&nbsp;JSONRequestOperationWithRequest:request&nbsp;success:^(NSURLRequest&nbsp;*request,&nbsp;NSHTTPURLResponse&nbsp;*response,&nbsp;id&nbsp;JSON)&nbsp;{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”App.net&nbsp;Global&nbsp;Stream:&nbsp;%@”,&nbsp;JSON);</li>
+<li>}&nbsp;failure:nil];</li>
+<li>[operation&nbsp;start];</li>
+</ol>
+<p>在这10大库中，AFNetworking是最大赢家，现在是GitHub上第三大Objetive-C库，iPhone，iPad上很多著名应用都使用这个类库，是很多人的最爱。</p>
+<p>这里把好用的库整理出来介绍给大家，希望真正能帮到开发者，让你们的生活变得更简单。</p>
+			<div class="page-links"></div>
+		</div>
+		
+		<div class="postinfo clearfix">
+		<span class="meta-category">
+			<ul class="post-categories">
+	<li><a href="http://www.sunyuping.cn/category/%e6%ba%90%e7%a0%81%e5%88%86%e4%ba%ab/" rel="category tag">ios源码</a></li></ul>		</span>
+
+	</div>
+
+	</article>		
+	<article id="post-50" class="post-50 post type-post status-publish format-standard hentry category-2">
+		
+		<h2 class="post-title"><a href="http://www.sunyuping.cn/2012/12/ios%e5%bc%80%e5%8f%91%e8%80%85%e4%bc%81%e4%b8%9a%e8%ae%a1%e5%88%92%ef%bc%9ad-u-n-s-%e5%8f%b7%e7%94%b3%e8%af%b7%e6%9c%80%e6%96%b0%e6%b5%81%e7%a8%8b%e7%9a%84%e5%bf%83%e5%be%97/" rel="bookmark">iOS开发者企业计划：D-U-N-S 号申请最新流程的心得</a></h2>
+		
+		<div class="postmeta">		
+		<span class="meta-date">
+		<a href="http://www.sunyuping.cn/2012/12/ios%e5%bc%80%e5%8f%91%e8%80%85%e4%bc%81%e4%b8%9a%e8%ae%a1%e5%88%92%ef%bc%9ad-u-n-s-%e5%8f%b7%e7%94%b3%e8%af%b7%e6%9c%80%e6%96%b0%e6%b5%81%e7%a8%8b%e7%9a%84%e5%bf%83%e5%be%97/" title="11:10 上午" rel="bookmark"><time datetime="2012-12-12T11:10:36+00:00">十二月 12, 2012</time></a>		</span>
+		
+		<span class="meta-author sep">
+		<a href="http://www.sunyuping.cn/author/sunyuping/" title="View all posts by sunyuping" rel="author">sunyuping</a>		</span>
+		
+			
+		<span class="meta-comments sep">
+			<a href="http://www.sunyuping.cn/2012/12/ios%e5%bc%80%e5%8f%91%e8%80%85%e4%bc%81%e4%b8%9a%e8%ae%a1%e5%88%92%ef%bc%9ad-u-n-s-%e5%8f%b7%e7%94%b3%e8%af%b7%e6%9c%80%e6%96%b0%e6%b5%81%e7%a8%8b%e7%9a%84%e5%bf%83%e5%be%97/#respond" title="《iOS开发者企业计划：D-U-N-S 号申请最新流程的心得》上的评论">Leave a comment</a>		</span>
+		
+		
+	</div>
+	
+		
+		<a href="http://www.sunyuping.cn/2012/12/ios%e5%bc%80%e5%8f%91%e8%80%85%e4%bc%81%e4%b8%9a%e8%ae%a1%e5%88%92%ef%bc%9ad-u-n-s-%e5%8f%b7%e7%94%b3%e8%af%b7%e6%9c%80%e6%96%b0%e6%b5%81%e7%a8%8b%e7%9a%84%e5%bf%83%e5%be%97/" rel="bookmark">
+					</a>
+
+		
+		<div class="entry clearfix">
+						<p>从6月还是7月起,注册Apple-developer账号时需要提供D-U-N-S 号,否则无法进行,我也看过很多资料,说DB公司负责提供D-U-N-S 号,但是这个号是要收费的,标准费用我不用在这里说明,大家了解过应该比较清楚,最便宜的应该是800一年,而且800元/年这种服务只管提供D-U-N-S 号号,不负责这个号是否可以在苹果公司用.</p>
+<p>因为很多开发者反应,在DB公司花钱申请的D-U-N-S 号居然在苹果公司不能用。于是我打了中国DB公司客服（即华夏邓白氏），他们说因为苹果公司自己更新了数据库，添加了legal entity ,而他们的少了这一字段，于是数据库无法与苹果公司数据库匹配，虽然两方公司都在努力解决这个问题，但是数据库过于庞大并非一朝一夕就可以匹配，于是华夏DB自己研制出了一套所谓的临时解决方案，可能会有用，但也只是可能而已。他们无法保证提供的D-U-N-S 号一定可以通过。于是，我只能找苹果客服。</p>
+<p>说明情况之后，苹果客服给我回了这样一个email：</p>
+<blockquote><p>Re: iOS Developer Program您好，欢迎联络苹果开发者支援。请到以下的网页申请您的DUNS号码：https://developer.apple.com/ios/enroll/dunsLookupForm.action</p>
+<p>请先输入相关的信息，如系统查询后发现您的公司之前没有申请过DUNS 号码，您之后会有选项可申请免费的号码。如果您还有任何的疑问，欢迎与我们联系。Crystal WuApple Developer Support</p></blockquote>
+<p>然后在进入上面的链接，是苹果公司下面的一个网页，在上面填写相关注册信息。第一页提交之后（如果是第一次申请，会有黄色感叹号，说company can’t found 之类的一段话，因为我没有保存截图，所以这里无法提供。）不过出现这个黄色感叹号没关系，下面有个选项框，仔细阅读之后，一定要勾上，也就是说（见黑体字）。</p>
+<p>然后continue。</p>
+<p>页面提示说撒我记得不清楚了，大意就是你的信息已经提交给DB公司了，你会在一段时间之后收到来自DB的邮件，他们审核信息并且提供编码。（特别强调：这个是美国DB公司提供的D-U-N-S 号，是不收费的，而中国华夏DB客服解释说在国内注册公司是要收费的，国外的公司是不收费的，所以我觉得完全没有必要找华夏DB。而且美国苹果客服给我们说的DB公司，是美国的DB，不是国内的所以他们一直强调说是不收费的，不明白为什么中国的Developer会说收费，其实这里已经很清楚了。）</p>
+<p>昨天下午提交的资料，凌晨便收到苹果公司的回信：（内容如下）</p>
+<blockquote><p>Thank you for submitting your D-U-N-S Number request / update to D&amp;B. It should be completed by 09/20/2012.Your request id is: *********（这里是我刚申请的号这里用星星表示.）. A D&amp;B representative may be contacting you directly. Your cooperation will help to expedite the resolution of this request.Please contact miniinvestigationsupport@dnb.com if you have any questions.</p></blockquote>
+<p>然后把这个号填进去等待生效就行了，后面的我想大家应该比我更清楚吧。</p>
+<p>这就是我的申请流程，其实并不像大家说的那么难，反而挺容易的。</p>
+<p>祝大家好运…………</p>
+<p><strong>补充：</strong>拿到邓白氏编码不要立即去填，它的生效时间是14个工作日，建议一周去填了提交一次，如果一周提交三次都没有通过的话，你的账号会被锁掉，到时候即使通过了也显示不了，所以切记：一周提交一次。如果这次不行，再等一周再提交这个编码，祝大家好运啦！</p>
+			<div class="page-links"></div>
+		</div>
+		
+		<div class="postinfo clearfix">
+		<span class="meta-category">
+			<ul class="post-categories">
+	<li><a href="http://www.sunyuping.cn/category/%e6%ba%90%e7%a0%81%e5%88%86%e4%ba%ab/" rel="category tag">ios源码</a></li></ul>		</span>
+
+	</div>
+
+	</article>		
+	<article id="post-49" class="post-49 post type-post status-publish format-standard hentry category-2">
+		
+		<h2 class="post-title"><a href="http://www.sunyuping.cn/2012/11/%e8%af%a6%e8%a7%a3ios%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e5%86%85%e4%bd%bf%e7%94%a8iapstorekit%e4%bb%98%e8%b4%b9%e3%80%81%e6%b2%99%e7%9b%92%ef%bc%88sandbox%ef%bc%89%e6%b5%8b%e8%af%95%e3%80%81/" rel="bookmark">详解iOS应用程序内使用IAP/StoreKit付费、沙盒（SandBox）测试、创建测试账号流程！</a></h2>
+		
+		<div class="postmeta">		
+		<span class="meta-date">
+		<a href="http://www.sunyuping.cn/2012/11/%e8%af%a6%e8%a7%a3ios%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e5%86%85%e4%bd%bf%e7%94%a8iapstorekit%e4%bb%98%e8%b4%b9%e3%80%81%e6%b2%99%e7%9b%92%ef%bc%88sandbox%ef%bc%89%e6%b5%8b%e8%af%95%e3%80%81/" title="6:21 下午" rel="bookmark"><time datetime="2012-11-20T18:21:10+00:00">十一月 20, 2012</time></a>		</span>
+		
+		<span class="meta-author sep">
+		<a href="http://www.sunyuping.cn/author/sunyuping/" title="View all posts by sunyuping" rel="author">sunyuping</a>		</span>
+		
+			
+		<span class="meta-comments sep">
+			<a href="http://www.sunyuping.cn/2012/11/%e8%af%a6%e8%a7%a3ios%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e5%86%85%e4%bd%bf%e7%94%a8iapstorekit%e4%bb%98%e8%b4%b9%e3%80%81%e6%b2%99%e7%9b%92%ef%bc%88sandbox%ef%bc%89%e6%b5%8b%e8%af%95%e3%80%81/#respond" title="《详解iOS应用程序内使用IAP/StoreKit付费、沙盒（SandBox）测试、创建测试账号流程！》上的评论">Leave a comment</a>		</span>
+		
+		
+	</div>
+	
+		
+		<a href="http://www.sunyuping.cn/2012/11/%e8%af%a6%e8%a7%a3ios%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e5%86%85%e4%bd%bf%e7%94%a8iapstorekit%e4%bb%98%e8%b4%b9%e3%80%81%e6%b2%99%e7%9b%92%ef%bc%88sandbox%ef%bc%89%e6%b5%8b%e8%af%95%e3%80%81/" rel="bookmark">
+					</a>
+
+		
+		<div class="entry clearfix">
+						<p>原文地址：<a href="http://blog.csdn.net/xiaominghimi/article/details/6937097">http://blog.csdn.net/xiaominghimi/article/details/6937097</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>终于在11月公司的游戏即将上线了，那么对于iOS游戏来说当今都是内置道具收费属于主流，那么我们的游戏也是内置收费，所以Himi这里分享给大家关于内置应用收费以及申请测试账号进行测试购买的经验；</p>
+<p>在应用内嵌入付费代码这一快Himi可以直接将代码分享给大家，所以我们来说一些主要流程，毕竟没有接触过这一块的童鞋肯定相当头疼 =。 &nbsp;=</p>
+<p>OK，步入整体，如果你想在iOS里内嵌收费，那么分为以下几步：</p>
+<p><strong>&nbsp;【提示：以下创建App部分内容，你不用非要等项目能打包了才开始做，可以随时并且随便的创建个测试项目即可，因为嵌入付费并不要求上传App的ipa包的！！】 &nbsp;&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p><strong>第一步：你需要在iTunesConnect中创建个新的App，然后为这个App设置一些产品（付费道具）等；</strong></p>
+<p>OK，这里Himi稍微解释下，iTunesConnect是苹果提供的一个平台，主要提供AP发布和管理App的，最重要的功能是创建管理项目信息，项目付费产品（道具）管理、付费的测试账号、提交App等等，这里就简单介绍这么多，关于产品一词在此我们可以理解成游戏道具即可；在苹果看来所有付费都属于产品 =。 =千万不要纠结字眼哦～</p>
+<p>OK，打开iTunesConnect网站：<a href="https://itunesconnect.apple.com/WebObjects/iTunesConnect.woa">https://itunesconnect.apple.com/WebObjects/iTunesConnect.woa</a>&nbsp;(注意：企业级的用户必须使用公司主开发者账号登陆才可！)</p>
+<p>成功登陆后的页面如下：</p>
+<p>&nbsp;</p>
+<p><img src="./ios源码   随心所欲   Page 2_files/7211253_1320411304rrrr.png" alt=""></p>
+<p>这里大概说下重要的一些项：</p>
+<p><strong>&nbsp;Contracts, Tax, and Banking&nbsp;&nbsp;&nbsp;： 管理银行账号、联系人以及税等等；这里要根据提示完成对应的信息填写！一定要详细填写喔～</strong></p>
+<p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Manage Users ：管理用户的，比如主账号以及测试付费的（测试App）账号；</strong></p>
+<p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Manage Your Applictions：管理应用程序的，你所有发布的应用和每个应用的状态都在这里面；</strong></p>
+<p>&nbsp;</p>
+<p>下面我们新建一个App项目，大家放心，我们这里创建的是不会直接提交给App审核的，所以放心创建，只要控制好App的状态不要是待审核状态即可，不过即使你不小心将项目提交了，也没事，直接更改App状态即可了；</p>
+<p>选择<strong>Manage Your Applictions</strong>选项，然后新建一个项目：【Add New App】，根据提示来填写吧，这里就不细致说明了～</p>
+<p>创建好一个App之后，在点击<strong>Manage Your Applictions</strong>后的界面应该如下：</p>
+<p><img src="./ios源码   随心所欲   Page 2_files/7211253_13204119946EnG.png" alt=""></p>
+<p>这里你将看到自己创建的App，点击你创建的App项目，这里Himi创建的项目名字叫”ProjectForBuyTest“，点击你的App进入如下界面：</p>
+<p>&nbsp;</p>
+<p><img src="./ios源码   随心所欲   Page 2_files/7211253_1320411997NdnE.png" alt=""></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>&nbsp; (注意：这里的Bundle ID一定要跟你的项目中的info.plist中的Bundle ID保证一致！！！！）</strong></p>
+<p>这里可以管理你的项目的信息、状态、是否嵌入GameCenter等等选项，那么本章我们重点介绍如何使用IAp沙盒测试程序内付费，所以这里我们点击右上角的”<strong>Manage&nbsp;In-App Purchases</strong>“选项进入创建产品（游戏道具）界面如下：</p>
+<p>&nbsp;</p>
+<p><img src="./ios源码   随心所欲   Page 2_files/7211253_13204129749Aq9.png" alt=""></p>
+<p>上图中的下方看到Himi创建过的四个产品（道具）了，你可以点击”Create New“选项新建一个产品（付费道具），点击新建如下界面：</p>
+<p><img src="./ios源码   随心所欲   Page 2_files/7211253_132041297697V1.png" alt=""></p>
+<p>上图中Himi没有截图出所有的选项，这里大概介绍下，这个界面是选择你的消费道具的种类，种类说明如下：</p>
+<p><strong>&nbsp; &nbsp;类型选择有四种选择：</strong></p>
+<p><strong>&nbsp; &nbsp;1.Consumable（消耗品）: 每次下载都需要付费；</strong></p>
+<p><strong>&nbsp; &nbsp;2.Non-consumable（非消耗品）: 仅需付费一次；</strong></p>
+<p><strong>&nbsp; &nbsp;3.Auto-Renewable Subscriptions：自动订阅；</strong></p>
+<p><strong>&nbsp; &nbsp;4.Free Subscription：免费订阅</strong></p>
+<p><strong>&nbsp; &nbsp;最下方是你沙盒测试的截图，暂且不管即可；</strong></p>
+<p><strong>&nbsp;</strong>&nbsp;&nbsp;这里Himi选择<strong>Consumable</strong>选项，比如很多游戏都是购买金币啦这样子就可以选择这个；然后出现如下界面：</p>
+<p><img src="./ios源码   随心所欲   Page 2_files/7211253_13204136481a8s.png" alt=""></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Reference Name：&nbsp;付费产品（道具的）参考名称</strong></p>
+<p><strong>&nbsp; &nbsp;Product ID（产品ID）: 你产品的唯一id。通常格式是 com.xx.yy，但它可以是任何形式，不要求以程序的App ID作为前缀。</strong></p>
+<p><strong>&nbsp; &nbsp;Add Language: 添加产品名称与描述语言；</strong></p>
+<p><strong>&nbsp; &nbsp;Price Tier：选择价格，这里你选择价格后，会出现如上图最下方的价格对照表</strong></p>
+<p><strong>&nbsp; &nbsp;Screenshot（截屏）: 展示你产品的截屏。（这个直接无视，测试App务必要管这个的）</strong></p>
+<p><strong><br>
+</strong></p>
+<p><strong>Product ID（产品ID）可以创建多个，比如我想游戏中分为0.99$ 、1.99$等道具那就创建对应多个产品ID</strong>！</p>
+<p><strong>&nbsp;&nbsp;</strong>我们填写好了”Reference Name“与”Product ID“以及”Price Tier“后，点击”Add Language“选项然后出现如下界面：</p>
+<p><img src="./ios源码   随心所欲   Page 2_files/7211253_1320414176Urrz.png" alt=""></p>
+<p>&nbsp;</p>
+<p>上图中的选项：</p>
+<p><strong>Language：语言</strong></p>
+<p><strong>&nbsp; &nbsp; &nbsp;&nbsp;Displayed Name（显示名称）: 用户看到的产品名称。</strong></p>
+<p><strong>&nbsp; &nbsp; &nbsp;&nbsp;Description（描述）: 对产品进行描述。</strong></p>
+<p>Ok，一路 Save保存回到”<strong>Manage&nbsp;In-App Purchases</strong>“界面中会看到我们新建的产品（道具）如下：</p>
+<p><img src="./ios源码   随心所欲   Page 2_files/7211253_1320414422xMH4.png" alt=""></p>
+<p>&nbsp;</p>
+<p>大家可以看到新建的产品（道具）ID：这里Himi创建的产品ID是com.himi.wahaha ，这里要记住这个产品ID哦～</p>
+<p>&nbsp;</p>
+<p><strong>第二步：申请测试账号，利用沙盒测试模拟AppStore购买道具流程！</strong></p>
+<p><strong>&nbsp;&nbsp;</strong>回到itunesconnect主页中，选择“Manage Users”然后选择“Test User”，然后出现的界面如下图：</p>
+<p><img src="./ios源码   随心所欲   Page 2_files/7211253_1320415034y3KE.png" alt=""></p>
+<p>这里Himi已经创建了两个测试账号了，点击界面中的 “Add New User”进行创建即可；记住账号和密码哈，记不住就删掉重新建 娃哈哈～（切记：不能用于真正的AppStore中使用此账号，不仅不能用，而且一旦AppStore发现后果你懂得～）</p>
+<p>&nbsp;</p>
+<p>第三步：在项目中申请购买产品代码以及监听；</p>
+<p><strong>这里关于购买的代码部分呢，我都有备注的，Himi这里就不详细讲解了，Himi只是在代码后介绍几点值得注意的地方：</strong></p>
+<p>&nbsp;</p>
+<p>这里Himi是新建的一个Cocos2d的项目，然后给出HelloWorldLayer.h以及HelloWorldLayer.m的全部代码，所有购买代码也全在里面也对应有Himi的注释！</p>
+<p><strong>&nbsp;&nbsp; &nbsp; HelloWorldLayer.h</strong></p>
+<p>&nbsp;</p>
+<div>
+<div>
+<div><strong>[cpp]</strong>&nbsp;<a title="view plain" href="http://blog.csdn.net/xiaominghimi/article/details/6937097#">view plain</a><a title="copy" href="http://blog.csdn.net/xiaominghimi/article/details/6937097#">copy</a><p></p>
+<div></div>
+<div><object id="ZeroClipboardMovie_1" width="18" height="18" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" align="middle" bgcolor="#ffffff"><param name="src" value="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf"><param name="loop" value="loop"><param name="menu" value="false"><param name="quality" value="best"><param name="allowscriptaccess" value="always"><param name="allowfullscreen" value="false"><param name="pluginspage" value="http://www.macromedia.com/go/getflashplayer"><param name="flashvars" value="id=1&amp;width=18&amp;height=18"><param name="wmode" value="transparent"><embed id="ZeroClipboardMovie_1" width="18" height="18" type="application/x-shockwave-flash" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="loop" menu="false" quality="best" allowscriptaccess="always" allowfullscreen="false" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=18&amp;height=18" wmode="transparent" align="middle" bgcolor="#ffffff"></object></div>
+</div>
+</div>
+<ol start="1">
+<li>//</li>
+<li>//&nbsp;&nbsp;HelloWorldLayer.h</li>
+<li>//&nbsp;&nbsp;buytest</li>
+<li>//</li>
+<li>//&nbsp;&nbsp;Created&nbsp;by&nbsp;华明&nbsp;李&nbsp;on&nbsp;11-10-29.</li>
+<li>//&nbsp;&nbsp;Copyright&nbsp;Himi&nbsp;2011年.&nbsp;All&nbsp;rights&nbsp;reserved.</li>
+<li>//</li>
+<li></li>
+<li></li>
+<li>//&nbsp;When&nbsp;you&nbsp;import&nbsp;this&nbsp;file,&nbsp;you&nbsp;import&nbsp;all&nbsp;the&nbsp;cocos2d&nbsp;classes</li>
+<li>#import&nbsp;“cocos2d.h”</li>
+<li>#import&nbsp;&lt;UIKit/UIKit.h&gt;</li>
+<li></li>
+<li>#import&nbsp;&lt;StoreKit/StoreKit.h&gt;</li>
+<li>enum{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IAP0p99=10,</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IAP1p99,</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IAP4p99,</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IAP9p99,</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IAP24p99,</li>
+<li>}buyCoinsTag;</li>
+<li></li>
+<li>@interface&nbsp;HelloWorldLayer&nbsp;:&nbsp;CCLayer&lt;SKProductsRequestDelegate,SKPaymentTransactionObserver&gt;</li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;buyType;</li>
+<li>}</li>
+<li></li>
+<li>+(CCScene&nbsp;*)&nbsp;scene;</li>
+<li>-&nbsp;(void)&nbsp;requestProUpgradeProductData;</li>
+<li>-(void)RequestProductData;</li>
+<li>-(bool)CanMakePay;</li>
+<li>-(void)buy:(int)type;</li>
+<li>-&nbsp;(void)paymentQueue:(SKPaymentQueue&nbsp;*)queue&nbsp;updatedTransactions:(NSArray&nbsp;*)transactions;</li>
+<li>-(void)&nbsp;PurchasedTransaction:&nbsp;(SKPaymentTransaction&nbsp;*)transaction;</li>
+<li>-&nbsp;(void)&nbsp;completeTransaction:&nbsp;(SKPaymentTransaction&nbsp;*)transaction;</li>
+<li>-&nbsp;(void)&nbsp;failedTransaction:&nbsp;(SKPaymentTransaction&nbsp;*)transaction;</li>
+<li>-(void)&nbsp;paymentQueueRestoreCompletedTransactionsFinished:&nbsp;(SKPaymentTransaction&nbsp;*)transaction;</li>
+<li>-(void)&nbsp;paymentQueue:(SKPaymentQueue&nbsp;*)&nbsp;paymentQueue&nbsp;restoreCompletedTransactionsFailedWithError:(NSError&nbsp;*)error;</li>
+<li>-&nbsp;(void)&nbsp;restoreTransaction:&nbsp;(SKPaymentTransaction&nbsp;*)transaction;</li>
+<li>-(void)provideContent:(NSString&nbsp;*)product;</li>
+<li>-(void)recordTransaction:(NSString&nbsp;*)product;</li>
+<li>@end</li>
+</ol>
+</div>
+<p>HelloWorldLayer.m</p>
+<p>&nbsp;</p>
+<div>
+<div>
+<div><strong>[cpp]</strong>&nbsp;<a title="view plain" href="http://blog.csdn.net/xiaominghimi/article/details/6937097#">view plain</a><a title="copy" href="http://blog.csdn.net/xiaominghimi/article/details/6937097#">copy</a><p></p>
+<div></div>
+<div><object id="ZeroClipboardMovie_2" width="18" height="18" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" align="middle" bgcolor="#ffffff"><param name="src" value="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf"><param name="loop" value="loop"><param name="menu" value="false"><param name="quality" value="best"><param name="allowscriptaccess" value="always"><param name="allowfullscreen" value="false"><param name="pluginspage" value="http://www.macromedia.com/go/getflashplayer"><param name="flashvars" value="id=2&amp;width=18&amp;height=18"><param name="wmode" value="transparent"><embed id="ZeroClipboardMovie_2" width="18" height="18" type="application/x-shockwave-flash" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="loop" menu="false" quality="best" allowscriptaccess="always" allowfullscreen="false" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=2&amp;width=18&amp;height=18" wmode="transparent" align="middle" bgcolor="#ffffff"></object></div>
+</div>
+</div>
+<ol start="1">
+<li>//</li>
+<li>//&nbsp;&nbsp;IapLayer.m</li>
+<li>//</li>
+<li>//&nbsp;&nbsp;Created&nbsp;by&nbsp;Himi&nbsp;on&nbsp;11-5-25.</li>
+<li>//&nbsp;&nbsp;Copyright&nbsp;2011年&nbsp;李华明&nbsp;.&nbsp;All&nbsp;rights&nbsp;reserved.</li>
+<li>//</li>
+<li></li>
+<li>#import&nbsp;“HelloWorldLayer.h”</li>
+<li>#define&nbsp;ProductID_IAP0p99&nbsp;@”com.buytest.one”//$0.99</li>
+<li>#define&nbsp;ProductID_IAP1p99&nbsp;@”com.buytest.two”&nbsp;//$1.99</li>
+<li>#define&nbsp;ProductID_IAP4p99&nbsp;@”com.buytest.three”&nbsp;//$4.99</li>
+<li>#define&nbsp;ProductID_IAP9p99&nbsp;@”com.buytest.four”&nbsp;//$19.99</li>
+<li>#define&nbsp;ProductID_IAP24p99&nbsp;@”com.buytest.five”&nbsp;//$24.99</li>
+<li></li>
+<li>@implementation&nbsp;HelloWorldLayer</li>
+<li>+(CCScene&nbsp;*)&nbsp;scene</li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;CCScene&nbsp;*scene&nbsp;=&nbsp;[CCScene&nbsp;node];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;HelloWorldLayer&nbsp;*layer&nbsp;=&nbsp;[HelloWorldLayer&nbsp;node];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[scene&nbsp;addChild:&nbsp;layer];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;scene;</li>
+<li>}</li>
+<li>-(id)init</li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((self&nbsp;=&nbsp;[super&nbsp;init]))&nbsp;{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CGSize&nbsp;size&nbsp;=&nbsp;[[CCDirector&nbsp;sharedDirector]&nbsp;winSize];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCSprite&nbsp;*iap_bg&nbsp;&nbsp;=&nbsp;[CCSprite&nbsp;spriteWithFile:@”Icon.png”];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[iap_bg&nbsp;setPosition:ccp(size.width/2,size.height/2)];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[self&nbsp;addChild:iap_bg&nbsp;z:0];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//———————</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//—-监听购买结果</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[SKPaymentQueue&nbsp;defaultQueue]&nbsp;addTransactionObserver:self];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//申请购买</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IAP0p99=10,</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IAP1p99,</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IAP4p99,</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IAP9p99,</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IAP24p99,</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}buyCoinsTag;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[self&nbsp;buy:IAP24p99];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;self;</li>
+<li>}</li>
+<li></li>
+<li>-(void)buy:(int)type</li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;buyType&nbsp;=&nbsp;type;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;([SKPaymentQueue&nbsp;canMakePayments])&nbsp;{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//[[SKPaymentQueue&nbsp;defaultQueue]&nbsp;restoreCompletedTransactions];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[self&nbsp;RequestProductData];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”允许程序内付费购买”);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;else</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”不允许程序内付费购买”);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UIAlertView&nbsp;*alerView&nbsp;=&nbsp;&nbsp;[[UIAlertView&nbsp;alloc]&nbsp;initWithTitle:@”Alert”</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message:@”You&nbsp;can‘t&nbsp;purchase&nbsp;in&nbsp;app&nbsp;store（Himi说你没允许应用程序内购买）”</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delegate:nil&nbsp;cancelButtonTitle:NSLocalizedString(@”Close（关闭）”,nil)&nbsp;otherButtonTitles:nil];</li>
+<li></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[alerView&nbsp;show];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[alerView&nbsp;release];</li>
+<li></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>}</li>
+<li></li>
+<li>-(bool)CanMakePay</li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[SKPaymentQueue&nbsp;canMakePayments];</li>
+<li>}</li>
+<li></li>
+<li>-(void)RequestProductData</li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”———请求对应的产品信息————“);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSArray&nbsp;*product&nbsp;=&nbsp;nil;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(buyType)&nbsp;{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;IAP0p99:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;product=[[NSArray&nbsp;alloc]&nbsp;initWithObjects:ProductID_IAP0p99,nil];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;IAP1p99:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;product=[[NSArray&nbsp;alloc]&nbsp;initWithObjects:ProductID_IAP1p99,nil];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;IAP4p99:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;product=[[NSArray&nbsp;alloc]&nbsp;initWithObjects:ProductID_IAP4p99,nil];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;IAP9p99:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;product=[[NSArray&nbsp;alloc]&nbsp;initWithObjects:ProductID_IAP9p99,nil];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;IAP24p99:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;product=[[NSArray&nbsp;alloc]&nbsp;initWithObjects:ProductID_IAP24p99,nil];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSSet&nbsp;*nsset&nbsp;=&nbsp;[NSSet&nbsp;setWithArray:product];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;SKProductsRequest&nbsp;*request=[[SKProductsRequest&nbsp;alloc]&nbsp;initWithProductIdentifiers:&nbsp;nsset];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;request.delegate=self;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[request&nbsp;start];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[product&nbsp;release];</li>
+<li>}</li>
+<li>//&lt;SKProductsRequestDelegate&gt;&nbsp;请求协议</li>
+<li>//收到的产品信息</li>
+<li>-&nbsp;(void)productsRequest:(SKProductsRequest&nbsp;*)request&nbsp;didReceiveResponse:(SKProductsResponse&nbsp;*)response{</li>
+<li></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”———–收到产品反馈信息————–“);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSArray&nbsp;*myProduct&nbsp;=&nbsp;response.products;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”产品Product&nbsp;ID:%@”,response.invalidProductIdentifiers);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”产品付费数量:&nbsp;%d”,&nbsp;[myProduct&nbsp;count]);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;populate&nbsp;UI</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;for(SKProduct&nbsp;*product&nbsp;in&nbsp;myProduct){</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”product&nbsp;info”);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”SKProduct&nbsp;描述信息%@”,&nbsp;[product&nbsp;description]);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”产品标题&nbsp;%@”&nbsp;,&nbsp;product.localizedTitle);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”产品描述信息:&nbsp;%@”&nbsp;,&nbsp;product.localizedDescription);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”价格:&nbsp;%@”&nbsp;,&nbsp;product.price);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”Product&nbsp;id:&nbsp;%@”&nbsp;,&nbsp;product.productIdentifier);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;SKPayment&nbsp;*payment&nbsp;=&nbsp;nil;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(buyType)&nbsp;{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;IAP0p99:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;payment&nbsp;&nbsp;=&nbsp;[SKPayment&nbsp;paymentWithProductIdentifier:ProductID_IAP0p99];&nbsp;&nbsp;&nbsp;&nbsp;//支付$0.99</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;IAP1p99:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;payment&nbsp;&nbsp;=&nbsp;[SKPayment&nbsp;paymentWithProductIdentifier:ProductID_IAP1p99];&nbsp;&nbsp;&nbsp;&nbsp;//支付$1.99</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;IAP4p99:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;payment&nbsp;&nbsp;=&nbsp;[SKPayment&nbsp;paymentWithProductIdentifier:ProductID_IAP4p99];&nbsp;&nbsp;&nbsp;&nbsp;//支付$9.99</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;IAP9p99:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;payment&nbsp;&nbsp;=&nbsp;[SKPayment&nbsp;paymentWithProductIdentifier:ProductID_IAP9p99];&nbsp;&nbsp;&nbsp;&nbsp;//支付$19.99</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;IAP24p99:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;payment&nbsp;&nbsp;=&nbsp;[SKPayment&nbsp;paymentWithProductIdentifier:ProductID_IAP24p99];&nbsp;&nbsp;&nbsp;&nbsp;//支付$29.99</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”———发送购买请求————“);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[[SKPaymentQueue&nbsp;defaultQueue]&nbsp;addPayment:payment];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[request&nbsp;autorelease];</li>
+<li></li>
+<li>}</li>
+<li>-&nbsp;(void)requestProUpgradeProductData</li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”——请求升级数据———“);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSSet&nbsp;*productIdentifiers&nbsp;=&nbsp;[NSSet&nbsp;setWithObject:@”com.productid”];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;SKProductsRequest*&nbsp;productsRequest&nbsp;=&nbsp;[[SKProductsRequest&nbsp;alloc]&nbsp;initWithProductIdentifiers:productIdentifiers];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;productsRequest.delegate&nbsp;=&nbsp;self;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[productsRequest&nbsp;start];</li>
+<li></li>
+<li>}</li>
+<li>//弹出错误信息</li>
+<li>-&nbsp;(void)request:(SKRequest&nbsp;*)request&nbsp;didFailWithError:(NSError&nbsp;*)error{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”——-弹出错误信息———-“);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;UIAlertView&nbsp;*alerView&nbsp;=&nbsp;&nbsp;[[UIAlertView&nbsp;alloc]&nbsp;initWithTitle:NSLocalizedString(@”Alert”,NULL)&nbsp;message:[error&nbsp;localizedDescription]</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delegate:nil&nbsp;cancelButtonTitle:NSLocalizedString(@”Close”,nil)&nbsp;otherButtonTitles:nil];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[alerView&nbsp;show];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[alerView&nbsp;release];</li>
+<li>}</li>
+<li></li>
+<li>-(void)&nbsp;requestDidFinish:(SKRequest&nbsp;*)request</li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”———-反馈信息结束————–“);</li>
+<li></li>
+<li>}</li>
+<li></li>
+<li>-(void)&nbsp;PurchasedTransaction:&nbsp;(SKPaymentTransaction&nbsp;*)transaction{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”—–PurchasedTransaction—-“);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSArray&nbsp;*transactions&nbsp;=[[NSArray&nbsp;alloc]&nbsp;initWithObjects:transaction,&nbsp;nil];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[self&nbsp;paymentQueue:[SKPaymentQueue&nbsp;defaultQueue]&nbsp;updatedTransactions:transactions];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[transactions&nbsp;release];</li>
+<li>}</li>
+<li></li>
+<li>//&lt;SKPaymentTransactionObserver&gt;&nbsp;千万不要忘记绑定，代码如下：</li>
+<li>//—-监听购买结果</li>
+<li>//[[SKPaymentQueue&nbsp;defaultQueue]&nbsp;addTransactionObserver:self];</li>
+<li></li>
+<li>-&nbsp;(void)paymentQueue:(SKPaymentQueue&nbsp;*)queue&nbsp;updatedTransactions:(NSArray&nbsp;*)transactions//交易结果</li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”—–paymentQueue——–“);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(SKPaymentTransaction&nbsp;*transaction&nbsp;in&nbsp;transactions)</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(transaction.transactionState)</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;SKPaymentTransactionStatePurchased://交易完成</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[self&nbsp;completeTransaction:transaction];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”—–交易完成&nbsp;——–“);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”不允许程序内付费购买”);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UIAlertView&nbsp;*alerView&nbsp;=&nbsp;&nbsp;[[UIAlertView&nbsp;alloc]&nbsp;initWithTitle:@”Alert”</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message:@”Himi说你购买成功啦～娃哈哈”</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delegate:nil&nbsp;cancelButtonTitle:NSLocalizedString(@”Close（关闭）”,nil)&nbsp;otherButtonTitles:nil];</li>
+<li></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[alerView&nbsp;show];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[alerView&nbsp;release];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;SKPaymentTransactionStateFailed://交易失败</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[self&nbsp;failedTransaction:transaction];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”—–交易失败&nbsp;——–“);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UIAlertView&nbsp;*alerView2&nbsp;=&nbsp;&nbsp;[[UIAlertView&nbsp;alloc]&nbsp;initWithTitle:@”Alert”</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message:@”Himi说你购买失败，请重新尝试购买～”</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delegate:nil&nbsp;cancelButtonTitle:NSLocalizedString(@”Close（关闭）”,nil)&nbsp;otherButtonTitles:nil];</li>
+<li></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[alerView2&nbsp;show];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[alerView2&nbsp;release];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;SKPaymentTransactionStateRestored://已经购买过该商品</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[self&nbsp;restoreTransaction:transaction];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”—–已经购买过该商品&nbsp;——–“);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;SKPaymentTransactionStatePurchasing:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//商品添加进列表</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”—–商品添加进列表&nbsp;——–“);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>}</li>
+<li>-&nbsp;(void)&nbsp;completeTransaction:&nbsp;(SKPaymentTransaction&nbsp;*)transaction</li>
+<li></li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”—–completeTransaction——–“);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Your&nbsp;application&nbsp;should&nbsp;implement&nbsp;these&nbsp;two&nbsp;methods.</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSString&nbsp;*product&nbsp;=&nbsp;transaction.payment.productIdentifier;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;([product&nbsp;length]&nbsp;&gt;&nbsp;0)&nbsp;{</li>
+<li></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NSArray&nbsp;*tt&nbsp;=&nbsp;[product&nbsp;componentsSeparatedByString:@”.”];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NSString&nbsp;*bookid&nbsp;=&nbsp;[tt&nbsp;lastObject];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;([bookid&nbsp;length]&nbsp;&gt;&nbsp;0)&nbsp;{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[self&nbsp;recordTransaction:bookid];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[self&nbsp;provideContent:bookid];</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Remove&nbsp;the&nbsp;transaction&nbsp;from&nbsp;the&nbsp;payment&nbsp;queue.</li>
+<li></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[[SKPaymentQueue&nbsp;defaultQueue]&nbsp;finishTransaction:&nbsp;transaction];</li>
+<li></li>
+<li>}</li>
+<li></li>
+<li>//记录交易</li>
+<li>-(void)recordTransaction:(NSString&nbsp;*)product{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”—–记录交易——–“);</li>
+<li>}</li>
+<li></li>
+<li>//处理下载内容</li>
+<li>-(void)provideContent:(NSString&nbsp;*)product{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”—–下载——–“);</li>
+<li>}</li>
+<li></li>
+<li>-&nbsp;(void)&nbsp;failedTransaction:&nbsp;(SKPaymentTransaction&nbsp;*)transaction{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”失败”);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(transaction.error.code&nbsp;!=&nbsp;SKErrorPaymentCancelled)</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[[SKPaymentQueue&nbsp;defaultQueue]&nbsp;finishTransaction:&nbsp;transaction];</li>
+<li></li>
+<li></li>
+<li>}</li>
+<li>-(void)&nbsp;paymentQueueRestoreCompletedTransactionsFinished:&nbsp;(SKPaymentTransaction&nbsp;*)transaction{</li>
+<li></li>
+<li>}</li>
+<li></li>
+<li>-&nbsp;(void)&nbsp;restoreTransaction:&nbsp;(SKPaymentTransaction&nbsp;*)transaction</li>
+<li></li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”&nbsp;交易恢复处理”);</li>
+<li></li>
+<li>}</li>
+<li></li>
+<li>-(void)&nbsp;paymentQueue:(SKPaymentQueue&nbsp;*)&nbsp;paymentQueue&nbsp;restoreCompletedTransactionsFailedWithError:(NSError&nbsp;*)error{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;CCLOG(@”——-paymentQueue—-“);</li>
+<li>}</li>
+<li></li>
+<li></li>
+<li>#pragma&nbsp;mark&nbsp;connection&nbsp;delegate</li>
+<li>-&nbsp;(void)connection:(NSURLConnection&nbsp;*)connection&nbsp;didReceiveData:(NSData&nbsp;*)data</li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”%@”,&nbsp;&nbsp;[[[NSString&nbsp;alloc]&nbsp;initWithData:data&nbsp;encoding:NSUTF8StringEncoding]&nbsp;autorelease]);</li>
+<li>}</li>
+<li>-&nbsp;(void)connectionDidFinishLoading:(NSURLConnection&nbsp;*)connection{</li>
+<li></li>
+<li>}</li>
+<li></li>
+<li>-&nbsp;(void)connection:(NSURLConnection&nbsp;*)connection&nbsp;didReceiveResponse:(NSURLResponse&nbsp;*)response{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;switch([(NSHTTPURLResponse&nbsp;*)response&nbsp;statusCode])&nbsp;{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;200:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;206:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;304:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;400:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;404:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;416:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;403:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;401:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;500:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>}</li>
+<li></li>
+<li>-&nbsp;(void)connection:(NSURLConnection&nbsp;*)connection&nbsp;didFailWithError:(NSError&nbsp;*)error&nbsp;{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@”test”);</li>
+<li>}</li>
+<li></li>
+<li>-(void)dealloc</li>
+<li>{</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[[SKPaymentQueue&nbsp;defaultQueue]&nbsp;removeTransactionObserver:self];//解除监听</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;[super&nbsp;dealloc];</li>
+<li>}</li>
+<li>@end</li>
+</ol>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>代码注释的相当清楚了，没有什么可解释的，这里说几点值得注意的地方：</strong></p>
+<p>1.添加对应对应代码时不要忘记，添加框架 StoreKit.framework,如何添加框架请看我的博文<a title="【iOS-Cocos2d游戏开发之十四】音频/音效/视频播放（利用Cocos2D-iPhone-Extensions嵌入Cocos2d进行视频播放！）" href="http://blog.csdn.net/xiaominghimi/article/details/6870259">【iOS-Cocos2d游戏开发之十四】音频/音效/视频播放（利用Cocos2D-iPhone-Extensions嵌入Cocos2d进行视频播放！）</a>！</p>
+<p>2.&nbsp;越狱机器无法沙盒测试！模拟器的话，Himi用4.3模拟器不可以，因为提示没有开启程序内付费- -（我都没看到模拟器有store的选项，so～）；但是使用iOS5的模拟器可以测试沙盒，但是执行的顺序会有些问题，但是还没真机的童鞋可以使用，建议一切以真机实测为准</p>
+<p>3. 千万不要忘记在iTunesConnect中创建App&nbsp;Bundle ID一定要跟你的项目中的info.plist中的Bundle ID保证一致！！！！</p>
+<p><strong>4. 以上代码中你需要修改的就是我在HelloWorldLayer.m类中的宏定义的Product ID(产品ID)，例如Himi刚才新建了一个产品ID是“com.himi.wahaha”</strong></p>
+<p>&nbsp;</p>
+<p>然后我运行项目截图如下以及运行控制台打印的信息如下：</p>
+<p><img src="./ios源码   随心所欲   Page 2_files/7211253_1320416730rXr9.png" alt=""></p>
+<p>点击Buy之后运行截图以及打印信息：</p>
+<p><img src="./ios源码   随心所欲   Page 2_files/7211253_1320416734QZvX.png" alt=""></p>
+<p>输入测试账号密码后以及打印信息：</p>
+<p><img src="./ios源码   随心所欲   Page 2_files/7211253_13204167377Wc8.png" alt=""></p>
+<p>&nbsp;</p>
+<p><strong>这里Himi最后一张截图是没有购买成功，这里Himi是故意截图出来的，原因就是想告诉童鞋们：</strong></p>
+<p><strong>&nbsp;如果你的产品信息能够正常得到，但是始终无法成功的话，不要着急，因为你的产品要进入iTunes Connect，并且Apple准备好沙箱环境需要一些时间。Himi之前遇到过，然后在过了段时间后我没有修改任何一行代码，但产品ID变为有效并能成功购买。=。 =郁闷ing~~ 其实要使产品发布到Apple的网络系统是需要一段时间的，so～这里别太着急！</strong></p>
+<p><strong>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;越狱机器无法正常测试沙盒的喔～</strong></p>
+<p><strong>顺便提示一下：Bundle ID 尽可能与开发者证书的app ID 一致。</strong></p>
+			<div class="page-links"></div>
+		</div>
+		
+		<div class="postinfo clearfix">
+		<span class="meta-category">
+			<ul class="post-categories">
+	<li><a href="http://www.sunyuping.cn/category/%e6%ba%90%e7%a0%81%e5%88%86%e4%ba%ab/" rel="category tag">ios源码</a></li></ul>		</span>
+
+	</div>
+
+	</article>		
+	<article id="post-47" class="post-47 post type-post status-publish format-standard hentry category-2">
+		
+		<h2 class="post-title"><a href="http://www.sunyuping.cn/2012/11/%e5%a4%9a%e7%ba%bf%e7%a8%8b%e7%bc%96%e7%a8%8b%e6%8c%87%e5%8d%97/" rel="bookmark">多线程编程指南</a></h2>
+		
+		<div class="postmeta">		
+		<span class="meta-date">
+		<a href="http://www.sunyuping.cn/2012/11/%e5%a4%9a%e7%ba%bf%e7%a8%8b%e7%bc%96%e7%a8%8b%e6%8c%87%e5%8d%97/" title="6:03 下午" rel="bookmark"><time datetime="2012-11-20T18:03:56+00:00">十一月 20, 2012</time></a>		</span>
+		
+		<span class="meta-author sep">
+		<a href="http://www.sunyuping.cn/author/sunyuping/" title="View all posts by sunyuping" rel="author">sunyuping</a>		</span>
+		
+			
+		<span class="meta-comments sep">
+			<a href="http://www.sunyuping.cn/2012/11/%e5%a4%9a%e7%ba%bf%e7%a8%8b%e7%bc%96%e7%a8%8b%e6%8c%87%e5%8d%97/#respond" title="《多线程编程指南》上的评论">Leave a comment</a>		</span>
+		
+		
+	</div>
+	
+		
+		<a href="http://www.sunyuping.cn/2012/11/%e5%a4%9a%e7%ba%bf%e7%a8%8b%e7%bc%96%e7%a8%8b%e6%8c%87%e5%8d%97/" rel="bookmark">
+					</a>
+
+		
+		<div class="entry clearfix">
+						<p>1. 关于多线程编程<br>
+多年以来，计算机的性能在很大程度上被单核处理器的速度所限制。在当前技术下，单核处理器的速度已经到达某种极限，因此，芯片制造商们转而专注于多核设计，以使计算机可以同时执行多个任务。Mac OS X 可以利用多核计算，更好的执行系统相关的任务。而开发人员也可以通过线程提高自己程序的性能。<br>
+1) 什么是线程？<br>
+线程是在程序内部运行多个流程的轻量单位。在系统级别上，程序使用系统提供的执行时间，各自运行。然而，在每个程序内部，存在着一个或多个被执行的线程，这些线程可以在同一时刻（或将近同时）完成不同的任务。由操作系统本身管理这些线程的执行，例如为线程分配执行时间和执行的内核，或是中断线程来使其他线程有机会执行。<br>
+从技术角度来看，线程是“内核级”和“程序级”数据结构的集合，用来管理代码的执行。内核级的数据结构主要处理针对线程的事件，安排线程在可用的内核上执行。而程序级的结构包括调用栈（可以保存函数调用），还有用来管理和计算线程属性和状态的数据。<br>
+在非并行程序中，只有一个线程的执行。线程起始于main函数，结束于main函数。在main函数内部，程序一句一句的执行。相比较而言，支持并行的程序起始于一个线程，然后在添加其他线程，从而创建了额外的执行路径。每个这样的路径都拥有自己的执行过程，而和程序中的主线程并行不悖。在程序中加入多线程，会为你带来以下两个非常重要的好处：<br>
+1. 多线程可以提高程序的反应速度。<br>
+2. 在多核系统上，多线程可以增强程序的实时处理能力。<br>
+如果你的程序只有一个线程，这一个线程就得做所有事情。它必须响应事件、更新程序窗口、执行所有的运算工作。单线程的问题是在特定时刻内，它只能处理一件事。那么如果我们的某些计算工作需要耗费很长时间，会发生什么？当代码忙于计算需要的值时，程序就停止对用户事件的响应，也不会再对窗口进行更新。如果时间很长的话，用户可能以为程序卡住了，强行关闭程序。但是，如果你将需要的计算工作放到一个独立的线程中去，你的主线程就有足够的时间去响应用户事件。<br>
+在多核电脑日益普及的今天，线程提高了某些程序的性能。执行多个任务的线程可以使用不同的处理器内核，从而使增加给定时间内完成的工作量成为可能。<br>
+但是，线程并不是改善程序性能问题的万金油。伴随着线程提供的好处，更多的潜在问题也随之产生。在程序中加入多个执行路径会大大增加代码的复杂度。每个线程都需要协调各自的行为，来防止弄乱程序的状态。这是因为位于同一程序的所有线程共享同一个内存空间，它们对所有的这些数据结构都有访问权限。如果两个线程同时计算一份数据，其中一个线程可能将另外线程修改的内容覆盖，那么计算结果就乱套了。即使是使用了恰当的保护方式，我们还是必须注意编译器优化选项（它可能导致代码出现很微妙的错误）。<br>
+2）线程相关术语<br>
+在深入研究线程和相关技术之前，必须先了解一些基本术语的定义。<br>
+如果你熟悉Carbon框架中的多核处理服务接口（Multiprocessor Services API），或是熟悉Unix系统，你将会发现术语“任务”(task)在本文档中的含义略有不同。在Mac OS的早期版本中，术语“任务”被用来区别使用Multiprocessor Services创建的和使用Carbon Thread Manager创建的线程。而在Unix系统之上，术语“任务”有时指的是运行中的进程（process）。实际情况中，一个Multiprocessor Services的任务和一个抢占式线程是一样的（注：没有深入的用过Carbon，有不妥之处还望指正）。<br>
+考虑到Carbon Thread Manager和Multiprocessor Services的API都是在Mac OS系统上的遗留技术，本文档遵循以下的术语规范：<br>
+1. 术语线程（thread）指独立的代码执行路径。<br>
+2. 术语进程（process）指程序的运行，进程可以包括多个线程。<br>
+3. 术语任务（task）指的是一份可以被执行的工作，是个抽象概念。<br>
+3）线程备选方案<br>
+自己创建线程时的一个问题是：它们为你的代码增加了不确定因素。线程是让程序支持并行操作的一种相对低层次的方式，而且比较复杂。如果你没有完全理解自己针对多线成设计的初衷，就很容易遇到同步或时间控制的问题。轻者改变程序的行为，严重的会造成程序崩溃或是弄乱用户的数据。<br>
+另一个需要考虑的因素是：你是否真的需要并行操作？线程可以解决在同一进程中同时执行多段代码的问题。在某些情况下，一些工作并不能保证被同时执行。线程可能带来更多的负荷，有内存消耗方面的，抑或是占用CPU时间。你需要研究是否值得为某个任务承担这样的负荷，或者使用其他简单的执行方式。<br>
+Table 1-1 列出了可供选择的线程实现方式。表中包含了线程的替代技术（操作对象– operation object 和Grand central Dispatch），还包含了旨在提高效率的单线程技术。<br>
+Table 1-1 Alternative technologies to threads<br>
+Technology Description<br>
+Operation objects｜ Mac OS X v10.5后被引入，一个操作对象是一项任务的封装，可以被子线程们来执行。使用这样的封装技术，可以忽略线程管理方面的麻烦，使程序员专注于任务本身。通常情况下，我们搭配使用操作队列对象（operation queue object）来使用操作对象。操作队列对象会管理操作对象在多线程中的执行。具体内容参考Concurrency Programming Guide.<br>
+Grand Central Dispatch ｜Mac OS X v10.6后被引入，Grand Central Dispatch是让我们专注于任务本身而非线程管理的另外的选择。使用Grand Central Dispatch，我们定义一项任务，并将其加入到一个工作队列中，队列会负责在合适的线程中执行任务。队列还会查看可用内核的数量和当前任务负载，从而比自己使用线程更高效的执行任务。<br>
+Idle-time notifications ｜对于那些相对来说较小的、优先级低的任务，“空闲时间通知”的方式可以让你在程序空闲的时候执行它们。Cocoa用NSNotificationQueue对象提供空闲时通知功能。要请求空闲时通知，就提交通知对象到默认的NSNotificationQueue（通知队列）。队列会延迟提交通知对象，直到run loop空闲。更多信息请查看Notification Programming Topics.<br>
+待续。。。每天会持续更新。<br>
+Asynchronous functions ｜系统接口包括了很多异步函数，这些函数本身就自动支持并行操作。它们可能使用系统守护进程来创建自己的线程、执行任务并返回结果（具体的实现方式并不重要，因为它和你的代码是分开的）。在设计程序的时候，先查查这一类支持异步操作的函数，而尽量少在自己定义的线程中用等效的同步函数。<br>
+Timers ｜当遇到某些需要定时执行的小任务，而且这些任务并没有动用线程的必要时，可以考虑在主线程中使用定时器。详细信息请查看“Timer Sources.”<br>
+Separate processes ｜尽管进程相对于线程来说有些“重量级”，如果某项任务和程序无直接关系，创建独立的进程还是有必要的。例如：任务需要申请大量的内存空间或者必须使用root权限执行。我们还可能需要使用64位的服务器进程来计算大数据，而用32位的程序显示运行结果。<br>
+4）线程的系统支持<br>
+如果你要将线程加入到现有的代码中去，Mac OS和iOS提供了几种创建线程的技术。另外，这两个系统还为管理和同步线程内的工作提供了支持。接下来的内容描述了几种在Mac OS和iOS上使用线程的关键技术。<br>
+Listing 2-2列出了在程序中可能用到的线程技术<br>
+Table 1-2 Thread technologies<br>
+Technology<br>
+Description<br>
+Cocoa threads ｜Cocoa使用NSThread类来实现线程。Cocoa还为NSObject类提供了一些方法来在已有线程中生成新的线程并执行代码。更多信息，请参考“Using NSThread” and “Using NSObject to Spawn a Thread.”<br>
+POSIX threads ｜POSIX线程技术提供了一系列基于C的接口来创建线程。如果你不打算编写Cocoa的程序，那么它是最好的选择。POSIX的接口相对简单易用且扩展性良好，便于自定义线程。更多信息，请参考“Using POSIX Threads”<br>
+Multiprocessing Services ｜Multiprocessing Services是老式的C接口。被用于支持Mac OS较早的版本。这项技术在Mac OS X上可用，但在新的开发项目中应该避免使用，而应使用NSThread和POSIX的线程技术。更多信息，请参考Multiprocessing Services Programming Guide。<br>
+从程序的层面上来看，所有线程的行为在本质上应该是一样的——无论是任何的平台。启动线程后，线程会有这几种运行状态：正在运行（running），准备就绪（ready）和被阻塞（blocked）。如果一个线程当前未运行，那么它可能是被阻塞，或者是在等待输入，也有可能已经就绪，但未被安排执行（scheduled）。线程会在这几个状态之间来来回回。直到真正执行完毕退出，进入终结（terminated）状态。<br>
+当你创建一个新的线程时，你必须为其指定入口函数（在Cocoa中，叫入口方法（method））。入口函数包括你想要在线程中执行的代码。当函数返回，或当你显式的终结线程时，线程就永远结束了，然后会被系统回收。线程在内存和时间片占用方面代价昂贵，正因为如此，建议你在入口函数中完成大量的工作，或者自己设置一个运行回路（run loop）来循环执行工作。<br>
+更多线程可用技术的信息，请参考“Thread Management.”<br>
+运行回路（Run Loops）<br>
+运行回路是线程中管理异步事件获取的基础。它的工作是为线程监视事件源（event sources）。当事件到来之时，系统唤醒线程并将事件发送给运行回路，然后在传递给你指定的处理者。如果没有需要处理的事件到来，运行回路将线程置于休眠状态。<br>
+在线程中使用运行回路不是必须的。但是如果这样做的话，会有更好的用户体验。使用运行回路可以创建长期存在的线程，并尽可能少的占用资源。因为运行回路在无事可做的时候让线程休眠。它减少了轮询（polling）的需要，而轮询会浪费CPU循环数，阻止CPU休眠，从而比较耗电。<br>
+要设置一个运行回路，你所要做的只是运行你的线程，获得一个运行回路的对象，“安装”你的事件处理者，并且告诉运行回路去运行。不管是Cocoa还是Carbon都在主线程中自动为你提供了默认运行回路的设置。如果你需要创建一个长期存在的子线程，就需要自己来在线程里定义运行回路了。<br>
+关于运行回路的详细信息和例子，请参考“Run Loops.”。<br>
+同步工具<br>
+多线程编程中的一个大麻烦是线程间的资源争夺。如果多个线程同时修改一份资源，问题就来了。减少问题的方法之一就是减少共享资源，保证每个线程都有自己的一份资源可以使用。当然，管理完全独立的资源是不可能的，因此，我们要用到锁（locks）,条件控制（conditions），原子操作（atomic operations）等技术自己控制线程对资源同步的访问。<br>
+“锁”为代码提供了“暴力”的保护方式，在同一时刻，代码只能被一个线程执行。其中，“互斥锁”是最常用的一种形式，也被叫做互斥体（mutex）。当一个线程试图获取被其他线程占用的互斥体时，该线程会被阻塞，直到互斥体被释放。几个系统框架提供对互斥体的支持，而它们都基于同样的底层技术。Cocoa提供额外的几种互斥体来支持不同的操作，比如递归操作。更多信息，请参考“Locks.”<br>
+除了锁以外，系统支持条件控制。它可以保证程序中任务按照正确的顺序执行。条件控制就像一个“门卫”，它会一直阻塞某个线程。直到特定的条件为真，才允许线程继续执行。POSIX层和Foundatoin框架都直接支持条件控制。（如果你使用操作对象（operation object），你可以设置它们之间的依赖关系，从而起到设置任务操作顺序的目的，这和条件控制很类似）。<br>
+并行程序设计中，还可以使用“原子操作”（atomic operation）来保护、同步对数据的访问。原子操作提供了一种轻量级的锁定方案，在对某些标量数据进行数学运算或逻辑运算的时候，就可以使用原子操作。原子操作会使用特定的硬件指令来保证对于某个变量的修改完成后其他的线程才能继续访问。<br>
+关于同步工具的详细信息，请查看“Synchronization Tools.”<br>
+线程间通信<br>
+虽然好的设计会尽可能减少线程间的通信，但是在某些情况下，线程间的通信是必要的（线程的任务就是为程序工作，但是如果线程的运行结果无法被使用，会有什么影响？）线程可能需要执行新的工作请求或是向程序主线程回报工作进度。在这些情况下，你就需要把一个线程的信息传递给另外一个线程。幸运的是，程序中的线程共享同一个进程空间，这意味着你有很多种通信方案。<br>
+线程间通信有很多方式，各有优劣，“Configuring Thread-Local Storage” 表中罗列了在Mac OS X上常用到的通信机制（除了消息队列（message queue）和Cocoa分布式对象（Cocoa distributed object）外，其他也可以在iOS上通用）。详细列表如下：<br>
+Table 1-3 Communication mechanisms<br>
+Direct messaging｜Cocoa程序支持直接在其他线程中执行方法（perform selector）。这个功能意味着一个线程可以直接在另外一个线程中执行方法。因为要在目标线程中执行，通过这种方法发送的消息会在线程中被自动序列化。关于input sources的详细信息，请查看“Cocoa Perform Selector Sources.”（后章会有详细说明）。<br>
+Global variables, shared memory, and objects ｜另外一种通信的方式就是使用全局变量、共享对象，或是共享内存块。虽然共享变量既快又简单，这种方式相比较直接消息方式更加脆弱。必须使用锁或者其他同步机制来“保护”共享变量。否则，可能导致线程间的竞争状态、数据被损坏，或程序崩溃。<br>
+Conditions｜条件空之是控制线程同步的另一个工具。可以把条件控制看做是一个“门卫”，它只会在特定条件符合的时候才允许线程执行。更多信息，请查看“Using Conditions.”<br>
+Run loop sources ｜在线程中加入运行回路源可以让你接收到程序的特定消息。由于运行回路是“事件驱动”的，它会在无事可做的时候会自动让线程休眠，从而提高线程运行的效率。更多关于运行回路和运行回路源的信息，请查看“Run Loops.”<br>
+Ports and sockets ｜基于端口的通信是一种更加复杂的方式，但是它非常稳定。更重要的是，端口和套接字可以被在外部实体的访问，比如说其他的进程（process）和服务（service）。为了提高效率，端口使用运行回路源协助执行，因此线程在端口上无等待数据的时候会自动休眠。更多关于运行回路和基于端口的输入源（input source）方面的信息，请查看“Run Loops.”<br>
+Message queues｜ 多进程的服务中定义了一中先进先出（FIFO）队列的抽象模型来管理接收和传出的数据。虽然消息队列简单且方便，但它不像其他通信技术那样高效。关于如何使用消息队列，请查看Multiprocessing Services Programming Guide.<br>
+Cocoa distributed objects｜分布式对象是Cocoa技术中的一项，它为基于端口通信的实现提供了一种高级的方式。虽然也可以把分布式对象用在线程间通信中，但是不建议这样做，因为会导致很高的系统开销。分布式对象在进程间通信中可以很好的排上用场，因为进程间通信本身就已经有较高的开销了。更多信息，请查看Distributed Objects Programming Topics.</p>
+			<div class="page-links"></div>
+		</div>
+		
+		<div class="postinfo clearfix">
+		<span class="meta-category">
+			<ul class="post-categories">
+	<li><a href="http://www.sunyuping.cn/category/%e6%ba%90%e7%a0%81%e5%88%86%e4%ba%ab/" rel="category tag">ios源码</a></li></ul>		</span>
+
+	</div>
+
+	</article>				
+			<div class="post-pagination clearfix">
+				<a class="prev page-numbers" href="http://www.sunyuping.cn/category/%E6%BA%90%E7%A0%81%E5%88%86%E4%BA%AB/page/1/">«</a>
+<a class="page-numbers" href="http://www.sunyuping.cn/category/%E6%BA%90%E7%A0%81%E5%88%86%E4%BA%AB/page/1/">1</a>
+<span class="page-numbers current">2</span>
+<a class="page-numbers" href="http://www.sunyuping.cn/category/%E6%BA%90%E7%A0%81%E5%88%86%E4%BA%AB/page/3/">3</a>
+<a class="next page-numbers" href="http://www.sunyuping.cn/category/%E6%BA%90%E7%A0%81%E5%88%86%E4%BA%AB/page/3/">»</a>			</div>
+		
+					
+		</section>
+		
+		
+	<section id="sidebar" class="secondary clearfix" role="complementary">
+
+		<aside id="search-2" class="widget widget_search clearfix">
+	<form role="search" method="get" class="search-form" action="http://www.sunyuping.cn/">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input type="search" class="search-field" placeholder="Search …" value="" name="s">
+		</label>
+		<button type="submit" class="search-submit">
+			<span class="genericon-search"></span>
+		</button>
+	</form>
+
+</aside>		<aside id="recent-posts-2" class="widget widget_recent_entries clearfix">		<h3 class="widgettitle"><span>近期文章</span></h3>		<ul>
+					<li>
+				<a href="http://www.sunyuping.cn/2014/11/nginx%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6nginx-conf%e4%b8%ad%e6%96%87%e8%af%a6%e8%a7%a3/">Nginx配置文件nginx.conf中文详解</a>
+						</li>
+					<li>
+				<a href="http://www.sunyuping.cn/2014/10/mac%e4%b8%8b%e9%85%8d%e7%bd%ae%e7%a5%9e%e5%99%a8phpstrom%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83/">Mac下配置神器PhpStrom开发环境</a>
+						</li>
+					<li>
+				<a href="http://www.sunyuping.cn/2014/09/app-store%e5%ae%a1%e6%a0%b8%e6%8c%87%e5%8d%97%e4%b8%ad%e6%96%87%e7%89%88%ef%bc%882014-9-3%e6%9b%b4%e6%96%b0%ef%bc%89%ef%bc%9a%e6%96%b0%e5%a2%9e%e6%89%a9%e5%b1%95%e3%80%81healthkit%e3%80%81homekit/">App Store审核指南中文版（2014.9.3更新）：新增扩展、HealthKit、HomeKit以及TestFli</a>
+						</li>
+					<li>
+				<a href="http://www.sunyuping.cn/2014/08/ios%e5%ae%89%e5%85%a8%e5%85%a5%e9%97%a8/">iOS安全入门</a>
+						</li>
+					<li>
+				<a href="http://www.sunyuping.cn/2014/06/ios5-arc-unsafe_unretained%e7%ad%89%e8%af%b4%e6%98%8e/">IOS5 ARC unsafe_unretained等说明</a>
+						</li>
+				</ul>
+		</aside><aside id="recent-comments-2" class="widget widget_recent_comments clearfix"><h3 class="widgettitle"><span>近期评论</span></h3><ul id="recentcomments"></ul></aside><aside id="archives-2" class="widget widget_archive clearfix"><h3 class="widgettitle"><span>文章归档</span></h3>		<ul>
+	<li><a href="http://www.sunyuping.cn/2014/11/">2014年十一月</a></li>
+	<li><a href="http://www.sunyuping.cn/2014/10/">2014年十月</a></li>
+	<li><a href="http://www.sunyuping.cn/2014/09/">2014年九月</a></li>
+	<li><a href="http://www.sunyuping.cn/2014/08/">2014年八月</a></li>
+	<li><a href="http://www.sunyuping.cn/2014/06/">2014年六月</a></li>
+	<li><a href="http://www.sunyuping.cn/2014/02/">2014年二月</a></li>
+	<li><a href="http://www.sunyuping.cn/2013/05/">2013年五月</a></li>
+	<li><a href="http://www.sunyuping.cn/2013/04/">2013年四月</a></li>
+	<li><a href="http://www.sunyuping.cn/2013/03/">2013年三月</a></li>
+	<li><a href="http://www.sunyuping.cn/2013/02/">2013年二月</a></li>
+	<li><a href="http://www.sunyuping.cn/2013/01/">2013年一月</a></li>
+	<li><a href="http://www.sunyuping.cn/2012/12/">2012年十二月</a></li>
+	<li><a href="http://www.sunyuping.cn/2012/11/">2012年十一月</a></li>
+	<li><a href="http://www.sunyuping.cn/2012/10/">2012年十月</a></li>
+	<li><a href="http://www.sunyuping.cn/2012/08/">2012年八月</a></li>
+	<li><a href="http://www.sunyuping.cn/2012/07/">2012年七月</a></li>
+	<li><a href="http://www.sunyuping.cn/2012/06/">2012年六月</a></li>
+		</ul>
+</aside><aside id="categories-2" class="widget widget_categories clearfix"><h3 class="widgettitle"><span>分类目录</span></h3>		<ul>
+	<li class="cat-item cat-item-2 current-cat"><a href="http://www.sunyuping.cn/category/%e6%ba%90%e7%a0%81%e5%88%86%e4%ba%ab/" title="快来分享你的源码吧，或者想要什么源码都留言吧。">ios源码</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.sunyuping.cn/category/uncategorized/">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://www.sunyuping.cn/category/%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae%e7%9b%b8%e5%85%b3/">服务器配置相关</a>
+</li>
+		</ul>
+</aside><aside id="meta-2" class="widget widget_meta clearfix"><h3 class="widgettitle"><span>功能</span></h3>			<ul>
+						<li><a href="http://www.sunyuping.cn/wp-login.php">登录</a></li>
+			<li><a href="http://www.sunyuping.cn/feed/">文章<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.sunyuping.cn/comments/feed/">评论<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+<li><a href="https://cn.wordpress.org/" title="基于WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>			</ul>
+</aside>
+	</section>
+	</div>
+	
+
+	<div id="footer-wrap">
+	
+		<footer id="footer" class="container clearfix" role="contentinfo">
+			<nav id="footernav" class="clearfix" role="navigation">
+								<h4 id="footernav-icon"></h4>
+			</nav>
+			<div id="credit-link">Powered by <a href="http://wordpress.org/" title="WordPress">WordPress</a> and <a href="http://themezee.com/themes/dynamicnews/" title="Dynamic News WordPress Theme">Dynamic News</a>.</div>
+		</footer>
+		
+	</div>
+
+</div><!-- end #wrapper -->
+
+
+	
+<!-- Dynamic page generated in 0.617 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2015-04-07 01:31:44 -->
+
+<!-- super cache --></body></html>

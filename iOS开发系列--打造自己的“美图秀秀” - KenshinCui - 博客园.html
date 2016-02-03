@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://www.cnblogs.com/kenshincui/p/3959951.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/analytics.js"></script>
+<meta charset="utf-8">
+<title>iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/bundle-Minyx2_Lite.css">
+<link type="text/css" rel="stylesheet" href="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/79371.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/kenshincui/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/kenshincui/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/kenshincui/wlwmanifest.xml">
+<script async="" type="text/javascript" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/gpt.js"></script><script src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'kenshincui', cb_enable_mathjax=false;</script>
+<script src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/blog-common.js" type="text/javascript"></script>
+<script src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/bundle-Minyx2_Lite.js" language="javascript" type="text/javascript"></script>
+<script async="" type="text/javascript" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/pubads_impl_54.js"></script><script type="text/javascript" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/osd.js"></script></head>
+<body>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+<link href="http://files.cnblogs.com/kenshincui/CNBlogsNavigation-0.5.2.min.css" rel="stylesheet">
+<!--PageBeginHtml Block End-->
+
+
+<div id="container">
+    <a class="minyx" href="http://www.cnblogs.com/">代码改变世界</a>
+    <ul id="topMnu">
+        <!-- 统计数据 -->
+        <li>
+            
+                
+Posts - 66, 
+Articles - 0, 
+Comments - 591
+<!---->
+            
+        </li>
+        <!-- 这边可以增加一些链接 -->
+        <!-- 博客园 -->
+        <li><a href="http://www.cnblogs.com/">Cnblogs</a></li>
+        <!-- 管理 -->
+        <li id="topMnu-dashboard">
+            <a id="lnkDashboard" href="http://www.cnblogs.com/kenshincui/admin/EditPosts.aspx">Dashboard</a></li>
+        <li>
+            <a id="lnkLogin" href="http://passport.cnblogs.com/login.aspx?ReturnUrl=http://www.cnblogs.com/kenshincui/p/3959951.html">Login</a></li>
+    </ul>
+
+    <script type="text/javascript">
+        var m = window.__blog.topMenuRendered;
+        if (m) { m(__$("topMnu")); }
+    </script>
+
+    <div id="header">
+        <ul id="menu">
+            <!-- 首页，当前section加上current类 -->
+            <li id="menu-home" class="current">
+                <a id="lnkHome" href="http://www.cnblogs.com/kenshincui/">Home</a></li>
+            <!-- 联系 -->
+            <li id="menu-contact">
+                <a id="lnkContact" href="http://space.cnblogs.com/msg/send/KenshinCui">Contact</a></li>
+            <!-- 相册 -->
+            <li id="menu-gallary">
+                <a id="lnkGallery" href="http://www.cnblogs.com/kenshincui/gallery.html">Gallery</a></li>
+            <!-- Rss订阅 -->
+            <li id="rss">
+                <a id="lnkRss" href="http://www.cnblogs.com/kenshincui/rss">RSS</a></li>
+        </ul>
+        <div id="newmsg"></div>
+        <h1>
+            <!-- 主标题 -->
+            <a id="lnkBlogTitle" href="http://www.cnblogs.com/kenshincui/">Kenshin Cui's Blog</a>
+            <!-- 子标题 -->
+            <small>
+                CODING 完美世界...</small>
+        </h1>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.headerRendered;
+        if (m) { m(__$("header")); }
+    </script>
+
+    <div id="wrapper">
+        <div id="content">
+            <script type="text/javascript">
+                var m = window.__blog.preRenderPosts;
+                if (m) { m(); }
+            </script>
+            
+
+<div class="post" id="post">
+    <a name="top"></a>
+    <h2><a id="cb_post_title_url" href="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园.html">iOS开发系列--打造自己的“美图秀秀”</a></h2>
+    <small>2014-09-06 23:33 by KenshinCui, <span id="post_view_count">4715</span> 阅读, <span id="post_comment_count">26</span> 评论, <a href="http://www.cnblogs.com/kenshincui/p/3959951.html#" onclick="AddToWz({0});return false;">收藏</a>,  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=3959951" rel="nofollow">编辑</a></small>
+    <div class="entry">
+        <div id="cnblogs_post_body"><p align="right"><strong>--绘图与滤镜全面解析</strong></p> <h1 id="overview">概述</h1> <p>在iOS中可以很容易的开发出绚丽的界面效果，一方面得益于成功系统的设计，另一方面得益于它强大的开发框架。今天我们将围绕iOS中两大图形、图像绘图框架进行介绍：Quartz 2D绘制2D图形和Core Image中强大的滤镜功能。</p> <ol> <li><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#quartz2d">Quartz 2D</a>  </li><li><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#basicDraw">基本图形绘制</a>  </li><li><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#refreshView">视图刷新</a>  </li><li><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#otherCGContext">其他图形上下文</a>  </li><li><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#coreImage">Core Image</a></li></ol> <h1 id="quartz2d">Quartz 2D</h1> <p>在iOS中常用的绘图框架就是Quartz 2D，Quartz 2D是Core Graphics框架的一部分，是一个强大的二维图像绘制引擎。Quartz 2D在UIKit中也有很好的封装和集成，我们日常开发时所用到的UIKit中的组件都是由Core Graphics进行绘制的。不仅如此，当我们引入UIKit框架时系统会自动引入Core Graphics框架，并且为了方便开发者使用在UIKit内部还对一些常用的绘图API进行了封装。</p> <p>在iOS中绘图一般分为以下几个步骤：</p> <p>1.获取绘图上下文</p> <p>2.创建并设置路径</p> <p>3.将路径添加到上下文</p> <p>4.设置上下文状态</p> <p>5.绘制路径</p> <p>6.释放路径</p> <p>图形上下文CGContextRef代表图形输出设备（也就是绘制的位置），包含了绘制图形的一些设备信息，Quartz 2D中的所有对象最终都必须绘制到图形上下文。这样一来，我们在绘制图形时就不必关心具体的设备信息，统一了代码编写方式（在Quartz 2D中的绘图上下文可以是位图Bitmap、PDF、窗口Window、层Layer、打印对象Printer）。</p> <h1 id="basicDraw">基本图形绘制</h1> <p>在UIKit中默认已经为我们准备好了一个图形上下文对象，在UI控件的<strong>drawRect:</strong>方法（这个方法在loadView、viewDidLoad方法后执行）中我们可以通过UIKit封装函数UIGraphicsGetCurrentContext()方法获得这个图形上下文(注意在其他UI控件方法中无法取得这个对象)，然后我们只要按照绘图步骤一步步执行即可。下面自定义一个KCView继承自UIView，重写drawRect:方法绘制两条直线说明上面绘图的步骤：</p> <p>KCView.m</p><pre class="code"><span style="background: white; color: green">//
+//  KCView.m
+//  Quartz2D
+//
+//  Created by Kenshin Cui on 14-3-17.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+/**
+ 基本绘图
+ */
+
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCView.h"
+
+</span><span style="background: white; color: black">@implementation KCView
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 绘图
+</span><span style="background: white; color: green">//绘图只能在此方法中调用，否则无法得到当前图形上下文
+</span><span style="background: white; color: black">-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawRect:(CGRect)rect{
+    </span><span style="background: white; color: green">//1.取得图形上下文对象
+    </span><span style="background: white; color: black">CGContextRef context = UIGraphicsGetCurrentContext();
+
+    </span><span style="background: white; color: green">//2.创建路径对象
+    </span><span style="background: white; color: black">CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, nil, 20, 50);</span><span style="background: white; color: green">//移动到指定位置（设置路径起点）
+    </span><span style="background: white; color: black">CGPathAddLineToPoint(path, nil, 20, 100);</span><span style="background: white; color: green">//绘制直线（从起始位置开始）
+    </span><span style="background: white; color: black">CGPathAddLineToPoint(path, nil, 300, 100);</span><span style="background: white; color: green">//绘制另外一条直线（从上一直线终点开始绘制）
+
+
+    //3.添加路径到图形上下文
+    </span><span style="background: white; color: black">CGContextAddPath(context, path);
+
+    </span><span style="background: white; color: green">//4.设置图形上下文状态属性
+    </span><span style="background: white; color: black">CGContextSetRGBStrokeColor(context, 1.0, 0, 0, 1);</span><span style="background: white; color: green">//设置笔触颜色
+    </span><span style="background: white; color: black">CGContextSetRGBFillColor(context, 0, 1.0, 0, 1);</span><span style="background: white; color: green">//设置填充色
+    </span><span style="background: white; color: black">CGContextSetLineWidth(context, 2.0);</span><span style="background: white; color: green">//设置线条宽度
+    </span><span style="background: white; color: black">CGContextSetLineCap(context, kCGLineCapRound);</span><span style="background: white; color: green">//设置顶点样式,（20,50）和（300,100）是顶点
+    </span><span style="background: white; color: black">CGContextSetLineJoin(context, kCGLineJoinRound);</span><span style="background: white; color: green">//设置连接点样式，(20,100)是连接点
+    /*设置线段样式
+    phase:虚线开始的位置
+    lengths:虚线长度间隔（例如下面的定义说明第一条线段长度8，然后间隔3重新绘制8点的长度线段，当然这个数组可以定义更多元素）
+    count:虚线数组元素个数
+    */
+    </span><span style="background: white; color: black">CGFloat lengths[2] = { 18, 9 };
+    CGContextSetLineDash(context, 0, lengths, 2);
+    </span><span style="background: white; color: green">/*设置阴影
+    context:图形上下文
+    offset:偏移量
+    blur:模糊度
+    color:阴影颜色
+    */
+    </span><span style="background: white; color: black">CGColorRef color = [UIColor grayColor].CGColor;</span><span style="background: white; color: green">//颜色转化，由于Quartz 2D跨平台，所以其中不能使用UIKit中的对象，但是UIkit提供了转化方法
+    </span><span style="background: white; color: black">CGContextSetShadowWithColor(context, CGSizeMake(2, 2), 0.8, color);
+
+    </span><span style="background: white; color: green">//5.绘制图像到指定图形上下文
+    /*CGPathDrawingMode是填充方式,枚举类型
+    kCGPathFill:只有填充（非零缠绕数填充），不绘制边框
+    kCGPathEOFill:奇偶规则填充（多条路径交叉时，奇数交叉填充，偶交叉不填充）
+    kCGPathStroke:只有边框
+    kCGPathFillStroke：既有边框又有填充
+    kCGPathEOFillStroke：奇偶填充并绘制边框
+    */
+    </span><span style="background: white; color: black">CGContextDrawPath(context, kCGPathFillStroke);</span><span style="background: white; color: green">//最后一个参数是填充类型
+
+    //6.释放对象
+    </span><span style="background: white; color: black">CGPathRelease(path);
+}</span><span style="background: white; color: black">
+@end</span></pre><a href="http://11011.net/software/vspaste"></a><a href="http://11011.net/software/vspaste"></a>
+<p>在视图控制器创建KCView并添加到根视图中：</p><pre class="code"><span style="background: white; color: black">- (</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)viewDidLoad {
+    [super viewDidLoad];
+    
+    KCView *view=[[KCView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    view.backgroundColor=[UIColor whiteColor];
+    [self.view addSubview:view];
+}</span></pre>
+<p><a href="http://11011.net/software/vspaste"></a>运行效果如下：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062331581107913.jpg"><img title="DrawPath" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="DrawPath" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062331584698571.jpg" width="320" height="590"></a> </p>
+<h2 id="autoid-3-0-0">简化绘图方式</h2>
+<p>上面的绘图方式未免显得有些麻烦，其实Core Graphics 内部对创建对象添加到上下文这两步操作进行了封装，可以一步完成。另外前面也说过UIKit内部其实封装了一些以“UI”开头的方法帮助大家进行图形绘制。就拿前面的例子来说我们改进一些绘制方法：</p><pre class="code"><span style="background: white; color: black">-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawLine2{
+    </span><span style="background: white; color: green">//1.获得图形上下文
+    </span><span style="background: white; color: black">CGContextRef context=UIGraphicsGetCurrentContext();
+    
+    </span><span style="background: white; color: green">//2.绘制路径（相当于前面创建路径并添加路径到图形上下文两步操作）
+    </span><span style="background: white; color: black">CGContextMoveToPoint(context, 20, 50);
+    CGContextAddLineToPoint(context, 20, 100);
+    CGContextAddLineToPoint(context, 300, 100);
+    </span><span style="background: white; color: green">//封闭路径:a.创建一条起点和终点的线,不推荐
+    //CGPathAddLineToPoint(path, nil, 20, 50);
+    //封闭路径:b.直接调用路径封闭方法
+    </span><span style="background: white; color: black">CGContextClosePath(context);
+    
+    </span><span style="background: white; color: green">//3.设置图形上下文属性
+    </span><span style="background: white; color: black">[[UIColor redColor]setStroke];</span><span style="background: white; color: green">//设置红色边框
+    </span><span style="background: white; color: black">[[UIColor greenColor]setFill];</span><span style="background: white; color: green">//设置绿色填充
+    //[[UIColor blueColor]set];//同时设置填充和边框色
+    
+    //4.绘制路径
+    </span><span style="background: white; color: black">CGContextDrawPath(context, kCGPathFillStroke);
+}</span></pre><a href="http://11011.net/software/vspaste"></a><a href="http://11011.net/software/vspaste"></a>
+<p>上面的操作相比前面的方法应该说已经简化了不少，除了路径之外其他矩形、椭圆等都有对应的创建方法。另外上面我们也演示了封闭路径的方法，大家可以运行看一下效果。</p>
+<h2 id="autoid-3-1-0">其他图形绘制</h2>
+<p>相信大家了解了上面的绘制步骤其他图形绘制并不麻烦，下面以一个例子简单演示一下其他图形的绘制，包括文字和图像的绘制。</p>
+<h3 id="autoid-3-2-0">绘制矩形</h3>
+<p>在下面的方法中还可以看到UIKit对绘图方法的封装，使用起来更加简单。</p><pre class="code"><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 绘制矩形
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawRectWithContext:(CGContextRef)context{
+    </span><span style="background: white; color: green">//添加矩形对象
+    </span><span style="background: white; color: black">CGRect rect=CGRectMake(20, 50, 280.0, 50.0);
+    CGContextAddRect(context,rect);
+    </span><span style="background: white; color: green">//设置属性
+    </span><span style="background: white; color: black">[[UIColor blueColor]set];
+    </span><span style="background: white; color: green">//绘制
+    </span><span style="background: white; color: black">CGContextDrawPath(context, kCGPathFillStroke);
+}
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 绘制矩形（利用UIKit的封装方法）
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawRectByUIKitWithContext:(CGContextRef)context{
+    CGRect rect= CGRectMake(20, 150, 280.0, 50.0);
+    CGRect rect2=CGRectMake(20, 250, 280.0, 50.0);
+    </span><span style="background: white; color: green">//设置属性
+    </span><span style="background: white; color: black">[[UIColor yellowColor]set];
+    </span><span style="background: white; color: green">//绘制矩形,相当于创建对象、添加对象到上下文、绘制三个步骤
+    </span><span style="background: white; color: black">UIRectFill(rect);</span><span style="background: white; color: green">//绘制矩形（只有填充）
+    
+    </span><span style="background: white; color: black">[[UIColor redColor]setStroke];
+    UIRectFrame(rect2);</span><span style="background: white; color: green">//绘制矩形(只有边框)
+</span><span style="background: white; color: black">}
+@end</span></pre>
+<p><a href="http://11011.net/software/vspaste"></a>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062331591102742.jpg"><img title="DrawRect" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="DrawRect" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062331593608198.jpg" width="320" height="590"></a> </p>
+<h3 id="autoid-3-2-0">绘制椭圆</h3><pre class="code"><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 绘制椭圆
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawEllipse:(CGContextRef)context{
+    </span><span style="background: white; color: green">//添加对象,绘制椭圆（圆形）的过程也是先创建一个矩形
+    </span><span style="background: white; color: black">CGRect rect=CGRectMake(50, 50, 220.0, 200.0);
+    CGContextAddEllipseInRect(context, rect);
+    </span><span style="background: white; color: green">//设置属性
+    </span><span style="background: white; color: black">[[UIColor purpleColor]set];
+    </span><span style="background: white; color: green">//绘制
+    </span><span style="background: white; color: black">CGContextDrawPath(context, kCGPathFillStroke);
+}
+@end</span>&nbsp;</pre>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062331597976599.jpg"><img title="DrawEllipse" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="DrawEllipse" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332000948041.jpg" width="320" height="590"></a> </p>
+<h3 id="autoid-3-2-0">绘制弧形</h3><pre class="code"><span style="background: white; color: black">-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawArc:(CGContextRef)context{
+    </span><span style="background: white; color: green">/*添加弧形对象
+     x:中心点x坐标
+     y:中心点y坐标
+     radius:半径
+     startAngle:起始弧度
+     endAngle:终止弧度
+     closewise:是否逆时针绘制，0则顺时针绘制
+    */
+    </span><span style="background: white; color: black">CGContextAddArc(context, 160, 160, 100.0, 0.0, M_PI_2, 1);
+    
+    </span><span style="background: white; color: green">//设置属性
+    </span><span style="background: white; color: black">[[UIColor yellowColor]set];
+    
+    </span><span style="background: white; color: green">//绘制
+    </span><span style="background: white; color: black">CGContextDrawPath(context, kCGPathFillStroke);
+}</span></pre>
+<p><a href="http://11011.net/software/vspaste"></a>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332003132742.jpg"><img title="DrawArc" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="DrawArc" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332008134656.jpg" width="320" height="590"></a> </p>
+<h3 id="autoid-3-2-0">绘制贝塞尔曲线</h3>
+<p>要绘制规则图形在iOS中相当简单，但是不规则图形怎么绘制呢？此时就要利用路径。前面我们绘制了直线，它和曲线绘制都属于路径绘制。和直线绘制相比曲线绘制就要复杂一些，但是路径作为高级动画的基础又是我们必须掌握的，因此这里我们就一起来熟悉一下曲线绘制。在Quartz 2D中曲线绘制分为两种：二次贝塞尔曲线和三次贝塞尔曲线。二次曲线只有一个控制点，而三次曲线有两个控制点，如下图所示：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332011254626.png"><img title="Bezier" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="Bezier" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332014389298.png" width="730" height="350"></a></p>
+<p>当然，在iOS中两种曲线分别对应两种方法： </p>
+<p><strong>CGContextAddQuadCurveToPoint(CGContextRef c, CGFloat cpx, CGFloat cpy, CGFloat x, CGFloat y);</strong></p>
+<p><strong>CGContextAddCurveToPoint(context, CGFloat cp1x, CGFloat cp1y, CGFloat cp2x, CGFloat cp2y, CGFloat x, CGFloat y);</strong><br>下面就演示一下这两种曲线的绘制方法</p><pre class="code"><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 绘制贝塞尔曲线
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawCurve:(CGContextRef)context{
+    
+    </span><span style="background: white; color: green">//绘制曲线
+    </span><span style="background: white; color: black">CGContextMoveToPoint(context, 20, 100);</span><span style="background: white; color: green">//移动到起始位置
+    /*绘制二次贝塞尔曲线
+     c:图形上下文
+     cpx:控制点x坐标
+     cpy:控制点y坐标
+     x:结束点x坐标
+     y:结束点y坐标
+    */
+    </span><span style="background: white; color: black">CGContextAddQuadCurveToPoint(context, 160, 0, 300, 100);
+    
+    CGContextMoveToPoint(context, 20, 500);
+    </span><span style="background: white; color: green">/*绘制三次贝塞尔曲线
+     c:图形上下文
+     cp1x:第一个控制点x坐标
+     cp1y:第一个控制点y坐标
+     cp2x:第二个控制点x坐标
+     cp2y:第二个控制点y坐标
+     x:结束点x坐标
+     y:结束点y坐标
+    */
+    </span><span style="background: white; color: black">CGContextAddCurveToPoint(context, 80, 300, 240, 500, 300, 300);
+    
+    </span><span style="background: white; color: green">//设置图形上下文属性
+    </span><span style="background: white; color: black">[[UIColor yellowColor]setFill];
+    [[UIColor redColor]setStroke];
+    
+    
+    </span><span style="background: white; color: green">//绘制路径
+    </span><span style="background: white; color: black">CGContextDrawPath(context, kCGPathFillStroke);
+    
+}</span></pre>
+<p><a href="http://11011.net/software/vspaste"></a>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332022502183.jpg"><img title="BesizerEffice" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="BesizerEffice" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332025161869.jpg" width="320" height="590"></a> </p>
+<p>&nbsp;</p><a href="http://11011.net/software/vspaste"></a>
+<blockquote>
+<p>备注:贝塞尔曲线是由法国数学家“贝塞尔”发现的，他发现：任何一条曲线都能够由和它相切的直线的两个端点来描述，这种曲线表示方式后来被广泛应用到计算机中，称为“贝塞尔曲线”。</p></blockquote>
+<h3 id="autoid-3-2-0">文字绘制</h3>
+<p>除了绘制图形还可以绘制文本内容。</p><pre class="code"><span style="background: white; color: black">-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawText:(CGContextRef)context{
+    </span><span style="background: white; color: green">//绘制到指定的区域内容
+    </span><span style="background: white; color: black">NSString *str=@</span><span style="background: white; color: #a31515">"Star Walk is the most beautiful stargazing app you’ve ever seen on a mobile device. It will become your go-to interactive astro guide to the night sky, following your every movement in real-time and allowing you to explore over 200, 000 celestial bodies with extensive information about stars and constellations that you find."</span><span style="background: white; color: black">;
+    CGRect rect= CGRectMake(20, 50, 280, 300);
+    UIFont *font=[UIFont systemFontOfSize:18];</span><span style="background: white; color: green">//设置字体
+    </span><span style="background: white; color: black">UIColor *color=[UIColor redColor];</span><span style="background: white; color: green">//字体颜色
+    </span><span style="background: white; color: black">NSMutableParagraphStyle *style=[[NSMutableParagraphStyle alloc]init];</span><span style="background: white; color: green">//段落样式
+    </span><span style="background: white; color: black">NSTextAlignment align=NSTextAlignmentLeft;</span><span style="background: white; color: green">//对齐方式
+    </span><span style="background: white; color: black">style.alignment=align;
+    [str drawInRect:rect withAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:color,NSParagraphStyleAttributeName:style}];
+}</span></pre><a href="http://11011.net/software/vspaste"></a>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332037196167.jpg"><img title="DrawText" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="DrawText" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332040945353.jpg" width="320" height="590"></a>&nbsp;</p>
+<h3 id="autoid-3-2-0">图像绘制</h3>
+<p>Quartz 2D还可以将图像绘制到图形上下文。</p><pre class="code"><span style="background: white; color: black">-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawImage:(CGContextRef)context{
+    UIImage *image=[UIImage imageNamed:@</span><span style="background: white; color: #a31515">"image2.jpg"</span><span style="background: white; color: black">];
+    </span><span style="background: white; color: green">//从某一点开始绘制
+    </span><span style="background: white; color: black">[image drawAtPoint:CGPointMake(10, 50)];
+    </span><span style="background: white; color: green">//绘制到指定的矩形中，注意如果大小不合适会会进行拉伸
+//    [image drawInRect:CGRectMake(10, 50, 300, 450)];
+    //平铺绘制
+//    [image drawAsPatternInRect:CGRectMake(0, 0, 320, 568)];
+</span><span style="background: white; color: black">}</span></pre><a href="http://11011.net/software/vspaste"></a>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332046725009.jpg"><img title="DrawImage" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="DrawImage" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332051881153.jpg" width="320" height="590"></a>&nbsp;</p>
+<h2 id="autoid-3-2-0">绘制渐变填充</h2>
+<p>从前面的示例中我们可以看到如何设置填充颜色，事实上很多时候纯色的填充并不能满足我们的需求，例如有时候我们要绘制一些图形可能需要设置一个漂亮的背景，这个时候我们可能就会选择渐变填充方式。Quartz 2D的渐变方式分为两种：</p>
+<p>a.线性渐变线：渐变色以直线方式从开始位置逐渐向结束位置渐变</p>
+<p>b.径向渐变：以中心点为圆心从起始渐变色向四周辐射，直到终止渐变色</p>
+<p>要做渐变则必须先设置从开始位置到结束位置的渐变颜色，做过photoshop的朋友相信对于渐变色设置并不陌生，只要在指定位置指定不同的颜色，剩下的事情交给系统处理即可，如下图在起始位置、3/10位置、结束位置指定了三种颜色就形成由三种颜色组成的渐变色：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332055787865.png"><img title="GradientColor" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="GradientColor" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332057972566.png" width="425" height="55"></a> </p>
+<p>另外，在iOS中绘制渐变还需要注意一点就是指定颜色空间，所谓颜色空间就是不同颜色在不同的维度上取值最终组成一种颜色的过程。就拿RGB来说，如果将红色、绿色、蓝色看成是x、y、z轴坐标系，那么在三个坐标上分别取0~255范围内的不同值则可以组成各类颜色。当然，不同颜色空间的“坐标系”也是不同的（也就是说颜色表示的方式是不同的），常用的颜色空间除了RGB还有CMYK（印刷业常用这种颜色模式）、Gray。</p>
+<p>在使用Quartz 2D绘图时我们的颜色除了使用常规的方法（如何前面<strong>CGContextSetRGBFillColor(CGContextRef context, CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)</strong>方法）设置RGB和透明度外，有时还会遇到颜色参数是一个数组情况。如使用颜色空间填充时用到的<strong>CGContextSetFillColor(CGContextRef context, const CGFloat *components)</strong>方法，这个时候components数组中具体是如何存储颜色就要根据颜色空间而定，如果颜色空间使用RGB则数组中的元素四个为一组，分别是red（红）、green（绿）、blue（蓝）、alpha（透明度）；如果使用CMYK颜色空间，那么数组中的元素五个为一组，分别是cyan（青）、magenta（洋红）、yellow（黄）、black（黑）、alpha（透明度）。</p>
+<p>下面的代码分别演示了两种渐变方式，具体渐变绘制函数参数代码中已经注释的很清楚了：</p><pre class="code"><span style="background: white; color: green">//
+//  KCView3.m
+//  Quartz2D
+//
+//  Created by Kenshin Cui on 14-3-16.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCView3.h"
+
+</span><span style="background: white; color: black">@implementation KCView3
+
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawRect:(CGRect)rect{
+    CGContextRef context=UIGraphicsGetCurrentContext();
+</span><span style="background: white; color: green">//    [self drawLinearGradient:context];
+    </span><span style="background: white; color: black">[self drawRadialGradient:context];
+}
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 线性渐变
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawLinearGradient:(CGContextRef)context{
+    </span><span style="background: white; color: green">//使用rgb颜色空间
+    </span><span style="background: white; color: black">CGColorSpaceRef colorSpace=CGColorSpaceCreateDeviceRGB();
+    
+    </span><span style="background: white; color: green">/*指定渐变色
+     space:颜色空间
+     components:颜色数组,注意由于指定了RGB颜色空间，那么四个数组元素表示一个颜色（red、green、blue、alpha），
+                如果有三个颜色则这个数组有4*3个元素
+     locations:颜色所在位置（范围0~1），这个数组的个数不小于components中存放颜色的个数
+     count:渐变个数，等于locations的个数
+     */
+    </span><span style="background: white; color: black">CGFloat compoents[12]={
+        248.0/255.0,86.0/255.0,86.0/255.0,1,
+        249.0/255.0,127.0/255.0,127.0/255.0,1,
+        1.0,1.0,1.0,1.0
+    };
+    CGFloat locations[3]={0,0.3,1.0};
+    CGGradientRef gradient= CGGradientCreateWithColorComponents(colorSpace, compoents, locations, 3);
+    
+    </span><span style="background: white; color: green">/*绘制线性渐变
+     context:图形上下文
+     gradient:渐变色
+     startPoint:起始位置
+     endPoint:终止位置
+     options:绘制方式,kCGGradientDrawsBeforeStartLocation 开始位置之前就进行绘制，到结束位置之后不再绘制，
+             kCGGradientDrawsAfterEndLocation开始位置之前不进行绘制，到结束点之后继续填充
+     */
+    </span><span style="background: white; color: black">CGContextDrawLinearGradient(context, gradient, CGPointZero, CGPointMake(320, 300), kCGGradientDrawsAfterEndLocation);
+    
+    </span><span style="background: white; color: green">//释放颜色空间
+    </span><span style="background: white; color: black">CGColorSpaceRelease(colorSpace);
+}
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 径向渐变
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawRadialGradient:(CGContextRef)context{
+    </span><span style="background: white; color: green">//使用rgb颜色空间
+    </span><span style="background: white; color: black">CGColorSpaceRef colorSpace=CGColorSpaceCreateDeviceRGB();
+    
+    </span><span style="background: white; color: green">/*指定渐变色
+     space:颜色空间
+     components:颜色数组,注意由于指定了RGB颜色空间，那么四个数组元素表示一个颜色（red、green、blue、alpha），
+     如果有三个颜色则这个数组有4*3个元素
+     locations:颜色所在位置（范围0~1），这个数组的个数不小于components中存放颜色的个数
+     count:渐变个数，等于locations的个数
+     */
+    </span><span style="background: white; color: black">CGFloat compoents[12]={
+        248.0/255.0,86.0/255.0,86.0/255.0,1,
+        249.0/255.0,127.0/255.0,127.0/255.0,1,
+        1.0,1.0,1.0,1.0
+    };
+    CGFloat locations[3]={0,0.3,1.0};
+    CGGradientRef gradient= CGGradientCreateWithColorComponents(colorSpace, compoents, locations, 3);
+    
+    </span><span style="background: white; color: green">/*绘制径向渐变
+     context:图形上下文
+     gradient:渐变色
+     startCenter:起始点位置
+     startRadius:起始半径（通常为0，否则在此半径范围内容无任何填充）
+     endCenter:终点位置（通常和起始点相同，否则会有偏移）
+     endRadius:终点半径（也就是渐变的扩散长度）
+     options:绘制方式,kCGGradientDrawsBeforeStartLocation 开始位置之前就进行绘制，但是到结束位置之后不再绘制，
+             kCGGradientDrawsAfterEndLocation开始位置之前不进行绘制，但到结束点之后继续填充
+     */
+    </span><span style="background: white; color: black">CGContextDrawRadialGradient(context, gradient, CGPointMake(160, 284),0, CGPointMake(165, 289), 150, kCGGradientDrawsAfterEndLocation);
+    </span><span style="background: white; color: green">//释放颜色空间
+    </span><span style="background: white; color: black">CGColorSpaceRelease(colorSpace);
+}
+@end</span></pre><a href="http://11011.net/software/vspaste"></a>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332060632252.jpg"><img title="LinearGradient" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="LinearGradient" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332063449465.jpg" width="260" height="480"></a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://images.cnitblog.com/blog/62046/201409/062332066723665.jpg"><img title="RadiaGradient" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="RadiaGradient" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332070328621.jpg" width="260" height="480"></a> </p>
+<h3 id="autoid-3-3-0">扩展--渐变填充</h3>
+<p>上面我们只是绘制渐变到图形上下文，实际开发中有时候我们还需要填充对应的渐变色，例如现在绘制了一个矩形，如何填充成渐变色呢？在此可以利用渐变裁切来完成（当然利用层CALayer更加方便但这不在今天的话题讨论范围内），特别说明一下区域裁切并不仅仅适用于渐变填充，对于其他图形绘制仍然适用，并且注意裁切只能限于矩形裁切。</p><pre class="code"><span style="background: white; color: black">-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawRectWithLinearGradientFill:(CGContextRef)context{
+    CGColorSpaceRef colorSpace=CGColorSpaceCreateDeviceRGB();
+    
+    </span><span style="background: white; color: green">//裁切处一块矩形用于显示，注意必须先裁切再调用渐变
+    //CGContextClipToRect(context, CGRectMake(20, 50, 280, 300));
+    //裁切还可以使用UIKit中对应的方法
+    </span><span style="background: white; color: black">UIRectClip(CGRectMake(20, 50, 280, 300));
+    
+    CGFloat compoents[12]={
+        248.0/255.0,86.0/255.0,86.0/255.0,1,
+        249.0/255.0,127.0/255.0,127.0/255.0,1,
+        1.0,1.0,1.0,1.0
+    };
+    CGFloat locations[3]={0,0.3,1.0};
+    CGGradientRef gradient= CGGradientCreateWithColorComponents(colorSpace, compoents, locations, 3);
+
+    CGContextDrawLinearGradient(context, gradient, CGPointMake(20, 50), CGPointMake(300, 300), kCGGradientDrawsAfterEndLocation);
+    
+    
+    </span><span style="background: white; color: green">//释放颜色空间
+    </span><span style="background: white; color: black">CGColorSpaceRelease(colorSpace);
+}</span></pre><a href="http://11011.net/software/vspaste"></a><a href="http://11011.net/software/vspaste"></a>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332072503322.jpg"><img title="ClipRectEffect" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="ClipRectEffect" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332078604735.jpg" width="320" height="590"></a> </p>
+<h2 id="autoid-3-3-0">其他状态设置</h2>
+<p>常用的图形上下文状态设置上面基本都用到了，我们不再一一解释，这里着重说一下叠加模式和填充模式，初学者对于这两个状态设置往往容易产生疑惑。</p>
+<h3 id="autoid-3-4-0">叠加模式</h3>
+<p>使用Quartz 2D绘图时后面绘制的图像会覆盖前面的，默认情况下如果前面的被覆盖后将看不到后面的内容，但是有时候这个结果并不是我们想要的，因此在Quartz 2D中提供了填充模式供开发者配置调整。由于填充模式类别特别多，因此下面以一个例子来说明：</p><pre class="code"><span style="background: white; color: black">-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawRectByUIKitWithContext2:(CGContextRef)context{
+    CGRect rect= CGRectMake(0, 130.0, 320.0, 50.0);
+    CGRect rect1= CGRectMake(0, 390.0, 320.0, 50.0);
+    
+    
+    CGRect rect2=CGRectMake(20, 50.0, 10.0, 250.0);
+    CGRect rect3=CGRectMake(40.0, 50.0, 10.0, 250.0);
+    CGRect rect4=CGRectMake(60.0, 50.0, 10.0, 250.0);
+    CGRect rect5=CGRectMake(80.0, 50.0, 10.0, 250.0);
+    CGRect rect6=CGRectMake(100.0, 50.0, 10.0, 250.0);
+    CGRect rect7=CGRectMake(120.0, 50.0, 10.0, 250.0);
+    CGRect rect8=CGRectMake(140.0, 50.0, 10.0, 250.0);
+    CGRect rect9=CGRectMake(160.0, 50.0, 10.0, 250.0);
+    CGRect rect10=CGRectMake(180.0, 50.0, 10.0, 250.0);
+    CGRect rect11=CGRectMake(200.0, 50.0, 10.0, 250.0);
+    CGRect rect12=CGRectMake(220.0, 50.0, 10.0, 250.0);
+    CGRect rect13=CGRectMake(240.0, 50.0, 10.0, 250.0);
+    CGRect rect14=CGRectMake(260.0, 50.0, 10.0, 250.0);
+    CGRect rect15=CGRectMake(280.0, 50.0, 10.0, 250.0);
+    
+    CGRect rect16=CGRectMake(30.0, 310.0, 10.0, 250.0);
+    CGRect rect17=CGRectMake(50.0, 310.0, 10.0, 250.0);
+    CGRect rect18=CGRectMake(70.0, 310.0, 10.0, 250.0);
+    CGRect rect19=CGRectMake(90.0, 310.0, 10.0, 250.0);
+    CGRect rect20=CGRectMake(110.0, 310.0, 10.0, 250.0);
+    CGRect rect21=CGRectMake(130.0, 310.0, 10.0, 250.0);
+    CGRect rect22=CGRectMake(150.0, 310.0, 10.0, 250.0);
+    CGRect rect23=CGRectMake(170.0, 310.0, 10.0, 250.0);
+    CGRect rect24=CGRectMake(190.0, 310.0, 10.0, 250.0);
+    CGRect rect25=CGRectMake(210.0, 310.0, 10.0, 250.0);
+    CGRect rect26=CGRectMake(230.0, 310.0, 10.0, 250.0);
+    CGRect rect27=CGRectMake(250.0, 310.0, 10.0, 250.0);
+    CGRect rect28=CGRectMake(270.0, 310.0, 10.0, 250.0);
+    CGRect rect29=CGRectMake(290.0, 310.0, 10.0, 250.0);
+
+    
+    [[UIColor yellowColor]set];
+    UIRectFill(rect);
+    
+    [[UIColor greenColor]setFill];
+    UIRectFill(rect1);
+    
+    [[UIColor redColor]setFill];
+    UIRectFillUsingBlendMode(rect2, kCGBlendModeClear);
+    UIRectFillUsingBlendMode(rect3, kCGBlendModeColor);
+    UIRectFillUsingBlendMode(rect4, kCGBlendModeColorBurn);
+    UIRectFillUsingBlendMode(rect5, kCGBlendModeColorDodge);
+    UIRectFillUsingBlendMode(rect6, kCGBlendModeCopy);
+    UIRectFillUsingBlendMode(rect7, kCGBlendModeDarken);
+    UIRectFillUsingBlendMode(rect8, kCGBlendModeDestinationAtop);
+    UIRectFillUsingBlendMode(rect9, kCGBlendModeDestinationIn);
+    UIRectFillUsingBlendMode(rect10, kCGBlendModeDestinationOut);
+    UIRectFillUsingBlendMode(rect11, kCGBlendModeDestinationOver);
+    UIRectFillUsingBlendMode(rect12, kCGBlendModeDifference);
+    UIRectFillUsingBlendMode(rect13, kCGBlendModeExclusion);
+    UIRectFillUsingBlendMode(rect14, kCGBlendModeHardLight);
+    UIRectFillUsingBlendMode(rect15, kCGBlendModeHue);
+    UIRectFillUsingBlendMode(rect16, kCGBlendModeLighten);
+    
+    UIRectFillUsingBlendMode(rect17, kCGBlendModeLuminosity);
+    UIRectFillUsingBlendMode(rect18, kCGBlendModeMultiply);
+    UIRectFillUsingBlendMode(rect19, kCGBlendModeNormal);
+    UIRectFillUsingBlendMode(rect20, kCGBlendModeOverlay);
+    UIRectFillUsingBlendMode(rect21, kCGBlendModePlusDarker);
+    UIRectFillUsingBlendMode(rect22, kCGBlendModePlusLighter);
+    UIRectFillUsingBlendMode(rect23, kCGBlendModeSaturation);
+    UIRectFillUsingBlendMode(rect24, kCGBlendModeScreen);
+    UIRectFillUsingBlendMode(rect25, kCGBlendModeSoftLight);
+    UIRectFillUsingBlendMode(rect26, kCGBlendModeSourceAtop);
+    UIRectFillUsingBlendMode(rect27, kCGBlendModeSourceIn);
+    UIRectFillUsingBlendMode(rect28, kCGBlendModeSourceOut);
+    UIRectFillUsingBlendMode(rect29, kCGBlendModeXOR);
+}</span></pre>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332083284892.jpg"><img title="BlendModeEffect" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="BlendModeEffect" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332086722321.jpg" width="320" height="590"></a> </p>
+<p>相信大家对比代码和显示效果并不难发现每种叠加的效果。例子中只是使用UIKit的封装方法进行叠加模式设置，更一般的方法当然是使用<strong>CGContextSetBlendMode(CGContextRef context, CGBlendMode mode)</strong>方法进行设置。</p>
+<h3 id="autoid-3-4-0">填充模式</h3>
+<p>前面的示例中已经演示过纯色填充、渐变填充，而有时我们需要按一定的自定义样式进行填充，这种方式有点类似于贴瓷砖的方式。我们知道如果家里贴地板或瓷砖时，通常我们会先选择一种瓷砖样式，根据房间面积我们购买不同量的瓷砖。但是不管买多少，这些瓷砖的样式都是一模一样的。填充模式就是为了达到这种效果而产生的：我们只需要绘制一个瓷砖的样式，然后让程序自动调用这种样式填充指定大小的区域。</p>
+<p>Quartz 2D支持两种填充模式：有颜色填充和无颜色填充。两种模式使用起来区别很小，有颜色填充就是在绘制瓷砖时就指定颜色，在调用填充时就不用再指定瓷砖颜色；无颜色填充模式就是绘制瓷砖时不用指定任何颜色，在调用填充时再指定具体填充颜色。相比较无颜色填充模式而言，有颜色填充模式更加的灵活，推荐使用。</p>
+<p>下面我们具体看一下如何按指定模式进行图形填充：</p>
+<p>1.在使用填充模式时首先要构建一个符合CGPatternDrawPatternCallback签名的方法，这个方法专门用来创建“瓷砖”。注意：如果使用有颜色填充模式，需要设置填充色。例如我们定义一个方法drawTile绘制以下瓷砖（有颜色填充）：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332089227777.png"><img title="Tile" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="Tile" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332091105020.png" width="40" height="40"></a> </p>
+<p>2.接着需要指定一个填充的颜色空间，这个颜色空间跟前面绘制渐变的颜色空间不太一样，前面创建渐变使用的颜色空间是设备无关的，我们需要基于这个颜色空间创建一个颜色空间专门用于填充（注意对于有颜色填充创建填充颜色空间参数为NULL，不用基于设备无关的颜色空间创建）。</p>
+<p>3.然后我们就可以使用CGPatternCreate方法创建一个填充模式，创建填充模式时需要注意其中的参数，在代码中已经做了一一解释（这里注意对于有颜色填充模式isColored设置为true，否则为false）。</p>
+<p>4.最后调用CGContextSetFillPattern方法给图形上下文指定填充模式（这个时候注意最后一个参数，如果是有颜色填充模式最后一个参数为透明度alpa的地址，对于无颜色填充模式最后一个参数是当前填充颜色空间的颜色数组）。</p>
+<p>5.绘制图形，这里我们绘制一个矩形。</p>
+<p>6.释放资源。</p>
+<p>下面是具体代码（包含两种填充模式代码，可以一一运行）</p><pre class="code"><span style="background: white; color: green">//
+//  UIView4.m
+//  Quartz2D
+//
+//  Created by Kenshin Cui on 14-3-17.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCView.h"
+</span><span style="background: white; color: blue">#define </span><span style="background: white; color: black">TILE_SIZE 20
+
+@implementation KCView
+
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawRect:(CGRect)rect{
+    CGContextRef context=UIGraphicsGetCurrentContext();
+    [self drawBackgroundWithColoredPattern:context];
+</span><span style="background: white; color: green">//    [self drawBackgroundWithPattern:context];
+    
+</span><span style="background: white; color: black">}
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark - 有颜色填充模式
+</span><span style="background: white; color: blue">void </span><span style="background: white; color: black">drawColoredTile(</span><span style="background: white; color: blue">void </span><span style="background: white; color: black">*info,CGContextRef context){
+    </span><span style="background: white; color: green">//有颜色填充，这里设置填充色
+    </span><span style="background: white; color: black">CGContextSetRGBFillColor(context, 254.0/255.0, 52.0/255.0, 90.0/255.0, 1);
+    CGContextFillRect(context, CGRectMake(0, 0, TILE_SIZE, TILE_SIZE));
+    CGContextFillRect(context, CGRectMake(TILE_SIZE, TILE_SIZE, TILE_SIZE, TILE_SIZE));
+}
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawBackgroundWithColoredPattern:(CGContextRef)context{
+    </span><span style="background: white; color: green">//设备无关的颜色空间
+//    CGColorSpaceRef rgbSpace= CGColorSpaceCreateDeviceRGB();
+    //模式填充颜色空间,注意对于有颜色填充模式，这里传NULL
+    </span><span style="background: white; color: black">CGColorSpaceRef colorSpace=CGColorSpaceCreatePattern(NULL);
+    </span><span style="background: white; color: green">//将填充色颜色空间设置为模式填充的颜色空间
+    </span><span style="background: white; color: black">CGContextSetFillColorSpace(context, colorSpace);
+    
+    </span><span style="background: white; color: green">//填充模式回调函数结构体
+    </span><span style="background: white; color: black">CGPatternCallbacks callback={0,&amp;drawColoredTile,NULL};
+    </span><span style="background: white; color: green">/*填充模式
+     info://传递给callback的参数
+     bounds:瓷砖大小
+     matrix:形变
+     xStep:瓷砖横向间距
+     yStep:瓷砖纵向间距
+     tiling:贴砖的方法
+     isClored:绘制的瓷砖是否已经指定了颜色(对于有颜色瓷砖此处指定位true)
+     callbacks:回调函数
+     */
+    </span><span style="background: white; color: black">CGPatternRef pattern=CGPatternCreate(NULL, CGRectMake(0, 0, 2*TILE_SIZE, 2*TILE_SIZE), CGAffineTransformIdentity,2*TILE_SIZE+ 5,2*TILE_SIZE+ 5, kCGPatternTilingNoDistortion, </span><span style="background: white; color: blue">true</span><span style="background: white; color: black">, &amp;callback);
+    
+    CGFloat alpha=1;
+    </span><span style="background: white; color: green">//注意最后一个参数对于有颜色瓷砖指定为透明度的参数地址，对于无颜色瓷砖则指定当前颜色空间对应的颜色数组
+    </span><span style="background: white; color: black">CGContextSetFillPattern(context, pattern, &amp;alpha);
+    
+    UIRectFill(CGRectMake(0, 0, 320, 568));
+    
+</span><span style="background: white; color: green">//    CGColorSpaceRelease(rgbSpace);
+    </span><span style="background: white; color: black">CGColorSpaceRelease(colorSpace);
+    CGPatternRelease(pattern);
+}
+
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark - 无颜色填充模式
+</span><span style="background: white; color: green">//填充瓷砖的回调函数（必须满足CGPatternCallbacks签名）
+</span><span style="background: white; color: blue">void </span><span style="background: white; color: black">drawTile(</span><span style="background: white; color: blue">void </span><span style="background: white; color: black">*info,CGContextRef context){
+    CGContextFillRect(context, CGRectMake(0, 0, TILE_SIZE, TILE_SIZE));
+    CGContextFillRect(context, CGRectMake(TILE_SIZE, TILE_SIZE, TILE_SIZE, TILE_SIZE));
+}
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawBackgroundWithPattern:(CGContextRef)context{
+    </span><span style="background: white; color: green">//设备无关的颜色空间
+    </span><span style="background: white; color: black">CGColorSpaceRef rgbSpace= CGColorSpaceCreateDeviceRGB();
+    </span><span style="background: white; color: green">//模式填充颜色空间
+    </span><span style="background: white; color: black">CGColorSpaceRef colorSpace=CGColorSpaceCreatePattern(rgbSpace);
+    </span><span style="background: white; color: green">//将填充色颜色空间设置为模式填充的颜色空间
+    </span><span style="background: white; color: black">CGContextSetFillColorSpace(context, colorSpace);
+    
+    </span><span style="background: white; color: green">//填充模式回调函数结构体
+    </span><span style="background: white; color: black">CGPatternCallbacks callback={0,&amp;drawTile,NULL};
+    </span><span style="background: white; color: green">/*填充模式
+     info://传递给callback的参数
+     bounds:瓷砖大小
+     matrix:形变
+     xStep:瓷砖横向间距
+     yStep:瓷砖纵向间距
+     tiling:贴砖的方法（瓷砖摆放的方式）
+     isClored:绘制的瓷砖是否已经指定了颜色（对于无颜色瓷砖此处指定位false）
+     callbacks:回调函数
+     */
+    </span><span style="background: white; color: black">CGPatternRef pattern=CGPatternCreate(NULL, CGRectMake(0, 0, 2*TILE_SIZE, 2*TILE_SIZE), CGAffineTransformIdentity,2*TILE_SIZE+ 5,2*TILE_SIZE+ 5, kCGPatternTilingNoDistortion, </span><span style="background: white; color: blue">false</span><span style="background: white; color: black">, &amp;callback);
+    
+    CGFloat components[]={254.0/255.0,52.0/255.0,90.0/255.0,1.0};
+    </span><span style="background: white; color: green">//注意最后一个参数对于无颜色填充模式指定为当前颜色空间颜色数据
+    </span><span style="background: white; color: black">CGContextSetFillPattern(context, pattern, components);
+    </span><span style="background: white; color: green">//    CGContextSetStrokePattern(context, pattern, components);
+    </span><span style="background: white; color: black">UIRectFill(CGRectMake(0, 0, 320, 568));
+    
+    CGColorSpaceRelease(rgbSpace);
+    CGColorSpaceRelease(colorSpace);
+    CGPatternRelease(pattern);
+}
+@end</span></pre>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332100941320.jpg"><img title="FillWithPattern" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="FillWithPattern" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332105943234.jpg" width="320" height="590"></a> </p>
+<p>这里强调一点，在drawTile回调方法中不要使用UIKit封装方法进行图形绘制（例如UIRectFill等），由于这个方法由Core Graphics内部调用，而Core Graphics考虑到跨平台问题，内部是不允许调用UIKit方法的。</p>
+<h2 id="autoid-3-4-0">上下文变换</h2>
+<p>我们知道在UIKit开发中UIView有一个transform属性用于控件的形变，其实在绘图中我们也经常用到图形形变，这个时候可以借助图形上下文的形变方法来完成。在弄清形变之前我们要清楚图形上下文的坐标原点，因为无论是位移还是旋转都是相对于坐标原点进行的。其实Quartz 2D的坐标系同UIKit并不一样，它的坐标原点在屏幕左下方，但是为了统一编程方式，UIKit对其进行了转换，坐标原点统一在屏幕左上角。注意在设置图形上下文形变之前一定要注意保存上下文的初始状态，在使用完之后进行恢复。否则在处理多个图形形变的时候很容易弄不清楚到底是基于怎样的坐标系进行绘图，容易找不到原点（做过html5 canvas绘图的朋友对这一点应该很熟悉，在html5中绘图也经常进行状态保存和恢复）。下面通过一个图片的变换演示一下图形上下文的形变（其他图形也是一样的，就不再演示）：</p><pre class="code"><span style="background: white; color: green">//
+//  KCView2.m
+//  Quartz2D
+//
+//  Created by Kenshin Cui on 14-3-17.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCView2.h"
+
+</span><span style="background: white; color: black">@implementation KCView2
+
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawRect:(CGRect)rect{
+    CGContextRef context=UIGraphicsGetCurrentContext();
+    [self drawImage:context];
+}
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 图形上下文形变
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawImage:(CGContextRef)context{
+    </span><span style="background: white; color: green">//保存初始状态
+    </span><span style="background: white; color: black">CGContextSaveGState(context);
+    
+    </span><span style="background: white; color: green">//形变第一步：图形上下文向右平移40
+    </span><span style="background: white; color: black">CGContextTranslateCTM(context, 100, 0);
+    
+    </span><span style="background: white; color: green">//形变第二步：缩放0.8
+    </span><span style="background: white; color: black">CGContextScaleCTM(context, 0.8, 0.8);
+    
+    </span><span style="background: white; color: green">//形变第三步：旋转
+    </span><span style="background: white; color: black">CGContextRotateCTM(context, M_PI_4/4);
+    
+    UIImage *image=[UIImage imageNamed:@</span><span style="background: white; color: #a31515">"photo1.jpg"</span><span style="background: white; color: black">];
+    [image drawInRect:CGRectMake(0, 50, 240, 300)];
+    
+    
+    </span><span style="background: white; color: green">//恢复到初始状态
+    </span><span style="background: white; color: black">CGContextRestoreGState(context);
+}
+
+@end</span></pre><a href="http://11011.net/software/vspaste"></a>
+<p>最终运行效果见第四幅截图，下图描绘出了整个程序的运行过程（移动-&gt;缩放-&gt;旋转）：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332111411134.png"><img title="CGContentRefState" style="border-width: 0px; display: inline; width: 783px;" border="0" alt="CGContentRefState" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332136886689.png" width="800" height="1223"></a></p>
+<h2 id="autoid-3-5-0">扩展--使用Core Graphics绘制图像</h2>
+<p>在前面基本绘图部分，绘制图像时使用了UIKit中封装的方法进行了图像绘制，我们不妨看一下使用Quartz 2D内置方法绘制是什么效果。</p><pre class="code"><span style="background: white; color: black">-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawImage2:(CGContextRef)context{
+    UIImage *image=[UIImage imageNamed:@</span><span style="background: white; color: #a31515">"image2.jpg"</span><span style="background: white; color: black">];
+    </span><span style="background: white; color: green">//图像绘制
+    </span><span style="background: white; color: black">CGRect rect= CGRectMake(10, 50, 300, 450);
+    CGContextDrawImage(context, rect, image.CGImage);
+}</span></pre>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/091535232625836.jpg"><img title="DrawImage2Effect" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="DrawImage2Effect" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/091535241684394.jpg" width="320" height="590"></a> </p>
+<p>看起来整个图像是倒过来的，原因正是前面说的：在Core Graphics中坐标系的y轴正方向是向上的，坐标原点在屏幕左下角，y轴方向刚好和UIKit中y轴方向相反。而使用UIKit进行绘图之所以没有问题是因为UIKit中进行了处理，事实上对于其他图形即使使用Core Graphics绘制也没有问题，因为UIKit统一了编程方式。但是使用Core Graphics中内置方法绘制图像是存在这种问题的，如何解决呢？</p>
+<p>其实图形上下文只要沿着x轴旋转180度，然后向上平移适当的高度即可（但是注意不要沿着z轴旋转，这样得不到想要的结果）。可是通过前面介绍的<span style="background: white; color: green"></span><span style="background: white; color: black">CGContextRotateCTM方法只能通过沿着z轴旋转，此时不妨使用另外一种方法，那就是在y轴方向缩放-1，同样可以达到想要的效果：</span></p><pre class="code"><span style="background: white; color: black">-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawImage2:(CGContextRef)context{
+    UIImage *image=[UIImage imageNamed:@</span><span style="background: white; color: #a31515">"image2.jpg"</span><span style="background: white; color: black">];
+    CGSize size=[UIScreen mainScreen].bounds.size;
+    CGContextSaveGState(context);
+    CGFloat height=450,y=50;
+    </span><span style="background: white; color: green">//上下文形变
+    </span><span style="background: white; color: black">CGContextScaleCTM(context, 1.0, -1.0);</span><span style="background: white; color: green">//在y轴缩放-1相当于沿着x张旋转180
+    </span><span style="background: white; color: black">CGContextTranslateCTM(context, 0, -(size.height-(size.height-2*y-height)));</span><span style="background: white; color: green">//向上平移
+    //图像绘制
+    </span><span style="background: white; color: black">CGRect rect= CGRectMake(10, y, 300, height);
+    CGContextDrawImage(context, rect, image.CGImage);
+    
+    CGContextRestoreGState(context);
+}</span></pre><a href="http://11011.net/software/vspaste"></a>
+<h1 id="refreshView">视图刷新</h1>
+<p>在UIView的drawRect:中绘制的图形会在控件显示的时候调用（而且显示时会重绘所有图形），有时候我们希望绘制内容的显示是实时的，此时我们就需要调用绘图方法重新绘制，但是在iOS开发中不允许开发者直接调用drawRect:方法，刷新绘制内容需要调用setNeedsDisplay方法。下面以一个调整字体大小的界面演示一下视图的刷新。</p>
+<p>KCView.h</p><pre class="code"><span style="background: white; color: green">//
+//  KCView.h
+//  RefreshView
+//
+//  Created by Kenshin Cui on 14-3-17.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">&lt;UIKit/UIKit.h&gt;
+
+</span><span style="background: white; color: black">@</span><span style="background: white; color: blue">interface </span><span style="background: white; color: black">KCView : UIView
+
+@</span><span style="background: white; color: blue">property </span><span style="background: white; color: black">(nonatomic,copy) NSString *title;
+
+@</span><span style="background: white; color: blue">property </span><span style="background: white; color: black">(nonatomic,assign) CGFloat fontSize;
+
+@end</span></pre><a href="http://11011.net/software/vspaste"></a>
+<p>KCView.m</p><pre class="code"><span style="background: white; color: green">//
+//  KCView.m
+//  RefreshView
+//
+//  Created by Kenshin Cui on 14-3-17.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCView.h"
+
+</span><span style="background: white; color: black">@implementation KCView
+
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawRect:(CGRect)rect{
+    
+    NSString *str=_title;
+    UIFont *font=[UIFont fontWithName:@</span><span style="background: white; color: #a31515">"Marker Felt" </span><span style="background: white; color: black">size:_fontSize];
+    UIColor *foreignColor=[UIColor redColor];
+    [str drawInRect:CGRectMake(100, 120, 300, 200) withAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:foreignColor}];
+}
+
+@end</span></pre><a href="http://11011.net/software/vspaste"></a>
+<p>KCMainViewController.m</p><pre class="code"><span style="background: white; color: green">//
+//  KCMainViewController.m
+//  RefreshView
+//
+//  Created by Kenshin Cui on 14-3-17.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCMainViewController.h"
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCView.h"
+
+</span><span style="background: white; color: black">@</span><span style="background: white; color: blue">interface </span><span style="background: white; color: black">KCMainViewController ()&lt;UIPickerViewDataSource,UIPickerViewDelegate&gt;{
+    KCView *_contentView;
+    NSArray *_fontSize;
+}
+
+@end
+
+@implementation KCMainViewController
+
+- (</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self initLayout];
+    
+    [self addPickerView];
+}
+
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)initLayout{
+    _fontSize=@[@15,@18,@20,@22,@25,@28,@30,@32,@35,@40];
+    _contentView=[[KCView alloc]initWithFrame:CGRectMake(0, 0, 320, 300)];
+    _contentView.backgroundColor=[UIColor whiteColor];
+    _contentView.title=@</span><span style="background: white; color: #a31515">"Hello world!"</span><span style="background: white; color: black">;
+    _contentView.fontSize=[_fontSize[0] intValue];
+    [self.view addSubview:_contentView];
+}
+
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)addPickerView{
+    UIPickerView *picker=[[UIPickerView alloc]initWithFrame:CGRectMake(0, 300, 320, 268)];
+    picker.dataSource=self;
+    picker.</span><span style="background: white; color: blue">delegate</span><span style="background: white; color: black">=self;
+    
+    [self.view addSubview:picker];
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    </span><span style="background: white; color: blue">return </span><span style="background: white; color: black">1;
+}
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    </span><span style="background: white; color: blue">return </span><span style="background: white; color: black">_fontSize.count;
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    </span><span style="background: white; color: blue">return </span><span style="background: white; color: black">[NSString stringWithFormat:@</span><span style="background: white; color: #a31515">"%@号字体"</span><span style="background: white; color: black">,_fontSize[row] ];
+}
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    _contentView.fontSize=[[_fontSize objectAtIndex:row] intValue];
+    
+    </span><span style="background: white; color: green">//刷新视图
+    </span><span style="background: white; color: black">[_contentView setNeedsDisplay];
+}
+@end</span></pre><a href="http://11011.net/software/vspaste"></a>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332161724030.gif"><img title="RefreshViewEffect" style="display: inline" alt="RefreshViewEffect" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332165473215.gif"></a> </p>
+<h1 id="otherCGContext">其他图形上下文 </h1>
+<p>前面我们也说过，Quartz 2D的图形上下方除了可以绘制到层上还可以绘制到位图、PDF等，这里我们就介绍一下如何利用Quartz 2D绘制图像到位图及PDF中。</p>
+<p>上面的示例中一直都是在drawRect:方法中利用UIGraphicsGetCurrentContext()方法取得上下文，要得到位图或者PDF的上下文可以利用UIGraphicsBeginImageContext(CGSize size)和UIGraphicsBeginPDFPageWithInfo(CGRect bounds, NSDictionary *pageInfo)方法。位图图形上下文和PDF图形上下文UIKit是不会负责创建的，所以需要用户手动创建，并且在使用完后关闭它。在使用UIKit中系统创建的图形上下文的时候，我们只能在drawRect：方法中使用，由于这两类图形上下文是由我们手动创建的因此可以放到任何方法中调用。此外，这两个方法开启的图形上下文并没有返回值，如果我们要得到我们创建的图形上下文只要在创建上下文之后、关闭之前调用UIGraphicsGetCurrentContext()方法，此时取得的上下文即是我们自己创建的图形上下文。</p>
+<h3 id="autoid-5-0-0">绘制到位图</h3>
+<p>下面利用位图图形上下文给一个图片添加水印，在下面的程序中我们首先创建上下文，然后在上下文中绘制图片、直线和文本，最后从当前位图上下文中取得最终形成的新图片显示到界面。</p><pre class="code"><span style="background: white; color: green">//
+//  KCMainViewController.m
+//  Quartz2D
+//
+//  Created by Kenshin Cui on 14-3-17.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">&lt;CoreText/CoreText.h&gt;
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCMainViewController.h"
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCView.h"
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCView2.h"
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCView3.h"
+
+</span><span style="background: white; color: black">@</span><span style="background: white; color: blue">interface </span><span style="background: white; color: black">KCMainViewController ()
+
+@end
+
+@implementation KCMainViewController
+
+- (</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)viewDidLoad {
+    [super viewDidLoad];
+
+    UIImage *image=[self drawImageAtImageContext];
+    UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
+    imageView.center=CGPointMake(160, 284);
+    
+    [self.view addSubview:imageView];
+}
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 利用位图上下文添加水印效果
+-(UIImage *)drawImageAtImageContext{
+    </span><span style="background: white; color: green">//获得一个位图图形上下文
+    </span><span style="background: white; color: black">CGSize size=CGSizeMake(300, 188);</span><span style="background: white; color: green">//画布大小
+    </span><span style="background: white; color: black">UIGraphicsBeginImageContext(size);
+    
+    UIImage *image=[UIImage imageNamed:@</span><span style="background: white; color: #a31515">"photo2.png"</span><span style="background: white; color: black">];
+    [image drawInRect:CGRectMake(0, 0, 300, 188)];</span><span style="background: white; color: green">//注意绘图的位置是相对于画布顶点而言，不是屏幕
+    
+    
+    //添加水印
+    </span><span style="background: white; color: black">CGContextRef context=UIGraphicsGetCurrentContext();
+    CGContextMoveToPoint(context, 200, 178);
+    CGContextAddLineToPoint(context, 270, 178);
+    
+    [[UIColor redColor]setStroke];
+    CGContextSetLineWidth(context, 2);
+    
+    CGContextDrawPath(context, kCGPathStroke);
+    
+    NSString *str=@</span><span style="background: white; color: #a31515">"Kenshin Cui"</span><span style="background: white; color: black">;
+    [str drawInRect:CGRectMake(200, 158, 100, 30) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@</span><span style="background: white; color: #a31515">"Marker Felt" </span><span style="background: white; color: black">size:15],NSForegroundColorAttributeName:[UIColor redColor]}];
+    
+    </span><span style="background: white; color: green">//返回绘制的新图形
+    </span><span style="background: white; color: black">UIImage *newImage=UIGraphicsGetImageFromCurrentImageContext();
+    
+    </span><span style="background: white; color: green">//最后一定不要忘记关闭对应的上下文
+    </span><span style="background: white; color: black">UIGraphicsEndImageContext();
+    
+    </span><span style="background: white; color: green">//保存图片
+//    NSData *data= UIImagePNGRepresentation(newImage);
+//    [data writeToFile:@"/Users/kenshincui/Desktop/myPic.png" atomically:YES];
+    
+    </span><span style="background: white; color: blue">return </span><span style="background: white; color: black">newImage;
+}
+
+@end</span></pre><a href="http://11011.net/software/vspaste"></a><a href="http://11011.net/software/vspaste"></a>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332172827356.jpg"><img title="ImageContextEffect" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="ImageContextEffect" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332175631272.jpg" width="320" height="590"></a> </p>
+<p>注意：上面这种方式绘制的图像除了可以显示在界面上还可以调用对应方法进行保存（代码注释中已经包含保存方法）；除此之外这种方法相比在drawRect：方法中绘制图形效率更高，它不用每次展示时都调用所有图形绘制方法。</p>
+<h3 id="autoid-5-0-0">绘制到PDF</h3>
+<p>绘制到PDF则要启用pdf图形上下文，PDF图形上下文的创建使用方式跟位图图形上下文是类似的，需要注意的一点就是绘制内容到PDF时需要创建分页，每页内容的开始都要调用一次<strong>IGraphicsBeginPDFPage();</strong>方法。下面的示例演示了文本绘制和图片绘制（其他图形绘制也是类似的）：</p><pre class="code"><span style="background: white; color: green">//
+//  KCMainViewController.m
+//  Quartz2D
+//
+//  Created by Kenshin Cui on 14-3-17.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">&lt;CoreText/CoreText.h&gt;
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCMainViewController.h"
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCView.h"
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCView2.h"
+
+</span><span style="background: white; color: black">@</span><span style="background: white; color: blue">interface </span><span style="background: white; color: black">KCMainViewController ()
+
+@end
+
+@implementation KCMainViewController
+
+- (</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)viewDidLoad {
+    [super viewDidLoad];
+
+    [self drawContentToPdfContext];
+}
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 利用pdf图形上下文绘制内容到pdf文档
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)drawContentToPdfContext{
+    
+    </span><span style="background: white; color: green">//沙盒路径（也就是我们应用程序文件运行的路径）
+    </span><span style="background: white; color: black">NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path=[[paths firstObject] stringByAppendingPathComponent:@</span><span style="background: white; color: #a31515">"myPDF.pdf"</span><span style="background: white; color: black">];
+    NSLog(@</span><span style="background: white; color: #a31515">"%@"</span><span style="background: white; color: black">,path);
+    </span><span style="background: white; color: green">//启用pdf图形上下文
+    /**
+     path:保存路径
+     bounds:pdf文档大小，如果设置为CGRectZero则使用默认值：612*792
+     pageInfo:页面设置,为nil则不设置任何信息
+     */
+    </span><span style="background: white; color: black">UIGraphicsBeginPDFContextToFile(path,CGRectZero,[NSDictionary dictionaryWithObjectsAndKeys:@</span><span style="background: white; color: #a31515">"Kenshin Cui"</span><span style="background: white; color: black">,kCGPDFContextAuthor, nil]);
+    
+    </span><span style="background: white; color: green">//由于pdf文档是分页的，所以首先要创建一页画布供我们绘制
+    </span><span style="background: white; color: black">UIGraphicsBeginPDFPage();</span><span style="background: white; color: green">
+    
+    </span><span style="background: white; color: black">NSString *title=@</span><span style="background: white; color: #a31515">"Welcome to Apple Support"</span><span style="background: white; color: black">;
+    NSMutableParagraphStyle *style=[[NSMutableParagraphStyle alloc]init];
+    NSTextAlignment align=NSTextAlignmentCenter;
+    style.alignment=align;
+    [title drawInRect:CGRectMake(26, 20, 300, 50) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSParagraphStyleAttributeName:style}];
+    NSString *content=@</span><span style="background: white; color: #a31515">"Learn about Apple products, view online manuals, get the latest downloads, and more. Connect with other Apple users, or get service, support, and professional advice from Apple."</span><span style="background: white; color: black">;
+    NSMutableParagraphStyle *style2=[[NSMutableParagraphStyle alloc]init];
+    style2.alignment=NSTextAlignmentLeft;
+</span><span style="background: white; color: green">//    style2.firstLineHeadIndent=20;
+    </span><span style="background: white; color: black">[content drawInRect:CGRectMake(26, 56, 300, 255) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:[UIColor grayColor],NSParagraphStyleAttributeName:style2}];
+    
+    UIImage *image=[UIImage imageNamed:@</span><span style="background: white; color: #a31515">"applecare_folks_tall.png"</span><span style="background: white; color: black">];
+    [image drawInRect:CGRectMake(316, 20, 290, 305)];
+    
+    UIImage *image2=[UIImage imageNamed:@</span><span style="background: white; color: #a31515">"applecare_page1.png"</span><span style="background: white; color: black">];
+    [image2 drawInRect:CGRectMake(6, 320, 600, 281)];
+    
+    </span><span style="background: white; color: green">//创建新的一页继续绘制其他内容
+    </span><span style="background: white; color: black">UIGraphicsBeginPDFPage();
+    UIImage *image3=[UIImage imageNamed:@</span><span style="background: white; color: #a31515">"applecare_page2.png"</span><span style="background: white; color: black">];
+    [image3 drawInRect:CGRectMake(6, 20, 600, 629)];
+    
+    </span><span style="background: white; color: green">//结束pdf上下文
+    </span><span style="background: white; color: black">UIGraphicsEndPDFContext();
+}
+@end</span></pre><a href="http://11011.net/software/vspaste"></a>
+<p>生成的pdf文档：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332179859741.png"><img title="DrawToPDF" style="border-width: 0px; display: inline; width: 783px;" border="0" alt="DrawToPDF" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332189854569.png" width="800" height="423"></a> </p>
+<p>&nbsp;</p>
+<blockquote>
+<p>知识补充</p>
+<p>1.Core Graphics是基于C语言的一套框架，开发时无法像使用Obj-C一样调用；</p>
+<p>2.在Quartz 2D中凡是使用带有“Create”或者“Copy”关键字方法创建的对象，在使用后一定要使用对应的方法释放（由于这个框架基于C语言编写无法自动释放内存）；</p>
+<p>3.Quartz 2D是跨平台的，因此其中的方法中不能使用UIKit中的对象（UIKit只有iOS可用），例如用到的颜色只能用CGColorRef而不能用UIColor，但是UIKit中提供了对应的转换方法；</p>
+<p>4.在C语言中枚举一般以“k”开头，由于Quartz 2D基于C语言开发，所以它也不例外（参数中很多枚举都是k开头的）；</p>
+<p>5.由于Quartz 2D是Core Graphics的一部分，所以API多数以CG开头；</p>
+<p>6.在使用Quartz 2D绘图API中所有以“Ref”结尾对象，在声明时都不必声明为指针类型；</p>
+<p>7.在使用Quartz 2D绘图API时，凡是“UI”开头的相关绘图函数，都是UIKit对Core Graphics的封装（主要为了简化绘图操作）；</p></blockquote>
+<p></p>
+<p></p>
+<p></p>
+<h1 id="coreImage">Core Image</h1>
+<p>利用Quartz 2D我们可以绘制各类图形、图像，功能确实强大。用过photoshop的朋友都知道，使用photoshop可以制作各种滤镜特效，那么在iOS中能否实现滤镜呢？在iOS5.0之前这些算法基本全部要靠程序员编程实现，实现过程相当复杂。从iOS5.0开始苹果官方已经提供了Core Image框架来帮助开发者进行特效制作。</p>
+<p>先来看一下滤镜使用过程中常用的基类对象：</p>
+<p>CIContext：图像上下文，用于管理整个图片处理过程，不同的图形上下文将利用不同的图像处理硬件进行图像处理（在iOS中可以通过不同的方式创建图像上下文，例如可以创建基于CPU的图像上下方、创建基于GPU的图像上下方以及创建OpenGL优化过的图像上下文）。</p>
+<p>CIFilter：图像处理滤镜，每种滤镜有不同的参数设置。</p>
+<p>CIImage：Core Image框架中的图像类型，主要用于输入和输出图像。</p>
+<p>在使用滤镜之前我们先要弄清平台主要支持哪些滤镜，以及这些滤镜的方法和参数如何设置，此时不妨使用下面的方法进行打印查看：</p><pre class="code"><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 查看所有内置滤镜
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)showAllFilters{
+    NSArray *filterNames=[CIFilter filterNamesInCategory:kCICategoryBuiltIn];
+    </span><span style="background: white; color: blue">for </span><span style="background: white; color: black">(NSString *filterName in filterNames) {
+        CIFilter *filter=[CIFilter filterWithName:filterName];
+        NSLog(@</span><span style="background: white; color: #a31515">"\rfilter:%@\rattributes:%@"</span><span style="background: white; color: black">,filterName,[filter attributes]);
+    }
+}</span></pre><a href="http://11011.net/software/vspaste"></a>
+<p>在iOS7中打印会发现有127中滤镜，如果我们把每种滤镜都介绍一遍恐怕用几章内容也很难介绍详细，事实上也没有这个必要。这些滤镜使用方法是类似的，只是参数设置有所区别。在iOS文档中可以搜索“core image filter reference”一节的内容，里面有每种滤镜的详细介绍和图片使用效果。</p>
+<p>使用Core Image框架创建滤镜效果一般分为以下几步：</p>
+<p>1.创建图像上下文CIContext</p>
+<p>2.创建滤镜CIFilter</p>
+<p>3.创建过滤原图片CIImage</p>
+<p>4.调用CIFilter的<strong>setValue： forKey：</strong>方法为滤镜指定源图片</p>
+<p>5.设置滤镜参数【可选】</p>
+<p>6.取得输出图片显示或保存</p>
+<p>大家都知道在美图秀秀中有一个“增强”功能，利用它可以调整照片的饱和度、亮度、对比度，其实在Core Image中也有这样一款滤镜，下面就以颜色滤镜来演示一下Core Image中滤镜的使用。</p><pre class="code"><span style="background: white; color: green">//
+//  KCMainViewController.m
+//  CoreImage
+//
+//  Created by Kenshin Cui on 14-3-17.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="background: white; color: blue">#import </span><span style="background: white; color: #a31515">"KCMainViewController.h"
+</span><span style="background: white; color: blue">#define </span><span style="background: white; color: black">CONSTROLPANEL_FONTSIZE 12
+
+@</span><span style="background: white; color: blue">interface </span><span style="background: white; color: black">KCMainViewController ()&lt;UINavigationControllerDelegate,UIImagePickerControllerDelegate&gt;{
+    UIImagePickerController *_imagePickerController;</span><span style="background: white; color: green">//系统照片选择控制器
+    </span><span style="background: white; color: black">UIImageView *_imageView;</span><span style="background: white; color: green">//图片显示控件
+    </span><span style="background: white; color: black">CIContext *_context;</span><span style="background: white; color: green">//Core Image上下文
+    </span><span style="background: white; color: black">CIImage *_image;</span><span style="background: white; color: green">//我们要编辑的图像
+    </span><span style="background: white; color: black">CIImage *_outputImage;</span><span style="background: white; color: green">//处理后的图像
+    </span><span style="background: white; color: black">CIFilter *_colorControlsFilter;</span><span style="background: white; color: green">//色彩滤镜
+</span><span style="background: white; color: black">}
+
+@end
+
+@implementation KCMainViewController
+
+- (</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self initLayout];
+}
+
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 初始化布局
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)initLayout{
+    </span><span style="background: white; color: green">//初始化图片选择器
+    </span><span style="background: white; color: black">_imagePickerController=[[UIImagePickerController alloc]init];
+    _imagePickerController.</span><span style="background: white; color: blue">delegate </span><span style="background: white; color: black">=self;
+
+    </span><span style="background: white; color: green">//创建图片显示控件
+    </span><span style="background: white; color: black">_imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 64, 320, 502)];
+    _imageView.contentMode=UIViewContentModeScaleAspectFit;
+    [self.view addSubview:_imageView];
+    
+    </span><span style="background: white; color: green">//上方导航按钮
+    </span><span style="background: white; color: black">self.navigationItem.title=@</span><span style="background: white; color: #a31515">"Enhance"</span><span style="background: white; color: black">;
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@</span><span style="background: white; color: #a31515">"Open" </span><span style="background: white; color: black">style:UIBarButtonItemStyleDone target:self action:@selector(openPhoto:)];
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@</span><span style="background: white; color: #a31515">"Save" </span><span style="background: white; color: black">style:UIBarButtonItemStyleDone target:self action:@selector(savePhoto:)];
+
+    
+    </span><span style="background: white; color: green">//下方控制面板
+    </span><span style="background: white; color: black">UIView *controlView=[[UIView alloc]initWithFrame:CGRectMake(0, 450, 320, 118)];
+</span><span style="background: white; color: green">//    controlView.alpha=0.2;
+//    controlView.backgroundColor=[UIColor colorWithRed:46.0/255.0 green:178.0/255.0 blue:235.0/255.0 alpha:1];
+    </span><span style="background: white; color: black">[self.view addSubview:controlView];
+    </span><span style="background: white; color: green">//饱和度(默认为1，大于饱和度增加小于1则降低)
+    </span><span style="background: white; color: black">UILabel *lbSaturation=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 60, 25)];
+    lbSaturation.text=@</span><span style="background: white; color: #a31515">"Saturation"</span><span style="background: white; color: black">;
+    lbSaturation.font=[UIFont systemFontOfSize:CONSTROLPANEL_FONTSIZE];
+    [controlView addSubview:lbSaturation];
+    UISlider *sldStaturation=[[UISlider alloc]initWithFrame:CGRectMake(80, 10, 230, 30)];</span><span style="background: white; color: green">//注意UISlider高度虽然无法调整，很多朋友会说高度设置位0即可，事实上在iOS7中设置为0后是无法拖动的
+    </span><span style="background: white; color: black">[controlView addSubview:sldStaturation];
+    sldStaturation.minimumValue=0;
+    sldStaturation.maximumValue=2;
+    sldStaturation.value=1;
+    [sldStaturation addTarget:self action:@selector(changeStaturation:) forControlEvents:UIControlEventValueChanged];
+    </span><span style="background: white; color: green">//亮度(默认为0)
+    </span><span style="background: white; color: black">UILabel *lbBrightness=[[UILabel alloc]initWithFrame:CGRectMake(10, 40, 60, 25)];
+    lbBrightness.text=@</span><span style="background: white; color: #a31515">"Brightness"</span><span style="background: white; color: black">;
+    lbBrightness.font=[UIFont systemFontOfSize:CONSTROLPANEL_FONTSIZE];
+    [controlView addSubview:lbBrightness];
+    UISlider *sldBrightness=[[UISlider alloc]initWithFrame:CGRectMake(80, 40, 230, 30)];
+    [controlView addSubview:sldBrightness];
+    sldBrightness.minimumValue=-1;
+    sldBrightness.maximumValue=1;
+    sldBrightness.value=0;
+    [sldBrightness addTarget:self action:@selector(changeBrightness:) forControlEvents:UIControlEventValueChanged];
+    </span><span style="background: white; color: green">//对比度(默认为1)
+    </span><span style="background: white; color: black">UILabel *lbContrast=[[UILabel alloc]initWithFrame:CGRectMake(10, 70, 60, 25)];
+    lbContrast.text=@</span><span style="background: white; color: #a31515">"Contrast"</span><span style="background: white; color: black">;
+    lbContrast.font=[UIFont systemFontOfSize:CONSTROLPANEL_FONTSIZE];
+    [controlView addSubview:lbContrast];
+    UISlider *sldContrast=[[UISlider alloc]initWithFrame:CGRectMake(80, 70, 230, 30)];
+    [controlView addSubview:sldContrast];
+    sldContrast.minimumValue=0;
+    sldContrast.maximumValue=2;
+    sldContrast.value=1;
+    [sldContrast addTarget:self action:@selector(changeContrast:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    </span><span style="background: white; color: green">//初始化CIContext
+    //创建基于CPU的图像上下文
+    //    NSNumber *number=[NSNumber numberWithBool:YES];
+    //    NSDictionary *option=[NSDictionary dictionaryWithObject:number forKey:kCIContextUseSoftwareRenderer];
+    //    _context=[CIContext contextWithOptions:option];
+    </span><span style="background: white; color: black">_context=[CIContext contextWithOptions:nil];</span><span style="background: white; color: green">//使用GPU渲染，推荐,但注意GPU的CIContext无法跨应用访问，例如直接在UIImagePickerController的完成方法中调用上下文处理就会自动降级为CPU渲染，所以推荐现在完成方法中保存图像，然后在主程序中调用
+    //    EAGLContext *eaglContext=[[EAGLContext alloc]initWithAPI:kEAGLRenderingAPIOpenGLES1];
+    //    _context=[CIContext contextWithEAGLContext:eaglContext];//OpenGL优化过的图像上下文
+    
+    //取得滤镜
+    </span><span style="background: white; color: black">_colorControlsFilter=[CIFilter filterWithName:@</span><span style="background: white; color: #a31515">"CIColorControls"</span><span style="background: white; color: black">];
+
+}
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 打开图片选择器
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)openPhoto:(UIBarButtonItem *)btn{
+    </span><span style="background: white; color: green">//打开图片选择器
+    </span><span style="background: white; color: black">[self presentViewController:_imagePickerController animated:YES completion:nil];
+}
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 保存图片
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)savePhoto:(UIBarButtonItem *)btn{
+    </span><span style="background: white; color: green">//保存照片到相册
+    </span><span style="background: white; color: black">UIImageWriteToSavedPhotosAlbum(_imageView.image, nil, nil, nil);
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@</span><span style="background: white; color: #a31515">"Sytem Info" </span><span style="background: white; color: black">message:@</span><span style="background: white; color: #a31515">"Save Success!" </span><span style="background: white; color: blue">delegate</span><span style="background: white; color: black">:nil cancelButtonTitle:nil otherButtonTitles:@</span><span style="background: white; color: #a31515">"OK"</span><span style="background: white; color: black">, nil];
+    [alert show];
+}
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 图片选择器选择图片代理方法
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    </span><span style="background: white; color: green">//关闭图片选择器
+    </span><span style="background: white; color: black">[self dismissViewControllerAnimated:YES completion:nil];
+    </span><span style="background: white; color: green">//取得选择图片
+    </span><span style="background: white; color: black">UIImage *selectedImage=[info objectForKey:UIImagePickerControllerOriginalImage];
+    _imageView.image=selectedImage;
+    </span><span style="background: white; color: green">//初始化CIImage源图像
+    </span><span style="background: white; color: black">_image=[CIImage imageWithCGImage:selectedImage.CGImage];
+    [_colorControlsFilter setValue:_image forKey:@</span><span style="background: white; color: #a31515">"inputImage"</span><span style="background: white; color: black">];</span><span style="background: white; color: green">//设置滤镜的输入图片
+</span><span style="background: white; color: black">}
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 将输出图片设置到UIImageView
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)setImage{
+    CIImage *outputImage= [_colorControlsFilter outputImage];</span><span style="background: white; color: green">//取得输出图像
+    </span><span style="background: white; color: black">CGImageRef temp=[_context createCGImage:outputImage fromRect:[outputImage extent]];
+    _imageView.image=[UIImage imageWithCGImage:temp];</span><span style="background: white; color: green">//转化为CGImage显示在界面中
+    
+    </span><span style="background: white; color: black">CGImageRelease(temp);</span><span style="background: white; color: green">//释放CGImage对象
+</span><span style="background: white; color: black">}
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 调整饱和度
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)changeStaturation:(UISlider *)slider{
+    [_colorControlsFilter setValue:[NSNumber numberWithFloat:slider.value] forKey:@</span><span style="background: white; color: #a31515">"inputSaturation"</span><span style="background: white; color: black">];</span><span style="background: white; color: green">//设置滤镜参数
+    </span><span style="background: white; color: black">[self setImage];
+}
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 调整亮度
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)changeBrightness:(UISlider *)slider{
+    [_colorControlsFilter setValue:[NSNumber numberWithFloat:slider.value] forKey:@</span><span style="background: white; color: #a31515">"inputBrightness"</span><span style="background: white; color: black">];
+    [self setImage];
+}
+
+</span><span style="background: white; color: blue">#pragma </span><span style="background: white; color: black">mark 调整对比度
+-(</span><span style="background: white; color: blue">void</span><span style="background: white; color: black">)changeContrast:(UISlider *)slider{
+    [_colorControlsFilter setValue:[NSNumber numberWithFloat:slider.value] forKey:@</span><span style="background: white; color: #a31515">"inputContrast"</span><span style="background: white; color: black">];
+    [self setImage];
+}
+@end</span></pre><a href="http://11011.net/software/vspaste"></a>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/062332199388113.gif"><img title="CoreImageEffect" style="display: inline" alt="CoreImageEffect" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/062332305784561.gif"></a> </p>
+<p>再次给大家强调一下：</p>
+<ul>
+<li>在上面的代码中除了使用了基于GPU的图像上下文(推荐方式)，也创建了其他图像上下文，尽管已经被注释大家还是需要熟悉。 
+</li><li>Core Image允许你一次给图像或视频帧叠加多种效果，同时Core Image还能保证强大的处理效率。 
+</li><li>和在使用Core Graphics绘图一样，UIKit中也封装了一些方法直接转换为Core Image中的对象，例如UIImage对象可以直接调用CIImage属性转换为CIImage类型。</li></ul></div><div id="MySignature" style="display: block;"><div style="clear: both; border: solid #E8E7D0 1px; padding: 10px 10px 10px 10px; background-color: #f8f8ee;">
+<table border="0">
+<tbody>
+<tr style="vertical-align: top;">
+<td><a href="http://creativecommons.org/licenses/by/2.5/cn/" rel="license"><img style="border-width: 0;" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/88x31.png" alt="知识共享许可协议"></a></td>
+<td>本<span>作品</span>采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" rel="license">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，演绎或用于商业目的。但转载请注明来自<a href="http://www.cnblogs.com/kenshincui">崔江涛（KenshinCui）</a>，并包含相关链接。</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+        <div class="clear"></div>
+        <div id="blog_post_info_block">
+        <div id="blog_post_info"><div id="green_channel">
+绿色通道：
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3959951,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://space.cnblogs.com/msg/send/KenshinCui" target="_blank">与我联系</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/icon_weibo_24.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/kenshincui/" target="_blank"><img src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/u62046.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/kenshincui/">KenshinCui</a><br>
+<a href="http://home.cnblogs.com/u/kenshincui/followees">关注 - 3</a><br>
+<a href="http://home.cnblogs.com/u/kenshincui/followers">粉丝 - 460</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor">荣誉：<a href="http://www.cnblogs.com/expert/" target="_blank">推荐博客</a></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg" style="position: fixed; right: 0px; bottom: 0px; z-index: 10; margin: 10px; padding: 10px; border: 1px solid rgb(204, 204, 204); background-color: white;">										
+    <div class="diggit" onclick="votePost(3959951,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">21</span>
+    </div>
+	<div class="buryit" onclick="votePost(3959951,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+        <div class="clear"></div>
+        <div id="post_next_prev"><a href="http://www.cnblogs.com/kenshincui/p/3950646.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/kenshincui/p/3950646.html" title="发布于2014-09-02 06:33">iOS开发系列--触摸事件、手势识别、摇晃事件、耳机线控</a><br><a href="http://www.cnblogs.com/kenshincui/p/3972100.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/kenshincui/p/3972100.html" title="发布于2014-09-15 06:29">iOS开发系列--让你的应用“动”起来</a><br></div>
+    </div>
+</div>
+    <ul class="postmetadata">
+        <li class="icon_cat" id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/kenshincui/category/594479.html">IOS</a></li>
+        <li class="icon_bullet" id="EntryTag">标签: <a href="http://www.cnblogs.com/kenshincui/tag/Quartz%202D/">Quartz 2D</a>, <a href="http://www.cnblogs.com/kenshincui/tag/Core%20Graphics/">Core Graphics</a>, <a href="http://www.cnblogs.com/kenshincui/tag/Core%20Image/">Core Image</a>, <a href="http://www.cnblogs.com/kenshincui/tag/CGContextRef/">CGContextRef</a>, <a href="http://www.cnblogs.com/kenshincui/tag/CGImageRef/">CGImageRef</a>, <a href="http://www.cnblogs.com/kenshincui/tag/CIContext/">CIContext</a>, <a href="http://www.cnblogs.com/kenshincui/tag/CIFilter/">CIFilter</a>, <a href="http://www.cnblogs.com/kenshincui/tag/CIImage/">CIImage</a></li>
+    </ul>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=79371,cb_entryId=3959951,cb_blogApp=currentBlogApp,cb_blogUserGuid='8c003886-9a30-de11-9510-001cf0cd104b',cb_entryCreatedDate='2014/9/6 23:33:00';loadViewCount(cb_entryId);</script>
+<script type="text/javascript">
+    var m = window.__blog.postRendered;
+    if (m) { m(__$("post")); }
+</script>
+<script type="text/javascript">
+    var m = window.__blog.postRenderPosts;
+    if (m) { m(); }
+</script>
+<a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<a class="addcomment" href="http://www.cnblogs.com/kenshincui/p/3959951.html#comment_tip">Add your comment</a>
+<h3 id="comments"></h3>
+<div class="feedbackNoItems"></div>
+
+
+<ol class="commentlist" id="commentList">	
+
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024607" class="layer">#1楼</a><a name="3024607" id="comment_anchor_3024607"></a></cite> <a id="a_comment_author_3024607" href="http://www.cnblogs.com/kids/" target="_blank">袁家小黑球</a> <a href="http://msg.cnblogs.com/msg/send/%e8%a2%81%e5%ae%b6%e5%b0%8f%e9%bb%91%e7%90%83" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-08 10:38</span></small>
+			</h5>
+			<div id="comment_body_3024607" class="blog_comment_body">正在转型学习ios开发，过来瞻仰，mark</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3024607,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3024607,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3024607_avatar" style="display:none;">http://pic.cnitblog.com/face/390349/20131107133926.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024612" class="layer">#2楼</a><a name="3024612" id="comment_anchor_3024612"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3024612" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/msg/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-08 11:02</span></small>
+			</h5>
+			<div id="comment_body_3024612" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024607" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3024607);">@</a>袁家小黑球<br>希望持续关注，这个系列将涵盖iOS开发中大部分知识点。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3024612,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3024612,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3024612_avatar" style="display:none;">http://pic.cnitblog.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024626" class="layer">#3楼</a><a name="3024626" id="comment_anchor_3024626"></a></cite> <a id="a_comment_author_3024626" href="http://www.cnblogs.com/caligula/" target="_blank">Caligula</a> <a href="http://msg.cnblogs.com/msg/send/Caligula" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-08 13:04</span></small>
+			</h5>
+			<div id="comment_body_3024626" class="blog_comment_body">赞一记</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3024626,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3024626,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3024626_avatar" style="display:none;">http://pic.cnitblog.com/face/621162/20140407141157.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024636" class="layer">#4楼</a><a name="3024636" id="comment_anchor_3024636"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3024636" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/msg/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-08 14:39</span></small>
+			</h5>
+			<div id="comment_body_3024636" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024626" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3024626);">@</a>Caligula<br>多谢支持！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3024636,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3024636,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3024636_avatar" style="display:none;">http://pic.cnitblog.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024724" class="layer">#5楼</a><a name="3024724" id="comment_anchor_3024724"></a></cite> <a id="a_comment_author_3024724" href="http://home.cnblogs.com/u/99029/" target="_blank">Jashon</a> <a href="http://msg.cnblogs.com/msg/send/Jashon" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-08 21:53</span></small>
+			</h5>
+			<div id="comment_body_3024724" class="blog_comment_body">也是正在学习 Ios</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3024724,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3024724,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024736" class="layer">#6楼</a><a name="3024736" id="comment_anchor_3024736"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3024736" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/msg/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-08 22:36</span></small>
+			</h5>
+			<div id="comment_body_3024736" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024724" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3024724);">@</a>Jashon<br>希望对你有帮助！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3024736,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3024736,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3024736_avatar" style="display:none;">http://pic.cnitblog.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024789" class="layer">#7楼</a><a name="3024789" id="comment_anchor_3024789"></a></cite> <a id="a_comment_author_3024789" href="http://www.cnblogs.com/PleaseInputEnglish/" target="_blank">今晚打老虎、</a> <a href="http://msg.cnblogs.com/msg/send/%e4%bb%8a%e6%99%9a%e6%89%93%e8%80%81%e8%99%8e%e3%80%81" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-09 08:11</span></small>
+			</h5>
+			<div id="comment_body_3024789" class="blog_comment_body">mark</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3024789,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3024789,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3024789_avatar" style="display:none;">http://pic.cnitblog.com/face/u443980.jpg?id=24110708</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024804" class="layer">#8楼</a><a name="3024804" id="comment_anchor_3024804"></a></cite> <a id="a_comment_author_3024804" href="http://www.cnblogs.com/Ribery/" target="_blank">里贝里</a> <a href="http://msg.cnblogs.com/msg/send/%e9%87%8c%e8%b4%9d%e9%87%8c" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-09 08:44</span></small>
+			</h5>
+			<div id="comment_body_3024804" class="blog_comment_body">非常好</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3024804,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3024804,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024811" class="layer">#9楼</a><a name="3024811" id="comment_anchor_3024811"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3024811" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/msg/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-09 08:47</span></small>
+			</h5>
+			<div id="comment_body_3024811" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024804" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3024804);">@</a>里贝里<br>@今晚打老虎、<br>多谢二位支持！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3024811,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3024811,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3024811_avatar" style="display:none;">http://pic.cnitblog.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024863" class="layer">#10楼</a><a name="3024863" id="comment_anchor_3024863"></a></cite> <a id="a_comment_author_3024863" href="http://www.cnblogs.com/Jooly/" target="_blank">愤怒的摩托</a> <a href="http://msg.cnblogs.com/msg/send/%e6%84%a4%e6%80%92%e7%9a%84%e6%91%a9%e6%89%98" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-09 09:26</span></small>
+			</h5>
+			<div id="comment_body_3024863" class="blog_comment_body">非常好，谢谢楼主分享</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3024863,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3024863,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3024863_avatar" style="display:none;">http://pic.cnitblog.com/face/u71817.jpg?id=13163428</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024917" class="layer">#11楼</a><a name="3024917" id="comment_anchor_3024917"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3024917" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/msg/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-09 10:24</span></small>
+			</h5>
+			<div id="comment_body_3024917" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3024863" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3024863);">@</a>愤怒的摩托<br>多谢支持，希望后面持续关注！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3024917,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3024917,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3024917_avatar" style="display:none;">http://pic.cnitblog.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3025041" class="layer">#12楼</a><a name="3025041" id="comment_anchor_3025041"></a></cite> <a id="a_comment_author_3025041" href="http://www.cnblogs.com/liuyuqing/" target="_blank">EcitGis</a> <a href="http://msg.cnblogs.com/msg/send/EcitGis" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-09 13:33</span></small>
+			</h5>
+			<div id="comment_body_3025041" class="blog_comment_body">mark</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3025041,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3025041,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3025041_avatar" style="display:none;">http://pic.cnitblog.com/face/614021/20140521113709.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3025109" class="layer">#13楼</a><a name="3025109" id="comment_anchor_3025109"></a></cite> <a id="a_comment_author_3025109" href="http://home.cnblogs.com/u/313705/" target="_blank">franky2012</a> <a href="http://msg.cnblogs.com/msg/send/franky2012" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-09 14:42</span></small>
+			</h5>
+			<div id="comment_body_3025109" class="blog_comment_body">写得真心不错,希望楼主继续更新,期待你下一篇精彩的文章!!!</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3025109,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3025109,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3025153" class="layer">#14楼</a><a name="3025153" id="comment_anchor_3025153"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3025153" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/msg/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-09 15:36</span></small>
+			</h5>
+			<div id="comment_body_3025153" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3025109" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3025109);">@</a>franky2012<br>谢谢，这个系列会持续更新！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3025153,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3025153,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3025153_avatar" style="display:none;">http://pic.cnitblog.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3025562" class="layer">#15楼</a><a name="3025562" id="comment_anchor_3025562"></a></cite> <a id="a_comment_author_3025562" href="http://www.cnblogs.com/shuxiaolong/" target="_blank">『大雪无痕』</a> <a href="http://msg.cnblogs.com/msg/send/%e3%80%8e%e5%a4%a7%e9%9b%aa%e6%97%a0%e7%97%95%e3%80%8f" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-10 11:27</span></small>
+			</h5>
+			<div id="comment_body_3025562" class="blog_comment_body">高山仰止<br>膜拜楼主<br>推荐+1</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3025562,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3025562,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3025562_avatar" style="display:none;">http://pic.cnitblog.com/face/166267/20140712085254.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3025590" class="layer">#16楼</a><a name="3025590" id="comment_anchor_3025590"></a></cite> <a id="a_comment_author_3025590" href="http://www.cnblogs.com/goyuanfang/" target="_blank">GoYF</a> <a href="http://msg.cnblogs.com/msg/send/GoYF" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-10 12:00</span></small>
+			</h5>
+			<div id="comment_body_3025590" class="blog_comment_body">先要买台苹果本再看了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3025590,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3025590,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3025590_avatar" style="display:none;">http://pic.cnitblog.com/face/178476/20140108160643.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3025622" class="layer">#17楼</a><a name="3025622" id="comment_anchor_3025622"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3025622" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/msg/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-10 13:09</span></small>
+			</h5>
+			<div id="comment_body_3025622" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3025562" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3025562);">@</a>『大雪无痕』<br>多謝支持了！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3025622,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3025622,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3025622_avatar" style="display:none;">http://pic.cnitblog.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3025625" class="layer">#18楼</a><a name="3025625" id="comment_anchor_3025625"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3025625" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/msg/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-10 13:10</span></small>
+			</h5>
+			<div id="comment_body_3025625" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3025590" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3025590);">@</a>GoYF<br>虚拟机也可以。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3025625,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3025625,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3025625_avatar" style="display:none;">http://pic.cnitblog.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3029710" class="layer">#19楼</a><a name="3029710" id="comment_anchor_3029710"></a></cite> <a id="a_comment_author_3029710" href="http://home.cnblogs.com/u/586045/" target="_blank">liwuking</a> <a href="http://msg.cnblogs.com/msg/send/liwuking" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-17 13:56</span></small>
+			</h5>
+			<div id="comment_body_3029710" class="blog_comment_body">很好的博文</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3029710,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3029710,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3029801" class="layer">#20楼</a><a name="3029801" id="comment_anchor_3029801"></a></cite> <a id="a_comment_author_3029801" href="http://home.cnblogs.com/u/586045/" target="_blank">liwuking</a> <a href="http://msg.cnblogs.com/msg/send/liwuking" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-17 15:29</span></small>
+			</h5>
+			<div id="comment_body_3029801" class="blog_comment_body">博主，问下  可以进行横向或者纵向渐变吗，</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3029801,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3029801,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3029959" class="layer">#21楼</a><a name="3029959" id="comment_anchor_3029959"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3029959" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/msg/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-17 18:42</span></small>
+			</h5>
+			<div id="comment_body_3029959" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3029710" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3029710);">@</a>liwuking<br>多谢支持。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3029959,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3029959,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3029959_avatar" style="display:none;">http://pic.cnitblog.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3029962" class="layer">#22楼</a><a name="3029962" id="comment_anchor_3029962"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3029962" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/msg/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-17 18:45</span></small>
+			</h5>
+			<div id="comment_body_3029962" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3029801" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3029801);">@</a>liwuking<br>可以啊，设置渐变起点和终点就可以了。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3029962,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3029962,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3029962_avatar" style="display:none;">http://pic.cnitblog.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3036046" class="layer">#23楼</a><a name="3036046" id="comment_anchor_3036046"></a></cite> <a id="a_comment_author_3036046" href="http://www.cnblogs.com/RefrainM/" target="_blank">mercy rain</a> <a href="http://msg.cnblogs.com/msg/send/mercy+rain" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-28 10:04</span></small>
+			</h5>
+			<div id="comment_body_3036046" class="blog_comment_body">给楼主跪拜了，支持一下楼主！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3036046,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3036046,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3036046_avatar" style="display:none;">http://pic.cnitblog.com/face/515061/20130409175839.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3036196" class="layer">#24楼</a><a name="3036196" id="comment_anchor_3036196"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3036196" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/msg/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-28 13:34</span></small>
+			</h5>
+			<div id="comment_body_3036196" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3036046" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3036046);">@</a>mercy rain<br>谢谢支持，希望后面继续关注。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3036196,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3036196,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3036196_avatar" style="display:none;">http://pic.cnitblog.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3048850" class="layer">#25楼</a><a name="3048850" id="comment_anchor_3048850"></a></cite> <a id="a_comment_author_3048850" href="http://www.cnblogs.com/yerenyo/" target="_blank">lynn_gu</a> <a href="http://msg.cnblogs.com/msg/send/lynn_gu" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-10-22 14:31</span></small>
+			</h5>
+			<div id="comment_body_3048850" class="blog_comment_body">很清晰，学习了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3048850,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3048850,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3048940" class="layer">#26楼</a><a name="3048940" id="comment_anchor_3048940"></a>[<span class="louzhu">楼主</span>]<span id="comment-maxId" style="display:none;">3048940</span><span id="comment-maxDate" style="display:none;">2014/10/22 15:58:00</span></cite> <a id="a_comment_author_3048940" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/msg/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-10-22 15:58</span></small>
+			</h5>
+			<div id="comment_body_3048940" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3048850" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3048850);">@</a>lynn_gu<br>共同学习！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3048940,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3048940,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3048940_avatar" style="display:none;">http://pic.cnitblog.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+</ol>
+
+<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.imooc.com/view/148?from=cnblogs" target="_blank"><b>【免费课程】案例：手把手教你实现电商网站后台开发</b></a><br><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/promotion" target="_blank">融云，免费为你的App加入IM功能——让你的App“聊”起来！！</a><br><a href="http://www.cnblogs.com/cmt/p/tingyun.html" target="_blank">写“听云”原创博文，赢取iPhone 6超级大奖</a></div>
+<div id="opt_under_post"></div>
+<script type="text/javascript">
+    var enableGoogleAd = canShowAdsense(); var googletag = googletag || {}; googletag.cmd = googletag.cmd || [];
+    fixPostBodyFormat();
+</script>
+<div id="ad_under_post_holder">
+<script type="text/javascript">
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function () {
+        if (enableGoogleAd) {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        }
+    })();
+</script>
+<script type="text/javascript">
+    try {
+        if (enableGoogleAd) {
+            googletag.cmd.push(function () {
+                googletag.defineSlot('/1090369/cnblogs_blogpost_C1_sitehome', [300, 250], 'div-gpt-ad-1346480159711-0').addService(googletag.pubads());
+                googletag.defineSlot('/1090369/cnblogs_blogpost_C2', [468, 60], 'div-gpt-ad-1410860226396-0').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+        };
+    } catch (e) { }
+</script>
+<div id="google_ad_c1" class="c_ad_block">
+    <div id="div-gpt-ad-1346480159711-0" style="width:300px; height:250px;">
+    <script type="text/javascript">
+        try {
+            if (enableGoogleAd) {
+                googletag.cmd.push(function () { googletag.display('div-gpt-ad-1346480159711-0'); });            
+            } else {
+                $('#div-gpt-ad-1346480159711-0').hide();
+            }
+    } catch (e) { }
+    </script>
+    <div id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:"<html><body style='background:transparent'></body></html>"" style="border: 0px; vertical-align: bottom;"></iframe></div><iframe id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__hidden__" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:"<html><body style='background:transparent'></body></html>"" style="border: 0px; vertical-align: bottom; visibility: hidden; display: none;"></iframe></div>
+</div>
+</div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/509683/" target="_blank">众包地图Waze告诉你感恩节大家都去哪儿</a><br> ·  <a href="http://news.cnblogs.com/n/509682/" target="_blank">中国开始组织实施火星探测工程 预计2020年发射</a><br> ·  <a href="http://news.cnblogs.com/n/509681/" target="_blank">揭穿90后总裁余佳文真面目：全世界的牛逼都被你承包了！</a><br> ·  <a href="http://news.cnblogs.com/n/509680/" target="_blank">库克犯下了最大错误：浪费1000亿美元现金</a><br> ·  <a href="http://news.cnblogs.com/n/509679/" target="_blank">“通知”能成为互联网下一个入口嘛？</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="google_ad_c2" class="c_ad_block">
+<div id="div-gpt-ad-1410860226396-0" style="width:468px; height:60px;">
+<script type="text/javascript">
+try {
+    if (enableGoogleAd) {
+        googletag.cmd.push(function () { googletag.display('div-gpt-ad-1410860226396-0'); });
+    } else {
+        $('#div-gpt-ad-1346480159711-0').hide();
+    }
+} catch (e) { }
+</script>
+<div id="google_ads_iframe_/1090369/cnblogs_blogpost_C2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/cnblogs_blogpost_C2_0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C2_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:"<html><body style='background:transparent'></body></html>"" style="border: 0px; vertical-align: bottom;"></iframe></div></div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/509630/" target="_blank">Couchbase：更好的Cache系统</a><br> ·  <a href="http://kb.cnblogs.com/page/509527/" target="_blank">缓存是新的内存</a><br> ·  <a href="http://kb.cnblogs.com/page/509402/" target="_blank">亿级Web系统搭建——单机到分布式集群</a><br> ·  <a href="http://kb.cnblogs.com/page/508478/" target="_blank">SOA与API的分裂和统一</a><br> ·  <a href="http://kb.cnblogs.com/page/509278/" target="_blank">可测性分析和实践</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 200);
+});
+</script>
+</div>
+
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.contentRendered;
+            if (m) { m(__$("content")); }
+        </script>
+
+        <div id="sidebar">
+            
+<div id="about">
+<div>
+<h2 id="about_title">About</h2>
+<div id="about_body">
+<div id="blog-news"><p>确定了目标之后你成功了10%，但是剩下的90%之中，多数是坚持不懈的努力，你会遇到迷茫、遇到挫折，此时不要放弃，回忆你立定目标的决心，成功就在你眼前！习惯很容易养成，一件事情，只要你能咬牙坚持10天，它自然就成了习惯！</p>
+<p>
+现代人变得越来越浮躁，不妨静下心来用音乐洗礼你的心灵！
+</p>
+<embed src="http://files.cnblogs.com/kenshincui/hhxin.swf?file=http://files.cnblogs.com/kenshincui/%E9%9B%AA%E4%B9%8B%E6%A2%A6.swf&amp;width=25&amp;songVolume=100&amp;backColor=000000&amp;frontColor=ffffff&amp;autoStart=false&amp;repeatPlay=true&amp;showDownload=false&amp;2.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="420" height="20">
+<br>
+<p>
+iOS技术交流群，欢迎大家加入：64555322
+</p>
+<p>
+你能面对多少人说话，你的成就就有多大！
+</p><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/kenshincui/">KenshinCui</a><br>园龄：<a href="http://home.cnblogs.com/u/kenshincui/" title="入园时间：2009-04-24">5年7个月</a><br>荣誉：<a href="http://www.cnblogs.com/expert/">推荐博客</a><br>粉丝：<a href="http://home.cnblogs.com/u/kenshincui/followers/">460</a><br>关注：<a href="http://home.cnblogs.com/u/kenshincui/followees/">3</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;8c003886-9a30-de11-9510-001cf0cd104b&#39;)">+加关注</a></div></div></div>
+<script type="text/javascript">loadBlogNews();</script>
+</div>
+</div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.aboutRendered;
+                if (m) { m(__$("about")); }
+            </script>
+            
+<div id="mySearchWrapper">
+    <div id="mySearch">
+        <input type="image" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/btnsearch.gif" id="btnZzk" class="submit" onclick="zzk_go();return false;">
+        <label class="lb_search"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="keyword"></label>
+    </div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.searchFormRendered;
+                if (m) { m(__$("searchform")); }
+            </script>
+            <div id="sideMain">
+            <div id="side-recent-posts">
+        <h2>最新随笔</h2>
+        <ul class="bullet">
+                <li><a href="http://www.cnblogs.com/kenshincui/p/4125570.html">iOS开发系列--地图与定位</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/4077833.html">iOS开发系列--数据存取</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/4042190.html">iOS开发系列--网络开发</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/3985090.html">iOS开发系列文章（持续更新&amp;hellip;&amp;hellip;）</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/3983982.html">iOS开发系列--并行开发其实很容易</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/3972100.html">iOS开发系列--让你的应用&amp;ldquo;动&amp;rdquo;起来</a></li>
+                <li><a href="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园.html">iOS开发系列--打造自己的&amp;ldquo;美图秀秀&amp;rdquo;</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/3950646.html">iOS开发系列--触摸事件、手势识别、摇晃事件、耳机线控</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/3940746.html">iOS开发系列--视图切换</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/3931948.html">iOS开发系列--UITableView全面解析</a></li>
+        </ul>
+    </div><div id="side-recent-comments">
+        <h2>最新评论</h2>
+        <ul class="voice">
+                <li>
+                    <a href="http://www.cnblogs.com/kenshincui/p/4125570.html#3073905">Re:iOS开发系列--地图与定位</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/kenshincui/p/4125570.html#3073905">
+                        写得挺不错的，清晰，易懂。顶
+                        -- syw_yuanbao
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/kenshincui/p/4125570.html#3073818">Re:iOS开发系列--地图与定位</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/kenshincui/p/4125570.html#3073818">
+                        可以分享一下源码吗？我照着写了一遍，编译通过了，但是模拟器里面显示空白
+                        -- 541365594
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/kenshincui/p/3985090.html#3072867">Re:iOS开发系列文章（持续更新&amp;hellip;&amp;hellip;）</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/kenshincui/p/3985090.html#3072867">
+                        很好，正在学习中。。。
+                        -- zdd
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/kenshincui/p/4125570.html#3072748">Re:iOS开发系列--地图与定位</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/kenshincui/p/4125570.html#3072748">
+                        先支持下  有个疑问  如果项目用百度地图 是不是文章上面的类就不需要用了呢
+                        -- wlf
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/kenshincui/p/3840294.html#3072352">Re:IOS开发系列--C语言之基础知识</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/kenshincui/p/3840294.html#3072352">
+                        </a><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3072335" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3072335);">@</a>541365594<br>谢谢支持！
+                        -- KenshinCui
+                    
+                </li>
+        </ul>
+    </div></div>
+            <div id="sideRight">
+            <div id="side-archives">
+        <h2>随笔档案</h2>
+        <ul class="date">
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2014/11.html">2014年11月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2014/10.html">2014年10月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2014/09.html">2014年9月(5)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2014/08.html">2014年8月(5)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2014/07.html">2014年7月(11)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2013/09.html">2013年9月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2013/08.html">2013年8月(3)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2012/02.html">2012年2月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2012/01.html">2012年1月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/12.html">2011年12月(4)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/11.html">2011年11月(4)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/10.html">2011年10月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/09.html">2011年9月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/08.html">2011年8月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/07.html">2011年7月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/06.html">2011年6月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/05.html">2011年5月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/04.html">2011年4月(4)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/03.html">2011年3月(4)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/01.html">2011年1月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2010/12.html">2010年12月(6)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2010/11.html">2010年11月(3)</a></li>
+        </ul>
+    </div></div>
+            <div id="sideLeft">
+            <div id="side-categories">
+        <h2>随笔分类</h2>
+        <ul class="folder">
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/271795.html">.Net(7)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/596387.html">C(3)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/511593.html">Entity Framework(5)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/313334.html">HTML(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/594479.html">IOS(23)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/277761.html">Javascript(6)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/597027.html">Objective-C(6)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/338328.html">Other Technology(2)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/276395.html">PHP(3)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/274097.html">Silverlight(6)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/314591.html">Source Control(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/271798.html">SQL Server(5)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/290297.html">Windows Phone(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/316155.html">WPF(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/290314.html">XNA(4)</a>
+                </li>
+        </ul>
+    </div><div id="side-top-posts-custom">
+    <h2>推荐排行榜</h2>
+    <div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/kenshincui/p/3972100.html">1. iOS开发系列--让你的应用“动”起来(66)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/3890880.html">2. IOS开发系列--IOS程序开发概览(59)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/3940746.html">3. iOS开发系列--视图切换(22)</a></li><li><a href="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园.html">4. iOS开发系列--打造自己的“美图秀秀”(21)</a></li><li><a href="http://www.cnblogs.com/kenshincui/archive/2011/12/29/2306681.html">5. Silverlight之文件上传组件(19)</a></li></ul></div>
+</div><div id="side-top-posts">
+    <h2>阅读排行榜</h2>
+    <div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/kenshincui/archive/2011/03/27/1997144.html">1. Windows Phone 7完整版模拟器(14170)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/3345586.html">2. Entity Framework 5.0系列之数据操作(7946)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/3890880.html">3. IOS开发系列--IOS程序开发概览(7148)</a></li><li><a href="http://www.cnblogs.com/kenshincui/archive/2010/12/24/1915889.html">4. 通用Excel导入设计(6995)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/3280742.html">5. Entity Framework 5.0系列之EF概览(6216)</a></li></ul></div>
+</div>    
+    
+    
+    
+
+
+</div>
+            
+                <div id="sideContainer"></div>
+                <script type="text/javascript">
+                    $.ajax({
+                        url: '/' + currentBlogApp + '/mvc/blog/Minyx2_Lite_SideColumn.aspx',
+                        data: '{}',
+                        type: 'post',
+                        dataType: 'text',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data) {
+                                $("#sideContainer").html(data);
+                                loadBlogDefaultCalendar();
+                                loadBlogSideBlocks();
+                                var m = window.__blog.sideContainerRendered;
+                                if (m) { m(__$("sideContainer")); }
+                                window.__blog.sidebar.__layout();
+                            }
+                        }
+                    });
+
+                </script>
+            
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.sidebarRendered;
+            if (m) { m(__$("sidebar")); }
+        </script>
+
+        <div id="footer">
+            
+<p id="logoFoot">
+    <a href="http://www.spiga.com.mx/" title="Agencia Interactiva Spiga">www.spiga.com.mx</a>
+</p>
+<div class="footText">
+<p>
+Copyright ©2014 KenshinCui
+</p>
+<p>
+<a href="http://www.cnblogs.com/">博客园</a>
+</p>
+</div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.wrapperRendered;
+        if (m) { m(__$("wrapper")); }
+    </script>
+
+</div>
+<script type="text/javascript">
+    var m = window.__blog.containerRendered;
+    if (m) { m(__$("container")); }
+</script>
+<!--PageEndHtml Block Begin-->
+<!--<script type="text/javascript" src=" http://v1.jiathis.com/code/jiathis_r.js" charset="utf-8"></script>-->
+<script type="text/javascript" src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/scrolltopcontrol.js" charset="utf-8"></script>
+<script src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    var blogBodyId = 'cnblogs_post_body';
+    if($('#'+blogBodyId).length===0){
+        scrolltotop.init();
+    }
+    var iv=setInterval(function(){
+        var digg=$("#div_digg");
+        if(digg.length>0){
+            digg.css({ "position": "fixed", "right": "0px", "bottom":"0px", "z-index": "10", "background-color": "white", "margin":"10px", "padding": "10px", "border": "1px solid #cccccc" });
+            clearInterval(iv);
+        }
+    },1000);
+
+    $('.kc-table>tbody>tr[class!="subhead"]').hover(function(){
+        $(this).addClass('active');
+    },function(){
+        $(this).removeClass('active');
+    });
+
+var $ol = $('.kc-catalog');
+            if ($ol) {
+                var height = $ol.height(),
+                fontHeight = 80,
+                $catalog,
+                padding = (height - fontHeight) / 2;
+                $catalog = $('<li class="catalog"><span>目</span><span>&nbsp;</span><span>录<span></li>');
+                $ol.append($catalog);
+                $catalog.css('padding-top', padding).css('padding-bottom', padding);
+            }
+});
+</script>
+<script src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/CNBlogsNavigation-0.5.2.min.js"></script><iframe src="./iOS开发系列--打造自己的“美图秀秀” - KenshinCui - 博客园_files/container.html" style="visibility: hidden; display: none;"></iframe>
+<!--PageEndHtml Block End-->
+
+
+<div id="sideToolbar" style="display: none;"><div class="sideCatalogBg" id="sideCatalog"><div id="sideCatalog-sidebar"><div class="sideCatalog-sidebar-top"></div><div class="sideCatalog-sidebar-bottom"></div></div><div id="sideCatalog-catalog"><ul class="nav" style="width:175px;zoom:1"><li><span>1</span><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#overview">概述</a><span class="sideCatalog-dot"></span></li><li><span>2</span><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#quartz2d">Quartz 2D</a><span class="sideCatalog-dot"></span></li><li><span>3</span><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#basicDraw">基本图形绘制</a><span class="sideCatalog-dot"></span></li><li class="h2Offset"><span>3.1</span><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#autoid-3-0-0">简化绘图方式</a></li><li class="h2Offset"><span>3.2</span><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#autoid-3-1-0">其他图形绘制</a></li><li class="h2Offset"><span>3.3</span><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#autoid-3-2-0">绘制渐变填充</a></li><li class="h2Offset"><span>3.4</span><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#autoid-3-3-0">其他状态设置</a></li><li class="h2Offset"><span>3.5</span><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#autoid-3-4-0">上下文变换</a></li><li class="h2Offset"><span>3.6</span><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#autoid-3-5-0">扩展--使用Core Graphics绘制图像</a></li><li><span>4</span><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#refreshView">视图刷新</a><span class="sideCatalog-dot"></span></li><li><span>5</span><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#otherCGContext">其他图形上下文 </a><span class="sideCatalog-dot"></span></li><li><span>6</span><a href="http://www.cnblogs.com/kenshincui/p/3959951.html#coreImage">Core Image</a><span class="sideCatalog-dot"></span></li></ul></div></div><a href="javascript:void(0);" id="sideCatalogBtn" class="sideCatalogBtnDisable"></a><a href="javascript:void(0)" id="sideToolbar-up"></a></div><iframe id="google_osd_static_frame_1983503771480" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;"></iframe></body></html>

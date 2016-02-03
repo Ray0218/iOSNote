@@ -1,0 +1,174 @@
+﻿@charset "utf-8";
+.header_j div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, blockquote, button {
+	padding:0;
+	margin:0
+}
+.header_j ol, ul, li {
+	list-style-type:none;
+}
+
+.header_j .color_red{color:#FF0000}
+.header_j .color_err{color:#CC0000}
+.laba{ background:url(http://passport.shangxueba.com/images/laba.gif) no-repeat right; padding-right:16px;}
+.header_j img {
+	vertical-align:middle;
+	border:none;
+}
+.header_j a {
+	color:#666;
+	text-decoration: none;
+}
+.header_j a:hover {
+	text-decoration: underline;
+}
+/* begin topall  */
+#topall_j {
+	width:100%;
+	background:url(http://passport.shangxueba.com/images/toptiao.png) repeat-x center bottom;
+	height:20px;
+	padding:3px 0;
+	color:#666;
+}
+#topall_j li a { color:#666666;}
+#topall_j li a:hover { color:#FF6600;}
+
+
+#topall_j .wd960 {
+	width:960px;
+	margin:0 auto;
+}
+#topall_j .top_l {
+	float:left;
+	padding-left:38px;
+	color:#000;
+}
+#topall_j .top_r {
+	float:right;
+	text-align:right;
+}
+#topall_j li {
+	height:20px;
+	line-height:20px;
+	float:left;
+}
+#topall_j .split {
+	padding:0px 10px;
+	height:20px;
+	background-image: url(http://passport.shangxueba.com/images/topall.gif);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	z-index:0;
+}
+#topall_j .bg_zx {
+	padding-right:10px;
+	background-image: url(http://passport.shangxueba.com/images/topall.gif);
+	background-repeat: no-repeat;
+	background-position: right 3px;
+}
+#topall_j .menu {
+	position:relative;
+}
+#topall_j .menu_t {
+	background-color:#fff;
+	padding:0 11px;
+	height:20px;
+	position:absolute;
+	top:0px;
+	left:-11px;
+	border:1px solid #999;
+	border-bottom:none;
+	z-index:6;
+	width:100%;
+	_width:auto;
+}
+#topall_j .menu_b {
+	background:#fff;
+	position:absolute;
+	top:20px;
+	left:-11px;
+	border:1px solid #999;
+	z-index:5;
+	padding:6px 0 6px 0;
+	text-align:left;
+	line-height:18px;
+}
+#topall_j .menu_b li {
+	float:none;
+	height:auto;
+	line-height:18px;
+}
+#topall_j .menu_b li a {
+	display:block;
+	cursor:pointer;
+	padding:2px 3px 2px 12px;
+	/*_width:100%;*/
+	white-space:nowrap;
+	height:18px;
+	width:180px;
+}
+
+#topall_j #mySXB .menu_b li a { width:120px;}
+
+#topall_j .menu_b li a:hover
+{
+	background-color:#e4e4e4;
+}
+
+#topall_j a {
+	font-size:12px;
+	color:#000000;
+	text-decoration:none;
+}
+#topall_j a:hover {
+	font-size:12px;
+	color: #000000;
+	text-decoration:none;
+}
+/*end top all*/
+
+
+.fkz { width: 96px; height: auto;}
+.kf_l01 { height: 42px; background: url(http://passport.shangxueba.com/QQimg/kf_l01.png) no-repeat; cursor:pointer;}
+.kf_l02 { height: auto; background-color:#F2F5FA; border-left: 1px #8CB3DC solid; border-right: 1px #8CB3DC solid; padding: 6px 0px 0px 0px}
+.kf_l02 a {  width:65px; display:block; border: none; margin:0px auto;}
+.kf_l04{ height:30px; line-height:30px; text-align:center; color:#393D40;}
+.kf_l02 img{border: none}
+.kf_l03 { height: 4px;font-size:0px;line-height:4px; background: url(http://passport.shangxueba.com/QQimg/kf_l03.png) no-repeat; clear:both;}
+
+
+.login_msg_icon_1
+{
+	background:url(http://passport.shangxueba.com/images/login_msg_icon.gif) no-repeat 0 0;
+	width:16px;
+	height:16px;
+	vertical-align:middle;
+	display:inline-block;
+}
+.login_msg_icon_2
+{
+	background:url(http://passport.shangxueba.com/images/login_msg_icon.gif) no-repeat 0 -16px;
+	width:16px;
+	height:16px;
+	vertical-align:middle;
+	display:inline-block;
+}
+.login_msg_count
+{
+	color:#22cf00;
+	font-weight:bold;
+}
+ #newMsgDiv {
+	    display:none;
+	    position:fixed;   
+        width:250px;  
+        height:100px;
+        border:solid #83A60C 1px;  
+        background-color: #eefac5 ;
+        text-align:center;
+        right:0;
+        bottom:0;
+        font-size:14px;
+        line-height:100px;
+    	 z-index: 20000;
+        font-family: "微软雅黑","宋体";
+}

@@ -1,0 +1,2 @@
+﻿var site = document.domain;
+document.writeln("<div style=\"padding-top:12px;padding-bottom:30px; text-align:center;\"><img src=\"http://www.shangxueba.com/images/raz1.gif\"> &nbsp; &nbsp;<img src=\"http://www.shangxueba.com/images/raz2.gif\"> &nbsp; &nbsp;<img src=\"http://www.shangxueba.com/images/raz3.gif\"></div>");

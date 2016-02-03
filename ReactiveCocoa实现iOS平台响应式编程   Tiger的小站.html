@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://www.itiger.me/?p=38 -->
+<html lang="zh-CN"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+	<title>使用ReactiveCocoa实现iOS平台响应式编程   | Tiger的小站</title><style type="text/css"></style> 
+	<link rel="pingback" href="http://www.itiger.me/xmlrpc.php">
+	<link rel="stylesheet" href="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/style.css" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="Tiger的小站 » Feed" href="http://www.itiger.me/?feed=rss2">
+<link rel="alternate" type="application/rss+xml" title="Tiger的小站 » 评论Feed" href="http://www.itiger.me/?feed=comments-rss2">
+<link rel="alternate" type="application/rss+xml" title="Tiger的小站 » 使用ReactiveCocoa实现iOS平台响应式编程评论Feed" href="http://www.itiger.me/?feed=rss2&p=38">
+		<script async="" src="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/saved_resource"></script><script type="text/javascript" async="" src="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/ga.js"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.itiger.me\/wp-includes\/js\/wp-emoji-release.min.js?ver=3.7.8"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<script type="text/javascript" src="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/jquery.js"></script>
+<script type="text/javascript" src="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/scripts.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.itiger.me/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.itiger.me/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Jenkins+Github+Testflight在Mac下搭建持续集成环境" href="http://www.itiger.me/?p=30">
+<link rel="next" title="磨刀不误砍柴工–那些iOS开发中的好工具" href="http://www.itiger.me/?p=57">
+<meta name="generator" content="WordPress 3.7.8">
+<link rel="canonical" href="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/ReactiveCocoa实现iOS平台响应式编程   Tiger的小站.html">
+<link rel="shortlink" href="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/ReactiveCocoa实现iOS平台响应式编程   Tiger的小站.html">
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-60255444-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<script type="text/javascript" async="" src="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/embed.js"></script><script async="" type="text/javascript" src="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/count.js"></script><script async="" src="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/count-data.js"></script></head>
+<body class="single single-post postid-38 single-format-standard">
+	
+	<header>
+		<div>
+			
+			<div class="head-area">
+            	<p class="title"><a href="http://www.itiger.me/">Tiger的小站</a></p>
+           		<p class="tagline">得失从缘，心无增减</p>
+            </div>
+            <form method="get" class="searchform" action="http://www.itiger.me/">
+<fieldset>
+	<input type="text" value="" name="s"><button type="submit" name="searchsubmit" value="Search"><span></span></button>
+</fieldset>
+</form>			
+		</div>
+	</header>
+	<nav>
+		<ul id="menu-test" class="menu"><li id="menu-item-102" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-102"><a href="http://www.itiger.me/">首页</a></li>
+<li id="menu-item-101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-101"><a href="http://www.itiger.me/">全部分类</a>
+<ul class="sub-menu">
+	<li id="menu-item-116" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-116"><a href="http://www.itiger.me/?cat=2">iOS</a></li>
+	<li id="menu-item-117" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-117"><a href="http://www.itiger.me/?cat=5">开发工具</a></li>
+	<li id="menu-item-119" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-119"><a href="http://www.itiger.me/?cat=6">杂谈</a></li>
+	<li id="menu-item-120" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-120"><a href="http://www.itiger.me/?cat=17">菜鸟站长有话说</a></li>
+</ul>
+</li>
+<li id="menu-item-121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121"><a href="http://www.itiger.me/?page_id=106">关于</a></li>
+</ul>		<div class="clear"><!-- --></div>
+	<select><option selected="selected" value="">Go to...</option><option value="http://www.itiger.me">首页</option><option value="http://www.itiger.me">全部分类</option><option value="http://www.itiger.me/?cat=2">iOS</option><option value="http://www.itiger.me/?cat=5">开发工具</option><option value="http://www.itiger.me/?cat=6">杂谈</option><option value="http://www.itiger.me/?cat=17">菜鸟站长有话说</option><option value="http://www.itiger.me/?page_id=106">关于</option></select></nav>
+	<section class="content"><div>
+		<div class="main">
+			<article class="post">
+			<p class="post-date"><span>25</span> 09 2013</p>
+				<div class="post-head">
+					<h1>使用ReactiveCocoa实现iOS平台响应式编程 </h1>
+					<p class="post-meta"><span><span class="icon author"></span> Tiger</span> | <span><span class="icon cats"></span><a href="http://www.itiger.me/?cat=2">iOS</a></span> | <a href="http://www.itiger.me/?p=38#disqus_thread" class="comment-link" data-disqus-identifier="38 http://www.itiger.me/?p=38">10 Comments</a> </p>
+				</div>
+			<h1>使用ReactiveCocoa实现iOS平台响应式编程</h1>
+<h3>ReactiveCocoa和响应式编程</h3>
+<p>在说ReactiveCocoa之前，先要介绍一下FRP（Functional Reactive Programming，响应式编程），在<a href="http://zh.wikipedia.org/wiki/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B">维基百科</a>中有这样一个例子介绍：</p>
+<blockquote>
+<p>在命令式编程环境中，a = b + c 表示将表达式的结果赋给a，而之后改变b或c的值不会影响a。但在响应式编程中，a的值会随着b或c的更新而更新。</p>
+<p>Excel就是响应式编程的一个例子。单元格可以包含字面值或类似”=B1+C1″的公式，而包含公式的单元格的值会依据其他单元格的值的变化而变化 。</p>
+</blockquote>
+<p>而ReactiveCocoa简称RAC，就是基于响应式编程思想的Objective-C实践，它是Github的一个开源项目，你可以在<a href="https://github.com/ReactiveCocoa/ReactiveCocoa">这里</a>找到它。</p>
+<p>关于FRP和ReactiveCocoa可以去看<a href="http://blog.leezhong.com/ios/2013/06/19/frp-reactivecocoa.html">leezhong的这篇blog</a>，图文并茂，讲的很好。</p>
+<h3>ReactiveCocoa框架概览</h3>
+<p>先来看一下<a href="http://blog.leezhong.com/ios/2013/06/19/frp-reactivecocoa.html">leezhong再博文中提到的比喻</a>，让你对有个ReactiveCocoa很好的理解：</p>
+<blockquote>
+<p>可以把信号想象成水龙头，只不过里面不是水，而是玻璃球(value)，直径跟水管的内径一样，这样就能保证玻璃球是依次排列，不会出现并排的情况(数据都是线性处理的，不会出现并发情况)。水龙头的开关默认是关的，除非有了接收方(subscriber)，才会打开。这样只要有新的玻璃球进来，就会自动传送给接收方。可以在水龙头上加一个过滤嘴(filter)，不符合的不让通过，也可以加一个改动装置，把球改变成符合自己的需求(map)。也可以把多个水龙头合并成一个新的水龙头(combineLatest:reduce:)，这样只要其中的一个水龙头有玻璃球出来，这个新合并的水龙头就会得到这个球。</p>
+</blockquote>
+<p>下面我来逐一介绍ReactiveCocoa框架的每个组件</p>
+<h4>Streams</h4>
+<p><strong>Streams</strong> 表现为RACStream类，可以看做是水管里面流动的一系列玻璃球，它们有顺序的依次通过，在第一个玻璃球没有到达之前，你没法获得第二个玻璃球。<br>
+RACStream描述的就是这种线性流动玻璃球的形态，比较抽象，它本身的使用意义并不很大，一般会以signals或者sequences等这些更高层次的表现形态代替。</p>
+<p><span id="more-38"></span></p>
+<h4>Signals</h4>
+<p><strong>Signals</strong> 表现为RACSignal类，就是前面提到水龙头，ReactiveCocoa的核心概念就是Signal，它一般表示未来要到达的值，想象玻璃球一个个从水龙头里出来，只有了接收方（subscriber）才能获取到这些玻璃球（value）。</p>
+<p>Signal会发送下面三种事件给它的接受方（subscriber)，想象成水龙头有个指示灯来汇报它的工作状态，接受方通过<code>-subscribeNext:error:completed:</code>对不同事件作出相应反应</p>
+<ul>
+<li><strong>next</strong> 从水龙头里流出的新玻璃球（value）</li>
+<li><strong>error</strong> 获取新的玻璃球发生了错误，一般要发送一个NSError对象，表明哪里错了</li>
+<li><strong>completed</strong> 全部玻璃球已经顺利抵达，没有更多的玻璃球加入了 </li>
+</ul>
+<p>一个生命周期的Signal可以发送任意多个“next”事件，和一个“error”或者“completed”事件（当然“error”和“completed”只可能出现一种）</p>
+<h5>Subjects</h5>
+<p><strong>subjects</strong> 表现为RACSubject类，可以认为是“可变的（mutable）”信号/自定义信号，它是嫁接非RAC代码到Signals世界的桥梁，很有用。嗯。。。 这样讲还是很抽象，举个例子吧：</p>
+<pre><code>RACSubject *letters = [RACSubject subject];
+RACSignal *signal = [letters sendNext:@"a"];
+</code></pre>
+<p>可以看到<code>@"a"</code>只是一个NSString对象，要想在水管里顺利流动，就要借RACSubject的力。</p>
+<h5>Commands</h5>
+<p><strong>command</strong> 表现为RACCommand类，偷个懒直接举个例子吧，比如一个简单的注册界面：</p>
+<pre><code>    RACSignal *formValid = [RACSignal
+        combineLatest:@[
+            self.userNameField.rac_textSignal,
+            self.emailField.rac_textSignal,
+        ]
+        reduce:^(NSString *userName, NSString *email) {
+            return @(userName.length &gt; 0
+                    &amp;&amp; email.length &gt; 0);
+        }];
+
+   RACCommand *createAccountCommand = [RACCommand commandWithCanExecuteSignal:formValid];
+   RACSignal *networkResults = [[[createAccountCommand
+       addSignalBlock:^RACSignal *(id value) {
+           //... 网络交互代码
+       }]
+       switchToLatest]
+       deliverOn:[RACScheduler mainThreadScheduler]];
+
+   // 绑定创建按钮的 UI state 和点击事件
+    [[self.createButton rac_signalForControlEvents:UIControlEventTouchUpInside] executeCommand:createAccountCommand];
+</code></pre>
+<h4>Sequences</h4>
+<p><strong>sequence</strong> 表现为RACSequence类，可以简单看做是RAC世界的NSArray，RAC增加了<code>-rac_sequence</code>方法，可以使诸如NSArray这些集合类（collection classes）直接转换为RACSequence来使用。</p>
+<h4>Schedulers</h4>
+<p><strong>scheduler</strong> 表现为RACScheduler类，类似于GCD，but schedulers support cancellationbut schedulers support cancellation, and always execute serially.</p>
+<h3>ReactiveCocoa的简单使用</h3>
+<p>实践出真知，下面就举一些简单的例子，一起看看RAC的使用</p>
+<h4>Subscription</h4>
+<p>接收 <code>-subscribeNext:</code> <code>-subscribeError:</code> <code>-subscribeCompleted:</code></p>
+<pre><code>RACSignal *letters = [@"A B C D E F G H I" componentsSeparatedByString:@" "].rac_sequence.signal;
+
+// 依次输出 A B C D…
+[letters subscribeNext:^(NSString *x) {
+    NSLog(@"%@", x);
+}];
+</code></pre>
+<h4>Injecting effects</h4>
+<p>注入效果 <code>-doNext:</code> <code>-doError:</code> <code>-doCompleted:</code>，看下面注释应该就明白了：</p>
+<pre><code>__block unsigned subscriptions = 0;
+
+RACSignal *loggingSignal = [RACSignal createSignal:^ RACDisposable * (id&lt;RACSubscriber&gt; subscriber) {
+    subscriptions++;
+    [subscriber sendCompleted];
+    return nil;
+}];
+
+// 不会输出任何东西
+loggingSignal = [loggingSignal doCompleted:^{
+    NSLog(@"about to complete subscription %u", subscriptions);
+}];
+
+// 输出:
+// about to complete subscription 1
+// subscription 1
+[loggingSignal subscribeCompleted:^{
+    NSLog(@"subscription %u", subscriptions);
+}];
+</code></pre>
+<h4>Mapping</h4>
+<p><code>-map:</code> 映射，可以看做对玻璃球的变换、重新组装</p>
+<pre><code>RACSequence *letters = [@"A B C D E F G H I" componentsSeparatedByString:@" "].rac_sequence;
+
+// Contains: AA BB CC DD EE FF GG HH II
+RACSequence *mapped = [letters map:^(NSString *value) {
+    return [value stringByAppendingString:value];
+}];
+</code></pre>
+<h4>Filtering</h4>
+<p><code>-filter:</code> 过滤，不符合要求的玻璃球不允许通过</p>
+<pre><code>RACSequence *numbers = [@"1 2 3 4 5 6 7 8 9" componentsSeparatedByString:@" "].rac_sequence;
+
+// Contains: 2 4 6 8
+RACSequence *filtered = [numbers filter:^ BOOL (NSString *value) {
+    return (value.intValue % 2) == 0;
+}];
+</code></pre>
+<h4>Concatenating</h4>
+<p><code>-concat:</code> 把一个水管拼接到另一个水管之后</p>
+<pre><code>RACSequence *letters = [@"A B C D E F G H I" componentsSeparatedByString:@" "].rac_sequence;
+RACSequence *numbers = [@"1 2 3 4 5 6 7 8 9" componentsSeparatedByString:@" "].rac_sequence;
+
+// Contains: A B C D E F G H I 1 2 3 4 5 6 7 8 9
+RACSequence *concatenated = [letters concat:numbers];
+</code></pre>
+<h4>Flattening</h4>
+<p><code>-flatten:</code></p>
+<p>Sequences are concatenated</p>
+<pre><code>RACSequence *letters = [@"A B C D E F G H I" componentsSeparatedByString:@" "].rac_sequence;
+RACSequence *numbers = [@"1 2 3 4 5 6 7 8 9" componentsSeparatedByString:@" "].rac_sequence;
+RACSequence *sequenceOfSequences = @[ letters, numbers ].rac_sequence;
+
+// Contains: A B C D E F G H I 1 2 3 4 5 6 7 8 9
+RACSequence *flattened = [sequenceOfSequences flatten];
+</code></pre>
+<p>Signals are merged （merge可以理解成把几个水管的龙头合并成一个，哪个水管中的玻璃球哪个先到先吐哪个玻璃球）</p>
+<pre><code>RACSubject *letters = [RACSubject subject];
+RACSubject *numbers = [RACSubject subject];
+RACSignal *signalOfSignals = [RACSignal createSignal:^ RACDisposable * (id&lt;RACSubscriber&gt; subscriber) {
+    [subscriber sendNext:letters];
+    [subscriber sendNext:numbers];
+    [subscriber sendCompleted];
+    return nil;
+}];
+
+RACSignal *flattened = [signalOfSignals flatten];
+
+// Outputs: A 1 B C 2
+[flattened subscribeNext:^(NSString *x) {
+    NSLog(@"%@", x);
+}];
+
+[letters sendNext:@"A"];
+[numbers sendNext:@"1"];
+[letters sendNext:@"B"];
+[letters sendNext:@"C"];
+[numbers sendNext:@"2"];
+</code></pre>
+<h4>Mapping and flattening</h4>
+<p><code>-flattenMap:</code> 先 map 再 flatten</p>
+<pre><code>RACSequence *numbers = [@"1 2 3 4 5 6 7 8 9" componentsSeparatedByString:@" "].rac_sequence;
+
+// Contains: 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9
+RACSequence *extended = [numbers flattenMap:^(NSString *num) {
+    return @[ num, num ].rac_sequence;
+}];
+
+// Contains: 1_ 3_ 5_ 7_ 9_
+RACSequence *edited = [numbers flattenMap:^(NSString *num) {
+    if (num.intValue % 2 == 0) {
+        return [RACSequence empty];
+    } else {
+        NSString *newNum = [num stringByAppendingString:@"_"];
+        return [RACSequence return:newNum]; 
+    }
+}];
+
+
+
+
+RACSignal *letters = [@"A B C D E F G H I" componentsSeparatedByString:@" "].rac_sequence.signal;
+
+[[letters
+    flattenMap:^(NSString *letter) {
+        return [database saveEntriesForLetter:letter];
+    }]
+    subscribeCompleted:^{
+        NSLog(@"All database entries saved successfully.");
+    }];
+</code></pre>
+<h4>Sequencing</h4>
+<p><code>-then:</code></p>
+<pre><code>RACSignal *letters = [@"A B C D E F G H I" componentsSeparatedByString:@" "].rac_sequence.signal;
+
+// 新水龙头只包含: 1 2 3 4 5 6 7 8 9
+//
+// 但当有接收时，仍会执行旧水龙头doNext的内容，所以也会输出 A B C D E F G H I
+RACSignal *sequenced = [[letters
+    doNext:^(NSString *letter) {
+        NSLog(@"%@", letter);
+    }]
+    then:^{
+        return [@"1 2 3 4 5 6 7 8 9" componentsSeparatedByString:@" "].rac_sequence.signal;
+    }];
+</code></pre>
+<h4>Merging</h4>
+<p><code>+merge:</code> 前面在flatten中提到的水龙头的合并</p>
+<pre><code>RACSubject *letters = [RACSubject subject];
+RACSubject *numbers = [RACSubject subject];
+RACSignal *merged = [RACSignal merge:@[ letters, numbers ]];
+
+// Outputs: A 1 B C 2
+[merged subscribeNext:^(NSString *x) {
+    NSLog(@"%@", x);
+}];
+
+[letters sendNext:@"A"];
+[numbers sendNext:@"1"];
+[letters sendNext:@"B"];
+[letters sendNext:@"C"];
+[numbers sendNext:@"2"];
+</code></pre>
+<h4>Combining latest values</h4>
+<p><code>+combineLatest:</code> 任何时刻取每个水龙头吐出的最新的那个玻璃球</p>
+<pre><code>RACSubject *letters = [RACSubject subject];
+RACSubject *numbers = [RACSubject subject];
+RACSignal *combined = [RACSignal
+    combineLatest:@[ letters, numbers ]
+    reduce:^(NSString *letter, NSString *number) {
+        return [letter stringByAppendingString:number];
+    }];
+
+// Outputs: B1 B2 C2 C3
+[combined subscribeNext:^(id x) {
+    NSLog(@"%@", x);
+}];
+
+[letters sendNext:@"A"];
+[letters sendNext:@"B"];
+[numbers sendNext:@"1"];
+[numbers sendNext:@"2"];
+[letters sendNext:@"C"];
+[numbers sendNext:@"3"];
+</code></pre>
+<h4>Switching</h4>
+<p><code>-switchToLatest:</code> 取指定的那个水龙头的吐出的最新玻璃球</p>
+<pre><code>RACSubject *letters = [RACSubject subject];
+RACSubject *numbers = [RACSubject subject];
+RACSubject *signalOfSignals = [RACSubject subject];
+
+RACSignal *switched = [signalOfSignals switchToLatest];
+
+// Outputs: A B 1 D
+[switched subscribeNext:^(NSString *x) {
+    NSLog(@"%@", x);
+}];
+
+[signalOfSignals sendNext:letters];
+[letters sendNext:@"A"];
+[letters sendNext:@"B"];
+
+[signalOfSignals sendNext:numbers];
+[letters sendNext:@"C"];
+[numbers sendNext:@"1"];
+
+[signalOfSignals sendNext:letters];
+[numbers sendNext:@"2"];
+[letters sendNext:@"D"];
+</code></pre>
+<h4>常用宏</h4>
+<h5>RAC 可以看作某个属性的值与一些信号的联动</h5>
+<pre><code>RAC(self.submitButton.enabled) = [RACSignal combineLatest:@[self.usernameField.rac_textSignal, self.passwordField.rac_textSignal] reduce:^id(NSString *userName, NSString *password) {
+    return @(userName.length &gt;= 6 &amp;&amp; password.length &gt;= 6);
+}];
+</code></pre>
+<h5>RACObserve 监听属性的改变，使用block的KVO</h5>
+<pre><code> [RACObserve(self.textField, text) subscribeNext:^(NSString *newName) {
+     NSLog(@"%@", newName);
+ }];
+</code></pre>
+<h4>UI Event</h4>
+<p>RAC为系统UI提供了很多category，非常棒，比如UITextView、UITextField文本框的改动<code>rac_textSignal</code>，UIButton的的按下<code>rac_command</code>等等。</p>
+<h3>最后</h3>
+<p>有了RAC，可以不用去操心值什么时候到达什么时候改变，只需要简单的进行数据来了之后的步骤就可以了。</p>
+<p>说了这么多，在回过头去看<a href="http://blog.leezhong.com/ios/2013/06/19/frp-reactivecocoa.html">leezhong的比喻</a>和<a href="http://blog.leezhong.com/image/FRP_ReactiveCocoa_large.png">该文最后总结的关系图</a>，再好好梳理一下吧。我也是初学者，诚惶诚恐的呈上这篇博文，欢迎讨论，如有不正之处欢迎批评指正。</p>
+<h3>参考</h3>
+<p><a href="https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md">https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md</a> <a href="https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/BasicOperators.md">https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/BasicOperators.md</a><br>
+<a href="http://vimeo.com/65637501">http://vimeo.com/65637501</a><br>
+<a href="http://iiiyu.com/2013/09/11/learning-ios-notes-twenty-eight/">http://iiiyu.com/2013/09/11/learning-ios-notes-twenty-eight/</a><br>
+<a href="http://blog.leezhong.com/ios/2013/06/19/frp-reactivecocoa.html">http://blog.leezhong.com/ios/2013/06/19/frp-reactivecocoa.html</a> <a href="http://nshipster.com/reactivecocoa/">http://nshipster.com/reactivecocoa/</a></p>
+						<p class="tags"><span class="icon tags"></span><a href="http://www.itiger.me/?tag=ios" rel="tag">iOS</a>, <a href="http://www.itiger.me/?tag=reactivecocoa" rel="tag">ReactiveCocoa</a></p>
+			<p></p>
+			<p class="pagination">
+				<span class="prev"><a href="http://www.itiger.me/?p=30" rel="prev">Jenkins+Github+Testflight在Mac下搭建持续集成环境</a></span>
+				<span class="next"><a href="http://www.itiger.me/?p=57" rel="next">磨刀不误砍柴工–那些iOS开发中的好工具</a></span>
+			</p>
+
+			<div id="comments">
+				
+<div id="disqus_thread"><iframe id="dsq-1" data-disqus-uid="1" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/saved_resource.html" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 1306px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+
+<script type="text/javascript">
+var disqus_url = 'http://www.itiger.me/?p=38';
+var disqus_identifier = '38 http://www.itiger.me/?p=38';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'itiger';
+var disqus_title = "使用ReactiveCocoa实现iOS平台响应式编程";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=38';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+			</div>
+		</article>
+	</div>
+<aside>
+	<div class="cols"><div class="widget col"><form method="get" class="searchform" action="http://www.itiger.me/">
+<fieldset>
+	<input type="text" value="" name="s"><button type="submit" name="searchsubmit" value="Search"><span></span></button>
+</fieldset>
+</form></div><div class="widget col"><h3>文章归档</h3>		<ul>
+	<li><a href="http://www.itiger.me/?m=201503">2015年三月</a></li>
+	<li><a href="http://www.itiger.me/?m=201412">2014年十二月</a></li>
+	<li><a href="http://www.itiger.me/?m=201410">2014年十月</a></li>
+	<li><a href="http://www.itiger.me/?m=201406">2014年六月</a></li>
+	<li><a href="http://www.itiger.me/?m=201312">2013年十二月</a></li>
+	<li><a href="http://www.itiger.me/?m=201311">2013年十一月</a></li>
+	<li><a href="http://www.itiger.me/?m=201310">2013年十月</a></li>
+	<li><a href="http://www.itiger.me/?m=201309">2013年九月</a></li>
+	<li><a href="http://www.itiger.me/?m=201308">2013年八月</a></li>
+	<li><a href="http://www.itiger.me/?m=201306">2013年六月</a></li>
+		</ul>
+</div></div><div class="cols"><div class="widget"><h3>分类目录</h3>		<ul>
+	<li class="cat-item cat-item-2"><a href="http://www.itiger.me/?cat=2">iOS</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.itiger.me/?cat=5">开发工具</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.itiger.me/?cat=6">杂谈</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://www.itiger.me/?cat=17">菜鸟站长有话说</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://www.itiger.me/?cat=22">读书</a>
+</li>
+		</ul>
+</div></div></aside>	</div></section>
+
+
+	<footer><div>
+	
+    	<div class="clearfix widgets">
+        	<div class="cols">
+				<div class="col">
+									</div>
+				<div class="col">
+									</div>
+			</div>
+            <div class="cols">
+				<div class="col">
+									</div>
+				<div class="col">
+									</div>
+			</div>
+        </div>
+    
+		<div class="f-menu">
+			<ul class="menu"><li class="page_item page-item-106"><a href="http://www.itiger.me/?page_id=106">关于</a></li>
+</ul>		</div>
+		
+	</div></footer>
+        <script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'itiger';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1) {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script'); 
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+        <script type="text/javascript" src="./ReactiveCocoa实现iOS平台响应式编程   Tiger的小站_files/comment-reply.min.js"></script>
+	
+
+</body></html>

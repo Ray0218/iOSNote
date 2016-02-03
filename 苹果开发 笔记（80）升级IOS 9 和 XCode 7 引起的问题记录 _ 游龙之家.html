@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0038)http://www.youlong118.com/archives/413 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>
+	苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录  |  游龙之家</title>
+
+<meta name="description" content="问题一： 升级xcode 7最低的系统配置要求">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/kube.css">
+<link rel="stylesheet" type="text/css" href="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/reset.css">
+<link rel="stylesheet" type="text/css" href="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/style.css">
+<link rel="stylesheet" type="text/css" href="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/pirobox.css" target="_blank">
+<link rel="alternate" type="application/rss+xml" title="游龙之家 RSS Feed" href="http://www.youlong118.com/feed">
+<link rel="alternate" type="application/atom+xml" title="游龙之家 Atom Feed" href="http://www.youlong118.com/feed/atom">
+<link rel="shortcut icon" href="http://www.youlong118.com/wp-content/themes/Loostrive/images/favicon.ico" type="image/x-icon">
+<link rel="pingback" href="http://www.youlong118.com/xmlrpc.php">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.youlong118.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.5"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><style type="text/css"></style><script src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<script type="text/javascript" src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/jquery.min.js"></script>
+<link rel="prev" title="UIScrollView 原理详解" href="http://www.youlong118.com/archives/411">
+<link rel="next" title="OAuth2.0和SSO授权" href="http://www.youlong118.com/archives/418">
+<link rel="canonical" href="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家.html">
+<link rel="shortlink" href="http://www.youlong118.com/?p=413">
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+<style>
+	#post_container .fixed-hight .thumbnail{height:200px; overflow: hidden;}
+</style>
+</head>
+<body class="custom-background">
+		<div id="head" class="row">
+        			
+        	<div class="mainbar row">
+                <div class="container">
+                        <div id="topbar">
+                            <ul id="toolbar" class="menu"><li id="menu-item-48" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48"><a href="http://www.youlong118.com/sample-page">关于我</a></li>
+<li id="menu-item-196" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-196"><a href="http://www.youlong118.com/archives/18">安家落户</a></li>
+</ul>                        </div>
+                        <div id="rss">
+                            <ul>
+                                <li><a href="http://www.youlong118.com/feed" target="_blank" class="icon1" title="欢迎订阅游龙之家" style="text-indent: 0px;"><span class="hover" style="opacity: 0;"></span></a></li>
+                                                                                                                                                                 <li><a href="http://mail.qq.com/cgi-bin/feed?u=http://www.youlong118.com/feed" target="_blank" class="icon4" title="用QQ邮箱阅读空间订阅本站" rel="nofollow" style="text-indent: 0px;"><span class="hover" style="opacity: 0;"></span></a></li>
+                            </ul>
+                        </div>
+                 </div>  
+             </div>
+             <div class="clear"></div>
+         				<div class="container">
+					<div id="blogname" class="third">
+                    	<a href="http://www.youlong118.com/" title="游龙之家">                        <img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/logo.png" alt="游龙之家"></a>
+                    </div>
+                 	                </div>
+				<div class="clear"></div>
+		</div>
+		<div class="mainmenus container">
+			<div class="mainmenu">
+				<div class="topnav">
+					                    <div class="menu-button"><i class="menu-ico"></i></div>
+                    <ul id="menus">
+						<li id="menu-item-157" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-157"><a href="http://www.youlong118.com/">首页</a></li>
+<li id="menu-item-31" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-31"><a href="http://www.youlong118.com/archives/category/ios">IOS 开发</a></li>
+<li id="menu-item-32" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-32"><a href="http://www.youlong118.com/archives/category/miscellanea">个人杂记</a></li>
+<li id="menu-item-158" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-158"><a href="http://www.youlong118.com/archives/category/technology">网罗天下</a></li>
+                    </ul>
+                    
+                <ul class="menu-right">
+                    <li class="menu-search">
+                    	<a href="http://www.youlong118.com/archives/413#" id="menu-search" title="搜索"></a>
+                    	<div class="menu-search-form ">
+							<form action="http://www.youlong118.com/" method="get">
+                            	<input name="s" type="text" id="search" value="" maxlength="150" placeholder="请输入搜索内容" x-webkit-speech="" style="width:135px">
+                            	<input type="submit" value="搜索" class="button">
+                            </form>
+                        </div>
+                    </li>
+                </ul> 
+                                 <!-- menus END -->                    
+            </div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		
+			<div class="container">
+		        <div class="row">
+			        </div>
+   	 	<div id="sidebar">
+		  <div class="widget box row">
+		  	<div id="tab-title">
+				<div class="tab">
+					<ul id="tabnav">
+						<li>最新文章</li>
+						<li class="selected">热评文章</li>
+						<li>随机文章</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div id="tab-content">
+				<ul class="hide">	<li><a href="http://www.youlong118.com/archives/418">OAuth2.0和SSO授权</a></li>
+	<li><a href="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家.html">苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录</a></li>
+	<li><a href="http://www.youlong118.com/archives/411">UIScrollView 原理详解</a></li>
+	<li><a href="http://www.youlong118.com/archives/399">利用openURL，在IOS应用中打开另外一个应用</a></li>
+	<li><a href="http://www.youlong118.com/archives/396">开发多个Section的tableView。</a></li>
+	<li><a href="http://www.youlong118.com/archives/391">iOS库 .a与.framework区别</a></li>
+	<li><a href="http://www.youlong118.com/archives/386">tableview的两个重用cell方法</a></li>
+	<li><a href="http://www.youlong118.com/archives/382">iOS导航控制器常用函数与navigationBar常用属性</a></li>
+	<li><a href="http://www.youlong118.com/archives/378">最新版SDWebImage的使用</a></li>
+	<li><a href="http://www.youlong118.com/archives/373">IOS网络图片缓存详解</a></li>
+</ul>
+				<ul>
+<li><a href="http://www.youlong118.com/archives/14" target="_blank" rel="bookmark" title="(转)Xcode 升级后，常常遇到的遇到的警告、错误，解决方法 (1条评论)">(转)Xcode 升级后，常常遇到的遇到的警告、错误，解决方法</a></li>
+<li><a href="http://www.youlong118.com/archives/1" target="_blank" rel="bookmark" title="如何让ASIHttpRequest支持ARC (0条评论)">如何让ASIHttpRequest支持ARC</a></li>
+<li><a href="http://www.youlong118.com/archives/222" target="_blank" rel="bookmark" title="苹果证书漫谈（总结） (0条评论)">苹果证书漫谈（总结）</a></li>
+<li><a href="http://www.youlong118.com/archives/16" target="_blank" rel="bookmark" title="ASIHTTPRequest系列(一)：同步和异步请求 (0条评论)">ASIHTTPRequest系列(一)：同步和异步请求</a></li>
+<li><a href="http://www.youlong118.com/archives/18" target="_blank" rel="bookmark" title="终于安家落户了 (0条评论)">终于安家落户了</a></li>
+<li><a href="http://www.youlong118.com/archives/20" target="_blank" rel="bookmark" title="ASIHttpResques因为GHUnitIOS.framework不存在编译失败 (0条评论)">ASIHttpResques因为GHUnitIOS.framework不存在编译失败</a></li>
+<li><a href="http://www.youlong118.com/archives/33" target="_blank" rel="bookmark" title="码农、黑客和2B程序员之间的区别 (0条评论)">码农、黑客和2B程序员之间的区别</a></li>
+<li><a href="http://www.youlong118.com/archives/159" target="_blank" rel="bookmark" title="Windows 10免费升级！7大新改变一览 (0条评论)">Windows 10免费升级！7大新改变一览</a></li>
+<li><a href="http://www.youlong118.com/archives/162" target="_blank" rel="bookmark" title="在xcode5中修改整个项目名 (0条评论)">在xcode5中修改整个项目名</a></li>
+<li><a href="http://www.youlong118.com/archives/65" target="_blank" rel="bookmark" title="苹果推送通知服务（APNs）编程 (0条评论)">苹果推送通知服务（APNs）编程</a></li></ul>
+				<ul class="hide">
+				                	<li><a href="http://www.youlong118.com/archives/396" title="开发多个Section的tableView。 的文章">开发多个Section的tableView。</a></li>
+				                	<li><a href="http://www.youlong118.com/archives/382" title="iOS导航控制器常用函数与navigationBar常用属性 的文章">iOS导航控制器常用函数与navigationBar常用属性</a></li>
+				                	<li><a href="http://www.youlong118.com/archives/310" title="iOS6和iPhone5使用第三方静态库在真机无法运行的处理 的文章">iOS6和iPhone5使用第三方静态库在真机无法运行的处理</a></li>
+				                	<li><a href="http://www.youlong118.com/archives/251" title="转：AutoLayout 使用之代码实现(VFL) 的文章">转：AutoLayout 使用之代码实现(VFL)</a></li>
+				                	<li><a href="http://www.youlong118.com/archives/264" title="Apple Watch售价349美元起 首批包含中国 的文章">Apple Watch售价349美元起 首批包含中国</a></li>
+				                	<li><a href="http://www.youlong118.com/archives/217" title="TCP/IP、Http、Socket的区别 的文章">TCP/IP、Http、Socket的区别</a></li>
+				                	<li><a href="http://www.youlong118.com/archives/222" title="苹果证书漫谈（总结） 的文章">苹果证书漫谈（总结）</a></li>
+				                	<li><a href="http://www.youlong118.com/archives/210" title="一张图告诉你三大运营商2G/3G/4G频率分配和网络制式 的文章">一张图告诉你三大运营商2G/3G/4G频率分配和网络制式</a></li>
+				                	<li><a href="http://www.youlong118.com/archives/273" title="4k屏幕是什么意思 的文章">4k屏幕是什么意思</a></li>
+				                	<li><a href="http://www.youlong118.com/archives/225" title="一个苹果证书怎么多次使用——导出p12文件 的文章">一个苹果证书怎么多次使用——导出p12文件</a></li>
+				                </ul>
+             </div>
+          </div>
+<div class="widget box row"><h3>图文展示</h3><div class="siderbar-list"><ul class="imglist clear">        <li class="post">
+            <a href="http://www.youlong118.com/archives/396" title="开发多个Section的tableView。"><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/timthumb.php" width="142" height="95" alt="开发多个Section的tableView。">            <h4>开发多个Section的tableView。</h4></a>
+        </li>
+        <li class="post">
+            <a href="http://www.youlong118.com/archives/162" title="在xcode5中修改整个项目名"><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/timthumb(1).php" width="142" height="95" alt="在xcode5中修改整个项目名">            <h4>在xcode5中修改整个项目名</h4></a>
+        </li>
+        <li class="post">
+            <a href="http://www.youlong118.com/archives/418" title="OAuth2.0和SSO授权"><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/timthumb(2).php" width="142" height="95" alt="OAuth2.0和SSO授权">            <h4>OAuth2.0和SSO授权</h4></a>
+        </li>
+        <li class="post">
+            <a href="http://www.youlong118.com/archives/310" title="iOS6和iPhone5使用第三方静态库在真机无法运行的处理"><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/timthumb(3).php" width="142" height="95" alt="iOS6和iPhone5使用第三方静态库在真机无法运行的处理">            <h4>iOS6和iPhone5使用第三方静态库在真机无法运行的处理</h4></a>
+        </li>
+        <li class="post">
+            <a href="http://www.youlong118.com/archives/353" title="Xcode快速排错"><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/noimage.gif" width="142" height="95" alt="暂无图片">            <h4>Xcode快速排错</h4></a>
+        </li>
+        <li class="post">
+            <a href="http://www.youlong118.com/archives/273" title="4k屏幕是什么意思"><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/timthumb(4).php" width="142" height="95" alt="4k屏幕是什么意思">            <h4>4k屏幕是什么意思</h4></a>
+        </li>
+        <li class="post">
+            <a href="http://www.youlong118.com/archives/373" title="IOS网络图片缓存详解"><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/noimage.gif" width="142" height="95" alt="暂无图片">            <h4>IOS网络图片缓存详解</h4></a>
+        </li>
+        <li class="post">
+            <a href="http://www.youlong118.com/archives/348" title="CocoaPods安装和使用教程"><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/noimage.gif" width="142" height="95" alt="暂无图片">            <h4>CocoaPods安装和使用教程</h4></a>
+        </li>
+        <li class="post">
+            <a href="http://www.youlong118.com/archives/264" title="Apple Watch售价349美元起 首批包含中国"><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/timthumb(5).php" width="142" height="95" alt="Apple Watch售价349美元起 首批包含中国">            <h4>Apple Watch售价349美元起 首批包含中国</h4></a>
+        </li>
+        <li class="post">
+            <a href="http://www.youlong118.com/archives/65" title="苹果推送通知服务（APNs）编程"><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/timthumb(6).php" width="142" height="95" alt="苹果推送通知服务（APNs）编程">            <h4>苹果推送通知服务（APNs）编程</h4></a>
+        </li>
+</ul></div></div>	<div id="sidebar-follow" style="top: 15px; position: static;">
+		</div>
+</div>    	<div class="mainleft" id="content">
+			<div class="article_container row  box">
+				<h1>苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录</h1>
+                    <div class="article_info">
+                        <span class="info_author info_ico">youlong118</span> 
+                        <span class="info_category info_ico"><a href="http://www.youlong118.com/archives/category/ios" rel="category tag">IOS 开发</a></span> 
+                        <span class="info_date info_ico">09-28</span>
+                        <span class="info_views info_ico">179</span>
+                        <span class="info_comment info_ico"><span><span class="screen-reader-text">苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录</span>已关闭评论</span></span>
+                    </div>
+            	<div class="clear"></div>
+            <div class="context">
+				<div id="post_content"><p><strong>问题一： 升级xcode 7最低的系统配置要求</strong></p>
+<p>升级了ios9 后使用 xcode 6.1 已经不能用了，必须升级 xcode 7才行，原先的系统是OSX 10.10.1 版本。而xcode 7.0 系统最低的系统要求是os x 10.10.4 或者以上（官方表明）。这样子不用等到新的 mac 新系统 到来也可以提前用了。</p>
+<p><strong>问题二 ：微信库64位的问题</strong><br>
+xcode 7 的动态库后缀名改了，这下子旧的项目也要重新替换。<br>
+这里有一篇文章是关于ios 微信的用法和配置 可以参考一下<br>
+不过 64 位的问题 也随之而来,如果不加入 libc++.dylib 后就会报错 编译不过<br>
+所以在微信引入库里面，需要加入</p>
+<p>libsqlite3.0.dylib<br>
+libz.dylib<br>
+SystemConfiguration.framework<br>
+libc++.dylib （如果编译错了，加上这个库进去。）</p>
+<p><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/20150921171508304" alt=""></p>
+<p>问题3 ios 9 App Transport Security Policy （ATP的问题）</p>
+<p>突然遇到这个问题是使用UIWebView加载 http 而不是https 协议的网址。<br>
+<a href="http://segmentfault.com/a/1190000002933776" target="_blank">解决的方法可以参考这里 iOS9 HTTP 不能正常使用的解决办法</a></p>
+<blockquote><p>
+在Info.plist中添加NSAppTransportSecurity类型Dictionary。<br>
+在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES</p></blockquote>
+<p>注意一点当时直接修改info.list是没生效，参考网友的做法是在target 里面info 下再添加。这个时候生效了，能够处理这个问题。不知道原理是什么，这里的参数总是很让人莫名奇妙 但能凑效</p>
+<p><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/20150921173002897" alt=""></p>
+<p>问题 4 二进制库不支持bitcode</p>
+<p>在 xcode 7 项目 中 build Settings 搜索这个字，默认情况是YES ，不支持就改成No 。<br>
+今天微信编译的时候也报相关的错，这一点真是让人纠结。xcode 设置总是多。有时候很难理解。只好一点点记录。</p>
+<p><img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/20150921174438797" alt=""></p>
+<p>问题 5 Xcode process launch failed: Security</p>
+<p>概述：之前一直是采用了企业的证书登录，所以编译过程中一直没有出现Xcode process launch failed: Security这样的问题。在xcode 7 配置好免证书进行调试，使用一个不是开发者的账号登录后会出现了这种问题。</p>
+<p>参考的办法：stackoverflow Xcode process launch failed: Security</p>
+<p>问题 6 出现了不受信任的开发者情况</p>
+<p>概述：xcode 7 免证书下，需要使用自己的AppleID。我尝试打开编译后App**出现了不受信任的开发者情况**</p>
+<p>解决办法：可以按如下操作 。以在真机ipad air 2 ， ios 9 为例<br>
+中文版：设置-通用-描述文件 选择受信任的开发者<br>
+英文版：Go to your iPhone &gt; Settings &gt; General &gt; Profile &gt; “you@email.com” &gt; Trust（引用stackoverflow 的一位解答）</p>
+<p>设置后，这个问题可以解决了，然后可以继续玩耍。</p>
+<p>问题 7 Xcode 插件Alcatraz 安装不显示Package manager</p>
+<p>参考 https://github.com/supermarin/Alcatraz/issues/352</p>
+<p>终端输入：</p>
+<p>defaults delete com.apple.dt.Xcode DVTPlugInManagerNonApplePlugIns-Xcode-7.0</p>
+<p>打开Xcode后有选项，选第一个Load,能凑效使用。</p>
+</div>
+                               	<div class="clear"></div>
+                
+                <div class="article_tags">
+                	<div class="tagcloud">
+                    	标签：                    </div>
+                </div>
+                             </div>
+		</div>
+        
+    	<div>
+		<ul class="post-navigation row">
+			<div class="post-previous twofifth">
+				上一篇 <br> <a href="http://www.youlong118.com/archives/411" rel="prev">UIScrollView 原理详解</a>            </div>
+            <div class="post-next twofifth">
+				下一篇 <br> <a href="http://www.youlong118.com/archives/418" rel="next">OAuth2.0和SSO授权</a>            </div>
+        </ul>
+	</div>
+     
+	<div class="article_container row  box article_related">
+    	<div class="related">
+		<ul>
+		<li class="related_box">
+			<a href="http://www.youlong118.com/archives/418" title="OAuth2.0和SSO授权" target="_blank">
+			<div class="r_pic">
+                    <img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/timthumb(7).php" width="140" height="94" alt="OAuth2.0和SSO授权">			</div>
+			<div class="r_title">
+					OAuth2.0和SSO授权            </div>
+            </a>
+		</li>
+			<li class="related_box">
+			<a href="http://www.youlong118.com/archives/411" title="UIScrollView 原理详解" target="_blank">
+			<div class="r_pic">
+                    <img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/timthumb(8).php" width="140" height="94" alt="UIScrollView 原理详解">			</div>
+			<div class="r_title">
+					UIScrollView 原理详解            </div>
+            </a>
+		</li>
+			<li class="related_box">
+			<a href="http://www.youlong118.com/archives/399" title="利用openURL，在IOS应用中打开另外一个应用" target="_blank">
+			<div class="r_pic">
+                    <img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/timthumb(9).php" width="140" height="94" alt="利用openURL，在IOS应用中打开另外一个应用">			</div>
+			<div class="r_title">
+					利用openURL，在IOS应用中打开另外一个应用            </div>
+            </a>
+		</li>
+			<li class="related_box">
+			<a href="http://www.youlong118.com/archives/396" title="开发多个Section的tableView。" target="_blank">
+			<div class="r_pic">
+                    <img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/timthumb(10).php" width="140" height="94" alt="开发多个Section的tableView。">			</div>
+			<div class="r_title">
+					开发多个Section的tableView。            </div>
+            </a>
+		</li>
+			<li class="related_box">
+			<a href="http://www.youlong118.com/archives/391" title="iOS库 .a与.framework区别" target="_blank">
+			<div class="r_pic">
+                    <img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/noimage.gif" width="140" height="94" alt="暂无图片">			</div>
+			<div class="r_title">
+					iOS库 .a与.framework区别            </div>
+            </a>
+		</li>
+			<li class="related_box">
+			<a href="http://www.youlong118.com/archives/386" title="tableview的两个重用cell方法" target="_blank">
+			<div class="r_pic">
+                    <img src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/noimage.gif" width="140" height="94" alt="暂无图片">			</div>
+			<div class="r_title">
+					tableview的两个重用cell方法            </div>
+            </a>
+		</li>
+	</ul>       	</div>
+	</div>
+         	<div class="clear"></div>
+	<div id="comments_box">
+		<!-- You can start editing here. -->
+			<!-- If comments are closed. -->
+		<!--<p class="nocomments">报歉!评论已关闭.</p>-->
+			    
+  <script type="text/javascript">
+  function ajacpload(){
+$('#comment_pager a').click(function(){
+    var wpurl=$(this).attr("href").split(/(\?|&)action=AjaxCommentsPage.*$/)[0];
+    var commentPage = 1;
+    if (/comment-page-/i.test(wpurl)) {
+    commentPage = wpurl.split(/comment-page-/i)[1].split(/(\/|#|&).*$/)[0];
+    } else if (/cpage=/i.test(wpurl)) {
+    commentPage = wpurl.split(/cpage=/)[1].split(/(\/|#|&).*$/)[0];
+    };
+    //alert(commentPage);//获取页数
+    var postId =$('#cp_post_id').text();
+	//alert(postId);//获取postid
+    var url = wpurl.split(/#.*$/)[0];
+    url += /\?/i.test(wpurl) ? '&' : '?';
+    url += 'action=AjaxCommentsPage&post=' + postId + '&page=' + commentPage;        
+    //alert(url);//看看传入参数是否正确
+    $.ajax({
+    url:url,
+    type: 'GET',
+    beforeSend: function() {
+    document.body.style.cursor = 'wait';
+    var C=0.7;//修改下面的选择器，评论列表div的id，分页部分的id
+    $('#thecomments,#comment_pager').css({opacity:C,MozOpacity:C,KhtmlOpacity:C,filter:'alpha(opacity=' + C * 100 + ')'});
+    var loading='Loading';
+    $('#comment_pager').html(loading);
+    },
+    error: function(request) {
+        alert(request.responseText);
+    },
+    success:function(data){
+    var responses=data.split('');
+    $('#thecomments').html(responses[0]);
+    $('#comment_pager').html(responses[1]);
+    var C=1; //修改下面的选择器，评论列表div的id，分页部分的id
+    $('#thecomments,#comment_pager').css({opacity:C,MozOpacity:C,KhtmlOpacity:C,filter:'alpha(opacity=' + C * 100 + ')'});
+    $('#cmploading').remove();
+    document.body.style.cursor = 'auto';
+    ajacpload();//自身重载一次
+	//single_js();//需要重载的js，注意
+	$body.animate( { scrollTop: $('#comment_header').offset().top - 200}, 1000);
+        }//返回评论列表顶部
+    });    
+    return false;
+    });
+}
+  </script>    </div>
+	</div>
+</div>
+<div class="clear"></div>
+<div id="footer">
+          <div class="copyright">
+  <p> Copyright © 2015 <a href="http://www.youlong118.com/"><strong>
+    游龙之家    </strong></a> Powered by <a href="http://www.wordpress.org/" rel="external">WordPress</a><br>
+            <script language="javascript" type="text/javascript" src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/16849053.js"></script><a href="http://www.51.la/?16849053" target="_blank" title="51.La 网站流量统计系统"><img alt="51.La 网站流量统计系统" src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/icon_2.gif" style="border:none"></a>
+
+<noscript>&lt;a href="http://www.51.la/?16849053" target="_blank"&gt;&lt;img alt="&amp;#x6211;&amp;#x8981;&amp;#x5566;&amp;#x514D;&amp;#x8D39;&amp;#x7EDF;&amp;#x8BA1;" src="http://img.users.51.la/16849053.asp" style="border:none" /&gt;&lt;/a&gt;</noscript>           </p>
+  <p class="author"><a href="mailto:youlong118@qq.com" rel="external">E-MAIL:youlong118@qq.com</a></p>
+  </div>
+</div>
+
+<!--gototop-->
+<div id="tbox">
+    <a id="home" href="http://www.youlong118.com/"></a>
+      <a id="pinglun" href="http://www.youlong118.com/archives/413#comments_box"></a>
+    <a id="gotop" href="javascript:void(0)" style="display: none;"></a> </div>
+<script type="text/javascript" src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/loostrive.js"></script>
+<script type="text/javascript" src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/comments-ajax.js"></script> 
+<script type="text/javascript" src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/realgravatar.js"></script> 
+<script type="text/javascript" src="./苹果开发 笔记（80）升级IOS 9 和 XCode 7 引起的问题记录 _ 游龙之家_files/pirobox.js"></script>
+<div class="piro_overlay" style="display: none; opacity: 0.3; height: 2731px;"></div><table class="pirobox_content" cellpadding="0" cellspacing="0" style="display: none;"><tbody><tr><td colspan="3" class="pirobox_up"><a href="http://www.youlong118.com/archives/413#close" class="piro_close" title="关闭"></a></td></tr><tr><td class="t_l"></td><td class="t_c"></td><td class="t_r"></td></tr><tr><td class="c_l"></td><td class="c_c"><span><span></span></span><div></div></td><td class="c_r"></td></tr><tr><td class="b_l"></td><td class="b_c"></td><td class="b_r"></td></tr><tr><td colspan="3" class="pirobox_down"><div class="piro_nav"><div class="caption"></div></div><a href="http://www.youlong118.com/archives/413#play" class="play" title="播放幻灯" style="display: none;"></a><a href="http://www.youlong118.com/archives/413#prev" class="piro_prev" title="上一张"></a><a href="http://www.youlong118.com/archives/413#next" class="piro_next" title="下一张"></a></td></tr></tbody></table><div id="imgCache" style="display:none"></div></body></html>

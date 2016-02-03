@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://www.isaced.com/post-258.html -->
+<html lang="zh-CN" class="no-js"><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+    <title>iOS 后台任务之 Long-running background task - isaced</title>
+	<!--[if lt IE 9]>
+    <script type="text/javascript" src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="http://cdn.staticfile.org/normalize/3.0.1/normalize.min.css">
+    <link rel="stylesheet" href="http://www.isaced.com/usr/themes/navy/style.css">
+    <meta name="description" content="最近项目里遇到需求需要App进入后台还能执行一些任务，于是便Google了一下，整理一篇小记录。大家都知道iOS系统里，所有App进入后台的时候默认都是会暂停所有线程，等到再双击Home键回到前...">
+<link rel="pingback" href="http://www.isaced.com/action/xmlrpc">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.isaced.com/action/xmlrpc?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.isaced.com/action/xmlrpc?wlw">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.isaced.com/feed/post-258.html">
+<link rel="alternate" type="application/rdf+xml" title="RSS 1.0" href="http://www.isaced.com/feed/rss/post-258.html">
+<link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="http://www.isaced.com/feed/atom/post-258.html">
+<script src="./iOS 后台任务之 Long-running background task - isaced_files/hm.js"></script><script type="text/javascript">
+(function () {
+    window.TypechoComment = {
+        dom : function (id) {
+            return document.getElementById(id);
+        },
+    
+        create : function (tag, attr) {
+            var el = document.createElement(tag);
+        
+            for (var key in attr) {
+                el.setAttribute(key, attr[key]);
+            }
+        
+            return el;
+        },
+
+        reply : function (cid, coid) {
+            var comment = this.dom(cid), parent = comment.parentNode,
+                response = this.dom('respond-post-258'), input = this.dom('comment-parent'),
+                form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
+                textarea = response.getElementsByTagName('textarea')[0];
+
+            if (null == input) {
+                input = this.create('input', {
+                    'type' : 'hidden',
+                    'name' : 'parent',
+                    'id'   : 'comment-parent'
+                });
+
+                form.appendChild(input);
+            }
+
+            input.setAttribute('value', coid);
+
+            if (null == this.dom('comment-form-place-holder')) {
+                var holder = this.create('div', {
+                    'id' : 'comment-form-place-holder'
+                });
+
+                response.parentNode.insertBefore(holder, response);
+            }
+
+            comment.appendChild(response);
+            this.dom('cancel-comment-reply-link').style.display = '';
+
+            if (null != textarea && 'text' == textarea.name) {
+                textarea.focus();
+            }
+
+            return false;
+        },
+
+        cancelReply : function () {
+            var response = this.dom('respond-post-258'),
+            holder = this.dom('comment-form-place-holder'), input = this.dom('comment-parent');
+
+            if (null != input) {
+                input.parentNode.removeChild(input);
+            }
+
+            if (null == holder) {
+                return true;
+            }
+
+            this.dom('cancel-comment-reply-link').style.display = 'none';
+            holder.parentNode.insertBefore(response, holder);
+            return false;
+        }
+    };
+})();
+</script><style type="text/css"></style>
+<script type="text/javascript">
+(function () {
+    var event = document.addEventListener ? {
+        add: 'addEventListener',
+        focus: 'focus',
+        load: 'DOMContentLoaded'
+    } : {
+        add: 'attachEvent',
+        focus: 'onfocus',
+        load: 'onload'
+    };
+
+    document[event.add](event.load, function () {
+        var r = document.getElementById('respond-post-258');
+
+        if (null != r) {
+            var forms = r.getElementsByTagName('form');
+            if (forms.length > 0) {
+                var f = forms[0], textarea = f.getElementsByTagName('textarea')[0], added = false;
+
+                if (null != textarea && 'text' == textarea.name) {
+                    textarea[event.add](event.focus, function () {
+                        if (!added) {
+                            var input = document.createElement('input');
+                            input.type = 'hidden';
+                            input.name = '_';
+                            input.value = (function () {
+    var _cu8 = /* 'AAd'//'AAd' */''+'947'//'O'
++//'eS'
+'8b'+//'iZ'
+'iZ'+//'a'
+'295'+//'0H1'
+'d45'+'a'//'z'
++//'AD'
+'AD'+//'Q0'
+'Q0'+//'ML'
+'f'+'b6'//'GH'
++'3'//'6j'
++//'W1'
+'1'+//'g'
+'g'+'Kes'//'Kes'
++'74c'//'9'
++'cc'//'5h'
++/* '8x'//'8x' */''+//'nB'
+'271'+//'ky'
+'0'+'0uw'//'0uw'
++//'M'
+'8'+//'f2'
+'8d9'+//'iCm'
+'f'+''///*'y8'*/'y8'
++'S'//'S'
++//'NX'
+'5', _1eVNOMV = [[5,7],[12,14],[12,14],[17,18],[17,20],[26,29],[31,32]];
+    
+    for (var i = 0; i < _1eVNOMV.length; i ++) {
+        _cu8 = _cu8.substring(0, _1eVNOMV[i][0]) + _cu8.substring(_1eVNOMV[i][1]);
+    }
+
+    return _cu8;
+})();
+
+                            f.appendChild(input);
+                            added = true;
+                        }
+                    });
+                }
+            }
+        }
+    });
+})();
+</script><script type="text/javascript" src="./iOS 后台任务之 Long-running background task - isaced_files/t.js"></script><script type="text/javascript" async="" src="./iOS 后台任务之 Long-running background task - isaced_files/embed.js" charset="UTF-8"></script><link type="text/css" rel="stylesheet" href="./iOS 后台任务之 Long-running background task - isaced_files/embed.default.css"><style type="text/css">	#ds-reset .ds-avatar img{
+	width:54px;height:54px; /*设置图像的长和宽*/
+	border-radius: 27px;/*设置图像圆角效果,在这里我直接设置了超过width/2的像素，即为圆形了*/
+	-webkit-border-radius: 27px;/*圆角效果：兼容webkit浏览器*/
+	-moz-border-radius:27px;
+	box-shadow: inset 0 -1px 0 #3333sf;/*设置图像阴影效果*/
+	-webkit-box-shadow: inset 0 -1px 0 #3333sf;
+	-webkit-transition: 0.4s;	
+	-webkit-transition: -webkit-transform 0.4s ease-out;
+	transition: transform 0.4s ease-out;/*变化时间设置为0.4秒(变化动作即为下面的图像旋转360读）*/
+    	-moz-transition: -moz-transform 0.4s ease-out;
+    	}
+
+ 
+#ds-reset .ds-avatar img:hover{/*设置鼠标悬浮在头像时的CSS样式*/
+	box-shadow: 0 0 10px #fff; rgba(255,255,255,.6), inset 0 0 20px rgba(255,255,255,1);
+	-webkit-box-shadow: 0 0 10px #fff; rgba(255,255,255,.6), inset 0 0 20px rgba(255,255,255,1);
+	transform: rotateZ(360deg);/*图像旋转360度*/
+	-webkit-transform: rotateZ(360deg);
+    	-moz-transform: rotateZ(360deg);
+   	}
+</style></head>
+<body>
+<div class="move-block">
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                                    <a id="logo" href="http://www.isaced.com/">
+                        isaced                    </a>
+                        	    <p class="description">一个关注移动互联网，iOS开发的个人博客。</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class=" current" href="http://www.isaced.com/">博客</a>
+															<a href="http://www.isaced.com/archives.html" title="归档">归档</a>
+										<a href="http://www.isaced.com/project.html" title="项目">项目</a>
+										<a href="http://www.isaced.com/about.html" title="关于">关于</a>
+									</nav>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="side-click icon-arrow-down"></div>
+<div id="body">
+    <div class="container">
+        <div class="col-group"><div class="col-8" id="main">
+	<div class="res-cons">
+		<article class="post">			
+			<date class="post-meta">
+				July 23, 2014			</date>
+			<header>
+				<h1 class="post-title">iOS 后台任务之 Long-running background task</h1>
+			</header>
+			<div class="post-content">
+				<p>最近项目里遇到需求需要App进入后台还能执行一些任务，于是便Google了一下，整理一篇小记录。</p>
+<p>大家都知道iOS系统里，所有App进入后台的时候默认都是会暂停所有线程，等到再双击Home键回到前台才会继续执行。那有的场景需要在后台进行upload、download，或者进行一些计算等等怎么办呢？</p>
+<p>iOS7推出了一些新的API，让，那就是 <code>NSURLSession</code> ，就是为了取代前 <code>NSURLConnection</code> 而生，在我们常用的 <code>AFNetworking 2.0</code> 中也新增了对其的支持 (AFURLSessionManager/AFHTTPSessionManager) ，用 <code>NSURLSession</code> 可以很方便快速地进行一些后台的网络任务，很强大，网上资料也很多了，本文就不多提它了，后面也许会单独对 NSURLSession 后台任务专门写篇文章。</p>
+<p>今天要介绍的是 <code>long-running background task</code>，"长时间运行后台任务"，中文应该是这个名字，当我们需要进入后台不暂停程序，就可以给系统说一声 "我需要在后台执行任务了哦~"，然后你的 App 就不会被系统挂起，准确来说是延迟暂停，注意这是全局的，意思就是 App 里所有东西都将正常执行，就跟在前台一样。不过系统给你这个权限的时间是有限的。</p>
+<h3>Begin</h3>
+<p>首先我们需要定义一个 <code>UIBackgroundTaskIdentifier</code> 对象，噢，Command 点进去居然是个<code>NSUInteger</code>，</p>
+<pre><code>    UIBackgroundTaskIdentifier myTask;
+</code></pre>
+<p>然后有两个方法来开始后台任务，都是在 <code>UIApplication</code> 里，可以看到第二个方法可以传一个taskName参数，而且是iOS7新增的。（原来 iOS4.0 就支持了~）<br>
+在 Apple 的文档里是这么介绍的：</p>
+<blockquote>
+<p>Marks the beginning of a new long-running background task.</p>
+</blockquote>
+<pre><code>- (UIBackgroundTaskIdentifier)beginBackgroundTaskWithExpirationHandler:(void(^)(void))handler  NS_AVAILABLE_IOS(4_0);
+- (UIBackgroundTaskIdentifier)beginBackgroundTaskWithName:(NSString *)taskName expirationHandler:(void(^)(void))handler NS_AVAILABLE_IOS(7_0);
+</code></pre>
+<p>好，那我们来开始一个后台任务：</p>
+<pre><code>    myTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        // 后台任务到期执行，好像是10分钟
+    }];
+</code></pre>
+<p>执行上面这句话后，当你的 App 再次进入后台时就不会被马上暂停了。但是我们不能滥用这个，为了自己的App负责，也为用户的 iPhone 负责，关键是滥用的话 App Store 审核那也过不去的...</p>
+<h3>Stop</h3>
+<p>所以，有开就有关：</p>
+<pre><code>    [[UIApplication sharedApplication] endBackgroundTask: myTask];
+    myTask = UIBackgroundTaskInvalid;
+</code></pre>
+<p>另外 <code>UIApplication</code> 还提供两个个属性 <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UIApplication_Class/Reference/Reference.html#//apple_ref/occ/instp/UIApplication/backgroundTimeRemaining"><code>backgroundTimeRemaining</code></a> 和 <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UIApplication_Class/Reference/Reference.html#//apple_ref/occ/instp/UIApplication/backgroundRefreshStatus"><code>backgroundRefreshStatus</code></a>，可自行研究...</p>
+<hr>
+<blockquote>
+<p>注：关于这个时间问题，笔者也有些不解，在测试的时候 ExpirationHandler 会在 180 秒左右，也就是 3 分钟的时候触发，但后台任务还是在继续。求大神解惑！</p>
+</blockquote>
+<hr>
+<p>参考文章：</p>
+<ul>
+<li><a href="https://developer.apple.com/library/ios/DOCUMENTATION/iPhone/Conceptual/iPhoneOSProgrammingGuide/ManagingYourApplicationsFlow/ManagingYourApplicationsFlow.html#//apple_ref/doc/uid/TP40007072-CH4-SW1">iOS App Programming Guide - App States and Multitasking</a></li>
+<li><a href="http://www.codeproject.com/Articles/124159/Hour-21-Building-Background-Aware-Applications">Hour 21: Building Background-Aware Applications</a></li>
+<li><a href="http://stackoverflow.com/questions/15788106/continue-uploading-process-in-background-ios">Continue uploading process in background IOS</a></li>
+</ul>
+			</div>
+					</article>
+				<div id="comments"> 
+            <!-- 多说评论框 start -->
+            <div class="ds-thread" data-thread-key="258" data-title="iOS 后台任务之 Long-running background task" data-author-key="1" data-url="" id="ds-thread"><div id="ds-reset"><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://isaced.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://isaced.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://isaced.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a href="http://isaced.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多»</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://isaced.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://isaced.duoshuo.com/login/netease/" rel="nofollow" class="ds-service-link ds-netease">网易</a></li><li><a href="http://isaced.duoshuo.com/login/sohu/" rel="nofollow" class="ds-service-link ds-sohu">搜狐</a></li><li><a href="http://isaced.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://isaced.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="./iOS 后台任务之 Long-running background task - isaced_files/noavatar_default.png" alt=""></a><form method="post"><input type="hidden" name="thread_id" value="1310669537366018485">
+<input type="hidden" name="parent_id" value="">
+<input type="hidden" name="nonce" value="54fcec64b1431"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"></div></div></form></div><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc ds-current">最新</a><a class="ds-order-asc">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);"><span class="ds-highlight">4</span>条评论</a></li>  </ul></div><ul class="ds-comments"><li class="ds-post" data-post-id="1310669537367191216"><div class="ds-post-self" data-post-id="1310669537367191216" data-thread-id="1310669537366018485" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="573321"><a rel="nofollow author" target="_blank" href="http://www.ianisme.com/" onclick="this.href=&#39;http://isaced.duoshuo.com/user-url/?user_id=573321&#39;;" title="ian"><img src="./iOS 后台任务之 Long-running background task - isaced_files/141273.jpg" alt="ian"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://www.ianisme.com/" onclick="this.href=&#39;http://isaced.duoshuo.com/user-url/?user_id=573321&#39;;" rel="nofollow" target="_blank" data-user-id="573321">ian</a></div><p>后台能持续600秒停止</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2014-10-18T14:01:39+08:00" title="2014年10月18日 下午2:01:39">2014年10月18日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1310669537367191193"><div class="ds-post-self" data-post-id="1310669537367191193" data-thread-id="1310669537366018485" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="2402388"><a rel="nofollow author" target="_blank" href="http://t.qq.com/zctxwb" onclick="this.href=&#39;http://isaced.duoshuo.com/user-url/?user_id=2402388&#39;;" title="久违的寂静"><img src="./iOS 后台任务之 Long-running background task - isaced_files/50" alt="久违的寂静"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/zctxwb" onclick="this.href=&#39;http://isaced.duoshuo.com/user-url/?user_id=2402388&#39;;" rel="nofollow" target="_blank" data-user-id="2402388">久违的寂静</a></div><p>走过路过，不要错过。买不了吃亏，买不了上当~~</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2014-08-21T16:55:09+08:00" title="2014年8月21日 下午4:55:09">2014年8月21日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1310669537367191159"><div class="ds-post-self" data-post-id="1310669537367191159" data-thread-id="1310669537366018485" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="5649082"><a rel="nofollow author" target="_blank" href="http://weibo.com/3237354390" onclick="this.href=&#39;http://isaced.duoshuo.com/user-url/?user_id=5649082&#39;;" title="左之蓝调"><img src="./iOS 后台任务之 Long-running background task - isaced_files/0" alt="左之蓝调"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/3237354390" onclick="this.href=&#39;http://isaced.duoshuo.com/user-url/?user_id=5649082&#39;;" rel="nofollow" target="_blank" data-user-id="5649082">左之蓝调</a></div><p>忙的时候还来写一篇博文，给你赞一个</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2014-07-23T17:42:21+08:00" title="2014年7月23日 下午5:42:21">2014年7月23日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div><ul class="ds-children"><li class="ds-post" data-post-id="1310669537367191161"><div class="ds-post-self" data-post-id="1310669537367191161" data-thread-id="1310669537366018485" data-root-id="1310669537367191159" data-source="duoshuo"><div class="ds-avatar" data-user-id="5155693"><a rel="nofollow author" target="_blank" href="http://t.qq.com/isaced" onclick="this.href=&#39;http://isaced.duoshuo.com/user-url/?user_id=5155693&#39;;" title="isaced"><img src="./iOS 后台任务之 Long-running background task - isaced_files/50(1)" alt="isaced"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/isaced" onclick="this.href=&#39;http://isaced.duoshuo.com/user-url/?user_id=5155693&#39;;" rel="nofollow" target="_blank" data-user-id="5155693">isaced</a></div><p>只是顺手记录下.</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2014-07-24T08:51:27+08:00" title="2014年7月24日 上午8:51:27">2014年7月24日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li></ul></li></ul><div class="ds-paginator" style="display: none;"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">多说</a></p></div></div>
+        <!-- 多说评论框 end -->
+        <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+        <script type="text/javascript">
+        var duoshuoQuery = {short_name:"isaced"};
+            (function() {
+                var ds = document.createElement('script');
+                ds.type = 'text/javascript';ds.async = true;
+                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                ds.charset = 'UTF-8';
+                (document.getElementsByTagName('head')[0] 
+                 || document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+            </script>
+        <!-- 多说公共JS代码 end -->
+     
+</div>			</div>
+</div>
+<div id="secondary">
+<div class="sidebar">
+	
+    <section class="widget">
+        <form id="search" method="post" action="http://www.isaced.com/">
+            <input type="text" name="s" class="text" placeholder="搜索...">
+            <button type="submit" class="submit icon-search">搜索</button>
+        </form>
+    </section>
+
+        <section class="widget">
+		<h3 class="widget-title">分类</h3>
+        <ul class="widget-list widget-list2">
+            <li><h3><a href="http://www.isaced.com/sort/1">原创发布</a></h3></li><li><h3><a href="http://www.isaced.com/sort/2">与你分享</a></h3></li><li><h3><a href="http://www.isaced.com/sort/3">代码聚集地</a></h3></li><li><h3><a href="http://www.isaced.com/sort/4">C/C++</a></h3></li><li><h3><a href="http://www.isaced.com/sort/5">iOS</a></h3></li><li><h3><a href="http://www.isaced.com/sort/6">Web</a></h3></li><li><h3><a href="http://www.isaced.com/sort/7">C#</a></h3></li><li><h3><a href="http://www.isaced.com/sort/8">Python</a></h3></li>        </ul>
+	</section>
+    
+    
+        </div>
+</div>		</div>
+    </div>
+</div>
+<footer id="footer">
+	<div class="container">
+        Powered by <a rel="nofollow" href="http://typecho.org/">Typecho</a>
+	</div>
+</footer>
+</div>
+<div class="site-search">
+</div>
+<p class="link-back2top" style="display: none;"><a href="http://www.isaced.com/post-258.html#" title="Back to top">Back to top</a></p>
+
+<script type="text/javascript" src="./iOS 后台任务之 Long-running background task - isaced_files/jquery.min.js"></script>
+<script type="text/javascript" src="./iOS 后台任务之 Long-running background task - isaced_files/index.js"></script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7b969e583bd831e81ad0fdeeeae26674";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body></html>

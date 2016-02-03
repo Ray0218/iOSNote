@@ -1,0 +1,139 @@
+//
+//  toolkit.cpp
+//  LotteryLibrary
+//
+//  Created by wufan on 15/4/29.
+//  Copyright (c) 2015年 DACAI. All rights reserved.
+//
+
+#include <zlib/zlib.h>
+#include "toolkit.h"
+
+namespace lottlib {
+    namespace math {
+
+        /* tea encrypt */
+        void tea_encipher(int num_rounds, uint32_t v[2], uint32_t const key[4]) {
+            uint32_t v0 = v[0], v1 = v[1], sum = 0, delta = 0x9E3779B9;
+            for (int i = 0; i < num_rounds; i++) {
+                v0 += (((v1 << 4) ^ (v1 >> 5)) + v1) ^ (sum + key[sum & 3]);
+                sum += delta;
+                v1 += (((v0 << 4) ^ (v0 >> 5)) + v0) ^ (sum + key[(sum >> 11) & 3]);
+            }
+            v[0] = v0;
+            v[1] = v1;
+        }
+
+        /* tea decrypt */
+        void tea_decipher(int num_rounds, uint32_t v[2], uint32_t const key[4]) {
+            uint32_t v0 = v[0], v1 = v[1], delta = 0x9E3779B9, sum = delta * num_rounds;
+            for (int i = 0; i < num_rounds; i++) {
+                v1 -= (((v0 << 4) ^ (v0 >> 5)) + v0) ^ (sum + key[(sum >> 11) & 3]);
+                sum -= delta;
+                v0 -= (((v1 << 4) ^ (v1 >> 5)) + v1) ^ (sum + key[sum & 3]);
+            }
+            v[0] = v0;
+            v[1] = v1;
+        }
+
+        /* HTTP gzip decompress */
+        int httpgzdecompress(const void *zdata, int nzdata,
+            void *data, int *ndata) {
+            int err = 0;
+            z_stream d_stream = { 0 }; /* decompression stream */
+            static char dummy_head[2] = {
+                0x8 + 0x7 * 0x10,
+                (((0x8 + 0x7 * 0x10) * 0x100 + 30) / 31 * 31) & 0xFF,
+            };
+            d_stream.zalloc = (alloc_func)0;
+            d_stream.zfree = (free_func)0;
+            d_stream.opaque = (voidpf)0;
+            d_stream.next_in = (Byte *)zdata;
+            d_stream.avail_in = 0;
+            d_stream.next_out = (Byte *)data;
+            if (inflateInit2(&d_stream, 47) != Z_OK) {
+                return -1;
+            }
+            while (d_stream.total_out < *ndata && d_stream.total_in < nzdata) {
+                d_stream.avail_in = d_stream.avail_out = 1; /* force small buffers */
+                if ((err = inflate(&d_stream, Z_NO_FLUSH)) == Z_STREAM_END) {
+                    break;
+                }
+                if (err != Z_OK) {
+                    if (err == Z_DATA_ERROR) {
+                        d_stream.next_in = (Bytef*)dummy_head;
+                        d_stream.avail_in = sizeof(dummy_head);
+                        if ((err = inflate(&d_stream, Z_NO_FLUSH)) != Z_OK) {
+                            return -1;
+                        }
+                    } else {
+                        return -1;
+                    }
+                }
+            }
+            if (inflateEnd(&d_stream) != Z_OK) {
+                return -1;
+            }
+            *ndata = (int)d_stream.total_out;
+            return 0;
+        }
+
+        /**
+         *  n个数中取m个数的组合个数
+         *
+         *  @param n [in]n
+         *  @param m [in]m
+         *
+         *  @return 组合个数
+         */
+        int combination(int n, int m) {
+            if (n < m || m <= 0 || n <= 0) {
+                return 0;
+            }
+            
+            // n! / (m! * (n - m)!)
+            unsigned long long denominator = 1;
+            unsigned long long member = 1;
+            
+            int min = m;
+            int max = n - m;
+            if (min > max) {
+                std::swap(min, max);
+            }
+            
+            for (int i = max + 1; i <= n; i++) {
+                denominator *= i;
+            }
+            for (int i = 1; i <= min; i++) {
+                member *= i;
+            }
+            
+            return static_cast<int>(denominator / member);
+        }
+        
+        /**
+         *  判断内存区域是否全为0
+         *
+         *  @param mem [in]目标内存地址
+         *  @param n   [in]内存区域大小
+         */
+        bool is_zero(void *mem, size_t n) {
+            unsigned long int_count = n / sizeof(unsigned int);
+            unsigned int *int_point = static_cast<unsigned int *>(mem);
+            for (int i = 0; i < int_count; i++) {
+                if (int_point[i]) {
+                    return false;
+                }
+            }
+            
+            unsigned long  char_count = n - int_count * sizeof(unsigned int);
+            unsigned char *char_point = static_cast<unsigned char *>(mem) + int_count * sizeof(unsigned int);
+            for (int i = 0; i < char_count; i++) {
+                if (char_point[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+}

@@ -1,0 +1,878 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0065)http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta content="360doc" name="classification">
+    
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.360doc.cn/article/19175681_438612962.html">
+    <meta content="bundle,配置,ios" name="keywords">
+    <meta content="iOS开发中Settings.bundle的使用" name="description">
+    <meta name="mobile-agent" content="format=html5;url=http://www.360doc.cn/article/19175681_438612962.html">
+
+    <meta content="www.360doc.com" name="author">
+
+    <title>
+        iOS开发中Settings.bundle的使用
+    </title>
+    <link href="./iOS开发中Settings.bundle的使用_files/bdsstyle.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./iOS开发中Settings.bundle的使用_files/jquery1.js"></script>
+    <script type="text/javascript" src="./iOS开发中Settings.bundle的使用_files/jQuery.md5.js"></script>
+    
+    <script type="text/javascript" language="javascript">
+        window.onerror = ignoreError;
+        function ignoreError() {
+            return true;
+        }
+    </script>
+
+    <link href="./iOS开发中Settings.bundle的使用_files/wzhead-cleaned.css" rel="stylesheet" type="text/css">
+    <link href="./iOS开发中Settings.bundle的使用_files/wz20130912-cleaned.css" rel="stylesheet" type="text/css">
+
+
+    
+
+    <script type="text/javascript" src="./iOS开发中Settings.bundle的使用_files/indexhead.js"></script><script type="text/javascript" src="./iOS开发中Settings.bundle的使用_files/chat.js"></script><script type="text/javascript" src="./iOS开发中Settings.bundle的使用_files/chatuserlist.js"></script><link rel="stylesheet" type="text/css" href="./iOS开发中Settings.bundle的使用_files/chat.css">
+    <script type="text/javascript" src="./iOS开发中Settings.bundle的使用_files/showarticlefollow20130912.js"></script>
+<script type="text/javascript" src="./iOS开发中Settings.bundle的使用_files/EssayforIE120425.js"></script><link href="./iOS开发中Settings.bundle的使用_files/bdsstyle(1).css" rel="stylesheet" type="text/css"></head>
+<body style="font-family: Arial, Helvetica, sans-serif;" onmouseup="setDragEnd()" onmousemove="DragDiv();" onclick="delAllDiv(event)"><iframe frameborder="0" style="display: none;"></iframe><div id="bdshare_s" style="display: block;"><iframe id="bdsIfr" style="position:absolute;display:none;z-index:9999;" frameborder="0"></iframe><div id="bdshare_l" style="display: none;"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_mshare mshare">一键分享</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_renren rrw">人人网</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_douban db">豆瓣网</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_sqq sqq">QQ好友</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_thx thx">和讯微博</a></li><li><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="bds_more">更多...</a></li></ul><p><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" class="goWebsite">百度分享</a></p></div></div></div>
+
+
+    <span id="LayerLogin"></span>
+    <div style="position: fixed; width: 100%; z-index: 1000;">
+        <div class="mainnav" style="width: 1857px;">
+            <div class="mainnav1" style="margin-left: 113.5px;">
+                <div class="lf360" style="padding-left: 5px;">
+                    <img src="./iOS开发中Settings.bundle的使用_files/logoo.gif">
+                </div>
+                <div style="width: 625px; padding-top: 0px; padding-left: 4px; position: absolute;">
+                    <table height="34" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr id="daohangtr">
+                                <td style="width: 185px; _width: 0px; *width: 0px !important;"></td>
+                                <td class="navwz1" width="95">
+                                    <a href="http://www.360doc.com/index.html">首&nbsp;页</a>
+                                </td>
+                                <td width="100" class="  navwz1">
+                                    <a href="http://www.360doc.com/readroom.html">阅览室</a>
+                                </td>
+                                <td width="88" class="  navwz1">
+                                    <a href="http://www.360doc.com/weekstar.html">馆友</a>
+                                </td>
+                                <td width="132" class="  navwz1">
+                                    <a href="http://www.360doc.com/my360doc.aspx">我的图书馆</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rt360" style="padding-top: 6px; width: 133px; padding-left: 38px;" id="outerdiv"><div class="denglbj lan2"><div style=" width:43px; float:left; text-align:center;" onmouseover="this.style.backgroundColor=&#39;#e5e5e5&#39;;this.parentNode.className=&#39;denglbj2 lan2&#39;" onmouseout="this.style.backgroundColor=&#39;#fcfcfc&#39;;this.parentNode.className=&#39;denglbj lan2&#39;"><a href="javascript:void(0)" onclick="loginnew()">登录</a></div><div style=" width:1px; float:left; "></div><div style="width:46px; float:left;text-align:center; margin-left:1px;*margin-left:0px;" onmouseover="this.style.backgroundColor=&#39;#e5e5e5&#39;;this.parentNode.className=&#39;denglbj3 lan2&#39;" onmouseout="this.style.backgroundColor=&#39;#fcfcfc&#39;;this.parentNode.className=&#39;denglbj lan2&#39;" id="regdiv"><a href="http://www.360doc.com/register.aspx?refer=800" target="_blank">注册</a></div><div class="boxwid xinngdui" id="bfdiv"><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#"><img id="imgbfabc" src="./iOS开发中Settings.bundle的使用_files/5.gif"></a></div><div style=" position: absolute; margin-left:35px; *margin-left:-95px;_margin-left:-93px; width:96px;display:none;z-index:200;" id="func"><div class="tugduo3" id="divfunc" style="cursor:pointer;float:right; width:41px;"><div style=" height:26px; width:39px; border:1px solid #d4d4d4; border-bottom:none; background-color:#fff;"></div></div><div class="tipzhu3  right hui2" id="layerdiv"><ul><li><a href="http://www.360doc.com/advice.html" target="_blank">留言交流</a></li><li><a href="http://www.360doc.com/helpnew.html" target="_blank">网文摘手</a></li><li><a href="http://www.360doc.com/mobilapp.htm" target="_blank">手机客户端</a></li><li style=" border:none;"><a href="http://www.360doc.com/help.html" target="_blank">帮助</a></li></ul></div></div></div></div>
+                <div class=" rt360" style="padding-top: 6px; padding-right: 0px;">
+                    <div class="lf360 serch">
+                        <input name="input2" class="serchpt" id="txtSearchword" onkeydown="ongosearch()" onkeyup="showIntelliSense()" onfocus="if(this.value==&#39;搜文章 找馆友&#39;) this.value=&#39;&#39;;this.style.color=&#39;#272727&#39;" onblur="if(!this.value) {this.value=&#39;搜文章 找馆友&#39;;this.style.color=&#39;#b2b2b2&#39;;}" onpaste="showIntelliSense1()" type="text" value="搜文章 找馆友">
+                    </div>
+                    <div class="lf360 ssuo">
+                        <a id="searchlinkid" href="javascript:gosearch();"></a>
+                    </div>
+                    <div id="divsearch" style="margin-top: 25px; margin-left: 1px; display: block; position: absolute; z-index: 100;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navxt" style="width: 1857px;">
+        </div>
+    </div>
+    <div style="height: 44px; _height: 0px; width: 100%;"></div>
+
+    <div class="both">
+    </div>
+    <div id="docTotalInfo" class="mainzt" style="width: 1047px;">
+        <table class="index_main" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td align="left" valign="top" width="727px">
+                        <div id="ADAboveArtContent"><iframe marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="728" height="90" src="./iOS开发中Settings.bundle的使用_files/aboveConentAD2.html"></iframe></div>
+                        <div style="height: 7px;">
+                        </div>
+                        <table border="0" cellpadding="0" cellspacing="0" class="mainbj6" id="docArtClass">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; text-align: center;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table style="width: 100%; text-align: left;" border="0" cellpadding="0" cellspacing="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="biaoti">
+                                                                        <div class="biaoti2 lf360">
+                                                                            iOS开发中Settings.bundle的使用
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="height: 32px;">
+
+
+                                                                        <div style="width: 670px; height: 28px; padding-left: 26px; color: #777b7a;">
+                                                                            <table>
+                                                                                <tbody><tr>
+                                                                                    <td>收藏人：<span class="name" onclick="wzhitnew(1);"><a href="http://www.360doc.com/userhome/19175681" target="_blank">方海龙的书馆</a></span>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="btzctsg" id="spanfollowstatus"><div class="gzbt1"><a onclick="gzuser(19175681);wzhitnew(2);" href="javascript:void(0)"></a></div></div>
+                                                                                        <script>isfollow(19175681);</script>
+
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="ytdh1"><a onclick="doctalk();wzhitnew(106);" href="javascript:void(0)"></a></div>
+
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                            </tbody></table>
+                                                                        </div>
+
+
+
+
+                                                                        <div class="wztopxx">
+                                                                            <div style="float: left; height: 28px; padding-top: 7px;">
+                                                                                <table cellpadding="0" cellspacing="0" style="position: relative; z-index: 4">
+                                                                                    <tbody>
+                                                                                        <tr>
+
+                                                                                            <td>
+                                                                                                2015-01-06&nbsp;|&nbsp;阅：<span id="360doc_Readnum">422</span>&nbsp;&nbsp;<span style="position: relative;">转：<span onclick="wzhitnew(3)" id="360doc_saverNum"><span style="cursor:pointer;" onclick="javascript:ShowSaverUser();">4</span></span><span id="360doc_saverUser"><div id="sameArtOuter" style="display:none;position: absolute; height:305px;width:144px;left:0px;margin-top:15px;z-index:100000;"><div id="sameArt" style=" overflow-y: auto;  height:300px;overflow-x: hidden; z-index: 100;right:0px;margin-top:-10px;" onclick="event.cancelBubble=true;"></div></div></span></span>&nbsp;&nbsp;
+
+
+
+                                                                                            </td>
+
+                                                                                            <td>
+                                                                                                <div style="position: relative;">
+                                                                                                    &nbsp;|&nbsp;<span id="docsource">&nbsp;&nbsp;<a onclick="wzhitnew(14);" href="http://git.devzeng.com/blog/ios-settings-bundle.html" target="_blank">来源</a></span>
+                                                                                                </div>
+                                                                                                <div class="sekuaibox" style="display: none; margin-left: 48px;" id="zihaoboxID">
+                                                                                                    <div style="padding-top: 10px; padding-left: 5px;">
+                                                                                                        <div class="lf360 danxunbt">
+                                                                                                            <input id="artdocfont3" onclick="ChangeArtSize(3, this); wzhitnew(15); " name="radio" type="radio" value="1">
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunwz" onclick="ChangeArtSize(3,this);wzhitnew(15); " style="cursor: pointer;">
+                                                                                                            大
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunbt">
+                                                                                                            <input id="artdocfont2" onclick="ChangeArtSize(2, this); wzhitnew(16); " name="radio" type="radio" value="2">
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunwz" onclick="ChangeArtSize(2,this);wzhitnew(16); " style="cursor: pointer;">
+                                                                                                            中
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunbt">
+                                                                                                            <input id="artdocfont1" onclick="ChangeArtSize(1, this); wzhitnew(17); " name="radio" type="radio" value="3">
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunwz" onclick="ChangeArtSize(1,this);wzhitnew(17); " style="cursor: pointer;">
+                                                                                                            小
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="sekuaibox" style="margin-left: 76px; display: none;" id="sekuaiboxID">
+                                                                                                    <div style="padding-top: 10px; padding-left: 5px;">
+                                                                                                        <img src="./iOS开发中Settings.bundle的使用_files/cr1.gif" id="docArtC1" onclick="ChangeArtClass(1,this);wzhitnew(18);" style="cursor: pointer;"><img src="./iOS开发中Settings.bundle的使用_files/cr2.gif" id="docArtC2" onclick="ChangeArtClass(2,this);wzhitnew(19);" style="cursor: pointer;"><img src="./iOS开发中Settings.bundle的使用_files/cr3.gif" id="docArtC3" onclick="ChangeArtClass(3,this);wzhitnew(20);" style="cursor: pointer;"><img src="./iOS开发中Settings.bundle的使用_files/cr4.gif" id="docArtC4" onclick="ChangeArtClass(4,this);wzhitnew(21);" style="cursor: pointer;"><img src="./iOS开发中Settings.bundle的使用_files/cr5.gif" id="docArtC5" onclick="ChangeArtClass(5,this);wzhitnew(22);" style="cursor: pointer;"><img src="./iOS开发中Settings.bundle的使用_files/cr6-1.gif" id="docArtC6" onclick="ChangeArtClass(6,this);wzhitnew(23);" style="cursor: pointer;">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div style="padding-left: 10px;">
+                                                                                                    <a href="javascript:void(0)">
+                                                                                                        <img onmouseover="changedivdisplay(1);" src="./iOS开发中Settings.bundle的使用_files/wz1.gif"></a>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div style="padding-left: 10px;" onmouseover="changedivdisplay(2);">
+                                                                                                    <a href="javascript:void(0)">
+                                                                                                        <img src="./iOS开发中Settings.bundle的使用_files/wz2.gif"></a>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" onclick=" setTimeout(showShareLayer, 10);wzhitnew(4);">分享</a>&nbsp;</td>
+                                                                                            <td>
+                                                                                                <a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" onclick="  setTimeout(showShareLayer, 10);wzhitnew(5);">
+                                                                                                    <img style="cursor: pointer;" src="./iOS开发中Settings.bundle的使用_files/tb10.gif"></a><div class="fenxiang" id="fenxiangLayer" style="display: none; border: none; width: 110px; margin-left: -28px; _margin-left: -40px;"><div style="border:1px solid #cbcbcb; height:240px; width:108px;"><div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare share-bar-btn"><table cellpadding="0" cellspacing="0" width="108" style=" background-color:#fff; "><tbody><tr><td width="12"></td><td height="29" onclick="wzhitnew(6);"><a class="bds_qzone" href="javascript:void(0);" title="分享到QQ空间">&nbsp;&nbsp;&nbsp;&nbsp;腾讯空间</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(9);"><a class="bds_tsina" href="javascript:void(0);" title="分享到新浪微博">&nbsp;&nbsp;&nbsp;&nbsp;新浪微博</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(10);"><a class="bds_tqq" href="javascript:void(0);" title="分享到腾讯微博">&nbsp;&nbsp;&nbsp;&nbsp;腾讯微博</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(7);"><a class="bds_renren" href="javascript:void(0);" title="分享到人人网">&nbsp;&nbsp;&nbsp;&nbsp;人人网</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(8);"><a class="bds_kaixin001" href="javascript:void(0);" title="分享到开心网">&nbsp;&nbsp;&nbsp;&nbsp;开心网</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(11);"><a class="bds_tsohu" href="javascript:void(0);" title="分享到搜狐微博">&nbsp;&nbsp;&nbsp;&nbsp;搜狐微博</a></td></tr><tr><td width="12"></td><td height="29"><a href="javascript:void(0);" onclick="showdivemail();wzhitnew(12);"><div class="bds_py">&nbsp;&nbsp;&nbsp;&nbsp;推荐给朋友</div></a></td></tr><tr><td width="12"></td><td height="29"><a href="javascript:void(0);"><div class="bds_jubao" onclick="showAlertLayer();wzhitnew(13);">&nbsp;&nbsp;&nbsp;&nbsp;举报</div></a></td></tr></tbody></table></div></div></div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                            <div id="resavelayer1" class="rt360"><div class="zswdbtn1"><a href="javascript:void(0);" onclick="SaveArt();wzhitnew(24);"></a></div><div style="position: absolute;display:none;z-index:100000;" id="fuzhitishidiv"></div></div>
+
+
+                                                                            <div id="shareweixinabove" class="rt360"> <div class="fxwx2bt"><a href="javascript:void(0);" onclick="shareWeixin();wzhitnew(65);"></a></div></div>
+
+
+                                                                            <table cellpadding="0" cellspacing="0" style="text-align: center; margin: 0px auto;">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <div id="AlertArt1" style="display: none; position: absolute;">
+                                                                                            </div>
+                                                                                            <div id="SendToFriends1" style="display: none; position: absolute; z-index: 100;">
+                                                                                            </div>
+                                                                                            <div class="lf360 zcbutton" style="margin-left: 100px;">
+                                                                                            </div>
+                                                                                            <div class="lf360">
+                                                                                                &nbsp;&nbsp;
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        
+                                                        <table class="wenzhangcss" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="xiantao">
+                                                                        </div>
+
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top" width="670px" style="height: 200px;">
+                                                                        <span id="articlecontent" onmousedown="newhighlight = true;" onmouseup="NewHighlight(event)">
+                                                                            <table>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td width="670px" style="position: relative;">
+
+                                                                                            <p>在iOS开发中很多时候开发者需要让用户自行设置一些系统的配置项目，比如让用户设置是否支持在3G模式下加载数据，或者是让用户自己设置支不支持网络数据缓存的功能。另外在企业级应用开发中经常有需要对后台的访问地址进行调整那么需要用户自行的进行配置，下面是爱奇艺和招商银行的设置配置项：</p>
+
+<p><img src="./iOS开发中Settings.bundle的使用_files/48794847_1.png" alt="app_settings.png"></p>
+
+<h3>Settings.bundle配置说明</h3>
+
+<p>在Settings.bundle中支持如下几种配置项：</p>
+
+<p><img src="./iOS开发中Settings.bundle的使用_files/48794847_2.png" alt="settings_preference_control_types.png"></p>
+
+<p>1、<code>Group</code></p>
+
+<p>Group类似于UITableView中的Group分组，用来表示一组设置项，配置如下所示：</p>
+
+<p><img src="./iOS开发中Settings.bundle的使用_files/48794847_3.png" alt="settings_bundle_group.png"></p>
+
+<p>配置项说明：</p>
+
+<p>(1)Title：表示分组的显示标题</p>
+
+<p>(2)Type：默认是Group</p>
+
+<p>(3)FooterText：Group的底部显示的文字内容</p>
+
+<p>2、<code>Multi Value</code></p>
+
+<p><code>Multi Value</code>是为了让用户在多个值中选择需要的内容，相当于下拉列表的形式进行选择，配置如下所示：</p>
+
+<p><img src="./iOS开发中Settings.bundle的使用_files/48794847_4.png" alt="settings_bundle_multi_value.png"></p>
+
+<p>配置项说明：</p>
+
+<p>(1)Type：默认是Multi Value</p>
+
+<p>(2)Title：配置项显示的标题</p>
+
+<p>(3)Identifier：设置项的标识符，用于读取配置项的配置内容</p>
+
+<p>(4)Default Value：默认的值，对应的是Values中的项目</p>
+
+<p>(5)Titles：显示的标题的集合</p>
+
+<p>(6)Values：显示的值的集合，与标题一一对应</p>
+
+<p>3、<code>Slider</code></p>
+
+<p><img src="./iOS开发中Settings.bundle的使用_files/48794847_5.png" alt="settings_bundle_slider.png"></p>
+
+<p>配置项说明：</p>
+
+<p>(1)Type：配置类型，默认是Slider</p>
+
+<p>(2)Identifier：设置项的标识符，用于读取配置项的配置内容</p>
+
+<p>(3)Default Value：默认值，Number类型</p>
+
+<p>(4)Minimum Value：最小值，Number类型</p>
+
+<p>(5)Maximum Value：最大值，Number类型</p>
+
+<p>(6)Max Value Image Filename：最大值那一端的图片。</p>
+
+<p>(7)Min Value Image Filename：最小值那一端的图片。</p>
+
+<p>4、<code>Text Field</code></p>
+
+<p><img src="./iOS开发中Settings.bundle的使用_files/48794847_6.png" alt="settings_bundle_text_field.png"></p>
+
+<p>配置项说明:</p>
+
+<p>(1)Text Field is Secure：是否为安全文本。如果设置为YES，则内容以圆点符号出现。</p>
+
+<p>(2)Autocapitalization Style：自动大写。有四个值: <code>None(无)</code>、<code>Sentences(句子首字母大写)</code>、<code>Words(单词首字母大写)</code>和<code>All Characters(所有字母大写)</code>。</p>
+
+<p>(3)Autocorrection Style：自动纠正拼写，如果开启，你输入一个不存在的单词，系统会划红线提示。有三个值：<code>Default(默认)</code>、<code>No Autocorrection(不自动纠正)</code>和<code>Autocorrection(自动纠正)</code>。</p>
+
+<p>(4)Keyboard Type：键盘样式。有五个值：<code>Alphabet(字母表，默认)</code>、<code>Numbers and Punctuation(数字和标点符号)</code>、<code>Number Pad(数字面板)</code>、<code>URL(比Alphabet多出了.com等域名后缀)</code>和<code>Email Address(比Alphabet多出了@符合)</code>。</p>
+
+<p>5、<code>Title</code></p>
+
+<p><img src="./iOS开发中Settings.bundle的使用_files/48794847_7.png" alt="settings_bundle_title.png"></p>
+
+<p>配置项说明：</p>
+
+<p>(1)Type：默认是Title</p>
+
+<p>(2)Title：配置项显示的标题</p>
+
+<p>(3)Identifier：设置项的标识符，用于读取配置项的配置内容</p>
+
+<p>(4)Default Value：默认的值</p>
+
+<p>6、<code>Toggle Switch</code></p>
+
+<p><code>Toggle Switch</code>是一个类似于UISwitch的选项，用于设置简单的开启或者关闭的选项，配置如下所示：</p>
+
+<p><img src="./iOS开发中Settings.bundle的使用_files/48794847_8.png" alt="settings_bundle_toggle.png"></p>
+
+<p>配置项说明：</p>
+
+<p>(1)Type：默认是Toggle Switch</p>
+
+<p>(2)Title：配置项显示的标题</p>
+
+<p>(3)Identifier：设置项的标识符，用于读取配置项的配置内容</p>
+
+<p>(4)Default Value：默认的值</p>
+
+<h3>在项目中使用</h3>
+
+<p>1、添加Setting.bundle文件到项目中</p>
+
+<p><img src="./iOS开发中Settings.bundle的使用_files/48794847_9.png" alt="add_settings_bundle.png"></p>
+
+<p>2、读取配置信息</p>
+
+<figure><div><table><tbody><tr><td><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td><pre><code>- (void)readingPreference
+{
+    //获取Settings.bundle路径
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    if(!settingsBundle)
+    {
+        NSLog(@"找不到Settings.bundle文件");
+        return;
+    }
+    //读取Settings.bundle里面的配置信息
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
+    NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    for(NSDictionary *prefSpecification in preferences)
+    {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        if(key)
+        {
+            [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
+        }
+    }
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    //TODO：读取指定数据
+}</code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>3、在AppDelegate中读取配置信息</p>
+
+<p>(1)应用启动后读取配置信息</p>
+
+<figure><div><table><tbody><tr><td><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td><pre><code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //读取配置文件
+    [[SystemConfigHelper shared] readingPreference];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    return YES;
+}</code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>(2)应用程序进入到前台后读取配置信息</p>
+
+<figure><div><table><tbody><tr><td><pre>1
+2
+3
+4
+5
+</pre></td><td><pre><code>- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    //读取配置信息
+    [[SystemConfigHelper shared] readingPreference];
+}</code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>说明：</p>
+
+<p><code>SystemConfigHelper</code>是用来读取系统配置信息的工具.</p>
+
+<h3>典型实例</h3>
+
+<p>1、<a href="http://git.devzeng.com/images/ios_settings_bundle/iqiyi.plist">爱奇艺iPhone客户端的Settings.bundle配置</a></p>
+
+<p>2、<a href="http://git.devzeng.com/images/ios_settings_bundle/cmb.plist">招商银行iPhone客户端的Settings.bundle配置</a></p>
+
+<h3>参考资料</h3>
+
+<p>1、<a href="http://www.cocoachina.com/ios/20141103/10112.html">《整合Settings.bundle显示版本信息》</a></p>
+
+<p>2、<a href="http://www.cnblogs.com/wayne23/p/3441898.html">《应用程序首选项(application preference)及数据存储》</a></p>
+
+<p>3、<a href="http://blog.csdn.net/nogodoss/article/details/21938771">《设置束(Setting Bundle)的使用》</a></p>
+
+<p>4、<a href="http://www.cnblogs.com/minglz/archive/2013/05/30/3048269.html">《三十而立，从零开始学ios开发（十九）：Application Settings and User Defaults（上）》</a></p>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                            <div id="viewerPlaceHolder" style="width: 717px; height: 700px; display: none;">
+                                                                            </div>
+                                                                        </span>
+                                                                        <table>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left">
+                                                                        <a name="anchordoc1" id="anchordoc1"></a>
+                                                                        <div style="height: 28px">
+                                                                            <div style="font-size: 14px; color: #797b7a; float: left;">
+                                                                                来自：<span class="name" onclick="wzhitnew(59)"><a href="http://www.360doc.com/userhome/19175681" target="_blank">方海龙的书馆</a></span>&nbsp;&gt;&nbsp;<span id="cname" onclick="wzhitnew(60)"><a href="http://www.360doc.com/userhome.aspx?userid=19175681&cid=21" target="_blank">《IOS项目配置》</a></span>
+                                                                            </div>
+                                                                            <div style="float: left;">
+                                                                                <div class="btzctsg" id="spanfollowstatus1"><div class="gzbt1"><a onclick="gzuser(19175681);wzhitnew(61);" href="javascript:void(0)"></a></div></div>
+                                                                                <script>isfollow(19175681);</script>
+
+                                                                            </div>
+                                                                            <div style="float: left;">
+                                                                                <div class="ytdh1"><a onclick="doctalk();wzhitnew(107);" href="javascript:void(0)"></a></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div>
+                                                                            <div class="modlist lf360 list" style="padding-top: 0px;">
+                                                                                <ul>
+                                                                                    <div id="lastart"><div class="shangyp">上一篇：<a href="http://www.360doc.com/content/14/1224/09/19175681_435345011.shtml" target="_blank" onclick="wzhitnew(57);">iOS 制作兼容64位iOS系统的Framework包</a></div></div>
+                                                                                    <div id="nextart">下一篇：<a href="http://www.360doc.com/content/15/0109/06/19175681_439301320.shtml" target="_blank" onclick="wzhitnew(58);">iOS Code Signing 学习笔记</a></div>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left">
+                                                                        <div style="padding-top: 12px;">
+                                                                            <div id="docAdBelowContent"><iframe marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="650" height="120" src="./iOS开发中Settings.bundle的使用_files/docAdBelowContent1.html"></iframe></div>
+
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="text-align: left;">
+                                                                        <div style="padding-top: 15px; width: 670px;">
+                                                                            <table style="width: 670px;" cellpadding="0" cellspacing="0">
+                                                                                <tbody>
+                                                                                    <tr>
+
+                                                                                        <td style="width: 530px;">
+                                                                                            <div class=" lf360" style="cursor: pointer" onmouseover="ChangeBtnStyle(1);" onmouseout="ChangeBtnStyle(2);">
+                                                                                                <div class="zscbt">
+                                                                                                    <a href="javascript:void(0);" onclick="SaveArt();wzhitnew(26);">
+                                                                                                        <div id="zscbtword" class="lf360 xianhua" style="padding-left: 38px;">
+                                                                                                            转藏到我的图书馆
+                                                                                                        </div>
+                                                                                                    </a>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div style="margin-left: 10px; cursor: pointer;" class="lf360 xhmainbox" id="sendflowerdiv" onclick="Showflowerlayer(&quot;sendedLayer1&quot;);wzhitnew(27)" onmouseover="ChangeFlowerBtnStyle(1);" onmouseout="ChangeFlowerBtnStyle(2);">
+
+                                                                                                <div id="flowimg2" class="lf360">
+                                                                                                    <div style="padding-left: 10px; padding-top: 10px;">
+                                                                                                        <img id="flowimg3" src="./iOS开发中Settings.bundle的使用_files/huahuanew.gif">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div id="flowimg5" class=" lf360 xianhua">
+                                                                                                    献花(<span id="articleflowernum">0</span>)<div id="flowernumadd" class="addtionone">
+                                                                                                        +1
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                            </div>
+
+
+
+
+                                                                                            <div class="lf360" style="cursor: pointer; padding-left: 10px;" onmouseover="ChangeBtnStyle(3);" onmouseout="ChangeBtnStyle(4);">
+                                                                                                <div class="fxwxbt">
+
+                                                                                                    <a href="javascript:void(0);" onclick="shareWeixin();wzhitnew(64);">
+                                                                                                        <div id="fxwxword" class="lf360 xianhua" style="padding-left: 38px;">
+                                                                                                            分享到微信
+                                                                                                        </div>
+                                                                                                    </a>
+                                                                                                </div>
+                                                                                            </div>
+
+
+
+
+
+                                                                                            <div class="lf360" style="cursor: pointer; padding-left: 10px;" onmouseover="ChangeBtnStyle(5);" onmouseout="ChangeBtnStyle(6);">
+                                                                                                <div class="ywzwbt">
+
+                                                                                                    <a id="ywzwa" href="http://www.baidu.com/s?wd=bundle+%e9%85%8d%e7%bd%ae+ios&tn=SE_hldp01010_6r0gix1f" onclick="wzhitnew(100);" target="_blank">
+                                                                                                        <div id="ywzwword" class="lf360 xianhua" style="padding-left: 44px;">
+                                                                                                            以文找文
+                                                                                                        </div>
+                                                                                                    </a>
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td style="vertical-align: bottom; font-size: 12px;" width="140">
+                                                                                            <div class="rt360" id="sharediv2"><table style=" vertical-align: text-bottom;" border="0" cellpadding="0" cellspacing="0"> <tbody><tr><td><div style="height:20px; width:105px;"><div style="float:left;"><span style="font-size:12px; line-height:16px; color:#959595;">分享：</span></div><div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare share-bar-btn2" style="float:left;"><span onclick="wzhitnew(28);"><a class="bds_qzone" title="分享到QQ空间" href="javascript:void(0);"></a></span><span onclick="wzhitnew(31);"><a class="bds_tsina" title="分享到新浪微博" href="javascript:void(0);"></a></span><span onclick="wzhitnew(32);"><a class="bds_tqq" title="分享到腾讯微博" href="javascript:void(0);"></a></span></div></div></td><td width="24"><a><img style="cursor:pointer;" src="./iOS开发中Settings.bundle的使用_files/tb10.gif" onclick="setTimeout(showShareLayer2, 10);wzhitnew(34);"></a><div id="fenxiangLayer1" class="fenxiang" style=" margin-left:-100px;*margin-left:-120px!important; margin-top:5px;*margin-top:16px!important;display:none;z-index:1000;"><div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare share-bar-btn"><table cellpadding="0" cellspacing="0" width="108" style=" background-color:#fff; "><tbody><tr><td width="12"></td><td height="29" onclick="wzhitnew(29);"><a class="bds_renren" href="javascript:void(0);" title="分享到人人网">&nbsp;&nbsp;&nbsp;&nbsp;人人网</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(30);"><a class="bds_kaixin001" href="javascript:void(0);" title="分享到开心网">&nbsp;&nbsp;&nbsp;&nbsp;开心网</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(33);"><a class="bds_tsohu" href="javascript:void(0);" title="分享到搜狐微博">&nbsp;&nbsp;&nbsp;&nbsp;搜狐微博</a></td></tr><tr><td width="12"></td><td height="29"><a href="javascript:void(0);" onclick="showdivemail1();wzhitnew(35);"><div class="bds_py">&nbsp;&nbsp;&nbsp;&nbsp;推荐给朋友</div></a></td></tr><tr><td width="12"></td><td height="29"><a href="javascript:void(0);"><div class="bds_jubao" onclick="showAlertLayer1();wzhitnew(36);">&nbsp;&nbsp;&nbsp;&nbsp;举报</div></a></td></tr></tbody></table></div></div></td></tr></tbody></table><div id="AlertArt2" style="display:none; position:absolute;"></div><div id="SendToFriends2" style="display:none;position:absolute;z-index:1000;"></div></div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="10"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="lswzbox" style="padding-top: 10px;">
+                            <div>
+                                <table cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                        <tr>
+                                            <td width="330" valign="top">
+                                                <div class="lswz" style="height: 300px;">
+                                                    <div class="lstwtop">
+                                                        <div class="lswztit">
+                                                            <div class=" lf360">
+                                                                <div class="titwx1">
+                                                                    类似文章
+                                                                </div>
+                                                            </div>
+                                                            <div class="rt360" style="padding-top: 5px; padding-right: 9px;">
+                                                                <a href="http://www.360doc.com/relevant/438612962_more.shtml" target="_blank" onclick="wzhitnew(38)">更多</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modlist2 list">
+                                                            <ul>
+                                                                
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/11/1231/15/7691297_176306808.shtml" target="_blank" onclick="wzhitnew(37)">如何用ResourceBundle来读取配置文件</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/11/0928/11/7356976_151837045.shtml" target="_blank" onclick="wzhitnew(37)">Jakarta</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/09/0310/20/12985_2770862.shtml" target="_blank" onclick="wzhitnew(37)">Struts1.x系列教程（13）：国际化</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/11/1102/14/7635_161079506.shtml" target="_blank" onclick="wzhitnew(37)">android 去掉 title bar 以及 status ba...</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/14/0225/11/11029609_355517391.shtml" target="_blank" onclick="wzhitnew(37)">IOS中Json解析的四种方法</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/13/1210/19/2036337_336149399.shtml" target="_blank" onclick="wzhitnew(37)">转</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/14/1119/14/12278201_426404343.shtml" target="_blank" onclick="wzhitnew(37)">NSMutableDictionary</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/14/1211/13/20738573_432119100.shtml" target="_blank" onclick="wzhitnew(37)">[Objective</a></span></li>
+                                                                    
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            <td width="330" valign="top">
+                                                <div class="lswz" style="margin-left: 9px; height: 300px;">
+                                                    <div class="lstwtop">
+                                                        <div class="lswztit">
+                                                            <div class=" lf360">
+                                                                <div class="titwx1">
+                                                                    热搜文章
+                                                                </div>
+                                                            </div>
+                                                            <div class="rt360" style="padding-top: 5px; padding-right: 9px;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modlist2 list">
+                                                            <ul> <li style="height: 30px; line-height: 30px;"><span><a href="http://www.baidu.com/s?wd=4%e4%b8%aa%e5%be%b7%e5%9b%bd%e5%ad%a9%e5%ad%90%e7%9a%84%e5%91%bd%e8%bf%90%e5%b7%ae%e5%bc%82%ef%bc%9a%e5%90%8d%e6%a0%a1%e6%af%95%e4%b8%9a%e7%94%9f%e5%92%8c%e6%9c%aa%e5%a9%9a%e5%a6%88%e5%a6%88%e7%bb%99%e6%88%91%e7%9a%84%e5%90%af%e7%a4%ba&tn=SE_hldp01010_6r0gix1f" target="_blank" onclick="wzhitnew(106)" title="4个德国孩子的命运差异：名校毕业生和未婚妈妈给我的启示">4个德国孩子的命运差异：名校毕业生和未婚...</a></span></li> <li style="height: 30px; line-height: 30px;"><span><a href="http://www.baidu.com/s?wd=Win7%e7%9a%8470%e4%b8%aa%e5%9f%ba%e6%9c%ac%e6%8a%80%e5%b7%a7---%e5%a4%a9%e5%a4%a9%e7%94%a8Win7%2c%e8%bf%99%e4%ba%9b%e6%8a%80%e5%b7%a7%e4%bd%a0%e9%83%bd%e7%9f%a5%e9%81%93%e5%90%97&tn=SE_hldp01010_6r0gix1f" target="_blank" onclick="wzhitnew(106)" title="Win7的70个基本技巧---天天用Win7,这些技巧你都知道吗">Win7的70个基本技巧---天天用Win7,这些技...</a></span></li> <li style="height: 30px; line-height: 30px;"><span><a href="http://www.baidu.com/s?wd=%e5%be%b7%e5%9b%bd%e4%ba%ba%e4%b8%ba%e4%bb%80%e4%b9%88%e7%ac%91%e5%82%b2%e5%85%a8%e7%90%83%3f%e7%9c%8b%e6%95%99%e5%b8%88%e5%be%85%e9%81%87%e5%92%8c%e8%a6%81%e6%b1%82%e5%b0%b1%e7%9f%a5%e9%81%93!&tn=SE_hldp01010_6r0gix1f" target="_blank" onclick="wzhitnew(106)" title="德国人为什么笑傲全球?看教师待遇和要求就知道!">德国人为什么笑傲全球?看教师待遇和要求就...</a></span></li> <li style="height: 30px; line-height: 30px;"><span><a href="http://www.baidu.com/s?wd=%e5%a4%a7%e6%b8%85%e6%b4%97%e7%9a%84%e9%bb%91%e8%89%b2%e5%8e%86%e5%8f%b2%ef%bc%9a%e6%9c%9d%e9%b2%9c%e6%b8%85%e6%b4%97%22%e5%bb%b6%e5%ae%89%e6%b4%be%22+%e9%80%bc%e8%bf%ab%e6%94%bf%e5%ba%9c%e9%ab%98%e5%ae%98%e9%80%83%e4%ba%a1%e4%b8%ad%e5%9b%bd&tn=SE_hldp01010_6r0gix1f" target="_blank" onclick="wzhitnew(106)" title="大清洗的黑色历史：朝鲜清洗&quot;延安派&quot; 逼迫政府高官逃亡中国">大清洗的黑色历史：朝鲜清洗"延安派" 逼迫...</a></span></li> <li style="height: 30px; line-height: 30px;"><span><a href="http://www.baidu.com/s?wd=%e8%ae%a9%e5%8e%86%e5%8f%b2%e8%a3%b8%e5%a5%94%e8%b5%b7%e6%9d%a5%e5%90%a7%ef%bc%81%e8%bf%98%e5%8e%9f45%e4%b8%aa%e4%bd%a0%e4%b8%8d%e4%b8%80%e5%ae%9a%e7%9f%a5%e9%81%93%e7%9a%84%e5%8e%86%e5%8f%b2%e4%ba%8b%e5%ae%9e%e7%9c%9f%e7%9b%b8&tn=SE_hldp01010_6r0gix1f" target="_blank" onclick="wzhitnew(106)" title="让历史裸奔起来吧！还原45个你不一定知道的历史事实真相">让历史裸奔起来吧！还原45个你不一定知道...</a></span></li> <li style="height: 30px; line-height: 30px;"><span><a href="http://www.baidu.com/s?wd=%e7%8c%ae%e4%b8%8a%e6%81%8b%e7%88%b1%e7%a7%98%e7%b1%8d%ef%bc%9a%e7%ba%a6%e4%bc%9a%e6%97%b6%e5%90%ac%e7%94%9c%e8%a8%80%e8%9c%9c%e8%af%ad%ef%bc%8c%e4%b8%8d%e5%a6%82%e7%9c%8bTA%e7%9a%84%e8%ba%ab%e4%bd%93%e8%af%ad%e8%a8%80%ef%bc%81&tn=SE_hldp01010_6r0gix1f" target="_blank" onclick="wzhitnew(106)" title="献上恋爱秘籍：约会时听甜言蜜语，不如看TA的身体语言！">献上恋爱秘籍：约会时听甜言蜜语，不如看T...</a></span></li> <li style="height: 30px; line-height: 30px;"><span><a href="http://www.baidu.com/s?wd=%e5%8f%af%e6%83%9c%e4%ba%86%e5%95%8a%2c%e6%88%91%e7%9a%84%e5%8c%97%e5%a4%a7%e6%95%b0%e5%ad%a6%e7%b3%bb%e6%af%95%e4%b8%9a%e7%9a%84%e5%a4%96%e7%94%a5&tn=SE_hldp01010_6r0gix1f" target="_blank" onclick="wzhitnew(106)">可惜了啊,我的北大数学系毕业的外甥</a></span></li> <li style="height: 30px; line-height: 30px;"><span><a href="http://www.baidu.com/s?wd=%e4%bb%8e%e5%94%90%e5%83%a7%e5%8f%96%e7%bb%8f%e7%9c%8b%e5%a6%82%e6%9d%a5%e7%9a%84%e5%b8%9d%e7%8e%8b%e5%bf%83%e6%9c%af&tn=SE_hldp01010_6r0gix1f" target="_blank" onclick="wzhitnew(106)">从唐僧取经看如来的帝王心术</a></span></li></ul>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div style="background-color: #fafafa; width: 670px; height: 317px; margin-top: 10px;">
+                                    <div style=" padding-top:7px; padding-left:12px; height:182px;"> <div style=" height:30px;"><div class="titwx3 lf360">猜你喜欢</div><div class=" rt360" style=" padding-right:18px;"><img onclick="changefiveart(&quot;19999&quot;,&quot;19999&quot;);wzhitnew(62);" src="./iOS开发中Settings.bundle的使用_files/hyz.gif" onmouseover="this.src=&quot;http://pubimage.360doc.com/wz/hyza.gif&quot;" onmouseout="this.src=&quot;http://pubimage.360doc.com/wz/hyz.gif&quot;" width="76" height="24" style="cursor:pointer;"></div></div><table cellpadding="0" cellspacing="0"><tbody><tr id="fivearttdid"><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/13/1204/16/8801485_334447309.shtml" target="_blank"><img src="./iOS开发中Settings.bundle的使用_files/8801485_201312100836050968_a334447309.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/13/1204/16/8801485_334447309.shtml" target="_blank">这经典励志纪录片值得你去看</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/14/1114/16/4503649_425102789.shtml" target="_blank"><img src="./iOS开发中Settings.bundle的使用_files/425102789_201411251048290915.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/14/1114/16/4503649_425102789.shtml" target="_blank">3块钱的杯子,你知道怎样把它卖到2000块吗</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/13/1211/19/2633_336401405.shtml" target="_blank"><img src="./iOS开发中Settings.bundle的使用_files/2633_201312170830340335_a336401405.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/13/1211/19/2633_336401405.shtml" target="_blank">一部震惊感动世界的短片</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/13/1204/07/6085160_334310969.shtml" target="_blank"><img src="./iOS开发中Settings.bundle的使用_files/334310969_201312151447500148.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/13/1204/07/6085160_334310969.shtml" target="_blank">特效穴位三秒见效</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/13/1209/08/1835337_335617488.shtml" target="_blank"><img src="./iOS开发中Settings.bundle的使用_files/335617488_201312200957100762.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/13/1209/08/1835337_335617488.shtml" target="_blank">十几元钱就能治愈的“宫颈糜烂”</a></div></td></tr></tbody></table></div>
+                                    <div style="padding-left: 12px;">
+                                        <iframe marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="650" height="100" src="./iOS开发中Settings.bundle的使用_files/artadali4.html"></iframe>
+                                    </div>
+                                    <div id="adabtest" style="display: none;">
+                                    </div>
+
+                                </div>
+
+
+
+
+
+                                <div id="Reflction" style="padding-top: 15px; padding-left: 15px;">
+                                    <div id="360docRefTN" style="display: none;"></div>
+                                    <div id="360docRefCT"></div>
+                                    <div id="360docRefPB" align="center" style="display: none;"></div>
+                                </div>
+                                <a name="sf"></a>
+                                
+                                <div id="ReflectionPart"><div style=" height:206px; margin:0px 0px;"><div class="plbox"><div class="plmain"><div class="titwx" style=" height:23px;">发表评论：</div><div class="deluwx">您好，请&nbsp;<span><a href="javascript:void(0);" onclick="ReflectionLoginform();wzhitnew(45);">登录</a></span>&nbsp;或者&nbsp;<span><a href="http://www.360doc.com/register.aspx?refer=53&reurl=showweb/0/0/438612962.aspx" onclick="InsertLogData(4);wzhitnew(46);">注册</a></span>&nbsp;后再进行评论 </div><div class=" rt360"><div style=" float:left; color:#959595; width:90px; "><div style="padding-top:4px;">其它帐号登录：</div></div><div style=" float:left ; width:70px;"><img onclick="toSNSLogin(&#39;smb&#39;);wzhitnew(47);" style="cursor:pointer;" src="./iOS开发中Settings.bundle的使用_files/tb25.gif">&nbsp;&nbsp;&nbsp;<img onclick="toSNSLogin(&#39;qq&#39;);wzhitnew(48);" style="cursor:pointer;" src="./iOS开发中Settings.bundle的使用_files/tb26.gif">&nbsp;&nbsp;&nbsp;<img onclick="toSNSLogin(&#39;rr&#39;);wzhitnew(49);" style="cursor:pointer;" src="./iOS开发中Settings.bundle的使用_files/tb27.gif"></div> </div> </div></div></div></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td align="center" valign="top" width="18px"></td>
+                    <td align="left" valign="top" width="252px">
+                        
+
+
+<div style="height: 98px" id="artrightad1"><iframe marginwidth="0" id="Iframeadabtest" marginheight="0" frameborder="0" scrolling="no" width="300" height="90" src="./iOS开发中Settings.bundle的使用_files/ad1_300.html" allowtransparency="true"></iframe></div>
+
+
+    <div id="artrightnewarticle" class="remenwz" style="height: 219px; width: 300px;"><div class="rementop"><div class="titwx" style=" padding-top:10px; padding-left:24px;">最新文章</div></div><div class="modlist3 list" style=" padding-left:15px;"><ul><li><span><a href="http://www.360doc.com/content/15/0520/08/19175681_471867704.shtml" target="_blank" onclick="wzhitnew(51)">iOS绘图教程</a></span></li><li><span><a href="http://www.360doc.com/content/15/0520/08/19175681_471864316.shtml" target="_blank" onclick="wzhitnew(51)">Quartz 2D编程指南(2) － 图形上下文(...</a></span></li><li><span><a href="http://www.360doc.com/content/15/0520/08/19175681_471864184.shtml" target="_blank" onclick="wzhitnew(51)">Quartz 2D编程指南(1) － 概览 | iOS...</a></span></li><li><span><a href="http://www.360doc.com/content/15/0318/13/903511_456157759.shtml" target="_blank" onclick="wzhitnew(51)">职场面试如何自我评价,面试回答问题技...</a></span></li><li><span><a href="http://www.360doc.com/content/15/0323/07/19175681_457300459.shtml" target="_blank" onclick="wzhitnew(51)">面试总结</a></span></li><li><span><a href="http://www.360doc.com/content/15/0312/16/19175681_454606242.shtml" target="_blank" onclick="wzhitnew(51)">DHH 谈混合移动应用开发 | 酷 壳</a></span></li></ul> <div class=" rt360" style=" padding-right:23px;"><a href="http://www.360doc.com/userhome/19175681" target="_blank" onclick="wzhitnew(52);">更多</a></div></div></div>
+
+
+<div class="both" style="padding-top: 10px; height: 260px;">
+   <iframe id="ifartad1" height="250px" width="300px" frameborder="0" scrolling="no" src="./iOS开发中Settings.bundle的使用_files/ad2_300_google.html"></iframe>
+    <div style="height: 10px;">
+    </div>
+</div>
+
+<div class="remenwz" id="artrighthotarticle" style="width: 300px;">
+    <div class="rementop">
+        <div class="titwx" style="padding-top: 10px; padding-left: 24px;">
+            热门文章</div>
+    </div>
+    <div class="modlist3 list" style="padding-left: 15px;">
+        <ul>
+            
+                    <li><span>
+                        <a href="http://www.360doc.com/content/15/0421/13/16967035_464828546.shtml" target="_blank" onclick="wzhitnew(55)">老北京炸酱面的做法</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0711/17/10983756_393709077.shtml" target="_blank" onclick="wzhitnew(55)">一张图告诉你父母的语气将影响孩子一生</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0209/15/2904667_351089002.shtml" target="_blank" onclick="wzhitnew(55)">如何将网上音乐下载到自己电脑？</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/1114/14/10487135_425068700.shtml" target="_blank" onclick="wzhitnew(55)">少有的高质量的搞笑段子</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0312/20/15224945_360065583.shtml" target="_blank" onclick="wzhitnew(55)">高三班主任寄语(整理)</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/15/0314/19/10692060_455118234.shtml" target="_blank" onclick="wzhitnew(55)">一方根治糖尿病，永不复发！</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/1127/17/6816362_428534725.shtml" target="_blank" onclick="wzhitnew(55)">先别扔，这些过期的东西还有用哦！</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0504/00/2283188_374347365.shtml" target="_blank" onclick="wzhitnew(55)">真的很好吃——椒盐香菇</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0510/21/6987213_376491467.shtml" target="_blank" onclick="wzhitnew(55)">大厨推荐凉拌小菜（精品收藏）</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/1022/14/9121025_418946189.shtml" target="_blank" onclick="wzhitnew(55)">【你真的知道情侣间最佳的相处模式吗...</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/1227/15/1720781_436148797.shtml" target="_blank" onclick="wzhitnew(55)">7个家传秘方</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/13/1220/16/8507568_338713632.shtml" target="_blank" onclick="wzhitnew(55)">浙江大学科学家发现维持女性生育能力...</a></span></li>
+                
+        </ul>
+        <div class=" rt360" style="padding-right: 23px;">
+            <a href="http://www.360doc.com/readroom.html" target="_blank" onclick="wzhitnew(56)">更多&gt;&gt;</a></div>
+    </div>
+</div>
+
+<div class="both" style="padding-top: 10px;">
+    <iframe id="ifartad2" height="250px" width="300px" frameborder="0" scrolling="no" src="./iOS开发中Settings.bundle的使用_files/ad3_300_google.html"></iframe>
+</div>
+<br>
+
+
+ <iframe id="ifartrightsogou" height="328px" width="300px" frameborder="0" scrolling="no" src="./iOS开发中Settings.bundle的使用_files/artrightadsogou300.html"></iframe>
+
+
+
+<script>
+    function change(pro_name, i) {
+        var pro = document.getElementById(pro_name); 
+        var pro_arr = pro.getElementsByTagName("span");
+
+        for (var m = 0; m < pro_arr.length; m++) {
+            pro_arr[m].className = "unclecked link_black";
+        }
+        pro_arr[i].className = "checked link_bai";
+
+        if (i == 1) {
+            document.getElementById("qh_ul_1").style.display = "";
+            document.getElementById("qh_ul_0").style.display = "none";
+        }
+        else if (i == 0) {
+            document.getElementById("qh_ul_1").style.display = "none";
+            document.getElementById("qh_ul_0").style.display = "";
+        }
+    }
+</script>
+
+                        <div class="both" id="divad5" style="padding-top: 11px; zoom: 1; top: 55px; left: 1555px;">
+                            <div id="divad4" style="">
+                                <div>
+                                    <iframe id="ifartad" height="250px" width="300px" frameborder="0" scrolling="no" src="./iOS开发中Settings.bundle的使用_files/ad4_300_google.html"></iframe>
+                                </div>
+                                <div class="ggwz">
+                                    <a href="javascript:void(0);" onclick="closead(2);">关闭</a>
+                                </div>
+                                <div style="height: 13px;">
+                                </div>
+                            </div>
+                            <div style="clear: both;" id="divad6">
+                                <div id="adfloatbaidu">
+                                    <iframe id="ifartadfloadbaidu" height="250px" width="300px" frameborder="0" scrolling="no" src="./iOS开发中Settings.bundle的使用_files/ad5_300.html"></iframe>
+                                </div>
+                                <div class="ggwz">
+                                    <a href="javascript:void(0);" onclick="closead(3);">关闭</a>
+                                </div>
+                                <div style="height: 13px;">
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <input type="hidden" id="docarttitle" value="iOS%e5%bc%80%e5%8f%91%e4%b8%adSettings.bundle%e7%9a%84%e4%bd%bf%e7%94%a8">
+    <input type="hidden" id="artreadroomid" value="0">
+    <script>var asw='bundle+%e9%85%8d%e7%bd%ae+ios'</script>
+    <div id="docdiviframe"></div>
+
+
+    <script language="javascript" type="text/javascript">
+        var appName = navigator.appName.toLowerCase();
+        if (appName.indexOf("microsoft internet explorer") > -1) {
+            document.write("<scr" + "ipt type='text/javascript' src='http://www.360doc.com/js/StickySystemIE20130911.js?t=2015041601'></sc" + "ript>");
+        }
+        else {
+
+            document.write("<scr" + "ipt type='text/javascript' src='http://www.360doc.com/js/StickySystemOther20130911.js?t=2015041601'></sc" + "ript>");
+        }
+    </script><script type="text/javascript" src="./iOS开发中Settings.bundle的使用_files/StickySystemOther20130911.js"></script>
+
+    <script>GerLookingUserInfo(1,19175681,1,0,'-1',-1,10,0);OutputSource('http%3a%2f%2fgit.devzeng.com%2fblog%2fios-settings-bundle.html');OutputCategory(19175681,21,'%e3%80%8aIOS%e9%a1%b9%e7%9b%ae%e9%85%8d%e7%bd%ae%e3%80%8b');OutputLastNextArt('iOS+%e5%88%b6%e4%bd%9c%e5%85%bc%e5%ae%b964%e4%bd%8diOS%e7%b3%bb%e7%bb%9f%e7%9a%84Framework%e5%8c%85','http://www.360doc.com/content/14/1224/09/19175681_435345011.shtml',0);OutputLastNextArt('iOS+Code+Signing+%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0','http://www.360doc.com/content/15/0109/06/19175681_439301320.shtml',1);</script>
+
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd86954201130d615136257dde062a503' type='text/javascript'%3E%3C/script%3E"));
+    </script><script src="./iOS开发中Settings.bundle的使用_files/h.js" type="text/javascript"></script>
+
+    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6857724" src="./iOS开发中Settings.bundle的使用_files/bds_s_v2.js"></script>
+
+    <script type="text/javascript">
+        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000);
+    </script>
+    <!-- Baidu Button END -->
+    <script src="./iOS开发中Settings.bundle的使用_files/logger.js"></script>
+
+
+
+
+<div id="goTop2" style="left: 1896.5px; display: block;"><div id="goTop"><a href="http://www.360doc.com/content/15/0106/14/19175681_438612962.shtml#" id="go_top"></a></div><div id="goTop1"><a href="javascript:void(0);" id="go_top1"></a></div><div><div id="artweixinDiv" style="position: relative;display:none;"><div style="position: absolute; z-index: 2001;margin-left:-220px;*margin-left:-244px;!important;margin-top:-34px;*margin-top:-134px;!important;"><img src="./iOS开发中Settings.bundle的使用_files/wzweixin.gif"></div></div><div id="goTop3" onmouseover="document.getElementById(&#39;artweixinDiv&#39;).style.display=&#39;&#39;;" onmouseout="document.getElementById(&#39;artweixinDiv&#39;).style.display=&#39;none&#39;;"><a href="javascript:void(0);" id="go_top3"></a></div></div></div></body></html>

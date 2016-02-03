@@ -1,0 +1,14 @@
+ADFHOST1929="http://csdnim.allyes.com";
+ADFCID1929=9;
+ADFBID1929=1929;
+ADFLOC='CNZJHZ00';
+ADFUSER1929="http://csdnim.allyes.com/c?d=csdnim&i=z9,10191275,1929,9568&rf=&a=deBW6d5N22A5yG958XmTbSYUk&u=";
+ALLYESID4="99tev1s6f0Y52lpd";
+ADFPGC="2,3,9,0,2477,1929,9568,10191275";
+
+document.write("<div id=\"AD_Sellbuyads\">\n");
+document.write("\n");
+document.write("       <!--CSDN--> <script src=\"http://track.sellbuyads.cn/api/basejs?id=cnd7_cnd3&ext=453_1279_313-44_300_250|1223\" type=\"text/javascript\"></Scr"+"ipt>\n");
+document.write("\n");
+document.write("   </div>");
+

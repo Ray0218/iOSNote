@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://www.cocoachina.com/ios/20140928/9785.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+
+    <title>iOS app调试的黑魔法--第三方库 -  CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区</title>
+    <meta name="keywords" content="iOS开发,调试,第三方库iPhone开发,iOS开发,iPad开发,Mac开发,苹果开发中文站,iPhone开发中文站,CocoaChina首页, Mac OS开发, Cocoa介绍,移动互联网,触控科技,Cocoa,Apple,developer,iOS,iPhone,iPad,iMac,iPod Touch,iPhone5,iPhone4S,iPad3,招聘,iPhone程序员,Objective-c,iPhone应用外包,ios6,ios面试,Cocos2d-x,cocos2d,iTunes,App Store,苹果开发">
+    <meta name="description" content=" - CocoaChina 开发讨论区 最热的iOS开发论坛| 最热的Mac开发论坛 | 最热的iPhone开发论坛 | 最热的iPad开发论坛">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-tc-cerfication" content="3300a939a1098c27e94457b75a0bb8c1">
+    <link rel="stylesheet" href="http://cdn.cocimg.com/assets/css/global.css?v=20150818" media="all">
+    <link rel="stylesheet" href="http://cdn.cocimg.com/assets/css/index.css?v=20150827" media="all">
+    <link href="http://cdn.cocimg.com/assets/css/module.css?v=20150906" rel="stylesheet">
+    <link href="http://cdn.cocimg.com/assets/css/style.css?v=20150818" rel="stylesheet">
+    <link href="http://cdn.cocimg.com/assets/css/navheader.css?v=20150824" rel="stylesheet">
+    <script type="text/javascript" async="" src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/jquery.colorbox-min.js"></script><script type="text/javascript" async="" src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/ga.js"></script><script src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/hm.js"></script><script type="text/javascript" async="" src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/ga.js"></script><script src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/navbar.js"></script>
+    <script type="text/javascript" src="http://js.adm.cnzz.net/js/abase.js"></script>
+
+<style type="text/css"></style><script src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/share.js"></script><link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style1_32.css"></head>
+<body>
+
+    <div class="nav-header">
+            <div class="nav-header-top">
+                <div class="nav-logo nav-fl"><a href="http://www.cocoachina.com/"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/logo.png"></a></div>
+                <div class="nav-list nav-fl">
+                    <ul>
+                        <li><a href="http://www.cocoachina.com/news/">资讯</a></li>
+                        <li><a href="http://www.cocoachina.com/bbs/">论坛</a></li>
+                        <li><a target="_blank" href="http://code.cocoachina.com/" title="code">代码</a></li>
+                        <li><a target="_blank" href="http://job.cocoachina.com/" title="job">招聘</a></li>
+                    </ul>
+                </div>
+                <div class="nav-search nav-fl">
+                    <div class="nav-search-flag" style="display:block"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/search-icon.png"></div>
+                    <div class="nav-search-form" style="display:none">
+                        <form action="http://www.cocoachina.com/cms/plus/search.php" name="formsearch" method="post" target="_blank">
+                            <input type="hidden" name="kwtype" value="0">
+                            <input type="hidden" name="searchtype" value="titlekeyword">
+                            <input name="keyword" type="text" placeholder="站内搜索">
+                            <input type="button">
+                        </form>
+                    </div>
+                </div>
+                <div class="nav-user nav-fr">
+                    <!-- #region 未登录时显示此区域 -->
+                    <div class="nav-user-login" style="display: none;">
+                        <a href="http://www.cocoachina.com/bbs/login.php">登录</a>|
+                        <a href="http://www.cocoachina.com/bbs/register.php">注册</a>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region 已登录时显示此区域 -->
+                    <div class="nav-user-name" style=""><div id="user-info" data-uid="298438"><alert></alert><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/none.gif">ray_ios</div><ul><li><a href="http://www.cocoachina.com/bbs/u.php?tid=298438" target="_blank"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/i-man.png">我的主页</a></li><li><alert></alert><a href="http://www.cocoachina.com/bbs/message.php?type=newmsg" target="_blank"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/i-mail.png">我的消息</a></li><li><a href="http://www.cocoachina.com/bbs/u.php?action=show&uid=298438" target="_blank"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/i-setting.png">账户设置</a></li><li><a href="http://www.cocoachina.com/bbs/login.php?action=quit"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/i-logout.png">退出</a></li></ul></div>
+                    <!-- #endregion -->
+                </div>
+                <div class="nav-clear"></div>
+            </div>
+        <div class="nav-header-bottom">
+            <ul>
+                <li><a id="ios" href="http://www.cocoachina.com/ios/" title="ios" class="light">iOS开发</a></li>
+                <li><a id="app_store" href="http://www.cocoachina.com/appstore/" title="appstore">App Store研究</a></li>
+                <li><a id="review" href="http://www.cocoachina.com/review/" title="review">应用评测</a></li>
+                <li><a id="design" href="http://www.cocoachina.com/design/" title="design">产品设计</a></li>
+                <li><a id="cocos" href="http://www.cocoachina.com/cocos/" title="cocos">Cocos引擎</a></li>
+                <li><a id="webapp" href="http://www.cocoachina.com/webapp/" title="webapp">WebApp</a></li>
+                <li><a id="swift" href="http://www.cocoachina.com/swift/" title="swift">Swift</a></li>
+                <li><a id="game" href="http://www.cocoachina.com/game/" title="game">游戏开发</a></li>
+                <li><a id="apple" href="http://www.cocoachina.com/apple/" title="apple">苹果相关</a></li>
+                <li><a id="market" href="http://www.cocoachina.com/market/" title="market">营销推广</a></li>
+                <li><a id="industry" href="http://www.cocoachina.com/industry/" title="industry">业界动态</a></li>
+                <li><a id="programmer" href="http://www.cocoachina.com/programmer/" title="programmer">程序人生</a></li>
+            </ul>
+        </div>
+    </div>
+<script language="javascript">
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPod");
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+        }
+        return flag;
+    }
+    if (!IsPC()){
+           window.location.href = "http://www.cocoachina.com/cms/wap.php?action=article&id=9785";
+    }
+
+</script>
+<!--middle-->
+<div class="middle clearfix">
+    <div class="m-wrap">
+        <!--left-->
+        <div class="detail-left float-l">
+            <p class="crumbs"><a href="http://www.cocoachina.com/" title="首页">首页</a> &gt;<a href="http://www.cocoachina.com/ios" title="iOS开发"><span id="type_name">iOS开发</span></a></p>
+            <div class="detail-main">
+                <h2>iOS app调试的黑魔法--第三方库</h2>
+                <div class="p-ico clearfix">
+                    <div>
+                        <span class="ml0">2014-09-28 15:15</span>
+                        <span>编辑：
+                        <a href="http://www.cocoachina.com/bbs/u.php?action=feed&uid=340873" id="field_author" target="_blank">suiling</a></span>
+                        <span>分类：<a href="http://www.cocoachina.com/ios/" target="_blank">iOS开发</a></span>
+                        <span id="source">来源：<a href="https://medium.com/ios-apprentice/dark-magic-for-debugging-your-ios-app-bc76f237be21" target="_blank">medium</a></span>
+
+                        <div class="float-r">
+                            <span><i></i> <script src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/count.php"></script>2</span>
+                            <span><i class="view"></i><script src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/count(1).php" language="javascript"></script>8305</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="p-ico clearfix">
+                    <p class="related float-l"><a href="http://www.cocoachina.com/cms/tags.php?/iOS%E5%BC%80%E5%8F%91/" target="_blank">iOS开发</a><a href="http://www.cocoachina.com/cms/tags.php?/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/" target="_blank">第三方库</a><a href="http://www.cocoachina.com/cms/tags.php?/%E8%B0%83%E8%AF%95/" target="_blank">调试</a></p>
+                    <input type="hidden" id="article_id" value="9785">
+                </div>
+                <div class="adsbox clearfix">
+                    <div class="float-l">
+                        <div class="float-l"><b>招聘信息：</b></div>
+                        <ul class="float-l" id="invitelist" style="margin-top: 0px;"><li><a href="http://job.cocoachina.com/job/show?id=66231" target="_blank">Android 软件开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67249" target="_blank">iOS开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=59224" target="_blank">iOS高级工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=66828" target="_blank">iOS高级开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67091" target="_blank">Python实习</a></li><li><a href="http://job.cocoachina.com/job/show?id=67195" target="_blank">【新浪微博】手机客户端iOS研发工程师 20k-40k</a></li><li><a href="http://job.cocoachina.com/job/show?id=66661" target="_blank">Cocos2d-x 工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67242" target="_blank">Node.js手游后台开发程序</a></li><li><a href="http://job.cocoachina.com/job/show?id=67241" target="_blank">cocos2d-x游戏客户端开发</a></li><li><a href="http://job.cocoachina.com/job/show?id=66891" target="_blank">硅谷顶尖团队招 iOS 开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=66923" target="_blank">iOS高级工程师</a></li></ul>
+                    </div>
+                    <div class="float-r">
+                        <a href="javascript:void(0)" class="prev"></a>
+                        <a href="javascript:void(0)" class="next"></a>
+                    </div>
+                </div>
+                <div id="detailbody" class="field_body">
+                    <div style="text-align: center;"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/4196_140928152858_1.png" width="550" border="0" height="396" alt="" style="cursor:pointer" onclick="window.open(&#39;/cms/uploads/allimg/140928/4196_140928152858_1.png&#39;)"></div>
+<p><span style="line-height: 1.8;">苹果的Xcode是一个非常强大的开发和调试工具，而iOS 8更是为它带来了全新的动力驱动，比如Instruments、iOS模拟器以及Playground等。</span></p>
+<p>不过有时候仍然会觉得我们的Xcode似乎还是欠缺某些功能和特性，不能满足开发者的某项需求，正是在这种背景下，很多开发者采用了自己的解决方案。以下列举的是可以集成到现有项目中，并且可以有效帮助调试和开发的工具。</p>
+<p><strong style="color: rgb(192, 0, 0); text-decoration: underline;"><span style="color: rgb(192, 0, 0);"><a href="https://github.com/Flipboard/FLEX" target="_blank" style="color: rgb(192, 0, 0); text-decoration: underline;"><span style="color: rgb(0, 0, 255);">FLEX</span></a></span></strong></p>
+<div style="text-align: center;"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/4196_140928151921_1.gif" width="300" border="0" height="584" alt="" style="cursor:pointer" onclick="window.open(&#39;/cms/uploads/allimg/140928/4196_140928151921_1.gif&#39;)"></div>
+<p>FLEX是Flipboard开源的一款调试工具，你可以用FLEX来检查UI元素和调整框架等。FLEX在应用程序中的作用有点类似于<a href="http://revealapp.com/" target="_blank"><span style="color: rgb(0, 0, 255);">Reveal App</span></a>。Reveal通过2D和3D可视化技术可以让你查看app运行时的视图层次，也可以让你快速Debug视图布局问题和渲染问题。</p>
+<p>关于FLEX的具体用法请参看：<a href="http://www.cocoachina.com/ios/20140728/9259.html" target="_blank"><span style="color: rgb(0, 0, 255);">Flipboard开源应用内调试工具FLEX</span></a> &nbsp;以及团队成员Evan Doll关于 <a href="http://vimeo.com/90423351" target="_blank"><span style="color: rgb(0, 0, 255);">Flipboard团队使用的iOS开发工具</span></a> 的视频演讲 &nbsp;</p>
+<p>关于Reveal App的详细说明请参看：<a href="http://www.cocoachina.com/ios/20130717/6621.html" target="_blank" style="color: rgb(192, 0, 0); text-decoration: underline;"><span style="color: rgb(0, 0, 255);">Reveal通过视图层次帮你理解复杂的app 并提供相关Debug功能</span></a><span style="color: rgb(0, 0, 255);"> &nbsp;</span></p>
+<p><a href="https://github.com/AliSoftware/OHHTTPStubs" target="_blank"><strong><span style="color: rgb(0, 0, 255);">OHHTTPStubs</span></strong></a> &nbsp;</p>
+<p>在你的服务器没有准备妥当或者在你需要模拟数据进行本地开发时，OHHTTPStubs是一个很好的可以加速测试和开发的工具。OHHTTPStubs可使用伪造的网络数据和模拟的缓慢网络来测试你的应用程序，从而检测你的应用程序在不佳的网络环境中的行为，并使用伪造的网络数据编写单元测试。</p>
+<p><a href="https://github.com/Daniel1of1/NSObjectIntrospection" target="_blank"><strong><span style="color: rgb(0, 0, 255);">NSObjectIntrospection</span></strong></a>&nbsp;</p>
+<p>NSObjectIntrospection是NSObject的一个类别，用以runtime自省，你可以通过它列出运行中的类的方法和属性，或者通过调试控制台。</p>
+<p><a href="https://github.com/facebook/Tweaks" target="_blank"><strong><span style="color: rgb(0, 0, 255);">Tweaks</span></strong></a></p>
+<p>Tweaks是Facebook开源的调试工具，可帮开发者实时调整参数并测试效果（编辑注：主要进行小幅调整，比如颜色和动画），同时也是Facebook在其应用Paper中大量使用的工具。</p>
+<p>Tweaks对设计师和开发者之间的小幅调整非常有用，设计师可以微调元素的数值并将其输出给开发团队以完成更改。对于该工具，你还可以看看这个讲述<a href="https://www.youtube.com/watch?v=OiY1cheLpmI" target="_blank"><span style="color: rgb(0, 0, 255);">Facebook开发团队在构建Paper app的过程，以及在该过程中如何使用Tweaks</span></a>的视频。</p>
+<div style="text-align: center;"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/4196_140928152318_1.gif" width="300" alt="" style="cursor:pointer" onclick="window.open(&#39;/cms/uploads/allimg/140928/4196_140928152318_1.gif&#39;)"></div>
+<p><a href="https://github.com/vpdn/MMLayershots" target="_blank"><strong><span style="color: rgb(0, 0, 255);">MMLayershots</span></strong></a> &nbsp;</p>
+<p>MMLayershots可以把iOS app的截图转换为分层的PSD文件。不管何时你截取应用截图，它都会从整个app的视图层次生成一个PSD文件，然后你可以在PSD编辑工具（Photoshop,Pixelmator,Acorn甚至GIMP）中使用PSD文件，并按照你喜欢的方式调整图层，从而在视觉上进行更快速的迭代。另外，还可以使用<a href="http://framerjs.com/" target="_blank"><span style="color: rgb(0, 0, 255);">Framer.js</span></a>进行动画和交互的快速原型，并让UI变得鲜活起来。</p>
+<div style="text-align: center;"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/4196_140928152339_1.gif" width="300" alt="" style="cursor:pointer" onclick="window.open(&#39;/cms/uploads/allimg/140928/4196_140928152339_1.gif&#39;)"><br>
+<img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/4196_140928152340_2.gif" width="300" alt="" style="cursor:pointer" onclick="window.open(&#39;/cms/uploads/allimg/140928/4196_140928152340_2.gif&#39;)"></div>
+<p><a href="https://github.com/robbiehanson/CocoaLumberjack" target="_blank"><strong><span style="color: rgb(0, 0, 255);">CocoaLumberjack</span></strong></a>&nbsp;</p>
+<p>CocoaLumberjack是一个适合OS X和iOS的日志框架，集快速、简单、强大、灵活于一身。通过CocoaLumberjack，你可以为调试控制台添加颜色，可以提供不同级别的日志记录，还可以为日志编写自定义格式。</p>
+<p>CocoaLumberjack的概念类似于广受欢迎的logging框架，比如log4j。CocoaLumberjack专为Objective-C设计，充分利用了多线程、Grand Central Dispatch（如果可用）以及Objective-C运行时的动态特性等。</p>
+<div style="text-align: center;"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/4196_140928152451_1.jpg" width="400" alt="" style="cursor:pointer" onclick="window.open(&#39;/cms/uploads/allimg/140928/4196_140928152451_1.jpg&#39;)"></div>
+<p><a href="https://github.com/steipete/Aspects" target="_blank"><strong><span style="color: rgb(0, 0, 255);">Aspects</span></strong></a>&nbsp;</p>
+<p>Aspects是Cocoa中面向方面编程的简单开源库，你可以通过它为现有的类的方法或者实例添加代码，同时考虑插入点位置，比如before/instead/after。Aspects比常规的方法混用更为简单。</p>
+<p><a href="https://github.com/heardrwt/RHObjectiveBeagle" target="_blank"><strong><span style="color: rgb(0, 0, 255);">RHObjectiveBeagle</span></strong></a>&nbsp;</p>
+<pre><ol class="dp-c"><li class="alt"><span><span>(lldb)&nbsp;po&nbsp;beagle(@</span><span class="string">"UISwitch"</span><span>)&nbsp;</span></span></li><li><span>&lt;__NSCFArray&nbsp;0x8f2e6c0&gt;(&nbsp;</span></li><li class="alt"><span><uiswitch:&nbsp;0x8f73aa0;&nbsp;frame&nbsp;=&nbsp;(93&nbsp;226;&nbsp;51&nbsp;31);&nbsp;opaque&nbsp;=&nbsp;no;&nbsp;autoresize&nbsp;=&nbsp;rm+bm;&nbsp;layer&nbsp;=&nbsp;<calayer:&nbsp;0x8f73bd0>&gt;,&nbsp;</uiswitch:&nbsp;0x8f73aa0;&nbsp;frame&nbsp;=&nbsp;(93&nbsp;226;&nbsp;51&nbsp;31);&nbsp;opaque&nbsp;=&nbsp;no;&nbsp;autoresize&nbsp;=&nbsp;rm+bm;&nbsp;layer&nbsp;=&nbsp;<calayer:&nbsp;0x8f73bd0></span></li><li><span><uiswitch:&nbsp;0x8e6fa50;&nbsp;frame&nbsp;=&nbsp;(171&nbsp;226;&nbsp;51&nbsp;31);&nbsp;opaque&nbsp;=&nbsp;no;&nbsp;autoresize&nbsp;=&nbsp;rm+bm;&nbsp;layer&nbsp;=&nbsp;<calayer:&nbsp;0x8c6a760>&gt;&nbsp;</uiswitch:&nbsp;0x8e6fa50;&nbsp;frame&nbsp;=&nbsp;(171&nbsp;226;&nbsp;51&nbsp;31);&nbsp;opaque&nbsp;=&nbsp;no;&nbsp;autoresize&nbsp;=&nbsp;rm+bm;&nbsp;layer&nbsp;=&nbsp;<calayer:&nbsp;0x8c6a760></span></li><li class="alt"><span>)&nbsp;</span></li></ol></pre>
+<p>RHObjectiveBeagle是一款Objective C调试辅助工具，它可以在运行过程中找出指定类的实例。你可以通过它列出类及其子类的所有实例，列出指定类的所有实例，找出指定类的首个实例，查找并列出指定类的所有子类。</p>
+                </div>
+                <div id="page" style="padding:0"></div>
+
+                <div class="wx_article">
+                    <div class="article_weixin">
+                        <img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/article_weixin.jpg" width="131" height="131" alt="搜索CocoaChina微信公众号：CocoaChina">
+                        <div class="article_scan">微信扫一扫</div>
+                        <div class="article_txt"><span style="color:#999999">订阅每日移动开发及APP推广热点资讯<br>公众号：</span>CocoaChina</div>
+                    </div>
+                </div>
+
+               <div class="clearfix tgbox">
+                    <a href="mailto:support@cocoachina.com" class="tg float-l" target="_blank">我要投稿</a>&nbsp;&nbsp;
+                    <a style="margin-left:10px" href="javascript:void(0)" onclick="add_favors(9785,&#39;iOS app调试的黑魔法--第三方库&#39;)" class="tg float-l">收藏文章</a>
+                    <div class="share float-r">分享到：
+                        <div class="bdsharebuttonbox" id="sharediv" data-bd-bind="1443488058412"><a href="http://www.cocoachina.com/ios/20140928/9785.html#" class="bds_more" data-cmd="more"></a> <a href="http://www.cocoachina.com/ios/20140928/9785.html#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="http://www.cocoachina.com/ios/20140928/9785.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a> <a href="http://www.cocoachina.com/ios/20140928/9785.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                    </div>
+                </div>
+
+
+                <a class="zanbox" href="javascript:void(0)" id="zanbox" onclick="postDigg(&#39;good&#39;,9785)" title="哎呦，不错噢，赞一个">
+                    <strong id="newdigg">
+                     <script src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/count(2).php" language="javascript"></script>27
+                    </strong>
+                </a>
+            </div>
+
+            <div class="article-prev">上一篇：<a href="http://www.cocoachina.com/ios/20140928/9782.html">iOS并发开发简要整理（上）</a> </div>
+            <div class="article-next">下一篇：<a href="http://www.cocoachina.com/ios/20140929/9800.html">App Extension编程指南（iOS8/OS X v10.10）：扩展类型--Action</a> </div>
+
+            <!--相关资讯-->
+            <div class="part-wrap clearfix">
+                <h3>相关资讯</h3>
+                <ul class="info-list clearfix">
+                    <li>
+                        <a href="http://www.cocoachina.com/ios/20150927/13525.html" target="_blank" title="网络上找了很多关于delegation和block的使用场景，发现没有很满意的解释，后来无意中在stablekernel找到了这篇文章，文中作者不仅仅是给出了解决方案，更值得我们深思的是作者独特的思考和解决问题的">【投稿】开发该选择Blocks还是Delegates</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20150911/13410.html" target="_blank" title="统计打点是 App 开发里很重要的一个环节，App 的运行状态、改版后的效果、用户的各种行为等都需要打点，市面上也有不少可供选择的第三方库。 假设产品有这么个需求：当用户在详情页点击购买按钮">iOS 统计打点那些事</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20150914/13319.html" target="_blank" title="pbxproj文件对于我们来说即熟悉又陌生，熟悉到我们每天都得见面。而除了偶尔遇到的合并冲突，其余时候我们甚至忘记了它的存在。当然，并不是说它不重要，相反，pbxproj文件保存了项目的所有配置">project.pbxproj，最熟悉的”陌生人”</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20150828/13198.html" target="_blank" title="今天呢就封装一个可以在项目中直接使用的图片轮播">iOS开发之多图片无缝滚动组件封装与使用</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20150826/13143.html" target="_blank" title="毛玻璃效果;这是本人平时工作所用的一些开发技巧及第三方包的DEMO;自定义的segmengtView，适合新手学习借鉴;学习iOS开发过程中，对iOS开发中常用方法函数个人总结，添加中文注释，方便查阅;简单演示">源码推荐(8.26)：毛玻璃效果，学习iOS开发技巧及第三方包的DEMO汇总</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20150813/12987.html" target="_blank" title="介绍一下如何使用Storyboard来预览UI在不同那个分辨率屏幕上的运行效果，这就很好的避免了每次调整约束都要Run一下才能看到不同平面上运行的效果">iOS开发之使用Storyboard预览UI在不同屏幕上的运行效果</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20150807/12877.html" target="_blank" title="通过Runtime来给Model类属性赋值的好处是多多的，它便于代码的后期维护，并且提高了开发效率">iOS开发之遍历Model类的属性并完善使用Runtime给Model类赋值</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20150805/12859.html" target="_blank" title="Cedar，Specta和Kiwi这3个框架就是目前Objc最流行的BDD测试框架了，其中Kiwi最受欢迎">iOS开发中的测试框架</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20150729/12769.html" target="_blank" title="本篇博客先给出简单也是最容易使用的把字典转成实体类的方法，然后在给出如何使用Runtime来给Model实体类赋值">iOS开发之使用Runtime给Model类赋值</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20150722/12664.html" target="_blank" title="今天跟大家聊聊iOS开发中多线程同步的话题">iOS开发多线程同步</a>
+                     </li>
+
+                </ul>
+            </div>
+            <div class="clearfix" style="margin-top:20px;">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC评论框 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:750px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="8242010366"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <iframe id="comiframe" src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/comment.html" width="750" frameborder="0" scrolling="no" height="623"></iframe>
+            <script type="text/javascript">
+                var reinit;
+
+                function reinitIframe(){
+                    var iframe = document.getElementById("comiframe");
+                    var src = $("#comiframe").attr('src');
+                    try{
+                    var indexof = src.indexOf("cn.cocos2d-x.org/comment/get_comments");
+                    if(src!='' && indexof<0 ){
+                        var bHeight = iframe.contentWindow.document.body.scrollHeight;
+
+                        var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+
+                        var height = Math.max(bHeight, dHeight);
+                        iframe.height =  parseInt(height)+180;
+                        if(height!='150'){
+                        var src_new=src.replace("www.cocoachina.com/comment.php","cn.cocos2d-x.org/comment/get_comments");
+                        $("#comiframe").attr("src",src_new);
+
+                        clearInterval(reinit);
+                        }
+                    }
+                    }catch(ex){
+                    }
+                }
+                reinit = window.setInterval("reinitIframe()", 1200);
+            </script>
+
+
+        </div>
+        <!--./left-->
+        <!--侧边栏-->
+        <div class="clearfix newslist">
+            <div class="rightSide detail-right float-r">
+                <!--两周热门资讯推荐-->
+                <div>
+                    <div class="part-wrap clearfix">
+                        <h3>热门资讯</h3>
+                        <ul class="related-hot">
+                            <li class="clearfix"><a href="http://www.cocoachina.com/ios/20150914/13418.html" class="float-l pic" target="_blank" title="现在，UICollectionViews有了简单的重排功能"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/b5a7b0bc054e3569cf5442fec363c5b4.gif" style="max-height:60px" alt="现在，UICollectionViews有了简单的重排功能"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20150914/13418.html" target="_blank" title="现在，UICollectionViews有了简单的重排功能">现在，UICollectionViews有了简单的重排功能</a></p><p class="hits">点击量<span>9458</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/apple/20150917/13486.html" class="float-l pic" target="_blank" title="iOS 9正式发布，你发现其中隐藏的功能了吗"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/38944bad9e87804bcc3cc1a9b82d1a8d.jpg" style="max-height:60px" alt="iOS 9正式发布，你发现其中隐藏的功能了吗"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/apple/20150917/13486.html" target="_blank" title="iOS 9正式发布，你发现其中隐藏的功能了吗">iOS 9正式发布，你发现其中隐藏的功能了吗</a></p><p class="hits">点击量<span>8889</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20150918/13488.html" class="float-l pic" target="_blank" title=" 打造安全的App！iOS安全系列之 HTTPS 进阶"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/4da358f69e43cf4d0fae8efa7e53f34e.jpg" style="max-height:60px" alt=" 打造安全的App！iOS安全系列之 HTTPS 进阶"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20150918/13488.html" target="_blank" title=" 打造安全的App！iOS安全系列之 HTTPS 进阶"> 打造安全的App！iOS安全系列之 HTTPS 进阶</a></p><p class="hits">点击量<span>8486</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/swift/20150921/13452.html" class="float-l pic" target="_blank" title="在 30 天内，从零开始学习 Swift"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/a56eec1a371c375dc1713290ecb3b0e1.jpg" style="max-height:60px" alt="在 30 天内，从零开始学习 Swift"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/swift/20150921/13452.html" target="_blank" title="在 30 天内，从零开始学习 Swift">在 30 天内，从零开始学习 Swift</a></p><p class="hits">点击量<span>8388</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20150917/13481.html" class="float-l pic" target="_blank" title="iOS 9系统策略更新，使用微信SDK的开发者注意升级"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/9d5ca6907f34ec6fa428c2a881fc6cfd.jpg" style="max-height:60px" alt="iOS 9系统策略更新，使用微信SDK的开发者注意升级"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20150917/13481.html" target="_blank" title="iOS 9系统策略更新，使用微信SDK的开发者注意升级">iOS 9系统策略更新，使用微信SDK的开发者注意升级</a></p><p class="hits">点击量<span>7760</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20150923/13531.html" class="float-l pic" target="_blank" title="iOS 代码实践总结"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/7e1cbb68e347058d09b1a3934df36657.jpg" style="max-height:60px" alt="iOS 代码实践总结"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20150923/13531.html" target="_blank" title="iOS 代码实践总结">iOS 代码实践总结</a></p><p class="hits">点击量<span>7519</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20150922/13521.html" class="float-l pic" target="_blank" title="完美主义：实现iOS输入框自动移动"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/ec034d202f5538bedfccde8febb717b8.jpg" style="max-height:60px" alt="完美主义：实现iOS输入框自动移动"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20150922/13521.html" target="_blank" title="完美主义：实现iOS输入框自动移动">完美主义：实现iOS输入框自动移动</a></p><p class="hits">点击量<span>6737</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/programmer/20150925/13546.html" class="float-l pic" target="_blank" title="程序员教你如何追女生"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/f5ae0d531ad67f4e0dfe1eb53c92f728.jpg" style="max-height:60px" alt="程序员教你如何追女生"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/programmer/20150925/13546.html" target="_blank" title="程序员教你如何追女生">程序员教你如何追女生</a></p><p class="hits">点击量<span>6707</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20150915/13371.html" class="float-l pic" target="_blank" title="近一年来做的动效设计整理"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/76b7b2072cdca8376d61c11f3f83145f.jpg" style="max-height:60px" alt="近一年来做的动效设计整理"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20150915/13371.html" target="_blank" title="近一年来做的动效设计整理">近一年来做的动效设计整理</a></p><p class="hits">点击量<span>6404</span></p></div></li><li class="clearfix noborder-b"><a href="http://www.cocoachina.com/ios/20150927/13525.html" class="float-l pic" target="_blank" title="【投稿】开发该选择Blocks还是Delegates"><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/94f7fd59483a4f933523272aa017d1c2.jpg" style="max-height:60px" alt="【投稿】开发该选择Blocks还是Delegates"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20150927/13525.html" target="_blank" title="【投稿】开发该选择Blocks还是Delegates">【投稿】开发该选择Blocks还是Delegates</a></p><p class="hits">点击量<span>5677</span></p></div></li>
+                        </ul>
+                    </div>
+               </div>
+               <!--./两周热门资讯推荐-->
+                <!-- 广告位：资讯频道列表页面右侧300*90-->
+                <div class="job-ad"><script>CNZZ_SLOT_RENDER('324555');</script></div>
+               <!--综合评论-->
+                <div class="part-wrap clearfix" style="margin-top: 15px;">
+                    <h3>综合评论</h3>
+                    <ul class="related-comment clearfix">
+                        <li><span class="hide_comment">垃圾中的垃圾</span><br><p><span>kenzo8503</span><span>评论了</span><a href="http://www.cocoachina.com/apple/20150806/12926.html" title="奇葩双头Apple Watch出现 库克几乎是崩溃..." target="_blank"><span>奇葩双头Apple Watch出现 库克几乎是崩溃...</span></a></p></li><li><span class="hide_comment">是“self.navigationController.interactivePopGestureRecognizer” 而不是“self.interactivePopGestureRecognizer”</span><br><p><span>火的三次方</span><span>评论了</span><a href="http://www.cocoachina.com/ios/20150811/12897.html?utm_source=tuicool" title="8行代码教你搞定导航控制器全屏滑动返回效果" target="_blank"><span>8行代码教你搞定导航控制器全屏滑动返回效果</span></a></p></li><li><span class="hide_comment">66</span><br><p><span>hanxiao</span><span>评论了</span><a href="http://www.cocoachina.com/ios/20150901/13199.html" title="【iOS】彩色TabBar切换动画实现" target="_blank"><span>【iOS】彩色TabBar切换动画实现</span></a></p></li><li><span class="hide_comment">不错，受教了</span><br><p><span>phoenixne</span><span>评论了</span><a href="http://www.cocoachina.com/programmer/20150901/12690.html" title="作为程序员最应该投资的是这十件事" target="_blank"><span>作为程序员最应该投资的是这十件事</span></a></p></li><li><span class="hide_comment">分析的非常棒，赞赞赞</span><br><p><span>skyming</span><span>评论了</span><a href="http://www.cocoachina.com/ios/20150831/13252.html" title=" ReactiveCocoa2 源码浅析" target="_blank"><span> ReactiveCocoa2 源码浅析</span></a></p></li><li><span class="hide_comment">受教了</span><br><p><span>xinyi</span><span>评论了</span><a href="http://www.cocoachina.com/ios/20141216/10652.html" title="自动布局之autoresizingMask使用详解..." target="_blank"><span>自动布局之autoresizingMask使用详解...</span></a></p></li><li><span class="hide_comment">方式“字阵”记录下来：少叠测时。这是什么方法  求教呢</span><br><p><span>Apple_MrPig</span><span>评论了</span><a href="http://www.cocoachina.com/programmer/20150831/13172.html" title="技术学习总原则" target="_blank"><span>技术学习总原则</span></a></p></li><li><span class="hide_comment">谁发的发的说法是第三代</span><br><p><span>dqw18037</span><span>评论了</span><a href="http://www.cocoachina.com/ios/20120919/4784.html" title="集成新浪,腾讯,人人分享功能的Demo" target="_blank"><span>集成新浪,腾讯,人人分享功能的Demo</span></a></p></li><li><span class="hide_comment">新手表示收藏了</span><br><p><span>夜O无眠</span><span>评论了</span><a href="http://www.cocoachina.com/ios/20150906/13318.html" title="Swift学习: 从Objective-C到Swi..." target="_blank"><span>Swift学习: 从Objective-C到Swi...</span></a></p></li><li class="noborder-b"><span class="hide_comment">绝世好文章！！！！！！！！！！！！！！！！！！！！！！！！！！</span><br><p><span>乔布斯2013</span><span>评论了</span><a href="http://www.cocoachina.com/game/20150906/13340.html" title="独立游戏人：像素风格游戏制作分享" target="_blank"><span>独立游戏人：像素风格游戏制作分享</span></a></p></li>
+                    </ul>
+                </div>
+                <!--./综合评论-->
+                <!--相关帖子-->
+                <div class="part-wrap clearfix" style="margin:15px 0 15px 0;">
+                    <h3>相关帖子</h3>
+                    <ul class="related-comment clearfix">
+                        <script charset="gb2312" src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/new.php"></script><li><a href="http://www.cocoachina.com/bbs/read.php?tid=325646" target="_blank">一个实时音频流播放器代码</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=325645" target="_blank">自定义CollectionViewCell不显示图片</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=325644" target="_blank">Xcode7创建项目时点选Git后创建的项目一直报此错"Couldn’t communicate with a helper application ..</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=325643" target="_blank">求教各位大神事件疑问</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=325642" target="_blank">Storyboard 下 View 边距约束是0怎么会左右留白？求指点</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=325641" target="_blank">求教一个非常简单的数学问题,抛物线...!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=325639" target="_blank">在头文件声明私有变量与在类扩展中声明私有变量的不同之处（讨论)</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=325638" target="_blank">collectionView不走协议方法，运行程序只有背景色，其他啥都没有</a></li><li class="clearfix noborder-b"><a href="http://www.cocoachina.com/bbs/read.php?tid=325637" target="_blank">1W预算求推荐用于APP开发的笔记本</a></li>
+                    </ul>
+                </div>
+                <!--./相关帖子-->
+                <iframe width="230" height="550" class="share_self" frameborder="0" scrolling="no" src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/index.html"></iframe>
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC列表页面230x230 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:230px;height:230px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="6765277166"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        <!--./侧边栏-->
+    </div>
+
+    <div id="coco-store" style="display:none">
+        <div class="storebox">
+            <h5>提示</h5>
+            <h3>已经收藏该篇文章</h3>
+            <p class="p1"><a href="http://www.cocoachina.com/bbs/u.php?action=favor&tag=1" target="_blank">去我的收藏夹</a></p>
+            <p class="p2"><a href="http://www.cocoachina.com/bbs/login.php">请登录</a></p>
+        </div>
+    </div> <!--收藏提示-->
+</div>
+
+<script type="text/javascript">
+
+function postDigg(ftype,aid)
+{
+    var taget_obj = document.getElementById('newdigg');
+    var saveid = GetCookie('diggid');
+    if(saveid != null)
+    {
+        var saveids = saveid.split(',');
+        var hasid = false;
+        saveid = '';
+        j = 1;
+        for(i=saveids.length-1;i>=0;i--)
+        {
+            if(saveids[i]==aid && hasid) continue;
+            else {
+                if(saveids[i]==aid && !hasid) hasid = true;
+                saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+                j++;
+                if(j==20 && hasid) break;
+                if(j==19 && !hasid) break;
+            }
+        }
+        if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+        else saveid += ','+aid;
+        SetCookie('diggid',saveid,1);
+    }
+    else
+    {
+        SetCookie('diggid',aid,1);
+    }
+    myajax = new DedeAjax(taget_obj,false,false,'','','');
+    var url = "/cms/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+    myajax.SendGet2(url);
+    DedeXHTTP = null;
+    $('#zanbox').addClass('zanbox-selected');
+}
+function getDigg(aid)
+{
+    var taget_obj = document.getElementById('newdigg');
+    myajax = new DedeAjax(taget_obj,false,false,'','','');
+    myajax.SendGet2("/cms/plus/digg_ajax.php?id="+aid);
+    DedeXHTTP = null;
+}
+
+
+//显示对应的导航：
+$(function(){
+    var article_id = $('#article_id').val();
+    var saveid = GetCookie('diggid');
+
+    if(saveid != null)
+    {
+        var saveids = saveid.split(',');
+        var hasid = false;
+        saveid = '';
+        j = 1;
+        for(i=saveids.length-1;i>=0;i--)
+        {
+            if(saveids[i]==article_id && hasid) continue;
+            else {
+                if(saveids[i]==article_id && !hasid) hasid = true;
+                saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+                j++;
+                if(j==20 && hasid) break;
+                if(j==19 && !hasid) break;
+            }
+        }
+
+        if(hasid)
+        {
+            $('#zanbox').addClass('zanbox-selected');
+        }
+
+    }
+
+
+    // 根据作者名更新链接
+
+    function updateAuthor(name) {
+        if(name != "pockry" && name!= "suiling" && name!= "wupeng") {
+            name = "suiling";
+        }
+        var urls = {
+            "pockry": "http://www.cocoachina.com/bbs/u.php?action=feed&username=pockry",
+            "suiling": "http://www.cocoachina.com/bbs/u.php?action=feed&uid=340873",
+            "wupeng": "http://www.cocoachina.com/bbs/u.php?action=feed&uid=304691"
+        };
+        $("#field_author").attr("href", urls[name]).html(name);
+    }
+    updateAuthor("suiling");
+
+});
+
+window.onload = function() {
+
+    $('#sharediv').removeClass('bdshare-button-style1-32');
+    $('#sharediv').attr('class','bdsharebuttonbox');
+};
+</script>
+<script type="text/javascript" src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/shCore.js"></script>
+    <script type="text/javascript" src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/brush.js"></script>
+    <link type="text/css" rel="stylesheet" href="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/shCoreDefault.css">
+    <script type="text/javascript">
+    //SyntaxHighlighter.config.clipboardSwf = '/js/scripts/clipboard.swf';
+
+    SyntaxHighlighter.all();</script>
+
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"iOS app调试的黑魔法--第三方库 - 来自CocoaChina苹果开发中文站@CocoaChina","bdMini":"2","bdMiniList":false,"bdPic":"http://cn.cocos2d-x.org/uploads/f2e77278adda7b554c1b3019a8cd0f1a.png","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api//js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!--./cont-->
+
+<!--右侧浮动-->
+<div class="r-bar" style="position: fixed; top: inherit; bottom: 10px;">
+    <img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/coco_weixin.png" class="weixin">
+    <a href="http://weibo.com/cocoachina" target="_blank" title="" class="weibo">sina</a>
+    <a href="javascript:void(0);" target="_blank" title="" class="feedback">weixin</a>
+    <a href="mailto:support@cocoachina.com" title="" class="kefu">mail</a>
+    <a href="javascript:;" title="回到顶部" class="returntop" style="display: inline;">回到顶部</a>
+</div>
+
+<!--./cont-->
+<script type="text/javascript" src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/index.js"></script>
+<script language="javascript" src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/bbsauth_plus2015.php" type="text/javascript"></script>
+<script src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/jquery.colorbox-min.js" type="text/javascript"></script>
+<script src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/script.js" type="text/javascript"></script>
+
+<!--footer-->
+<div class="footer clearfix">
+    <div class="footer-t">
+        <div class="friend-link">
+            <h4 class="rank-tit">友情链接</h4>
+            <ul>
+                <li><a href="http://www.testin.cn/" target="_blank">Testin | </a></li>
+                <li><a href="http://www.apicloud.com/" target="_blank">APICloud | </a></li>
+                <li><a href="http://www.oneapm.com/" target="_blank">OneAPM | </a></li>
+                <li><a href="http://www.jpush.cn/" target="_blank">极光推送 | </a></li>
+                <li><a href="https://store.cocos.com/" target="_blank">Cocos商店 | </a></li>
+                <li><a href="http://www.woshipm.com/" target="_blank">人人都是产品经理 | </a></li>
+                <li><a href="http://link.cocos.com/" target="_blank">Cocos Link | </a></li>
+                <li><a href="http://cn.cocos2d-x.org/" target="_blank">Cocos引擎中文官网 | </a></li>
+                <li><a href="http://www.tuicool.com/" target="_blank">推酷网 | </a></li>
+                <li><a href="http://www.youxituoluo.com/" target="_blank">游戏陀螺 | </a></li>
+                <li><a href="http://www.9miao.com/" target="_blank">9秒社团 | </a></li>
+                <li><a href="http://segmentfault.com/" target="_blank">SegmentFault | </a></li>
+                <li><a href="http://www.sykong.com/" target="_blank">手游那点事 | </a></li>
+                <li><a href="https://developer.apple.com/" target="_blank">苹果开发者中心 | </a></li>
+                <li><a href="http://www.cocos2d-x.org/" target="_blank">cocos2d-x | </a></li>
+                <li><a href="http://gamerboom.com/" target="_blank">游戏邦 | </a></li>
+                <li><a href="http://www.nooidea.com/" target="_blank">Nooidea.com | </a></li>
+                <li><a href="http://www.9ria.com/" target="_blank">9RIA天地会 | </a></li>
+                <li><a href="http://www.iapps.im/" target="_blank">爱应用</a></li>
+            </ul>
+        </div>
+        <div class="two-code">
+            <div class="wx-code">
+                <img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/wx-code.jpg" alt="">
+                <span>关注微信 每日推荐</span>
+            </div>
+            <div class="m-code">
+                <img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/mb-code.jpg" alt="">
+                <span>扫一扫 浏览移动版</span>
+            </div>
+        </div>
+    </div>
+    <div class="footer-b">
+        <div><a href="http://www.cocoachina.com/aboutus/index.html" target="_blank">关于我们</a><a href="http://www.cocoachina.com/contactus/" target="_blank">广告合作</a><a target="_blank" href="mailto:support@cocoachina.com">联系我们</a></div>
+        <p class="footer-b-p">北京触控科技有限公司版权所有</p>
+        <p>
+            ©2015 Chukong Technologies,Inc.
+            <i>
+                <a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备 11006519号 　京ICP证 100954号</a> 京公网安备11010502020289
+                <a href="http://182.131.21.137/ccnt-apply/admin/business/preview/business-preview!lookUrlRFID.action?main_id=A580B24B1AE846CE9DA949026D63939F" target="_blank">
+                    <img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/jingwen.png" style="margin: -10px auto -14px -10px;">
+                    京网文[2012]0426-138号
+                </a>
+            </i>
+        </p>
+    </div>
+</div>
+
+<!--./footer-->
+<script language="javascript" type="text/javascript" src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/dedeajax2-min.js"></script>
+<script type="text/javascript">
+function subscribe()
+{
+    var email_address = $('#demail').val();
+    var preg_email = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+
+    if( email_address == '' )
+    {
+        alert('请输入邮箱');
+    }
+    else if( !preg_email.test(email_address) )
+    {
+        alert('邮箱格式错误');
+    }
+    else
+    {
+        $.post(
+            '/edm.php',
+            {
+                email: $('#demail').val()
+            },
+            function(data) {
+                alert(data);
+             });
+    }
+}
+function search_check()
+{
+    var search_keyword = $('#search_keyword').val();
+
+    if( search_keyword.length < 2 )
+    {
+        alert("搜索关键字不能少于2个字节，请重新输入。");
+    }
+    else
+    {
+        $('#searchform').submit();
+    }
+}
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "http://hm.baidu.com/hm.js?88399e4c4cf744609c4fc8c3a8935691";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-16940817-2']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+$(document).ready(function(){
+    if (typeof(_user_info_html) != 'undefined' && _user_info_html)
+    {
+        $('.nav-user-login').hide();
+        $('.nav-user-name').html(_user_info_html).show();
+    }
+
+    var type = $('#type_name').html();
+    if(type)
+    {
+        switch( type )
+        {
+            case 'iOS开发':
+                $('#ios').addClass('light');
+                break;
+            case 'AppStore研究':
+                $('#app_store').addClass('light');
+                break;
+            case 'Mac开发':
+                $('#mac').addClass('light');
+                break;
+            case '产品设计':
+                $('#design').addClass('light');
+                break;
+            case 'Cocos引擎':
+                $('#cocos').addClass('light');
+                break;
+            case 'WebApp':
+                $('#webapp').addClass('light');
+                break;
+            case 'Swift':
+                $('#swift').addClass('light');
+                break;
+            case '游戏开发':
+                $('#game').addClass('light');
+                break;
+            case '苹果相关':
+                $('#apple').addClass('light');
+                break;
+            case '营销推广':
+                $('#market').addClass('light');
+                break;
+            case '业界动态':
+                $('#industry').addClass('light');
+                break;
+            case '程序人生':
+                $('#programmer').addClass('light');
+                break;
+        }
+    }
+
+    //更改文章来源
+    var source = $('#source a').html();
+    if( source == '未知' )
+        jQuery('#source a').html('CocoaChina');
+    if( jQuery('#source a').attr('href')=='')
+        jQuery('#source').html('来源：'+source);
+
+    //获取用户登录的id
+    var timestamp = new Date().getTime();
+    var uid = $('#user-info').attr('data-uid')
+    if ( uid )
+    {
+        uid = parseInt(uid)<<2;
+        uid = uid+''+timestamp;
+    } else {
+        uid = '';
+    }
+
+    var oIframe=document.getElementById("comiframe");
+    if(oIframe){
+        var oUrl=window.location.href;
+        oUrl = encodeURIComponent(oUrl);
+
+        oIframe.src="/comment.php?url="+oUrl+"&uid="+uid;
+    }
+
+});
+</script>
+<script>CNZZ_SLOT_RENDER('337970');</script>
+<div style="display:none"><a key="52df886aaf60041470116076" logo_size="83x30" logo_type="official" href="http://www.anquan.org/authenticate/cert/?site=www.cocoachina.com&at=official" target="_blank">
+<script src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/aq_auth.js"></script><span style="display:none;" class="LOGO_aq_jsonp_wrap_" id="AQ_logo_span_init_1"><script src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/saved_resource" type="text/javascript" async="true"></script></span><img src="./iOS app调试的黑魔法--第三方库 - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区_files/gw_83x30_gray.png" alt="安全联盟认证" width="83" height="30" style="border: none;"></a></div>
+
+
+
+<div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow: hidden; float: left;"></div><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><div id="cboxNext" style="float: left;"></div><div id="cboxPrevious" style="float: left;"></div><div id="cboxSlideshow" style="float: left;"></div><div id="cboxClose" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div></body></html>

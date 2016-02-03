@@ -1,0 +1,184 @@
+//
+//  lottery_ytdj.cpp
+//  LotteryLibrary
+//
+//  Created by wufan on 15/4/29.
+//  Copyright (c) 2015年 DACAI. All rights reserved.
+//
+
+#include "lottery_ytdj.h"
+#include "smart_basket.h"
+#include "error_code.h"
+#include "toolkit.h"
+
+namespace lottlib {
+    
+    LotteryYtdj::LotteryYtdj() {
+        basket_ = new SmartBasket();
+    }
+    
+    LotteryYtdj::~LotteryYtdj() {
+        delete basket_;
+    }
+    
+#pragma mark - 网络数据相关
+    int LotteryYtdj::Cleanup() {
+        return 0;
+    }
+    
+    int LotteryYtdj::HasData() {
+        return 0;
+    }
+    
+    int LotteryYtdj::GetGameStatus(int &game_name, std::string &deadline, std::string &draw_date) {
+        return 0;
+    }
+    
+    int LotteryYtdj::GetHistory(int index, int &game_name, int results[4]) {
+        return 0;
+    }
+    
+    int LotteryYtdj::GetMiss(int index, int miss_value[YTDJ_NUMBER_COUNT]) {
+        return 0;
+    }
+    
+#pragma mark - 存储相关
+    int LotteryYtdj::NotesCalculate(YtdjSubtype subtype, int num1[YTDJ_NUMBER_COUNT], int num2[YTDJ_NUMBER_COUNT], int num3[YTDJ_NUMBER_COUNT], int num4[YTDJ_NUMBER_COUNT]) {
+        int count1 = 0, count2 = 0, count3 = 0, count4 = 0;
+        for (int i = 0; i < YTDJ_NUMBER_COUNT; i++) {
+            count1 += num1[i] ? 1 : 0;
+            count2 += num2[i] ? 1 : 0;
+            count3 += num3[i] ? 1 : 0;
+            count4 += num4[i] ? 1 : 0;
+        }
+        
+        int counts[4] = { count1, count2, count3, count4 };
+        int indexs[] = {0, 1, 2, 3};
+        
+        switch (subtype) {
+            case YTDJ_SUBTYPE_RENXUAN1:
+                return count1 + count2 + count3 + count4;
+            case YTDJ_SUBTYPE_RENXUAN2: {
+                std::vector<int *> *groups = math::create_combination_groups(indexs, 4, 2);
+                int note = 0;
+                for (int i = 0; i < groups->size(); i++) {
+                    int *opt = groups->at(i);
+                    note += counts[opt[0]] * counts[opt[1]];
+                }
+                math::release_combination_groups(groups);
+                return note;
+            }
+            case YTDJ_SUBTYPE_RENXUAN3: {
+                std::vector<int *> *groups = math::create_combination_groups(indexs, 4, 3);
+                int note = 0;
+                for (int i = 0; i < groups->size(); i++) {
+                    int *opt = groups->at(i);
+                    note += counts[opt[0]] * counts[opt[1]] * counts[opt[2]];
+                }
+                math::release_combination_groups(groups);
+                return note;
+            }
+            case YTDJ_SUBTYPE_ZHIXUAN: {
+                return count1 * count2 * count3 * count4;
+            }
+            case YTDJ_SUBTYPE_ZUXUAN24:
+            case YTDJ_SUBTYPE_ZUXUAN12:
+            case YTDJ_SUBTYPE_ZUXUAN6:
+            case YTDJ_SUBTYPE_ZUXUAN4:
+                break;
+            default:
+                break;
+        }
+        return 0;
+    }
+    
+    int LotteryYtdj::GetTarget(int index, YtdjSubtype &subtype, int &note, int num1[YTDJ_NUMBER_COUNT], int num2[YTDJ_NUMBER_COUNT], int num3[YTDJ_NUMBER_COUNT], int num4[YTDJ_NUMBER_COUNT]) {
+        int target[CELL_TARGET_NUM_MAX_LEN] = { 0 };
+        int type = 0;
+        int ret = basket_->GetTarget(index, type, note, target);
+        if (ret >= 0) {
+            subtype = static_cast<YtdjSubtype>(type);
+            memcpy(num1, target + YTDJ_NUMBER_COUNT * 0, sizeof(int) * YTDJ_NUMBER_COUNT);
+            memcpy(num2, target + YTDJ_NUMBER_COUNT * 1, sizeof(int) * YTDJ_NUMBER_COUNT);
+            memcpy(num3, target + YTDJ_NUMBER_COUNT * 2, sizeof(int) * YTDJ_NUMBER_COUNT);
+            memcpy(num4, target + YTDJ_NUMBER_COUNT * 3, sizeof(int) * YTDJ_NUMBER_COUNT);
+        }
+        return ret;
+    }
+    
+    int LotteryYtdj::AddTarget(YtdjSubtype subtype, int num1[YTDJ_NUMBER_COUNT], int num2[YTDJ_NUMBER_COUNT], int num3[YTDJ_NUMBER_COUNT], int num4[YTDJ_NUMBER_COUNT]) {
+        int note = NotesCalculate(subtype, num1, num2, num3, num4);
+        if (note <= 0) {
+            return ERROR_INVAILD_LOTTERY;
+        }
+        int target[CELL_TARGET_NUM_MAX_LEN] = { 0 };
+        memcpy(target + YTDJ_NUMBER_COUNT * 0, num1, sizeof(int) * YTDJ_NUMBER_COUNT);
+        memcpy(target + YTDJ_NUMBER_COUNT * 1, num2, sizeof(int) * YTDJ_NUMBER_COUNT);
+        memcpy(target + YTDJ_NUMBER_COUNT * 2, num3, sizeof(int) * YTDJ_NUMBER_COUNT);
+        memcpy(target + YTDJ_NUMBER_COUNT * 3, num4, sizeof(int) * YTDJ_NUMBER_COUNT);
+        return basket_->AddTarget(subtype, note, target);
+    }
+    
+    int LotteryYtdj::ModifyTarget(int index, YtdjSubtype subtype, int num1[YTDJ_NUMBER_COUNT], int num2[YTDJ_NUMBER_COUNT], int num3[YTDJ_NUMBER_COUNT], int num4[YTDJ_NUMBER_COUNT]) {
+        int note = NotesCalculate(subtype, num1, num2, num3, num4);
+        if (note <= 0) {
+            return ERROR_INVAILD_LOTTERY;
+        }
+        int target[CELL_TARGET_NUM_MAX_LEN] = { 0 };
+        memcpy(target + YTDJ_NUMBER_COUNT * 0, num1, sizeof(int) * YTDJ_NUMBER_COUNT);
+        memcpy(target + YTDJ_NUMBER_COUNT * 1, num2, sizeof(int) * YTDJ_NUMBER_COUNT);
+        memcpy(target + YTDJ_NUMBER_COUNT * 2, num3, sizeof(int) * YTDJ_NUMBER_COUNT);
+        memcpy(target + YTDJ_NUMBER_COUNT * 3, num4, sizeof(int) * YTDJ_NUMBER_COUNT);
+        return basket_->ModifyTarget(index, subtype, note, target);
+    }
+    
+    int LotteryYtdj::DeleteTarget(int index) {
+        return basket_->DeleteTarget(index);
+    }
+    
+    int LotteryYtdj::GetTargetCount() {
+        return basket_->GetTargetCount();
+    }
+    
+    int LotteryYtdj::GetTotalNotes() {
+        return basket_->GetTotalNotes();
+    }
+    
+    int LotteryYtdj::SetPurchaseInfo(int multiple, int follow_count) {
+        return basket_->SetPurchaseInfo(multiple, follow_count);
+    }
+    
+    int LotteryYtdj::SplitOrders() {
+        return basket_->SplitOrders();
+    }
+    
+    int LotteryYtdj::GetOrderCount() {
+        return basket_->GetOrderCount();
+    }
+    
+    int LotteryYtdj::GetOrderInfo(int order, int &multiple, int &note) {
+        return basket_->GetOrderInfo(order, multiple, note);
+    }
+    
+    int LotteryYtdj::GetOrderTargetCount(int order) {
+        return basket_->GetOrderTargetCount(order);
+    }
+    
+    int LotteryYtdj::GetOrderTarget(int order, int index, YtdjSubtype &subtype, int &note, int num1[YTDJ_NUMBER_COUNT], int num2[YTDJ_NUMBER_COUNT], int num3[YTDJ_NUMBER_COUNT], int num4[YTDJ_NUMBER_COUNT]) {
+        int target[CELL_TARGET_NUM_MAX_LEN] = { 0 };
+        int type = 0;
+        int ret = basket_->GetOrderTarget(order, index, type, note, target);
+        if (ret >= 0) {
+            subtype = static_cast<YtdjSubtype>(type);
+            memcpy(num1, target + YTDJ_NUMBER_COUNT * 0, sizeof(int) * YTDJ_NUMBER_COUNT);
+            memcpy(num2, target + YTDJ_NUMBER_COUNT * 1, sizeof(int) * YTDJ_NUMBER_COUNT);
+            memcpy(num3, target + YTDJ_NUMBER_COUNT * 2, sizeof(int) * YTDJ_NUMBER_COUNT);
+            memcpy(num4, target + YTDJ_NUMBER_COUNT * 3, sizeof(int) * YTDJ_NUMBER_COUNT);
+        }
+        return ret;
+    }
+    
+    int LotteryYtdj::DeleteOrder(int order) {
+        return basket_->DeleteOrder(order);
+    }
+}

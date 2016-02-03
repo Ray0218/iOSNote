@@ -1,0 +1,1 @@
+<h1>A TimThumb error has occured</h1>The following error(s) occured:<br /><ul><li>External Image is Redirecting. Try alternate image url</li><li>Error reading the URL you specified from remote host.</li></ul><br /><br />Query String : src=http://my.csdn.net/uploads/201207/24/1343117047_2725.png&amp;h=95&amp;w=142&amp;zc=1<br />TimThumb version : 2.8.14</pre>

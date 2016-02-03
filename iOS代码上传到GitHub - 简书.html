@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.jianshu.com/p/bb71679cf885 -->
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<script src="./iOS代码上传到GitHub - 简书_files/push.js"></script><script type="text/javascript" async="" src="./iOS代码上传到GitHub - 简书_files/ga.js"></script><script src="./iOS代码上传到GitHub - 简书_files/hm.js"></script><script type="text/javascript">window.BWEUM||(BWEUM={});BWEUM.info={"beacon":"bi-collector.oneapm.com/beacon/rum/ruby","errorBeacon":"bi-collector.oneapm.com/beacon/error/ruby","licenseKey":"JAb~enriQzVIVYfB","applicationID":1987,"transactionName":"FRIgBzBRBT4nUkEMXSxYLDw2VRhiNVlaEg==","queueTime":1,"applicationTime":147,"agent":"//bi-collector.oneapm.com/static/js/bw-send-411.4.5.js"}</script>
+<script type="text/javascript" src="./iOS代码上传到GitHub - 简书_files/bw-loader-411.4.5.js"></script><style type="text/css"></style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="description" content="这只是一个简单的上传到GitHub1.申请账号https://github.com2.点击创建3.填写工程描述4.打开xcode创建一个工程，比如我创建的工程名TESTDemo,然后打开终端，进入TESTDemo文件...">
+  <meta property="wb:webmaster" content="294ec9de89e7fadb">
+  <meta property="qc:admins" content="104102651453316562112116375">
+  <meta property="qc:admins" content="11635613706305617">
+  <meta property="qc:admins" content="1163561616621163056375">
+  <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4">
+  <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI">
+  <meta http-equiv="mobile-agent" content="format=html5; url=http://www.jianshu.com/p/bb71679cf885">
+    <!--  Meta for Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/2170438">
+  <!-- End -->
+
+  <!--  Meta for Twitter Card -->
+  <meta content="summary" property="twitter:card">
+  <meta content="@jianshucom" property="twitter:site">
+  <meta content=" 最新iOS代码上传到GitHub" property="twitter:title">
+  <meta content="这只是一个简单的上传到GitHub1.申请账号https://github.com2.点击创建3.填写工程描述4.打开xcode创建一个工程，比如我创建的工程名TESTDemo,然后打开终端，进入TESTDemo文件..." property="twitter:description">
+  <meta content="http://www.jianshu.com/p/bb71679cf885" property="twitter:url">
+  <!-- End -->
+
+  <!--  Meta for OpenGraph -->
+  <meta property="fb:app_id" content="865829053512461">
+  <meta property="og:site_name" content="简书">
+  <meta property="og:title" content=" 最新iOS代码上传到GitHub">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.jianshu.com/p/bb71679cf885">
+  <meta property="og:description" content="这只是一个简单的上传到GitHub1.申请账号https://github.com2.点击创建3.填写工程描述4.打开xcode创建一个工程，比如我创建的工程名TESTDemo,然后打开终端，进...">
+
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/932442-6f938eacdfb761c2.png">
+    <meta property="og:image:width" content="656">
+    <meta property="og:image:height" content="90">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/932442-4a0c859dfbeef627.png">
+    <meta property="og:image:width" content="1850">
+    <meta property="og:image:height" content="1094">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/932442-96e8a3d26176e7b2.png">
+    <meta property="og:image:width" content="685">
+    <meta property="og:image:height" content="578">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/932442-9a866e40436fce0a.jpeg">
+    <meta property="og:image:width" content="2058">
+    <meta property="og:image:height" content="752">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/932442-c0171fe771bcf4b6.jpg">
+    <meta property="og:image:width" content="588">
+    <meta property="og:image:height" content="142">
+    <meta property="og:image:type" content="image/jpeg">
+  <!-- End -->
+
+  <!--  Meta for Facebook Applinks -->
+  <meta property="al:ios:url" content="jianshu://notes/2170438">
+  <meta property="al:ios:app_store_id" content="888237539">
+  <meta property="al:ios:app_name" content="简书">
+
+  <meta property="al:android:url" content="jianshu://notes/2170438">
+  <meta property="al:android:package" content="com.jianshu.haruki">
+  <meta property="al:android:app_name" content="简书">
+  <!-- End -->
+
+  <title> 最新iOS代码上传到GitHub - 简书</title>
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="5AkufwWpCFLCw+E/rP00EN/3F5WgTfCTLolOpoWdUZScEhLEtHHWwHY3MaQLOxnH+p0WqaHPRBa1ksTyeGsUeg==">
+  <!--[if lte IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/base-b831e2f3f4a1307ff86f71cbabc3085b.css">
+
+    <link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/reading-note-aed188b297ca8bc7eb4e1d864fac035b.css">
+  <link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/base-read-mode-83b416e1e492c342436a80881ae09e0f.css">
+  <script src="./iOS代码上传到GitHub - 简书_files/modernizr-b24c000b09feb5c7177d4db960f050bd.js"></script>
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if IE 8]><link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/scaffolding/for_ie-c23c43d96bfba1567a1a0b22bc83ad3d.css" /><![endif]-->
+  <!--[if lt IE 9]><link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/scaffolding/for_ie-c23c43d96bfba1567a1a0b22bc83ad3d.css" /><![endif]-->
+  <link href="http://baijii-common.b0.upaiyun.com/icons/favicon.ico" rel="icon">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/57-7597f1cff93b0f41cd16ca7641e477eb.png" sizes="57x57">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/72-e02c647005f01e2d24778ac8e7f9dc45.png" sizes="72x72">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/76-4788ffdcd445555b5b93bfb4d1f4747c.png" sizes="76x76">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/114-e89d888a7bce6222606e46082dcab634.png" sizes="114x114">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/120-c7cdad6dd50db5a93175a6e015d6dc08.png" sizes="120x120">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/152-21fa4ed7968f6503816524e90dcb3d91.png" sizes="152x152">
+  <!-- Baidu stats -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?0c0e9d9b1e7d617b3e6842e85b9fb068";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+<style type="text/css"></style></head>
+
+<body class="post output zh cn mac reader-day-mode reader-font2" data-js-module="note-show" data-locale="zh-CN">
+  
+  <div class="navbar navbar-jianshu shrink">
+  <div class="dropdown">
+    <a class="dropdown-toggle logo" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0)">
+      简
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+      <li><a href="http://www.jianshu.com/"><i class="fa fa-home"></i> 首页</a></li>
+      <li><a href="http://www.jianshu.com/collections"><i class="fa fa-th"></i> 专题</a></li>
+      <li><a href="http://www.jianshu.com/user_invitations"><i class="fa fa-money"></i> 发钱啦</a></li>
+    </ul>
+  </div>
+</div>
+<div class="navbar-user">
+    <a class="login" data-signup-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_up">
+      <i class="fa fa-user"></i> 注册
+</a>    <a class="login" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+      <i class="fa fa-sign-in"></i> 登录
+</a>    <a class="daytime set-view-mode pull-right" href="javascript:void(0)"><i class="fa fa-moon-o"></i></a>
+</div>
+<div class="navbar navbar-jianshu expanded">
+  <div class="dropdown">
+      <a class="active logo" role="button" data-original-title="个人主页" data-container="div.expanded" href="http://www.jianshu.com/">
+        <b>简</b><i class="fa fa-home"></i><span class="title">首页</span>
+</a>      <a data-toggle="tooltip" data-placement="right" data-original-title="专题" data-container="div.expanded" href="http://www.jianshu.com/collections">
+        <i class="fa fa-th"></i><span class="title">专题</span>
+</a>    <a data-toggle="tooltip" data-placement="right" data-original-title="下载手机应用" data-container="body" href="http://www.jianshu.com/apps">
+      <i class="fa fa-mobile"></i><span class="title">下载手机应用</span>
+</a>  </div>
+  <div class="nav-user">
+      <a href="http://www.jianshu.com/p/bb71679cf885#view-mode-modal" data-toggle="modal"><i class="fa fa-font"></i><span class="title">显示模式</span></a>
+
+      <a class="signin" data-signin-link="true" data-toggle="modal" data-placement="right" data-original-title="登录" data-container="div.expanded" href="http://www.jianshu.com/sign_in">
+        <i class="fa fa-sign-in"></i><span class="title">登录</span>
+</a>    </div>
+  </div>
+
+  
+    <div class="fixed-btn">
+    <a class="go-top hide-go-top" href="http://www.jianshu.com/p/bb71679cf885#"> <i class="fa fa-angle-up"></i></a>
+    <a class="qrcode" data-target="#bottom-qrcode" data-toggle="modal" href="javascript:void(0)"><i class="fa fa-qrcode"></i></a>
+    <a class="writer" href="http://www.jianshu.com/writer#/" data-toggle="tooltip" data-placement="left" title="" data-original-title="写篇文章"><i class="fa fa-pencil"></i></a>
+    <!-- qrcode modal -->
+    <div id="bottom-qrcode" class="modal panel-modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <h4>下载简书移动应用</h4>
+      <div class="panel-body"><img src="./iOS代码上传到GitHub - 简书_files/download-app-qrcode-85008f146773a25ce86bcc4d7858af68.png" alt="Download app qrcode"></div>
+    </div>
+  </div>
+
+
+  <div id="show-note-container" class="imagebubble-container imagebubble-mode-off">
+    
+
+<div class="post-bg" id="flag">
+  <div class="wrap-btn" style="top: -1px;">
+    <!-- Notebook and collections button upper left -->
+      <div class="article-related pull-left">
+          <a data-toggle="tooltip" data-placement="bottom" data-original-title="未加入专题" href="javascript:void(null);">
+            <i class="fa fa-th"></i>
+</a>          <a class="notebooks-menu-btn" data-toggle="modal" data-target="#notebooks-menu" href="javascript:void(null);"><i class="fa fa-list-ul"></i></a>
+        <div class="related-avatar-group activities"></div>
+      </div>
+    <!-- ******* -->
+
+      <a class="login" data-signup-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_up">
+    <i class="fa fa-user"></i> 注册
+</a>  <a class="login" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+    <i class="fa fa-sign-in"></i> 登录
+</a>
+
+    <!-- Buttons upper right -->
+    <!-- ******* -->
+  </div>
+
+  <div class="container">
+    <!-- Article activities for width under 768px -->
+    <div class="related-avatar-group activities"></div>
+      <div class="article">
+        <div class="preview">
+          <div class="author-info">
+              <div class="btn btn-small btn-success follow">
+    <a data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in"><i class="fa fa-plus"></i>  <span>添加关注</span></a>
+  </div>
+
+            <a class="avatar" href="http://www.jianshu.com/users/19f07d5a86c4">
+              <img src="./iOS代码上传到GitHub - 简书_files/default_avatar-d1566514f6e31669fbfab5e9303274c7.png" alt="Default avatar">
+</a>            <span class="label">
+                作者
+            </span>
+            <a class="author-name blue-link" href="http://www.jianshu.com/users/19f07d5a86c4">
+              <span>GreyLove</span>
+</a>              <span>2015.09.22 16:00</span>
+            <div>
+              <span>写了462字</span>，<span>被3人关注</span>，<span>获得了4个喜欢</span>
+            </div>
+          </div>
+          <h1 class="title"> 最新iOS代码上传到GitHub</h1>
+          <div class="meta-top">
+            <span class="wordage">字数296</span>
+            <span class="views-count">阅读147</span>
+            <span class="comments-count">评论0</span>
+            <span class="likes-count">喜欢3</span>
+          </div>
+
+          <!-- Collection/Bookmark/Share for width under 768px -->
+          <div class="article-share">  
+    <a class="bookmark" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+    <i class="fa fa-bookmark-o"></i><span>收藏文章</span>
+</a>
+  <span>
+    <a href="javascript:void(null)" data-toggle="dropdown"><i class="fa fa-share-square-o"></i> 分享</a>
+    <ul class="dropdown-menu arrow-top">
+        <li><a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=1881139527',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','http://cwb.assets.jianshu.io/notes/images/2170438/weibo/image_d9f517f236eb.jpg', '推荐 GreyLove 的文章《 最新iOS代码上传到GitHub》（ 分享自 @简书 ）','http://www.jianshu.com/p/bb71679cf885','页面编码gb2312|utf-8默认gb2312'));"><img src="./iOS代码上传到GitHub - 简书_files/weibo.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:'',r='http://www.douban.com/recommend/?url='+e('http://www.jianshu.com/p/bb71679cf885')+'&title='+e(' 最新iOS代码上传到GitHub')+'&sel='+e(s)+'&v=1',x=function(){if(!window.open(r,'douban','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r+'&r=1'};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()"><img src="./iOS代码上传到GitHub - 简书_files/douban.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://share.v.t.qq.com/index.php?c=share&a=index&url='+e('http://www.jianshu.com/p/bb71679cf885')+'&title='+e('推荐 GreyLove 的文章《 最新iOS代码上传到GitHub》（ 分享自 @jianshuio ）'),x=function(){if(!window.open(r,'tweibo','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS代码上传到GitHub - 简书_files/tweibo.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+e('http://www.jianshu.com/p/bb71679cf885')+'&title='+e('推荐 GreyLove 的文章《 最新iOS代码上传到GitHub》'),x=function(){if(!window.open(r,'qzone','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS代码上传到GitHub - 简书_files/qzone.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://twitter.com/share?url='+e('http://www.jianshu.com/p/bb71679cf885')+'&text='+e('推荐 GreyLove 的文章《 最新iOS代码上传到GitHub》（ 分享自 @jianshucom ）')+'&related='+e('jianshucom'),x=function(){if(!window.open(r,'twitter','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS代码上传到GitHub - 简书_files/twitter.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://www.facebook.com/sharer.php?s=100&p[url]='+e('http://www.jianshu.com/p/bb71679cf885')+'&p[title]='+e(' 最新iOS代码上传到GitHub - 简书社')+'&p[summary]='+e('推荐 GreyLove 的文章《 最新iOS代码上传到GitHub》'),x=function(){if(!window.open(r,'facebook','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS代码上传到GitHub - 简书_files/facebook.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://plus.google.com/share?url='+e('http://www.jianshu.com/p/bb71679cf885'),x=function(){if(!window.open(r,'google_plus','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS代码上传到GitHub - 简书_files/google_plus.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://widget.renren.com/dialog/share?resourceUrl='+e('http://www.jianshu.com/p/bb71679cf885')+'&description='+e('推荐 GreyLove 的文章《 最新iOS代码上传到GitHub》')+'&title='+e(' 最新iOS代码上传到GitHub'),x=function(){if(!window.open(r,'renren','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS代码上传到GitHub - 简书_files/renren.png"></a></li>
+    </ul>
+  </span>
+</div>
+          <!-- -->
+
+          <div class="show-content"><p>这只是一个简单的上传到GitHub</p><p><b>1</b>.<b>申请账号 &nbsp;https://github.com</b></p><p><b>2.点击创建</b></p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS代码上传到GitHub - 简书_files/932442-6f938eacdfb761c2.png" data-original-src="http://upload-images.jianshu.io/upload_images/932442-6f938eacdfb761c2.png?imageMogr2/auto-orient/strip" data-image-slug="6f938eacdfb761c2" data-width="656" data-height="90" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p><b>3.填写工程描述</b></p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS代码上传到GitHub - 简书_files/932442-4a0c859dfbeef627.png" data-original-src="http://upload-images.jianshu.io/upload_images/932442-4a0c859dfbeef627.png?imageMogr2/auto-orient/strip" data-image-slug="4a0c859dfbeef627" data-width="1850" data-height="1094" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p><b>4.</b></p><blockquote><p><b>打开xcode创建一个工程，比如我创建的工程名TESTDemo,然后打开终端，进入TESTDemo文件夹,输入Creat a new repository on the command line提示的命令</b></p></blockquote><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS代码上传到GitHub - 简书_files/932442-96e8a3d26176e7b2.png" data-original-src="http://upload-images.jianshu.io/upload_images/932442-96e8a3d26176e7b2.png?imageMogr2/auto-orient/strip" data-image-slug="96e8a3d26176e7b2" data-width="685" data-height="578" class="imagebubble-image"><br><div class="image-caption">标注的是命令 对应的位置换成自己的工程即可</div>
+</div><blockquote>
+<p>解释下输入的命令:<br></p>
+<p>1)touch README.md文件是关于工程代码的介绍，类似与使用说明书</p>
+<p>2)git init&nbsp; 初始化一个本地的 git仓库，生成隐藏的.git目录(隐藏的.git目录可使用ls -aF命令可以查看到)</p>
+<p>3)git add&nbsp; README.md&nbsp; 把README.md文件添加到仓库中</p>
+<p>4)git commit -m "first commit"&nbsp; 执行提交说明，在Gitz中这个属于强制性的</p>
+<p>5)git remote add origin https://github.com/XFZLDXF/TEST.git&nbsp;  添加本地仓库origin和指定远程仓库地址</p>
+<p>6)git push origin master&nbsp; 推送本地仓库到远程指定的master分支上</p>
+</blockquote><p><b>5.</b></p><p><b>成功</b></p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS代码上传到GitHub - 简书_files/932442-9a866e40436fce0a.jpeg" data-original-src="http://upload-images.jianshu.io/upload_images/932442-9a866e40436fce0a.jpeg?imageMogr2/auto-orient/strip" data-image-slug="9a866e40436fce0a" data-width="2058" data-height="752" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p><b>7.</b></p><p><b>遇到的问题:</b></p><p>1)</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS代码上传到GitHub - 简书_files/932442-c0171fe771bcf4b6.jpg" data-original-src="http://upload-images.jianshu.io/upload_images/932442-c0171fe771bcf4b6.jpg?imageMogr2/auto-orient/strip" data-image-slug="c0171fe771bcf4b6" data-width="588" data-height="142" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p>&nbsp;说明你的这几个文件夹没有加上 &nbsp;git add <i>"文件名" &nbsp;-&gt; git push origin master</i></p></div>
+        </div>
+      </div>
+
+      <div class="visitor_edit">
+        <!-- further readings -->
+        <div id="further-readings" data-user-slug="" data-user-nickname="">
+          <div id="further-reading-line" class="hide further-reading-line"></div>
+          <ul id="further-readings-list" class="reading-list unstyled"></ul>
+          <div id="further-reading-new" class="reading-edit">
+              <a data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+                <i class="fa fa-plus-circle"></i> 推荐拓展阅读
+</a>            <div id="further-reading-form"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reward / Support Author -->
+        <div class="support-author">
+          <p>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+            <a class="btn btn-pay" data-toggle="modal" href="http://www.jianshu.com/p/bb71679cf885#pay-modal">¥ 打赏支持</a>
+          <div class="avatar-list">
+</div>
+        </div>
+
+      <!-- article meta bottom -->
+      <div class="meta-bottom clearfix">
+        <!--  Like Button -->
+        <div class="like ">
+            <div class="like-button">
+              <a id="like-note" class="like-content" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+                <i class="fa fa-heart-o"></i>  喜欢
+</a></div>          <span id="likes-count" data-toggle="tooltip" data-placement="right" title="" data-original-title="查看所有喜欢的用户">3</span>        </div>
+        <!--  share group -->
+        <div class="share-group pull-right">
+          <a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=1881139527',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','http://cwb.assets.jianshu.io/notes/images/2170438/weibo/image_d9f517f236eb.jpg', '推荐 GreyLove 的文章《 最新iOS代码上传到GitHub》（ 分享自 @简书 ）','http://www.jianshu.com/p/bb71679cf885','页面编码gb2312|utf-8默认gb2312'));" data-name="weibo">
+            <i class="fa fa-weibo"></i><span>分享到微博</span>
+          </a>
+          <a data-toggle="modal" href="http://www.jianshu.com/p/bb71679cf885#share-weixin-modal" data-name="weixin">
+            <i class="fa fa-weixin"></i><span>分享到微信</span>
+          </a>
+          <div class="more">
+            <a href="javascript:void(0)" data-toggle="dropdown">更多分享<i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu arrow-top">
+                <li><a href="http://cwb.assets.jianshu.io/notes/images/2170438/weibo/image_d9f517f236eb.jpg" target="_blank" data-name="changweibo"><i class="fa fa-arrow-circle-o-down"></i> 下载长微博图片</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://share.v.t.qq.com/index.php?c=share&a=index&url='+e('http://www.jianshu.com/p/bb71679cf885')+'&title='+e('推荐 GreyLove 的文章《 最新iOS代码上传到GitHub》（ 分享自 @jianshuio ）'),x=function(){if(!window.open(r,'tweibo','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="tweibo"><img src="./iOS代码上传到GitHub - 简书_files/tweibo.png">分享到腾讯微博</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+e('http://www.jianshu.com/p/bb71679cf885')+'&title='+e('推荐 GreyLove 的文章《 最新iOS代码上传到GitHub》'),x=function(){if(!window.open(r,'qzone','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="qzone"><img src="./iOS代码上传到GitHub - 简书_files/qzone.png">分享到QQ空间</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://twitter.com/share?url='+e('http://www.jianshu.com/p/bb71679cf885')+'&text='+e('推荐 GreyLove 的文章《 最新iOS代码上传到GitHub》（ 分享自 @jianshucom ）')+'&related='+e('jianshucom'),x=function(){if(!window.open(r,'twitter','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="twitter"><img src="./iOS代码上传到GitHub - 简书_files/twitter.png">分享到Twitter</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://www.facebook.com/sharer.php?s=100&p[url]='+e('http://www.jianshu.com/p/bb71679cf885')+'&p[title]='+e(' 最新iOS代码上传到GitHub - 简书社')+'&p[summary]='+e('推荐 GreyLove 的文章《 最新iOS代码上传到GitHub》'),x=function(){if(!window.open(r,'facebook','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="facebook"><img src="./iOS代码上传到GitHub - 简书_files/facebook.png">分享到Facebook</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://plus.google.com/share?url='+e('http://www.jianshu.com/p/bb71679cf885'),x=function(){if(!window.open(r,'google_plus','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="google_plus"><img src="./iOS代码上传到GitHub - 简书_files/google_plus.png">分享到Google+</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://widget.renren.com/dialog/share?resourceUrl='+e('http://www.jianshu.com/p/bb71679cf885')+'&description='+e('推荐 GreyLove 的文章《 最新iOS代码上传到GitHub》')+'&title='+e(' 最新iOS代码上传到GitHub'),x=function(){if(!window.open(r,'renren','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="renren"><img src="./iOS代码上传到GitHub - 简书_files/renren.png">分享到人人网</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:'',r='http://www.douban.com/recommend/?url='+e('http://www.jianshu.com/p/bb71679cf885')+'&title='+e(' 最新iOS代码上传到GitHub')+'&sel='+e(s)+'&v=1',x=function(){if(!window.open(r,'douban','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r+'&r=1'};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()" data-name="douban"><img src="./iOS代码上传到GitHub - 简书_files/douban.png">分享到豆瓣</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modals -->
+      <div id="share-weixin-modal" class="modal hide fade share-weixin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body" title="http://www.jianshu.com/p/bb71679cf885?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weixin">
+    <h5>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</h5>
+  <canvas width="170" height="170" style="display: none;"></canvas><img style="display: block;" src="data:image/png;base64,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"></div>
+</div>
+
+      
+      <div id="notebooks-menu" class="panel notebooks-menu arrow-top modal hide fade"><img class="loader-tiny" src="./iOS代码上传到GitHub - 简书_files/tiny.gif" alt="Tiny"></div>
+      <div id="collection-menu" class="panel collection-menu arrow-top modal hide fade"><img class="loader-tiny" src="./iOS代码上传到GitHub - 简书_files/tiny.gif" alt="Tiny"></div>
+      
+      <div id="likes-modal" class="modal modal_new support_list-modal fullscreen hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>喜欢的用户</h3>
+      </div>
+      <div class="modal-body">
+        <ul class="unstyled users"><li data-user-id="1428587">
+  <a class="avatar" href="http://www.jianshu.com/users/26a121fe5e20"><img src="./iOS代码上传到GitHub - 简书_files/0a337b0291b3.jpeg" alt="100"></a>
+  <a class="blue-link" href="http://www.jianshu.com/users/26a121fe5e20">M了个K</a>
+  <span class="time">2016.01.27 15:22</span>
+</li>
+<li data-user-id="1057727">
+  <a class="avatar" href="http://www.jianshu.com/users/da03fd0cb669"><img src="./iOS代码上传到GitHub - 简书_files/577b991ab4a9.jpg" alt="100"></a>
+  <a class="blue-link" href="http://www.jianshu.com/users/da03fd0cb669">M33</a>
+  <span class="time">2015.12.24 17:21</span>
+</li>
+<li data-user-id="1363210">
+  <a class="avatar" href="http://www.jianshu.com/users/959035957888"><img src="./iOS代码上传到GitHub - 简书_files/c401f5bdb9d4.jpg" alt="100"></a>
+  <a class="blue-link" href="http://www.jianshu.com/users/959035957888">默不还手</a>
+  <span class="time">2015.12.22 14:02</span>
+</li>
+
+</ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Comments -->
+    <div id="comments" class="comment-list clearfix">
+        <div class="comment-head clearfix">
+          0条评论
+          <span class="order">
+            （
+            <a data-order="asc" class="active" href="javascript:void(0)">按时间正序</a>·
+            <a data-order="desc" href="javascript:void(0)">按时间倒序</a>·
+            <a data-order="likes_count" href="javascript:void(0)">按喜欢排序</a>
+            ）
+          </span>
+            <a class="goto-comment pull-right" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+              <i class="fa fa-pencil"></i>添加新评论
+</a>        </div>
+        <div id="comment-list"><script type="application/json" data-name="comments-info">
+  {"comments":[]}
+</script>
+
+
+
+</div>
+          <p class="signout-comment">
+    <a class="btn btn-info" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+      登录后发表评论
+</a>  </p>
+
+    </div>
+    <!-- -->
+
+  </div>
+
+  <script type="application/json" data-name="note">
+    {"id":2170438,"abbr":"这只是一个简单的上传到GitHub1.申请账号https://github.com2.点击创建3.填写工程描述4.打开xcode创建一个工程，比如我创建的工程名TESTDemo,然后打开终端，进入TESTDemo文件...","slug":"bb71679cf885","url":"http://www.jianshu.com/p/bb71679cf885","image_url":"http://cwb.assets.jianshu.io/notes/images/2170438/weibo/image_d9f517f236eb.jpg","wordage":296,"has_further_readings":false,"views_count":147,"likes_count":3,"comments_count":0,"rewards_total_count":0}
+  </script>
+
+  <script type="application/json" data-name="uuid">
+    {"uuid":"e604a920-aaed-0133-0be2-52540095852f"}
+  </script>
+
+  <script type="application/json" data-name="author">
+    {"id":932442,"nickname":"GreyLove","slug":"19f07d5a86c4","public_notes_count":4,"followers_count":3,"total_likes_count":4,"is_current_user":false}
+  </script>
+
+
+
+  <!-- Modal -->
+    <div class="modal pay-modal text-center hide fade" id="pay-modal">
+  <div class="modal-header clearfix">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <form id="new_reward" class="new_reward" target="_blank" action="http://www.jianshu.com/notes/2170438/rewards" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="5AkufwWpCFLCw+E/rP00EN/3F5WgTfCTLolOpoWdUZScEhLEtHHWwHY3MaQLOxnH+p0WqaHPRBa1ksTyeGsUeg==">
+    <div class="modal-body">
+      <a href="http://www.jianshu.com/users/19f07d5a86c4">
+        <div class="avatar"><img src="./iOS代码上传到GitHub - 简书_files/default_avatar-d1566514f6e31669fbfab5e9303274c7.png" alt="Default avatar"></div>
+</a>      <p><i class="fa fa-quote-left pull-left"></i>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！<i class="fa fa-quote-right pull-right"></i></p>
+      <div class="main-inputs text-left">
+        <div class="control-group">
+          <label for="reward_amount">打赏金额</label><i class="fa fa-yen"></i>
+          <input value="2.00" type="text" name="reward[amount_in_yuan]" id="reward_amount_in_yuan">
+        </div>
+        <div class="control-group message">
+          <textarea placeholder="给Ta留言" name="reward[message]" id="reward_message"></textarea>
+        </div>
+      </div>
+      <div class="choose-pay text-left">
+        <h5>选择支付方式：</h5>
+        <div>
+          <label for="reward_channel_alipay">
+            <div class="iradio_minimal checked" style="position: relative;"><input type="radio" value="alipay" checked="checked" name="reward[channel]" id="reward_channel_alipay" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+            <span class="alipay-bg"></span>
+</label>
+          
+          <label for="reward_channel_wx_pub_qr">
+            <div class="iradio_minimal" style="position: relative;"><input type="radio" value="wx_pub_qr" name="reward[channel]" id="reward_channel_wx_pub_qr" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+            微信支付
+</label>        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button name="button" type="submit" class="btn btn-large btn-pay">立即支付</button>
+    </div>
+</form></div>
+
+    <div class="modal success-pay text-center hide fade" id="success-pay">
+  <div class="modal-header clearfix">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body">
+    <h3><i class="icon-ok"></i>打赏成功</h3>
+    <img src="./iOS代码上传到GitHub - 简书_files/complete-pay-b96378a190481577212f4b758762106e.png" alt="Complete pay">
+  </div>
+  <div class="modal-footer">
+    
+  </div>
+</div>
+
+</div>
+
+  <div class="imagebubble-backmask image-package" style="z-index: 1000;"><div class="image-caption">标注的是命令 对应的位置换成自己的工程即可</div><img class="imagebubble-ghost" src="./iOS代码上传到GitHub - 简书_files/932442-6f938eacdfb761c2(1).png" style="top: 434px; left: 325px; width: 620px; height: 85px;"><img class="imagebubble-ghost" src="./iOS代码上传到GitHub - 简书_files/932442-c0171fe771bcf4b6(1).jpg" style="top: 2626px; left: 341px; width: 588px; height: 142px;"><img class="imagebubble-ghost" src="./iOS代码上传到GitHub - 简书_files/932442-4a0c859dfbeef627(1).png" style="top: 591px; left: 325px; width: 620px; height: 367px;"><img class="imagebubble-ghost" src="./iOS代码上传到GitHub - 简书_files/932442-96e8a3d26176e7b2(1).png" style="top: 1119px; left: 325px; width: 620px; height: 523px;"><img class="imagebubble-ghost" src="./iOS代码上传到GitHub - 简书_files/932442-9a866e40436fce0a(1).jpeg" style="top: 2224px; left: 325px; width: 620px; height: 227px;"></div></div>
+  <div id="flash" class="hide"></div>
+  
+  <div id="view-mode-modal" tabindex="-1" class="modal hide read-modal" aria-hidden="false" data-js-module="view-mode-modal">
+    <div class="btn-group change-background" data-toggle="buttons-radio">
+      <a class="btn btn-daytime active" data-mode="day" href="javascript:void(null);">
+        <i class="fa fa-sun-o"></i>
+</a>      <a class="btn btn-nighttime " data-mode="night" href="javascript:void(null);">
+        <i class="fa fa-moon-o"></i>
+</a>    </div>
+    <div class="btn-group change-font" data-toggle="buttons-radio">
+      <a class="btn font " data-font="font1" href="javascript:void(null);">宋体</a>
+      <a class="btn font hei active" data-font="font2" href="javascript:void(null);">黑体</a>
+    </div>
+    <div class="btn-group change-locale" data-toggle="buttons-radio">
+      <a class="btn font active" data-locale="zh-CN" href="javascript:void(null);">简</a>
+      <a class="btn font hei " data-locale="zh-TW" href="javascript:void(null);">繁</a>
+    </div>
+  </div>
+
+  
+
+  <script src="./iOS代码上传到GitHub - 简书_files/base-73cea4d745b4ee6617c3da2a1a8bcb4f.js"></script>
+  
+  <script src="./iOS代码上传到GitHub - 简书_files/reading-base-10a1300669d1fe119a5b133a09d026c0.js"></script>
+  <script src="./iOS代码上传到GitHub - 简书_files/note_show-75978bc1a39e4b29199bcfb377d4b358.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35169517-1']);
+  _gaq.push(['_setCustomVar', 2, 'User Type', 'Visitor', 1 ]);
+  _gaq.push(['_trackPageview']);
+
+  
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<script src="./iOS代码上传到GitHub - 简书_files/bw-send-411.4.5.js"></script><script type="text/javascript" src="./iOS代码上传到GitHub - 简书_files/saved_resource" async=""></script></body></html>

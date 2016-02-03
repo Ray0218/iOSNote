@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://www.cnblogs.com/kenshincui/p/3983982.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./iOS多线程总结_files/analytics.js"></script><script async="" src="http://ad.cnblogs.com/ad/postmoduletext?callback=jQuery1706933035254478455_1435194678226&adModuleId=2&content=iOS%E5%BC%80%E5%8F%91%E7%B3%BB%E5%88%97--%E5%B9%B6%E8%A1%8C%E5%BC%80%E5%8F%91%E5%85%B6%E5%AE%9E%E5%BE%88%E5%AE%B9%E6%98%93&_=1435194678610"></script>
+<meta charset="utf-8">
+<title>iOS开发系列--并行开发其实很容易 - KenshinCui - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./iOS多线程总结_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./iOS多线程总结_files/bundle-Minyx2_Lite.css">
+<link type="text/css" rel="stylesheet" href="./iOS多线程总结_files/79371.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/kenshincui/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/kenshincui/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/kenshincui/wlwmanifest.xml">
+<script async="" type="text/javascript" src="./iOS多线程总结_files/gpt.js"></script><script src="./iOS多线程总结_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'kenshincui', cb_enable_mathjax=false;</script>
+<script src="./iOS多线程总结_files/blog-common.js" type="text/javascript"></script>
+<script src="./iOS多线程总结_files/bundle-Minyx2_Lite.js" language="javascript" type="text/javascript"></script>
+<style type="text/css"></style><script async="" type="text/javascript" src="http://partner.googleadservices.com/gpt/pubads_impl_64.js"></script></head>
+<body>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+<link href="http://files.cnblogs.com/kenshincui/CNBlogsNavigation-0.5.2.min.css" rel="stylesheet">
+<!--PageBeginHtml Block End-->
+
+
+<div id="container">
+    <a class="minyx" href="http://www.cnblogs.com/">代码改变世界</a>
+    <ul id="topMnu">
+        <!-- 统计数据 -->
+        <li>
+            
+                
+Posts - 69, 
+Articles - 0, 
+Comments - 932
+<!---->
+            
+        </li>
+        <!-- 这边可以增加一些链接 -->
+        <!-- 博客园 -->
+        <li><a href="http://www.cnblogs.com/">Cnblogs</a></li>
+        <!-- 管理 -->
+        <li id="topMnu-dashboard">
+            <a id="lnkDashboard" href="http://www.cnblogs.com/kenshincui/admin/EditPosts.aspx">Dashboard</a></li>
+        <li>
+            <a id="lnkLogin" href="http://passport.cnblogs.com/login.aspx?ReturnUrl=http://www.cnblogs.com/kenshincui/p/3983982.html">Login</a></li>
+    </ul>
+
+    <script type="text/javascript">
+        var m = window.__blog.topMenuRendered;
+        if (m) { m(__$("topMnu")); }
+    </script>
+
+    <div id="header">
+        <ul id="menu">
+            <!-- 首页，当前section加上current类 -->
+            <li id="menu-home" class="current">
+                <a id="lnkHome" href="http://www.cnblogs.com/kenshincui/">Home</a></li>
+            <!-- 联系 -->
+            <li id="menu-contact">
+                <a id="lnkContact" href="http://space.cnblogs.com/msg/send/KenshinCui">Contact</a></li>
+            <!-- 相册 -->
+            <li id="menu-gallary">
+                <a id="lnkGallery" href="http://www.cnblogs.com/kenshincui/gallery.html">Gallery</a></li>
+            <!-- Rss订阅 -->
+            <li id="rss">
+                <a id="lnkRss" href="http://www.cnblogs.com/kenshincui/rss">RSS</a></li>
+        </ul>
+        <div id="newmsg"></div>
+        <h1>
+            <!-- 主标题 -->
+            <a id="lnkBlogTitle" href="http://www.cnblogs.com/kenshincui/">Kenshin Cui's Blog</a>
+            <!-- 子标题 -->
+            <small>
+                CODING 完美世界...</small>
+        </h1>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.headerRendered;
+        if (m) { m(__$("header")); }
+    </script>
+
+    <div id="wrapper">
+        <div id="content">
+            <script type="text/javascript">
+                var m = window.__blog.preRenderPosts;
+                if (m) { m(); }
+            </script>
+            
+
+<div class="post" id="post">
+    <a name="top"></a>
+    <h2><a id="cb_post_title_url" href="./iOS多线程总结_files/iOS多线程总结.html">iOS开发系列--并行开发其实很容易</a></h2>
+    <small>2014-09-20 23:34 by KenshinCui, <span id="post_view_count">29665</span> 阅读, <span id="post_comment_count">25</span> 评论, <a href="http://www.cnblogs.com/kenshincui/p/3983982.html#" onclick="AddToWz(3983982);return false;">收藏</a>,  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=3983982" rel="nofollow">编辑</a></small>
+    <div class="entry">
+        <div id="cnblogs_post_body"><p align="right"><strong>--多线程开发</strong></p> <h1 id="overview">概览</h1> <p>大家都知道，在开发过程中应该尽可能减少用户等待时间，让程序尽可能快的完成运算。可是无论是哪种语言开发的程序最终往往转换成汇编语言进而解释成机器码来执行。但是机器码是按顺序执行的，一个复杂的多步操作只能一步步按顺序逐个执行。改变这种状况可以从两个角度出发：对于单核处理器，可以将多个步骤放到不同的线程，这样一来用户完成UI操作后其他后续任务在其他线程中，当CPU空闲时会继续执行，而此时对于用户而言可以继续进行其他操作；对于多核处理器，如果用户在UI线程中完成某个操作之后，其他后续操作在别的线程中继续执行，用户同样可以继续进行其他UI操作，与此同时前一个操作的后续任务可以分散到多个空闲CPU中继续执行（当然具体调度顺序要根据程序设计而定），及解决了线程阻塞又提高了运行效率。苹果从iPad2 开始使用双核A5处理器（iPhone中从iPhone 4S开始使用），A7中还加入了协处理器，如何充分发挥这些处理器的性能确实值得思考。今天将重点分析iOS多线程开发：</p> <ol class="kc-catalog"> <li><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#multiThread">多线程</a>  <ol> <li>简介  </li><li>iOS多线程 </li></ol> </li><li><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#NSThread">NSThread</a>  <ol> <li>解决线程阻塞问题  </li><li>多线程并发  </li><li>线程状态  </li><li>扩展-NSObject分类扩展 </li></ol> </li><li><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#NSOperation">NSOperation</a>  <ol> <li>NSInvocationOperation  </li><li>NSBlockOperation  </li><li>线程执行顺序 </li></ol> </li><li><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#GCD">GCD</a>  <ol> <li>串行队列  </li><li>并发队列  </li><li>其他任务执行方法 </li></ol> </li><li><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#synchronized">线程同步</a>  <ol> <li>NSLock同步锁  </li><li>@synchronized代码块  </li><li>扩展--使用GCD解决资源抢占问题  </li><li>扩展--控制线程通信 </li></ol> </li><li><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#summary">总结</a></li><li class="catalog" style="padding-top: 257px; padding-bottom: 257px;"><span>目</span><span>&nbsp;</span><span>录<span></span></span></li></ol> <h1 id="multiThread">多线程</h1> <h2 id="autoid-2-0-0">简介</h2> <p>当用户播放音频、下载资源、进行图像处理时往往希望做这些事情的时候其他操作不会被中断或者希望这些操作过程中更加顺畅。在单线程中一个线程只能做一件事情，一件事情处理不完另一件事就不能开始，这样势必影响用户体验。早在单核处理器时期就有多线程，这个时候多线程更多的用于解决线程阻塞造成的用户等待（通常是操作完UI后用户不再干涉，其他线程在等待队列中，CPU一旦空闲就继续执行，不影响用户其他UI操作），其处理能力并没有明显的变化。如今无论是移动操作系统还是PC、服务器都是多核处理器，于是“并行运算”就更多的被提及。一件事情我们可以分成多个步骤，在没有顺序要求的情况下使用多线程既能解决线程阻塞又能充分利用多核处理器运行能力。</p> <p>下图反映了一个包含8个操作的任务在一个有两核心的CPU中创建四个线程运行的情况。假设每个核心有两个线程，那么每个CPU中两个线程会交替执行，两个CPU之间的操作会并行运算。单就一个CPU而言两个线程可以解决线程阻塞造成的不流畅问题，其本身运行效率并没有提高，多CPU的并行运算才真正解决了运行效率问题，这也正是并发和并行的区别。当然，不管是多核还是单核开发人员不用过多的担心，因为任务具体分配给几个CPU运算是由系统调度的，开发人员不用过多关心系统有几个CPU。开发人员需要关心的是线程之间的依赖关系，因为有些操作必须在某个操作完成完才能执行，如果不能保证这个顺序势必会造成程序问题。</p> <p><a href="http://images.cnitblog.com/blog/62046/201409/202333349252647.png"><img title="MultiThread" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="MultiThread" src="./iOS多线程总结_files/202333357067475.png" width="800" height="420"></a> </p> <h2 id="autoid-2-0-0">iOS多线程</h2> <p>在iOS中每个进程启动后都会建立一个主线程（UI线程），这个线程是其他线程的父线程。由于在iOS中除了主线程，其他子线程是独立于Cocoa Touch的，所以只有主线程可以更新UI界面（新版iOS中，使用其他线程更新UI可能也能成功，但是不推荐）。iOS中多线程使用并不复杂，关键是如何控制好各个线程的执行顺序、处理好资源竞争问题。常用的多线程开发有三种方式：</p> <p>1.NSThread </p> <p>2.NSOperation </p> <p>3.GCD</p> <p>三种方式是随着iOS的发展逐渐引入的，所以相比而言后者比前者更加简单易用，并且GCD也是目前苹果官方比较推荐的方式（它充分利用了多核处理器的运算性能）。做过.Net开发的朋友不难发现其实这三种开发方式 刚好对应.Net中的多线程、线程池和异步调用，因此在文章中也会对比讲解。</p> <h1 id="NSThread">NSThread</h1> <p>NSThread是轻量级的多线程开发，使用起来也并不复杂，但是使用NSThread需要自己管理线程生命周期。可以使用对象方法<strong>+ (void)detachNewThreadSelector:(SEL)selector toTarget:(id)target withObject:(id)argument</strong>直接将操作添加到线程中并启动，也可以使用对象方法<strong>- (instancetype)initWithTarget:(id)target selector:(SEL)selector object:(id)argument </strong>创建一个线程对象，然后调用start方法启动线程。</p> <h2 id="autoid-3-0-0">解决线程阻塞问题</h2> <p>在资源下载过程中，由于网络原因有时候很难保证下载时间，如果不使用多线程可能用户完成一个下载操作需要长时间的等待，这个过程中无法进行其他操作。下面演示一个采用多线程下载图片的过程，在这个示例中点击按钮会启动一个线程去下载图片，下载完成后使用UIImageView将图片显示到界面中。可以看到用户点击完下载按钮后，不管图片是否下载完成都可以继续操作界面，不会造成阻塞。</p><pre class="code"><span style="color: green;">//
+//  NSThread实现多线程
+//  MultiThread
+//
+//  Created by Kenshin Cui on 14-3-22.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCMainViewController.h"
+
+</span><span style="color: black;">@</span><span style="color: blue;">interface </span><span style="color: black;">KCMainViewController (){
+    UIImageView *_imageView;
+}
+
+@end
+
+@implementation KCMainViewController
+
+- (</span><span style="color: blue;">void</span><span style="color: black;">)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self layoutUI];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 界面布局
+-(</span><span style="color: blue;">void</span><span style="color: black;">)layoutUI{
+    _imageView =[[UIImageView alloc]initWithFrame:[UIScreen mainScreen].applicationFrame];
+    _imageView.contentMode=UIViewContentModeScaleAspectFit;
+    [self.view addSubview:_imageView];
+    
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame=CGRectMake(50, 500, 220, 25);
+    [button setTitle:@</span><span style="color: rgb(163, 21, 21);">"加载图片" </span><span style="color: black;">forState:UIControlStateNormal];
+    </span><span style="color: green;">//添加方法
+    </span><span style="color: black;">[button addTarget:self action:@selector(loadImageWithMultiThread) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 将图片显示到界面
+-(</span><span style="color: blue;">void</span><span style="color: black;">)updateImage:(NSData *)imageData{
+    UIImage *image=[UIImage imageWithData:imageData];
+    _imageView.image=image;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 请求图片数据
+-(NSData *)requestData{
+    </span><span style="color: green;">//对于多线程操作建议把线程操作放到@autoreleasepool中
+    </span><span style="color: black;">@autoreleasepool {
+        NSURL *url=[NSURL URLWithString:@</span><span style="color: rgb(163, 21, 21);">"http://images.apple.com/iphone-6/overview/images/biggest_right_large.png"</span><span style="color: black;">];
+        NSData *data=[NSData dataWithContentsOfURL:url];
+        </span><span style="color: blue;">return </span><span style="color: black;">data;
+    }
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 加载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImage{
+    </span><span style="color: green;">//请求数据
+    </span><span style="color: black;">NSData *data= [self requestData];
+    </span><span style="color: green;">/*将数据显示到UI控件,注意只能在主线程中更新UI,
+     另外performSelectorOnMainThread方法是NSObject的分类方法，每个NSObject对象都有此方法，
+     它调用的selector方法是当前调用控件的方法，例如使用UIImageView调用的时候selector就是UIImageView的方法
+     Object：代表调用方法的参数,不过只能传递一个参数(如果有多个参数请使用对象进行封装)
+     waitUntilDone:是否线程任务完成执行
+    */
+    </span><span style="color: black;">[self performSelectorOnMainThread:@selector(updateImage:) withObject:data waitUntilDone:YES];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 多线程下载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: green;">//方法1：使用对象方法
+    //创建一个线程，第一个参数是请求的操作，第二个参数是操作方法的参数
+//    NSThread *thread=[[NSThread alloc]initWithTarget:self selector:@selector(loadImage) object:nil];
+//    //启动一个线程，注意启动一个线程并非就一定立即执行，而是处于就绪状态，当系统调度时才真正执行
+//    [thread start];
+    
+    //方法2：使用类方法
+    </span><span style="color: black;">[NSThread detachNewThreadSelector:@selector(loadImage) toTarget:self withObject:nil];
+}
+@end
+</span></pre>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/202333364565846.gif"><img title="NSThreadEffect" style="display: inline" alt="NSThreadEffect" src="./iOS多线程总结_files/202333374569674.gif"></a> </p>
+<p>程序比较简单，但是需要注意执行步骤：当点击了“加载图片”按钮后启动一个新的线程，这个线程在演示中大概用了5s左右，在这5s内UI线程是不会阻塞的，用户可以进行其他操作，大约5s之后图片下载完成，此时调用UI线程将图片显示到界面中（这个过程瞬间完成）。另外前面也提到过，更新UI的时候使用UI线程，这里调用了NSObject的分类扩展方法，调用UI线程完成更新。</p>
+<h2 id="autoid-3-0-0">多个线程并发</h2>
+<p>上面这个演示并没有演示多个子线程操作之间的关系，现在不妨在界面中多加载几张图片，每个图片都来自远程请求。</p>
+<p>大家应该注意到不管是使用<strong>+ (void)detachNewThreadSelector:(SEL)selector toTarget:(id)target withObject:(id)argument</strong>、<strong>- (instancetype)initWithTarget:(id)target selector:(SEL)selector object:(id)argument </strong>方法还是使用<strong>- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait</strong>方法都只能传一个参数，由于更新图片需要传递UIImageView的索引和图片数据，因此这里不妨定义一个类保存图片索引和图片数据以供后面使用。</p>
+<p>KCImageData.h</p><pre class="code"><span style="color: green;">//
+//  KCImageData.h
+//  MultiThread
+//
+//  Created by Kenshin Cui on 14-3-22.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">&lt;Foundation/Foundation.h&gt;
+
+</span><span style="color: black;">@</span><span style="color: blue;">interface </span><span style="color: black;">KCImageData : NSObject
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 索引
+@</span><span style="color: blue;">property </span><span style="color: black;">(nonatomic,assign) </span><span style="color: blue;">int </span><span style="color: black;">index;
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 图片数据
+@</span><span style="color: blue;">property </span><span style="color: black;">(nonatomic,strong) NSData *data;
+
+@end</span></pre>
+<p>接下来将创建多个UIImageView并创建多个线程用于往UIImageView中填充图片。</p>
+<p>KCMainViewController.m</p><pre class="code"><span style="color: green;">//
+//  NSThread实现多线程
+//  MultiThread
+//
+//  Created by Kenshin Cui on 14-3-22.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCMainViewController.h"
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCImageData.h"
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_COUNT 5
+</span><span style="color: blue;">#define </span><span style="color: black;">COLUMN_COUNT 3
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_HEIGHT 100
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_WIDTH ROW_HEIGHT
+</span><span style="color: blue;">#define </span><span style="color: black;">CELL_SPACING 10
+
+@</span><span style="color: blue;">interface </span><span style="color: black;">KCMainViewController (){
+    NSMutableArray *_imageViews;
+}
+
+@end
+
+@implementation KCMainViewController
+
+- (</span><span style="color: blue;">void</span><span style="color: black;">)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self layoutUI];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 界面布局
+-(</span><span style="color: blue;">void</span><span style="color: black;">)layoutUI{
+    </span><span style="color: green;">//创建多个图片控件用于显示图片
+    </span><span style="color: black;">_imageViews=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">r=0; r&lt;ROW_COUNT; r++) {
+        </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">c=0; c&lt;COLUMN_COUNT; c++) {
+            UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(c*ROW_WIDTH+(c*CELL_SPACING), r*ROW_HEIGHT+(r*CELL_SPACING                           ), ROW_WIDTH, ROW_HEIGHT)];
+            imageView.contentMode=UIViewContentModeScaleAspectFit;
+</span><span style="color: green;">//            imageView.backgroundColor=[UIColor redColor];
+            </span><span style="color: black;">[self.view addSubview:imageView];
+            [_imageViews addObject:imageView];
+
+        }
+    }
+    
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame=CGRectMake(50, 500, 220, 25);
+    [button setTitle:@</span><span style="color: rgb(163, 21, 21);">"加载图片" </span><span style="color: black;">forState:UIControlStateNormal];
+    </span><span style="color: green;">//添加方法
+    </span><span style="color: black;">[button addTarget:self action:@selector(loadImageWithMultiThread) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 将图片显示到界面
+-(</span><span style="color: blue;">void</span><span style="color: black;">)updateImage:(KCImageData *)imageData{
+    UIImage *image=[UIImage imageWithData:imageData.data];
+    UIImageView *imageView= _imageViews[imageData.index];
+    imageView.image=image;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 请求图片数据
+-(NSData *)requestData:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    </span><span style="color: green;">//对于多线程操作建议把线程操作放到@autoreleasepool中
+    </span><span style="color: black;">@autoreleasepool {
+        NSURL *url=[NSURL URLWithString:@</span><span style="color: rgb(163, 21, 21);">"http://images.apple.com/iphone-6/overview/images/biggest_right_large.png"</span><span style="color: black;">];
+        NSData *data=[NSData dataWithContentsOfURL:url];
+        </span><span style="color: blue;">return </span><span style="color: black;">data;
+    }
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 加载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImage:(NSNumber *)index{
+    </span><span style="color: green;">//    NSLog(@"%i",i);
+    //currentThread方法可以取得当前操作线程
+    </span><span style="color: black;">NSLog(@</span><span style="color: rgb(163, 21, 21);">"current thread:%@"</span><span style="color: black;">,[NSThread currentThread]);
+    
+    </span><span style="color: blue;">int </span><span style="color: black;">i=[index integerValue];
+    
+</span><span style="color: green;">//    NSLog(@"%i",i);//未必按顺序输出
+    
+    </span><span style="color: black;">NSData *data= [self requestData:i];
+    
+    KCImageData *imageData=[[KCImageData alloc]init];
+    imageData.index=i;
+    imageData.data=data;
+    [self performSelectorOnMainThread:@selector(updateImage:) withObject:imageData waitUntilDone:YES];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 多线程下载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: green;">//创建多个线程用于填充图片
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;ROW_COUNT*COLUMN_COUNT; ++i) {
+</span><span style="color: green;">//        [NSThread detachNewThreadSelector:@selector(loadImage:) toTarget:self withObject:[NSNumber numberWithInt:i]];
+        </span><span style="color: black;">NSThread *thread=[[NSThread alloc]initWithTarget:self selector:@selector(loadImage:) object:[NSNumber numberWithInt:i]];
+        thread.name=[NSString stringWithFormat:@</span><span style="color: rgb(163, 21, 21);">"myThread%i"</span><span style="color: black;">,i];</span><span style="color: green;">//设置线程名称
+        </span><span style="color: black;">[thread start];
+    }
+}
+@end</span></pre>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/202333382216572.gif"><img title="NSThreadEffect2" style="display: inline" alt="NSThreadEffect2" src="./iOS多线程总结_files/202333393785885.gif"></a> </p>
+<p>通过NSThread的currentThread可以取得当前操作的线程，其中会记录线程名称name和编号number，需要注意主线程编号永远为1。多个线程虽然按顺序启动，但是实际执行未必按照顺序加载照片（loadImage:方法未必依次创建，可以通过在<strong>loadImage:</strong>中打印索引查看），因为线程启动后仅仅处于就绪状态，实际是否执行要由CPU根据当前状态调度。</p>
+<p>从上面的运行效果大家不难发现，图片并未按顺序加载，原因有两个：第一，每个线程的实际执行顺序并不一定按顺序执行（虽然是按顺序启动）；第二，每个线程执行时实际网络状况很可能不一致。当然网络问题无法改变，只能尽可能让网速更快，但是可以改变线程的优先级，让15个线程优先执行某个线程。线程优先级范围为0~1，值越大优先级越高，每个线程的优先级默认为0.5。修改图片下载方法如下，改变最后一张图片加载的优先级，这样可以提高它被优先加载的几率，但是它也未必就第一个加载。因为首先其他线程是先启动的，其次网络状况我们没办法修改：</p><pre class="code"><span style="color: black;">-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    NSMutableArray *threads=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">int </span><span style="color: black;">count=ROW_COUNT*COLUMN_COUNT;
+    </span><span style="color: green;">//创建多个线程用于填充图片
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count; ++i) {
+</span><span style="color: green;">//        [NSThread detachNewThreadSelector:@selector(loadImage:) toTarget:self withObject:[NSNumber numberWithInt:i]];
+        </span><span style="color: black;">NSThread *thread=[[NSThread alloc]initWithTarget:self selector:@selector(loadImage:) object:[NSNumber numberWithInt:i]];
+        thread.name=[NSString stringWithFormat:@</span><span style="color: rgb(163, 21, 21);">"myThread%i"</span><span style="color: black;">,i];</span><span style="color: green;">//设置线程名称
+        </span><span style="color: blue;">if</span><span style="color: black;">(i==(count-1)){
+            thread.threadPriority=1.0;
+        }</span><span style="color: blue;">else</span><span style="color: black;">{
+            thread.threadPriority=0.0;
+        }
+        [threads addObject:thread];
+    }
+    
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count; i++) {
+        NSThread *thread=threads[i];
+        [thread start];
+    }
+}</span></pre>
+<h2 id="autoid-3-0-0">线程状态</h2>
+<p>在线程操作过程中可以让某个线程休眠等待，优先执行其他线程操作，而且在这个过程中还可以修改某个线程的状态或者终止某个指定线程。为了解决上面优先加载最后一张图片的问题，不妨让其他线程先休眠一会等待最后一个线程执行。修改图片加载方法如下即可：</p><pre class="code"><span style="color: black;">-(NSData *)requestData:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    </span><span style="color: green;">//对于多线程操作建议把线程操作放到@autoreleasepool中
+    </span><span style="color: black;">@autoreleasepool {
+        </span><span style="color: green;">//对非最后一张图片加载线程休眠2秒
+        </span><span style="color: blue;">if </span><span style="color: black;">(index!=(ROW_COUNT*COLUMN_COUNT-1)) {
+            [NSThread sleepForTimeInterval:2.0];
+        }
+        NSURL *url=[NSURL URLWithString:_imageNames[index]];
+        NSData *data=[NSData dataWithContentsOfURL:url];
+
+        </span><span style="color: blue;">return </span><span style="color: black;">data;
+    }
+}</span></pre>在这里让其他线程休眠2秒，此时你就会看到最后一张图片总是第一个加载（除非网速特别差）。 
+<p>线程状态分为isExecuting（正在执行）、isFinished（已经完成）、isCancellled（已经取消）三种。其中取消状态程序可以干预设置，只要调用线程的cancel方法即可。但是需要注意在主线程中仅仅能设置线程状态，并不能真正停止当前线程，如果要终止线程必须在线程中调用exist方法，这是一个静态方法，调用该方法可以退出当前线程。</p>
+<p>假设在图片加载过程中点击停止按钮让没有完成的线程停止加载，可以改造程序如下：</p><pre class="code"><span style="color: green;">//
+//  NSThread实现多线程
+//  MultiThread
+//
+//  Created by Kenshin Cui on 14-3-22.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCMainViewController.h"
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCImageData.h"
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_COUNT 5
+</span><span style="color: blue;">#define </span><span style="color: black;">COLUMN_COUNT 3
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_HEIGHT 100
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_WIDTH ROW_HEIGHT
+</span><span style="color: blue;">#define </span><span style="color: black;">CELL_SPACING 10
+
+@</span><span style="color: blue;">interface </span><span style="color: black;">KCMainViewController (){
+    NSMutableArray *_imageViews;
+    NSMutableArray *_imageNames;
+    NSMutableArray *_threads;
+}
+
+@end
+
+@implementation KCMainViewController
+
+- (</span><span style="color: blue;">void</span><span style="color: black;">)viewDidLoad {
+    [super viewDidLoad];
+
+    [self layoutUI];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 界面布局
+-(</span><span style="color: blue;">void</span><span style="color: black;">)layoutUI{
+    </span><span style="color: green;">//创建多个图片空间用于显示图片
+    </span><span style="color: black;">_imageViews=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">r=0; r&lt;ROW_COUNT; r++) {
+        </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">c=0; c&lt;COLUMN_COUNT; c++) {
+            UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(c*ROW_WIDTH+(c*CELL_SPACING), r*ROW_HEIGHT+(r*CELL_SPACING                           ), ROW_WIDTH, ROW_HEIGHT)];
+            imageView.contentMode=UIViewContentModeScaleAspectFit;
+</span><span style="color: green;">//            imageView.backgroundColor=[UIColor redColor];
+            </span><span style="color: black;">[self.view addSubview:imageView];
+            [_imageViews addObject:imageView];
+
+        }
+    }
+
+    </span><span style="color: green;">//加载按钮
+    </span><span style="color: black;">UIButton *buttonStart=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    buttonStart.frame=CGRectMake(50, 500, 100, 25);
+    [buttonStart setTitle:@</span><span style="color: rgb(163, 21, 21);">"加载图片" </span><span style="color: black;">forState:UIControlStateNormal];
+    [buttonStart addTarget:self action:@selector(loadImageWithMultiThread) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:buttonStart];
+    
+    </span><span style="color: green;">//停止按钮
+    </span><span style="color: black;">UIButton *buttonStop=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    buttonStop.frame=CGRectMake(160, 500, 100, 25);
+    [buttonStop setTitle:@</span><span style="color: rgb(163, 21, 21);">"停止加载" </span><span style="color: black;">forState:UIControlStateNormal];
+    [buttonStop addTarget:self action:@selector(stopLoadImage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:buttonStop];
+    
+    </span><span style="color: green;">//创建图片链接
+    </span><span style="color: black;">_imageNames=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    [_imageNames addObject:@</span><span style="color: black;">    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;IMAGE_COUNT; i++) {
+        [_imageNames addObject:[NSString stringWithFormat:@</span><span style="color: rgb(163, 21, 21);">"http://images.cnblogs.com/cnblogs_com/kenshincui/613474/o_%i.jpg"</span><span style="color: black;">,i]];
+    }</span><span style="color: black;">    
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 将图片显示到界面
+-(</span><span style="color: blue;">void</span><span style="color: black;">)updateImage:(KCImageData *)imageData{
+    UIImage *image=[UIImage imageWithData:imageData.data];
+    UIImageView *imageView= _imageViews[imageData.index];
+    imageView.image=image;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 请求图片数据
+-(NSData *)requestData:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    </span><span style="color: green;">//对于多线程操作建议把线程操作放到@autoreleasepool中
+    </span><span style="color: black;">@autoreleasepool {
+        NSURL *url=[NSURL URLWithString:_imageNames[index]];
+        NSData *data=[NSData dataWithContentsOfURL:url];
+
+        </span><span style="color: blue;">return </span><span style="color: black;">data;
+    }
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 加载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImage:(NSNumber *)index{
+    </span><span style="color: blue;">int </span><span style="color: black;">i=[index integerValue];
+
+    NSData *data= [self requestData:i];
+
+    
+    NSThread *currentThread=[NSThread currentThread];
+    
+</span><span style="color: green;">//    如果当前线程处于取消状态，则退出当前线程
+    </span><span style="color: blue;">if </span><span style="color: black;">(currentThread.isCancelled) {
+        NSLog(@</span><span style="color: rgb(163, 21, 21);">"thread(%@) will be cancelled!"</span><span style="color: black;">,currentThread);
+        [NSThread exit];</span><span style="color: green;">//取消当前线程
+    </span><span style="color: black;">}
+    
+    KCImageData *imageData=[[KCImageData alloc]init];
+    imageData.index=i;
+    imageData.data=data;
+    [self performSelectorOnMainThread:@selector(updateImage:) withObject:imageData waitUntilDone:YES];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 多线程下载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: blue;">int </span><span style="color: black;">count=ROW_COUNT*COLUMN_COUNT;
+    _threads=[NSMutableArray arrayWithCapacity:count];
+    
+    </span><span style="color: green;">//创建多个线程用于填充图片
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count; ++i) {
+        NSThread *thread=[[NSThread alloc]initWithTarget:self selector:@selector(loadImage:) object:[NSNumber numberWithInt:i]];
+        thread.name=[NSString stringWithFormat:@</span><span style="color: rgb(163, 21, 21);">"myThread%i"</span><span style="color: black;">,i];</span><span style="color: green;">//设置线程名称
+        </span><span style="color: black;">[_threads addObject:thread];
+    }
+    </span><span style="color: green;">//循环启动线程
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count; ++i) {
+        NSThread *thread= _threads[i];
+        [thread start];
+    }
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 停止加载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)stopLoadImage{
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;ROW_COUNT*COLUMN_COUNT; i++) {
+        NSThread *thread= _threads[i];
+        </span><span style="color: green;">//判断线程是否完成，如果没有完成则设置为取消状态
+        //注意设置为取消状态仅仅是改变了线程状态而言，并不能终止线程
+        </span><span style="color: blue;">if </span><span style="color: black;">(!thread.isFinished) {
+            [thread cancel];
+            
+        }
+    }
+}
+@end</span></pre>
+<p>运行效果（点击加载大概1秒后点击停止加载）： </p>
+<p>&nbsp;<a href="http://images.cnitblog.com/blog/62046/201409/202333407846357.jpg"><img title="NSThreadEffect3" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="NSThreadEffect3" src="./iOS多线程总结_files/202333415819714.jpg" width="320" height="590"></a> </p>
+<p>使用NSThread在进行多线程开发过程中操作比较简单，但是要控制线程执行顺序并不容易（前面万不得已采用了休眠的方法），另外在这个过程中如果打印线程会发现循环几次就创建了几个线程，这在实际开发过程中是不得不考虑的问题，因为每个线程的创建也是相当占用系统开销的。</p>
+<h2 id="autoid-3-0-0">扩展--NSObject分类扩展方法</h2>
+<p>为了简化多线程开发过程，苹果官方对NSObject进行分类扩展(本质还是创建NSThread)，对于简单的多线程操作可以直接使用这些扩展方法。</p>
+<p><strong>- (void)performSelectorInBackground:(SEL)aSelector withObject:(id)arg</strong>：在后台执行一个操作，本质就是重新创建一个线程执行当前方法。</p>
+<p><strong>- (void)performSelector:(SEL)aSelector onThread:(NSThread *)thr withObject:(id)arg waitUntilDone:(BOOL)wait</strong>：在指定的线程上执行一个方法，需要用户创建一个线程对象。</p>
+<p><strong>- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait</strong>：在主线程上执行一个方法（前面已经使用过）。</p>
+<p>例如前面加载图多个图片的方法，可以改为后台线程执行：</p><pre class="code"><span style="color: black;">-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: blue;">int </span><span style="color: black;">count=ROW_COUNT*COLUMN_COUNT;
+    
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count; ++i) {
+        [self performSelectorInBackground:@selector(loadImage:) withObject:[NSNumber numberWithInt:i]];
+    }
+}</span></pre>
+<h1 id="NSOperation">NSOperation</h1>
+<p>使用NSOperation和NSOperationQueue进行多线程开发类似于C#中的线程池，只要将一个NSOperation（实际开中需要使用其子类NSInvocationOperation、NSBlockOperation）放到NSOperationQueue这个队列中线程就会依次启动。NSOperationQueue负责管理、执行所有的NSOperation，在这个过程中可以更加容易的管理线程总数和控制线程之间的依赖关系。</p>
+<p>NSOperation有两个常用子类用于创建线程操作：NSInvocationOperation和NSBlockOperation，两种方式本质没有区别，但是是后者使用Block形式进行代码组织，使用相对方便。</p>
+<h2 id="autoid-4-0-0">NSInvocationOperation</h2>
+<p>首先使用NSInvocationOperation进行一张图片的加载演示，整个过程就是：创建一个操作，在这个操作中指定调用方法和参数，然后加入到操作队列。其他代码基本不用修改，直接修加载图片方法如下：</p><pre class="code"><span style="color: black;">-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: green;">/*创建一个调用操作
+     object:调用方法参数
+    */
+    </span><span style="color: black;">NSInvocationOperation *invocationOperation=[[NSInvocationOperation alloc]initWithTarget:self selector:@selector(loadImage) object:nil];
+    </span><span style="color: green;">//创建完NSInvocationOperation对象并不会调用，它由一个start方法启动操作，但是注意如果直接调用start方法，则此操作会在主线程中调用，一般不会这么操作,而是添加到NSOperationQueue中
+//    [invocationOperation start];
+    
+    //创建操作队列
+    </span><span style="color: black;">NSOperationQueue *operationQueue=[[NSOperationQueue alloc]init];
+    </span><span style="color: green;">//注意添加到操作队后，队列会开启一个线程执行此操作
+    </span><span style="color: black;">[operationQueue addOperation:invocationOperation];
+}</span></pre>
+<h2 id="autoid-4-0-0">NSBlockOperation</h2>
+<p>下面采用NSBlockOperation创建多个线程加载图片。</p><pre class="code"><span style="color: green;">//
+//  NSOperation实现多线程
+//  MultiThread
+//
+//  Created by Kenshin Cui on 14-3-22.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCMainViewController.h"
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCImageData.h"
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_COUNT 5
+</span><span style="color: blue;">#define </span><span style="color: black;">COLUMN_COUNT 3
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_HEIGHT 100
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_WIDTH ROW_HEIGHT
+</span><span style="color: blue;">#define </span><span style="color: black;">CELL_SPACING 10
+
+@</span><span style="color: blue;">interface </span><span style="color: black;">KCMainViewController (){
+    NSMutableArray *_imageViews;
+    NSMutableArray *_imageNames;
+}
+
+@end
+
+@implementation KCMainViewController
+
+- (</span><span style="color: blue;">void</span><span style="color: black;">)viewDidLoad {
+    [super viewDidLoad];
+
+    [self layoutUI];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 界面布局
+-(</span><span style="color: blue;">void</span><span style="color: black;">)layoutUI{
+    </span><span style="color: green;">//创建多个图片控件用于显示图片
+    </span><span style="color: black;">_imageViews=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">r=0; r&lt;ROW_COUNT; r++) {
+        </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">c=0; c&lt;COLUMN_COUNT; c++) {
+            UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(c*ROW_WIDTH+(c*CELL_SPACING), r*ROW_HEIGHT+(r*CELL_SPACING                           ), ROW_WIDTH, ROW_HEIGHT)];
+            imageView.contentMode=UIViewContentModeScaleAspectFit;
+</span><span style="color: green;">//            imageView.backgroundColor=[UIColor redColor];
+            </span><span style="color: black;">[self.view addSubview:imageView];
+            [_imageViews addObject:imageView];
+
+        }
+    }
+
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame=CGRectMake(50, 500, 220, 25);
+    [button setTitle:@</span><span style="color: rgb(163, 21, 21);">"加载图片" </span><span style="color: black;">forState:UIControlStateNormal];
+    </span><span style="color: green;">//添加方法
+    </span><span style="color: black;">[button addTarget:self action:@selector(loadImageWithMultiThread) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
+    </span><span style="color: green;">//创建图片链接
+    </span><span style="color: black;">_imageNames=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;IMAGE_COUNT; i++) {
+        [_imageNames addObject:[NSString stringWithFormat:@</span><span style="color: rgb(163, 21, 21);">"http://images.cnblogs.com/cnblogs_com/kenshincui/613474/o_%i.jpg"</span><span style="color: black;">,i]];
+    }</span><span style="color: black;">    
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 将图片显示到界面
+-(</span><span style="color: blue;">void</span><span style="color: black;">)updateImageWithData:(NSData *)data andIndex:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    UIImage *image=[UIImage imageWithData:data];
+    UIImageView *imageView= _imageViews[index];
+    imageView.image=image;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 请求图片数据
+-(NSData *)requestData:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    </span><span style="color: green;">//对于多线程操作建议把线程操作放到@autoreleasepool中
+    </span><span style="color: black;">@autoreleasepool {
+        NSURL *url=[NSURL URLWithString:_imageNames[index]];
+        NSData *data=[NSData dataWithContentsOfURL:url];
+
+        </span><span style="color: blue;">return </span><span style="color: black;">data;
+    }
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 加载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImage:(NSNumber *)index{
+    </span><span style="color: blue;">int </span><span style="color: black;">i=[index integerValue];
+
+    </span><span style="color: green;">//请求数据
+    </span><span style="color: black;">NSData *data= [self requestData:i];
+    NSLog(@</span><span style="color: rgb(163, 21, 21);">"%@"</span><span style="color: black;">,[NSThread currentThread]);
+    </span><span style="color: green;">//更新UI界面,此处调用了主线程队列的方法（mainQueue是UI主线程）
+    </span><span style="color: black;">[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self updateImageWithData:data andIndex:i];
+    }];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 多线程下载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: blue;">int </span><span style="color: black;">count=ROW_COUNT*COLUMN_COUNT;
+    </span><span style="color: green;">//创建操作队列
+    </span><span style="color: black;">NSOperationQueue *operationQueue=[[NSOperationQueue alloc]init];
+    operationQueue.maxConcurrentOperationCount=5;</span><span style="color: green;">//设置最大并发线程数
+    //创建多个线程用于填充图片
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count; ++i) {
+        </span><span style="color: green;">//方法1：创建操作块添加到队列
+//        //创建多线程操作
+//        NSBlockOperation *blockOperation=[NSBlockOperation blockOperationWithBlock:^{
+//            [self loadImage:[NSNumber numberWithInt:i]];
+//        }];
+//        //创建操作队列
+//
+//        [operationQueue addOperation:blockOperation];
+        
+        //方法2：直接使用操队列添加操作
+        </span><span style="color: black;">[operationQueue addOperationWithBlock:^{
+            [self loadImage:[NSNumber numberWithInt:i]];
+        }];
+        
+    }
+}
+@end</span></pre>
+<p>对比之前NSThread加载张图片很发现核心代码简化了不少，这里着重强调两点：</p>
+<ol>
+<li>使用NSBlockOperation方法，所有的操作不必单独定义方法，同时解决了只能传递一个参数的问题。 
+</li><li>调用主线程队列的<strong>addOperationWithBlock:</strong>方法进行UI更新，不用再定义一个参数实体（之前必须定义一个KCImageData解决只能传递一个参数的问题）。 
+</li><li>使用NSOperation进行多线程开发可以设置最大并发线程，有效的对线程进行了控制（上面的代码运行起来你会发现打印当前进程时只有有限的线程被创建，如上面的代码设置最大线程数为5，则图片基本上是五个一次加载的）。</li></ol>
+<h2 id="autoid-4-0-0">线程执行顺序</h2>
+<p>前面使用NSThread很难控制线程的执行顺序，但是使用NSOperation就容易多了，每个NSOperation可以设置依赖线程。假设操作A依赖于操作B，线程操作队列在启动线程时就会首先执行B操作，然后执行A。对于前面优先加载最后一张图的需求，只要设置前面的线程操作的依赖线程为最后一个操作即可。修改图片加载方法如下：</p><pre class="code"><span style="color: black;">-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: blue;">int </span><span style="color: black;">count=ROW_COUNT*COLUMN_COUNT;
+    </span><span style="color: green;">//创建操作队列
+    </span><span style="color: black;">NSOperationQueue *operationQueue=[[NSOperationQueue alloc]init];
+    operationQueue.maxConcurrentOperationCount=5;</span><span style="color: green;">//设置最大并发线程数
+    
+    </span><span style="color: black;">NSBlockOperation *lastBlockOperation=[NSBlockOperation blockOperationWithBlock:^{
+        [self loadImage:[NSNumber numberWithInt:(count-1)]];
+    }];
+    </span><span style="color: green;">//创建多个线程用于填充图片
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count-1; ++i) {
+        </span><span style="color: green;">//方法1：创建操作块添加到队列
+        //创建多线程操作
+        </span><span style="color: black;">NSBlockOperation *blockOperation=[NSBlockOperation blockOperationWithBlock:^{
+            [self loadImage:[NSNumber numberWithInt:i]];
+        }];
+        </span><span style="color: green;">//设置依赖操作为最后一张图片加载操作
+        </span><span style="color: black;">[blockOperation addDependency:lastBlockOperation];
+        
+        [operationQueue addOperation:blockOperation];
+        
+    }
+    </span><span style="color: green;">//将最后一个图片的加载操作加入线程队列
+    </span><span style="color: black;">[operationQueue addOperation:lastBlockOperation];
+}</span></pre>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/202333419405670.gif"><img title="NSOperationEffect" style="display: inline" alt="NSOperationEffect" src="./iOS多线程总结_files/202333431439969.gif"></a> </p>
+<p>可以看到虽然加载最后一张图片的操作最后被加入到操作队列，但是它却是被第一个执行的。操作依赖关系可以设置多个，例如A依赖于B、B依赖于C…但是千万不要设置为循环依赖关系（例如A依赖于B，B依赖于C，C又依赖于A），否则是不会被执行的。</p>
+<h1 id="GCD">GCD</h1>
+<p>GCD(Grand Central Dispatch)是基于C语言开发的一套多线程开发机制，也是目前苹果官方推荐的多线程开发方法。前面也说过三种开发中GCD抽象层次最高，当然是用起来也最简单，只是它基于C语言开发，并不像NSOperation是面向对象的开发，而是完全面向过程的。对于熟悉C#异步调用的朋友对于GCD学习起来应该很快，因为它与C#中的异步调用基本是一样的。这种机制相比较于前面两种多线程开发方式最显著的优点就是它对于多核运算更加有效。</p>
+<p>GCD中也有一个类似于NSOperationQueue的队列，GCD统一管理整个队列中的任务。但是GCD中的队列分为并行队列和串行队列两类：</p>
+<ul>
+<li>串行队列：只有一个线程，加入到队列中的操作按添加顺序依次执行。 
+</li><li>并发队列：有多个线程，操作进来之后它会将这些队列安排在可用的处理器上，同时保证先进来的任务优先处理。</li></ul>
+<p>其实在GCD中还有一个特殊队列就是主队列，用来执行主线程上的操作任务（从前面的演示中可以看到其实在NSOperation中也有一个主队列）。</p>
+<h2 id="autoid-5-0-0">串行队列</h2>
+<p>使用串行队列时首先要创建一个串行队列，然后调用异步调用方法，在此方法中传入串行队列和线程操作即可自动执行。下面使用线程队列演示图片的加载过程，你会发现多张图片会按顺序加载，因为当前队列中只有一个线程。</p><pre class="code"><span style="color: green;">//
+//  GCD实现多线程
+//  MultiThread
+//
+//  Created by Kenshin Cui on 14-3-22.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCMainViewController.h"
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCImageData.h"
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_COUNT 5
+</span><span style="color: blue;">#define </span><span style="color: black;">COLUMN_COUNT 3
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_HEIGHT 100
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_WIDTH ROW_HEIGHT
+</span><span style="color: blue;">#define </span><span style="color: black;">CELL_SPACING 10
+
+@</span><span style="color: blue;">interface </span><span style="color: black;">KCMainViewController (){
+    NSMutableArray *_imageViews;
+    NSMutableArray *_imageNames;
+}
+
+@end
+
+@implementation KCMainViewController
+
+- (</span><span style="color: blue;">void</span><span style="color: black;">)viewDidLoad {
+    [super viewDidLoad];
+
+    [self layoutUI];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 界面布局
+-(</span><span style="color: blue;">void</span><span style="color: black;">)layoutUI{
+    </span><span style="color: green;">//创建多个图片控件用于显示图片
+    </span><span style="color: black;">_imageViews=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">r=0; r&lt;ROW_COUNT; r++) {
+        </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">c=0; c&lt;COLUMN_COUNT; c++) {
+            UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(c*ROW_WIDTH+(c*CELL_SPACING), r*ROW_HEIGHT+(r*CELL_SPACING                           ), ROW_WIDTH, ROW_HEIGHT)];
+            imageView.contentMode=UIViewContentModeScaleAspectFit;
+</span><span style="color: green;">//            imageView.backgroundColor=[UIColor redColor];
+            </span><span style="color: black;">[self.view addSubview:imageView];
+            [_imageViews addObject:imageView];
+
+        }
+    }
+
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame=CGRectMake(50, 500, 220, 25);
+    [button setTitle:@</span><span style="color: rgb(163, 21, 21);">"加载图片" </span><span style="color: black;">forState:UIControlStateNormal];
+    </span><span style="color: green;">//添加方法
+    </span><span style="color: black;">[button addTarget:self action:@selector(loadImageWithMultiThread) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
+    </span><span style="color: green;">//创建图片链接
+    </span><span style="color: black;">_imageNames=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;ROW_COUNT*COLUMN_COUNT; i++) {
+        [_imageNames addObject:[NSString stringWithFormat:@</span><span style="color: rgb(163, 21, 21);">"http://images.cnblogs.com/cnblogs_com/kenshincui/613474/o_%i.jpg"</span><span style="color: black;">,i]];
+    }
+
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 将图片显示到界面
+-(</span><span style="color: blue;">void</span><span style="color: black;">)updateImageWithData:(NSData *)data andIndex:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    UIImage *image=[UIImage imageWithData:data];
+    UIImageView *imageView= _imageViews[index];
+    imageView.image=image;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 请求图片数据
+-(NSData *)requestData:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    NSURL *url=[NSURL URLWithString:_imageNames[index]];
+    NSData *data=[NSData dataWithContentsOfURL:url];
+
+    </span><span style="color: blue;">return </span><span style="color: black;">data;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 加载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImage:(NSNumber *)index{
+    
+    </span><span style="color: green;">//如果在串行队列中会发现当前线程打印变化完全一样，因为他们在一个线程中
+    </span><span style="color: black;">NSLog(@</span><span style="color: rgb(163, 21, 21);">"thread is :%@"</span><span style="color: black;">,[NSThread currentThread]);
+    
+    </span><span style="color: blue;">int </span><span style="color: black;">i=[index integerValue];
+    </span><span style="color: green;">//请求数据
+    </span><span style="color: black;">NSData *data= [self requestData:i];
+    </span><span style="color: green;">//更新UI界面,此处调用了GCD主线程队列的方法
+    </span><span style="color: black;">dispatch_queue_t mainQueue= dispatch_get_main_queue();
+    dispatch_sync(mainQueue, ^{
+        [self updateImageWithData:data andIndex:i];
+    });
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 多线程下载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: blue;">int </span><span style="color: black;">count=ROW_COUNT*COLUMN_COUNT;
+    
+    </span><span style="color: green;">/*创建一个串行队列
+     第一个参数：队列名称
+     第二个参数：队列类型
+    */
+    </span><span style="color: black;">dispatch_queue_t serialQueue=dispatch_queue_create(</span><span style="color: rgb(163, 21, 21);">"myThreadQueue1"</span><span style="color: black;">, DISPATCH_QUEUE_SERIAL);</span><span style="color: green;">//注意queue对象不是指针类型
+    //创建多个线程用于填充图片
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count; ++i) {
+        </span><span style="color: green;">//异步执行队列任务
+        </span><span style="color: black;">dispatch_async(serialQueue, ^{
+            [self loadImage:[NSNumber numberWithInt:i]];
+        });
+        
+    }
+    </span><span style="color: green;">//非ARC环境请释放
+//    dispatch_release(seriQueue);
+</span><span style="color: black;">}
+@end</span></pre>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/202333436754640.gif"><img title="GCDEffect1" style="display: inline" alt="GCDEffect1" src="./iOS多线程总结_files/202333454564297.gif"></a>&nbsp;</p>
+<p>在上面的代码中更新UI还使用了GCD方法的主线程队列dispatch_get_main_queue()，其实这与前面两种主线程更新UI没有本质的区别。</p>
+<h2 id="autoid-5-0-0">并发队列</h2>
+<p>并发队列同样是使用<strong>dispatch_queue_create()</strong>方法创建，只是最后一个参数指定为<strong>DISPATCH_QUEUE_CONCURRENT</strong>进行创建，但是在实际开发中我们通常不会重新创建一个并发队列而是使用dispatch_get_global_queue()方法取得一个全局的并发队列（当然如果有多个并发队列可以使用前者创建）。下面通过并行队列演示一下多个图片的加载。代码与上面串行队列加载类似，只需要修改照片加载方法如下：</p><pre class="code"><span style="color: black;">-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: blue;">int </span><span style="color: black;">count=ROW_COUNT*COLUMN_COUNT;
+    
+    </span><span style="color: green;">/*取得全局队列
+     第一个参数：线程优先级
+     第二个参数：标记参数，目前没有用，一般传入0
+    */
+    </span><span style="color: black;">dispatch_queue_t globalQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    </span><span style="color: green;">//创建多个线程用于填充图片
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count; ++i) {
+        </span><span style="color: green;">//异步执行队列任务
+        </span><span style="color: black;">dispatch_async(globalQueue, ^{
+            [self loadImage:[NSNumber numberWithInt:i]];
+        });
+    }
+}</span></pre>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/202333474711480.gif"><img title="GCDEffect2" style="display: inline" alt="GCDEffect2" src="./iOS多线程总结_files/202333483784336.gif"></a>&nbsp; </p>
+<p>细心的朋友肯定会思考，既然可以使用dispatch_async()异步调用方法，是不是还有同步方法，确实如此，在GCD中还有一个dispatch_sync()方法。假设将上面的代码修改为同步调用，可以看到如下效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/202333498003335.gif"><img title="GCDEffect3" style="display: inline" alt="GCDEffect3" src="./iOS多线程总结_files/202333512212335.gif"></a> </p>
+<p>可以看点击按钮后按钮无法再次点击，因为所有图片的加载全部在主线程中（可以打印线程查看），主线程被阻塞，造成图片最终是一次性显示。可以得出结论：</p>
+<ul>
+<li>在GDC中一个操作是多线程执行还是单线程执行取决于当前队列类型和执行方法，只有队列类型为并行队列并且使用异步方法执行时才能在多个线程中执行。 
+</li><li>串行队列可以按顺序执行，并行队列的异步方法无法确定执行顺序。 
+</li><li>UI界面的更新最好采用同步方法，其他操作采用异步方法。 
+</li><li>GCD中多线程操作方法不需要使用@autoreleasepool，GCD会管理内存。</li></ul>
+<h2 id="autoid-5-0-0">其他任务执行方法</h2>
+<p>GCD执行任务的方法并非只有简单的同步调用方法和异步调用方法，还有其他一些常用方法：</p>
+<ol>
+<li>dispatch_apply():重复执行某个任务，但是注意这个方法没有办法异步执行（为了不阻塞线程可以使用dispatch_async()包装一下再执行）。 
+</li><li>dispatch_once():单次执行一个任务，此方法中的任务只会执行一次，重复调用也没办法重复执行（单例模式中常用此方法）。 
+</li><li>dispatch_time()：延迟一定的时间后执行。 
+</li><li>dispatch_barrier_async()：使用此方法创建的任务首先会查看队列中有没有别的任务要执行，如果有，则会等待已有任务执行完毕再执行；同时在此方法后添加的任务必须等待此方法中任务执行后才能执行。（利用这个方法可以控制执行顺序，例如前面先加载最后一张图片的需求就可以先使用这个方法将最后一张图片加载的操作添加到队列，然后调用dispatch_async()添加其他图片加载任务） 
+</li><li>dispatch_group_async()：实现对任务分组管理，如果一组任务全部完成可以通过dispatch_group_notify()方法获得完成通知（需要定义dispatch_group_t作为分组标识）。</li></ol>
+<h1 id="synchronized">线程同步</h1>
+<p>说到多线程就不得不提多线程中的锁机制，多线程操作过程中往往多个线程是并发执行的，同一个资源可能被多个线程同时访问，造成资源抢夺，这个过程中如果没有锁机制往往会造成重大问题。举例来说，每年春节都是一票难求，在12306买票的过程中，成百上千的票瞬间就消失了。不妨假设某辆车有1千张票，同时有几万人在抢这列车的车票，顺利的话前面的人都能买到票。但是如果现在只剩下一张票了，而同时还有几千人在购买这张票，虽然在进入购票环节的时候会判断当前票数，但是当前已经有100个线程进入购票的环节，每个线程处理完票数都会减1,100个线程执行完当前票数为-99，遇到这种情况很明显是不允许的。</p>
+<p>要解决资源抢夺问题在iOS中有常用的有两种方法：一种是使用NSLock同步锁，另一种是使用@synchronized代码块。两种方法实现原理是类似的，只是在处理上代码块使用起来更加简单（C#中也有类似的处理机制synchronized和lock）。</p>
+<p>这里不妨还拿图片加载来举例，假设现在有9张图片，但是有15个线程都准备加载这9张图片，约定不能重复加载同一张图片，这样就形成了一个资源抢夺的情况。在下面的程序中将创建9张图片，每次读取照片链接时首先判断当前链接数是否大于1，用完一个则立即移除，最多只有9个。在使用同步方法之前先来看一下错误的写法：</p><pre class="code"><span style="color: green;">//
+//  线程同步
+//  MultiThread
+//
+//  Created by Kenshin Cui on 14-3-22.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCMainViewController.h"
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCImageData.h"
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_COUNT 5
+</span><span style="color: blue;">#define </span><span style="color: black;">COLUMN_COUNT 3
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_HEIGHT 100
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_WIDTH ROW_HEIGHT
+</span><span style="color: blue;">#define </span><span style="color: black;">CELL_SPACING 10
+</span><span style="color: blue;">#define </span><span style="color: black;">IMAGE_COUNT 9
+
+@</span><span style="color: blue;">interface </span><span style="color: black;">KCMainViewController (){
+    NSMutableArray *_imageViews;
+    NSMutableArray *_imageNames;
+}
+
+@end
+
+@implementation KCMainViewController
+
+- (</span><span style="color: blue;">void</span><span style="color: black;">)viewDidLoad {
+    [super viewDidLoad];
+
+    [self layoutUI];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 界面布局
+-(</span><span style="color: blue;">void</span><span style="color: black;">)layoutUI{
+    </span><span style="color: green;">//创建多个图片控件用于显示图片
+    </span><span style="color: black;">_imageViews=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">r=0; r&lt;ROW_COUNT; r++) {
+        </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">c=0; c&lt;COLUMN_COUNT; c++) {
+            UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(c*ROW_WIDTH+(c*CELL_SPACING), r*ROW_HEIGHT+(r*CELL_SPACING                           ), ROW_WIDTH, ROW_HEIGHT)];
+            imageView.contentMode=UIViewContentModeScaleAspectFit;
+</span><span style="color: green;">//            imageView.backgroundColor=[UIColor redColor];
+            </span><span style="color: black;">[self.view addSubview:imageView];
+            [_imageViews addObject:imageView];
+
+        }
+    }
+
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame=CGRectMake(50, 500, 220, 25);
+    [button setTitle:@</span><span style="color: rgb(163, 21, 21);">"加载图片" </span><span style="color: black;">forState:UIControlStateNormal];
+    </span><span style="color: green;">//添加方法
+    </span><span style="color: black;">[button addTarget:self action:@selector(loadImageWithMultiThread) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
+    </span><span style="color: green;">//创建图片链接
+    </span><span style="color: black;">_imageNames=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;IMAGE_COUNT; i++) {
+        [_imageNames addObject:[NSString stringWithFormat:@</span><span style="color: rgb(163, 21, 21);">"http://images.cnblogs.com/cnblogs_com/kenshincui/613474/o_%i.jpg"</span><span style="color: black;">,i]];
+    }
+
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 将图片显示到界面
+-(</span><span style="color: blue;">void</span><span style="color: black;">)updateImageWithData:(NSData *)data andIndex:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    UIImage *image=[UIImage imageWithData:data];
+    UIImageView *imageView= _imageViews[index];
+    imageView.image=image;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 请求图片数据
+-(NSData *)requestData:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    NSData *data;
+    NSString *name;
+    </span><span style="color: blue;">if </span><span style="color: black;">(_imageNames.count&gt;0) {
+        name=[_imageNames lastObject];
+        [_imageNames removeObject:name];
+    }
+    </span><span style="color: blue;">if</span><span style="color: black;">(name){
+        NSURL *url=[NSURL URLWithString:name];
+        data=[NSData dataWithContentsOfURL:url];
+    }
+    </span><span style="color: blue;">return </span><span style="color: black;">data;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 加载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImage:(NSNumber *)index{
+    </span><span style="color: blue;">int </span><span style="color: black;">i=[index integerValue];
+    </span><span style="color: green;">//请求数据
+    </span><span style="color: black;">NSData *data= [self requestData:i];
+    </span><span style="color: green;">//更新UI界面,此处调用了GCD主线程队列的方法
+    </span><span style="color: black;">dispatch_queue_t mainQueue= dispatch_get_main_queue();
+    dispatch_sync(mainQueue, ^{
+        [self updateImageWithData:data andIndex:i];
+    });
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 多线程下载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: blue;">int </span><span style="color: black;">count=ROW_COUNT*COLUMN_COUNT;
+
+    dispatch_queue_t globalQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    </span><span style="color: green;">//创建多个线程用于填充图片
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count; ++i) {
+        </span><span style="color: green;">//异步执行队列任务
+        </span><span style="color: black;">dispatch_async(globalQueue, ^{
+            [self loadImage:[NSNumber numberWithInt:i]];
+        });
+    }
+    
+}
+@end</span></pre>
+<p>首先在_imageNames中存储了9个链接用于下载图片，然后在<strong>requestData：</strong>方法中每次只需先判断_imageNames的个数，如果大于一就读取一个链接加载图片，随即把用过的链接删除，一切貌似都没有问题。此时运行程序：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/202333519719705.gif"><img title="LockEffect1" style="display: inline" alt="LockEffect1" src="./iOS多线程总结_files/202333531433248.gif"></a> </p>
+<p>上面这个结果不一定每次都出现，关键要看从_imageNames读取链接、删除链接的速度，如果足够快可能不会有任何问题，但是如果速度稍慢就会出现上面的情况，很明显上面情况并不满足前面的需求。</p>
+<p>分析这个问题造成的原因主：当一个线程A已经开始获取图片链接，获取完之后还没有来得及从_imageNames中删除，另一个线程B已经进入相应代码中，由于每次读取的都是_imageNames的最后一个元素，因此后面的线程其实和前面线程取得的是同一个图片链接这样就造成图中看到的情况。要解决这个问题，只要保证线程A进入相应代码之后B无法进入，只有等待A完成相关操作之后B才能进入即可。下面分别使用NSLock和@synchronized对代码进行修改。</p>
+<h2 id="autoid-6-0-0">NSLock</h2>
+<p>iOS中对于资源抢占的问题可以使用同步锁NSLock来解决，使用时把需要加锁的代码（以后暂时称这段代码为”加锁代码“）放到NSLock的lock和unlock之间，一个线程A进入加锁代码之后由于已经加锁，另一个线程B就无法访问，只有等待前一个线程A执行完加锁代码后解锁，B线程才能访问加锁代码。需要注意的是lock和unlock之间的”加锁代码“应该是<font color="#ff0000"><strong>抢占资源的读取和修改</strong></font>代码，不要将过多的其他操作代码放到里面，否则一个线程执行的时候另一个线程就一直在等待，就无法发挥多线程的作用了。</p>
+<p>另外，在上面的代码中”抢占资源“_imageNames定义成了成员变量，这么做是不明智的，应该定义为“原子属性”。对于被抢占资源来说将其定义为原子属性是一个很好的习惯，因为有时候很难保证同一个资源不在别处读取和修改。nonatomic属性读取的是内存数据（寄存器计算好的结果），而atomic就保证直接读取寄存器的数据，这样一来就不会出现一个线程正在修改数据，而另一个线程读取了修改之前（存储在内存中）的数据，永远保证同时只有一个线程在访问一个属性。</p>
+<p>下面的代码演示了如何使用NSLock进行线程同步：</p>
+<p>KCMainViewController.h</p><pre class="code"><span style="color: green;">//
+//  KCMainViewController.h
+//  MultiThread
+//
+//  Created by Kenshin Cui on 14-3-22.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">&lt;UIKit/UIKit.h&gt;
+
+</span><span style="color: black;">@</span><span style="color: blue;">interface </span><span style="color: black;">KCMainViewController : UIViewController
+
+@</span><span style="color: blue;">property </span><span style="color: black;">(atomic,strong) NSMutableArray *imageNames;
+@end</span></pre>
+<p>KCMainViewController.m</p><pre class="code"><span style="color: green;">//
+//  线程同步
+//  MultiThread
+//
+//  Created by Kenshin Cui on 14-3-22.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCMainViewController.h"
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCImageData.h"
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_COUNT 5
+</span><span style="color: blue;">#define </span><span style="color: black;">COLUMN_COUNT 3
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_HEIGHT 100
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_WIDTH ROW_HEIGHT
+</span><span style="color: blue;">#define </span><span style="color: black;">CELL_SPACING 10
+</span><span style="color: blue;">#define </span><span style="color: black;">IMAGE_COUNT 9
+
+@</span><span style="color: blue;">interface </span><span style="color: black;">KCMainViewController (){
+    NSMutableArray *_imageViews;
+    NSLock *_lock;
+}
+
+@end
+
+@implementation KCMainViewController
+
+- (</span><span style="color: blue;">void</span><span style="color: black;">)viewDidLoad {
+    [super viewDidLoad];
+
+    [self layoutUI];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 界面布局
+-(</span><span style="color: blue;">void</span><span style="color: black;">)layoutUI{
+    </span><span style="color: green;">//创建多个图片控件用于显示图片
+    </span><span style="color: black;">_imageViews=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">r=0; r&lt;ROW_COUNT; r++) {
+        </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">c=0; c&lt;COLUMN_COUNT; c++) {
+            UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(c*ROW_WIDTH+(c*CELL_SPACING), r*ROW_HEIGHT+(r*CELL_SPACING                           ), ROW_WIDTH, ROW_HEIGHT)];
+            imageView.contentMode=UIViewContentModeScaleAspectFit;
+            [self.view addSubview:imageView];
+            [_imageViews addObject:imageView];
+
+        }
+    }
+
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame=CGRectMake(50, 500, 220, 25);
+    [button setTitle:@</span><span style="color: rgb(163, 21, 21);">"加载图片" </span><span style="color: black;">forState:UIControlStateNormal];
+    </span><span style="color: green;">//添加方法
+    </span><span style="color: black;">[button addTarget:self action:@selector(loadImageWithMultiThread) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
+    </span><span style="color: green;">//创建图片链接
+    </span><span style="color: black;">_imageNames=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;IMAGE_COUNT; i++) {
+        [_imageNames addObject:[NSString stringWithFormat:@</span><span style="color: rgb(163, 21, 21);">"http://images.cnblogs.com/cnblogs_com/kenshincui/613474/o_%i.jpg"</span><span style="color: black;">,i]];
+    }
+    
+    </span><span style="color: green;">//初始化锁对象
+    </span><span style="color: black;">_lock=[[NSLock alloc]init];
+
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 将图片显示到界面
+-(</span><span style="color: blue;">void</span><span style="color: black;">)updateImageWithData:(NSData *)data andIndex:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    UIImage *image=[UIImage imageWithData:data];
+    UIImageView *imageView= _imageViews[index];
+    imageView.image=image;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 请求图片数据
+-(NSData *)requestData:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    NSData *data;
+    NSString *name;
+    </span><span style="color: green;">//加锁
+    </span><span style="color: black;">[_lock lock];
+    </span><span style="color: blue;">if </span><span style="color: black;">(_imageNames.count&gt;0) {
+        name=[_imageNames lastObject];
+        [_imageNames removeObject:name];
+    }
+    </span><span style="color: green;">//使用完解锁
+    </span><span style="color: black;">[_lock unlock];
+    </span><span style="color: blue;">if</span><span style="color: black;">(name){
+        NSURL *url=[NSURL URLWithString:name];
+        data=[NSData dataWithContentsOfURL:url];
+    }
+    </span><span style="color: blue;">return </span><span style="color: black;">data;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 加载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImage:(NSNumber *)index{
+    </span><span style="color: blue;">int </span><span style="color: black;">i=[index integerValue];
+    </span><span style="color: green;">//请求数据
+    </span><span style="color: black;">NSData *data= [self requestData:i];
+    </span><span style="color: green;">//更新UI界面,此处调用了GCD主线程队列的方法
+    </span><span style="color: black;">dispatch_queue_t mainQueue= dispatch_get_main_queue();
+    dispatch_sync(mainQueue, ^{
+        [self updateImageWithData:data andIndex:i];
+    });
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 多线程下载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: blue;">int </span><span style="color: black;">count=ROW_COUNT*COLUMN_COUNT;
+
+    dispatch_queue_t globalQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    </span><span style="color: green;">//创建多个线程用于填充图片
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count; ++i) {
+        </span><span style="color: green;">//异步执行队列任务
+        </span><span style="color: black;">dispatch_async(globalQueue, ^{
+            [self loadImage:[NSNumber numberWithInt:i]];
+        });
+    }
+    
+}
+@end</span></pre>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/202333547682718.gif"><img title="LockEffect2" style="display: inline" alt="LockEffect2" src="./iOS多线程总结_files/202333553462374.gif"></a> </p>
+<p>前面也说过使用同步锁时如果一个线程A已经加锁，线程B就无法进入。那么B怎么知道是否资源已经被其他线程锁住呢？可以通过tryLock方法，此方法会返回一个BOOL型的值，如果为YES说明获取锁成功，否则失败。另外还有一个lockBeforeData:方法指定在某个时间内获取锁，同样返回一个BOOL值，如果在这个时间内加锁成功则返回YES，失败则返回NO。</p>
+<h2 id="autoid-6-0-0">@synchronized代码块</h2>
+<p>使用@synchronized解决线程同步问题相比较NSLock要简单一些，日常开发中也更推荐使用此方法。首先选择一个对象作为同步对象（一般使用self），然后将”加锁代码”（争夺资源的读取、修改代码）放到代码块中。@synchronized中的代码执行时先检查同步对象是否被另一个线程占用，如果占用该线程就会处于等待状态，直到同步对象被释放。下面的代码演示了如何使用@synchronized进行线程同步：</p><pre class="code"><span style="color: black;">-(NSData *)requestData:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    NSData *data;
+    NSString *name;
+    </span><span style="color: green;">//线程同步
+    </span><span style="color: black;">@synchronized(self){
+        </span><span style="color: blue;">if </span><span style="color: black;">(_imageNames.count&gt;0) {
+            name=[_imageNames lastObject];
+            [NSThread sleepForTimeInterval:0.001f];
+            [_imageNames removeObject:name];
+        }
+    }
+    </span><span style="color: blue;">if</span><span style="color: black;">(name){
+        NSURL *url=[NSURL URLWithString:name];
+        data=[NSData dataWithContentsOfURL:url];
+    }
+    </span><span style="color: blue;">return </span><span style="color: black;">data;
+}</span></pre>
+<h2 id="autoid-6-0-0">扩展--使用GCD解决资源抢占问题</h2>
+<p>在GCD中提供了一种信号机制，也可以解决资源抢占问题（和同步锁的机制并不一样）。GCD中信号量是dispatch_semaphore_t类型，支持信号通知和信号等待。每当发送一个信号通知，则信号量+1；每当发送一个等待信号时信号量-1,；如果信号量为0则信号会处于等待状态，直到信号量大于0开始执行。根据这个原理我们可以初始化一个信号量变量，默认信号量设置为1，每当有线程进入“加锁代码”之后就调用信号等待命令（此时信号量为0）开始等待，此时其他线程无法进入，执行完后发送信号通知（此时信号量为1），其他线程开始进入执行，如此一来就达到了线程同步目的。</p><pre class="code"><span style="color: green;">//
+//  GCD实现多线程--消息信号
+//  MultiThread
+//
+//  Created by Kenshin Cui on 14-3-22.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCMainViewController.h"
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCImageData.h"
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_COUNT 5
+</span><span style="color: blue;">#define </span><span style="color: black;">COLUMN_COUNT 3
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_HEIGHT 100
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_WIDTH ROW_HEIGHT
+</span><span style="color: blue;">#define </span><span style="color: black;">CELL_SPACING 10
+</span><span style="color: blue;">#define </span><span style="color: black;">IMAGE_COUNT 9
+
+@</span><span style="color: blue;">interface </span><span style="color: black;">KCMainViewController (){
+    NSMutableArray *_imageViews;
+    NSLock *_lock;
+    dispatch_semaphore_t _semaphore;</span><span style="color: green;">//定义一个信号量
+</span><span style="color: black;">}
+
+@end
+
+@implementation KCMainViewController
+
+- (</span><span style="color: blue;">void</span><span style="color: black;">)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self layoutUI];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 界面布局
+-(</span><span style="color: blue;">void</span><span style="color: black;">)layoutUI{
+    </span><span style="color: green;">//创建多个图片控件用于显示图片
+    </span><span style="color: black;">_imageViews=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">r=0; r&lt;ROW_COUNT; r++) {
+        </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">c=0; c&lt;COLUMN_COUNT; c++) {
+            UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(c*ROW_WIDTH+(c*CELL_SPACING), r*ROW_HEIGHT+(r*CELL_SPACING                           ), ROW_WIDTH, ROW_HEIGHT)];
+            imageView.contentMode=UIViewContentModeScaleAspectFit;
+            [self.view addSubview:imageView];
+            [_imageViews addObject:imageView];
+            
+        }
+    }
+    
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame=CGRectMake(50, 500, 220, 25);
+    [button setTitle:@</span><span style="color: rgb(163, 21, 21);">"加载图片" </span><span style="color: black;">forState:UIControlStateNormal];
+    </span><span style="color: green;">//添加方法
+    </span><span style="color: black;">[button addTarget:self action:@selector(loadImageWithMultiThread) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
+    </span><span style="color: green;">//创建图片链接
+    </span><span style="color: black;">_imageNames=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;IMAGE_COUNT; i++) {
+        [_imageNames addObject:[NSString stringWithFormat:@</span><span style="color: rgb(163, 21, 21);">"http://images.cnblogs.com/cnblogs_com/kenshincui/613474/o_%i.jpg"</span><span style="color: black;">,i]];
+    }
+    
+    </span><span style="color: green;">/*初始化信号量
+     参数是信号量初始值
+     */
+    </span><span style="color: black;">_semaphore=dispatch_semaphore_create(1);
+    
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 将图片显示到界面
+-(</span><span style="color: blue;">void</span><span style="color: black;">)updateImageWithData:(NSData *)data andIndex:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    UIImage *image=[UIImage imageWithData:data];
+    UIImageView *imageView= _imageViews[index];
+    imageView.image=image;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 请求图片数据
+-(NSData *)requestData:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    NSData *data;
+    NSString *name;
+    
+    </span><span style="color: green;">/*信号等待
+     第二个参数：等待时间
+     */
+    </span><span style="color: black;">dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
+    </span><span style="color: blue;">if </span><span style="color: black;">(_imageNames.count&gt;0) {
+        name=[_imageNames lastObject];
+        [_imageNames removeObject:name];
+    }
+    </span><span style="color: green;">//信号通知
+    </span><span style="color: black;">dispatch_semaphore_signal(_semaphore);
+
+    
+    </span><span style="color: blue;">if</span><span style="color: black;">(name){
+        NSURL *url=[NSURL URLWithString:name];
+        data=[NSData dataWithContentsOfURL:url];
+    }
+    
+    </span><span style="color: blue;">return </span><span style="color: black;">data;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 加载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImage:(NSNumber *)index{
+    </span><span style="color: blue;">int </span><span style="color: black;">i=[index integerValue];
+    </span><span style="color: green;">//请求数据
+    </span><span style="color: black;">NSData *data= [self requestData:i];
+    </span><span style="color: green;">//更新UI界面,此处调用了GCD主线程队列的方法
+    </span><span style="color: black;">dispatch_queue_t mainQueue= dispatch_get_main_queue();
+    dispatch_sync(mainQueue, ^{
+        [self updateImageWithData:data andIndex:i];
+    });
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 多线程下载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: blue;">int </span><span style="color: black;">count=ROW_COUNT*COLUMN_COUNT;
+</span><span style="color: green;">//    dispatch_queue_t globalQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+    //这里创建一个并发队列（使用全局并发队列也可以）
+    </span><span style="color: black;">dispatch_queue_t queue=dispatch_queue_create(</span><span style="color: rgb(163, 21, 21);">"myQueue"</span><span style="color: black;">, DISPATCH_QUEUE_CONCURRENT);
+    
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count; i++) {
+        dispatch_async(queue, ^{
+            [self loadImage:[NSNumber numberWithInt:i]];
+        });
+    }
+}
+
+@end</span></pre>
+<p>运行效果与前面使用同步锁是一样的。</p>
+<h2 id="autoid-6-0-0">扩展--控制线程通信</h2>
+<p>由于线程的调度是透明的，程序有时候很难对它进行有效的控制，为了解决这个问题iOS提供了NSCondition来控制线程通信(同前面GCD的信号机制类似)。NSCondition实现了NSLocking协议，所以它本身也有lock和unlock方法，因此也可以将它作为NSLock解决线程同步问题，此时使用方法跟NSLock没有区别，只要在线程开始时加锁，取得资源后释放锁即可，这部分内容比较简单在此不再演示。当然，单纯解决线程同步问题不是NSCondition设计的主要目的，NSCondition更重要的是解决线程之间的调度关系（当然，这个过程中也必须先加锁、解锁）。NSCondition可以调用wati方法控制某个线程处于等待状态，直到其他线程调用signal（此方法唤醒一个线程，如果有多个线程在等待则任意唤醒一个）或者broadcast（此方法会唤醒所有等待线程）方法唤醒该线程才能继续。</p>
+<p>假设当前imageNames没有任何图片，而整个界面能够加载15张图片（每张都不能重复），现在创建15个线程分别从imageNames中取图片加载到界面中。由于imageNames中没有任何图片，那么15个线程都处于等待状态，只有当调用图片创建方法往imageNames中添加图片后（每次创建一个）并且唤醒其他线程（这里只唤醒一个线程）才能继续执行加载图片。如此，每次创建一个图片就会唤醒一个线程去加载，这个过程其实就是一个典型的生产者-消费者模式。下面通过NSCondition实现这个流程的控制：</p>
+<p>KCMainViewController.h</p><pre class="code"><span style="color: green;">//
+//  KCMainViewController.h
+//  MultiThread
+//
+//  Created by Kenshin Cui on 14-3-22.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">&lt;UIKit/UIKit.h&gt;
+
+</span><span style="color: black;">@</span><span style="color: blue;">interface </span><span style="color: black;">KCMainViewController : UIViewController
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 图片资源存储容器
+@</span><span style="color: blue;">property </span><span style="color: black;">(atomic,strong) NSMutableArray *imageNames;
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 当前加载的图片索引（图片链接地址连续）
+@</span><span style="color: blue;">property </span><span style="color: black;">(atomic,assign) </span><span style="color: blue;">int </span><span style="color: black;">currentIndex;
+
+@end</span></pre>
+<p>KCMainViewController.m</p><pre class="code"><span style="color: green;">//
+//  线程控制
+//  MultiThread
+//
+//  Created by Kenshin Cui on 14-3-22.
+//  Copyright (c) 2014年 Kenshin Cui. All rights reserved.
+//
+
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCMainViewController.h"
+</span><span style="color: blue;">#import </span><span style="color: rgb(163, 21, 21);">"KCImageData.h"
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_COUNT 5
+</span><span style="color: blue;">#define </span><span style="color: black;">COLUMN_COUNT 3
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_HEIGHT 100
+</span><span style="color: blue;">#define </span><span style="color: black;">ROW_WIDTH ROW_HEIGHT
+</span><span style="color: blue;">#define </span><span style="color: black;">CELL_SPACING 10
+</span><span style="color: blue;">#define </span><span style="color: black;">IMAGE_COUNT 9
+
+@</span><span style="color: blue;">interface </span><span style="color: black;">KCMainViewController (){
+    NSMutableArray *_imageViews;
+    NSCondition *_condition;
+}
+
+@end
+
+@implementation KCMainViewController
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark - 事件
+- (</span><span style="color: blue;">void</span><span style="color: black;">)viewDidLoad {
+    [super viewDidLoad];
+
+    [self layoutUI];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark - 内部私有方法
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 界面布局
+-(</span><span style="color: blue;">void</span><span style="color: black;">)layoutUI{
+    </span><span style="color: green;">//创建多个图片控件用于显示图片
+    </span><span style="color: black;">_imageViews=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">r=0; r&lt;ROW_COUNT; r++) {
+        </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">c=0; c&lt;COLUMN_COUNT; c++) {
+            UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(c*ROW_WIDTH+(c*CELL_SPACING), r*ROW_HEIGHT+(r*CELL_SPACING                           ), ROW_WIDTH, ROW_HEIGHT)];
+            imageView.contentMode=UIViewContentModeScaleAspectFit;
+            [self.view addSubview:imageView];
+            [_imageViews addObject:imageView];
+            
+        }
+    }
+    
+    UIButton *btnLoad=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btnLoad.frame=CGRectMake(50, 500, 100, 25);
+    [btnLoad setTitle:@</span><span style="color: rgb(163, 21, 21);">"加载图片" </span><span style="color: black;">forState:UIControlStateNormal];
+    [btnLoad addTarget:self action:@selector(loadImageWithMultiThread) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btnLoad];
+    
+    UIButton *btnCreate=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btnCreate.frame=CGRectMake(160, 500, 100, 25);
+    [btnCreate setTitle:@</span><span style="color: rgb(163, 21, 21);">"创建图片" </span><span style="color: black;">forState:UIControlStateNormal];
+    [btnCreate addTarget:self action:@selector(createImageWithMultiThread) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btnCreate];
+    
+    </span><span style="color: green;">//创建图片链接
+    </span><span style="color: black;">_imageNames=[NSMutableArray </span><span style="color: blue;">array</span><span style="color: black;">];
+    
+    </span><span style="color: green;">//初始化锁对象
+    </span><span style="color: black;">_condition=[[NSCondition alloc]init];
+    
+    _currentIndex=0;
+    
+}
+
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 创建图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)createImageName{
+    [_condition lock];
+    </span><span style="color: green;">//如果当前已经有图片了则不再创建，线程处于等待状态
+    </span><span style="color: blue;">if </span><span style="color: black;">(_imageNames.count&gt;0) {
+        NSLog(@</span><span style="color: rgb(163, 21, 21);">"createImageName wait, current:%i"</span><span style="color: black;">,_currentIndex);
+        [_condition wait];
+    }</span><span style="color: blue;">else</span><span style="color: black;">{
+        NSLog(@</span><span style="color: rgb(163, 21, 21);">"createImageName work, current:%i"</span><span style="color: black;">,_currentIndex);
+        </span><span style="color: green;">//生产者，每次生产1张图片
+        </span><span style="color: black;">[_imageNames addObject:[NSString stringWithFormat:@</span><span style="color: rgb(163, 21, 21);">"http://images.cnblogs.com/cnblogs_com/kenshincui/613474/o_%i.jpg"</span><span style="color: black;">,_currentIndex++]];
+        
+        </span><span style="color: green;">//创建完图片则发出信号唤醒其他等待线程
+        </span><span style="color: black;">[_condition signal];
+    }
+    [_condition unlock];
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 加载图片并将图片显示到界面
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadAnUpdateImageWithIndex:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    </span><span style="color: green;">//请求数据
+    </span><span style="color: black;">NSData *data= [self requestData:index];
+    </span><span style="color: green;">//更新UI界面,此处调用了GCD主线程队列的方法
+    </span><span style="color: black;">dispatch_queue_t mainQueue= dispatch_get_main_queue();
+    dispatch_sync(mainQueue, ^{
+        UIImage *image=[UIImage imageWithData:data];
+        UIImageView *imageView= _imageViews[index];
+        imageView.image=image;
+    });
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 请求图片数据
+-(NSData *)requestData:(</span><span style="color: blue;">int </span><span style="color: black;">)index{
+    NSData *data;
+    NSString *name;
+    name=[_imageNames lastObject];
+    [_imageNames removeObject:name];
+    </span><span style="color: blue;">if</span><span style="color: black;">(name){
+        NSURL *url=[NSURL URLWithString:name];
+        data=[NSData dataWithContentsOfURL:url];
+    }
+    </span><span style="color: blue;">return </span><span style="color: black;">data;
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 加载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImage:(NSNumber *)index{
+    </span><span style="color: blue;">int </span><span style="color: black;">i=(</span><span style="color: blue;">int</span><span style="color: black;">)[index integerValue];
+    </span><span style="color: green;">//加锁
+    </span><span style="color: black;">[_condition lock];
+    </span><span style="color: green;">//如果当前有图片资源则加载，否则等待
+    </span><span style="color: blue;">if </span><span style="color: black;">(_imageNames.count&gt;0) {
+        NSLog(@</span><span style="color: rgb(163, 21, 21);">"loadImage work,index is %i"</span><span style="color: black;">,i);
+        [self loadAnUpdateImageWithIndex:i];
+        [_condition broadcast];
+    }</span><span style="color: blue;">else</span><span style="color: black;">{
+        NSLog(@</span><span style="color: rgb(163, 21, 21);">"loadImage wait,index is %i"</span><span style="color: black;">,i);
+        NSLog(@</span><span style="color: rgb(163, 21, 21);">"%@"</span><span style="color: black;">,[NSThread currentThread]);
+        </span><span style="color: green;">//线程等待
+        </span><span style="color: black;">[_condition wait];
+        NSLog(@</span><span style="color: rgb(163, 21, 21);">"loadImage resore,index is %i"</span><span style="color: black;">,i);
+        </span><span style="color: green;">//一旦创建完图片立即加载
+        </span><span style="color: black;">[self loadAnUpdateImageWithIndex:i];
+    }
+    </span><span style="color: green;">//解锁
+    </span><span style="color: black;">[_condition unlock];
+}
+
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark - UI调用方法
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 异步创建一张图片链接
+-(</span><span style="color: blue;">void</span><span style="color: black;">)createImageWithMultiThread{
+    dispatch_queue_t globalQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    </span><span style="color: green;">//创建图片链接
+    </span><span style="color: black;">dispatch_async(globalQueue, ^{
+        [self createImageName];
+    });
+}
+
+</span><span style="color: blue;">#pragma </span><span style="color: black;">mark 多线程下载图片
+-(</span><span style="color: blue;">void</span><span style="color: black;">)loadImageWithMultiThread{
+    </span><span style="color: blue;">int </span><span style="color: black;">count=ROW_COUNT*COLUMN_COUNT;
+    dispatch_queue_t globalQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+    </span><span style="color: blue;">for </span><span style="color: black;">(</span><span style="color: blue;">int </span><span style="color: black;">i=0; i&lt;count; ++i) {
+        </span><span style="color: green;">//加载图片
+        </span><span style="color: black;">dispatch_async(globalQueue, ^{
+            [self loadImage:[NSNumber numberWithInt:i]];
+        });
+    }
+}
+@end</span></pre>
+<p>运行效果：</p>
+<p><a href="http://images.cnitblog.com/blog/62046/201409/202333563787958.gif"><img title="NSConditionEffect" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="NSConditionEffect" src="./iOS多线程总结_files/202333593156929.gif" width="317" height="587"></a> </p>
+<p>在上面的代码中<strong>loadImage:</strong>方法是消费者，当在界面中点击“加载图片”后就创建了15个消费者线程。在这个过程中每个线程进入图片加载方法之后都会先加锁，加锁之后其他进程是无法进入“加锁代码”的。但是第一个线程进入“加锁代码”后去加载图片却发现当前并没有任何图片，因此它只能等待。一旦调用了NSCondition的wait方法后其他线程就可以继续进入“加锁代码”（注意，这一点和前面说的NSLock、@synchronized等是不同的，使用NSLock、@synchronized等进行加锁后无论什么情况下，只要没有解锁其他线程就无法进入“加锁代码”），同时第一个线程处于等待队列中（此时并未解锁）。第二个线程进来之后同第一线程一样，发现没有图片就进入等待状态，然后第三个线程进入。。。如此反复，直到第十五个线程也处于等待。此时点击“创建图片”后会执行<strong>createImageName</strong>方法，这是一个生产者，它会创建一个图片链接放到imageNames中，然后通过调用NSCondition的signal方法就会在条件等待队列中选择一个线程（该线程会任意选取，假设为线程A）开启，那么此时这个线程就会继续执行。在上面代码中，wati方法之后会继续执行图片加载方法，那么此时线程A启动之后继续执行图片加载方法，当然此时可以成功加载图片。加载完图片之后线程A就会释放锁，整个线程任务完成。此时再次点击”创建图片“按钮重复前面的步骤加载其他图片。</p>
+<p>为了说明上面的过程，这里以一个流程图的进行说明，流程图蓝色部分代表15个加载图片的线程，绿色部分表示创建图片资源线程。</p>
+<p>&nbsp;<a href="http://images.cnitblog.com/blog/62046/201409/202334005657213.png"><img title="image" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="image" src="./iOS多线程总结_files/202334011902856.png" width="800" height="1514"></a> </p>
+<h2 id="autoid-6-0-0">iOS中的其他锁</h2>
+<p>在iOS开发中，除了同步锁有时候还会用到一些其他锁类型，在此简单介绍一下：</p>
+<p>NSRecursiveLock ：递归锁，有时候“加锁代码”中存在递归调用，递归开始前加锁，递归调用开始后会重复执行此方法以至于反复执行加锁代码最终造成死锁，这个时候可以使用递归锁来解决。使用递归锁可以在一个线程中反复获取锁而不造成死锁，这个过程中会记录获取锁和释放锁的次数，只有最后两者平衡锁才被最终释放。</p>
+<p>NSDistributedLock：分布锁，它本身是一个互斥锁，基于文件方式实现锁机制，可以跨进程访问。</p>
+<p>pthread_mutex_t：同步锁，基于C语言的同步锁机制，使用方法与其他同步锁机制类似。</p>
+<blockquote>
+<p>提示：在开发过程中除非必须用锁，否则应该尽可能不使用锁，因为多线程开发本身就是为了提高程序执行顺序，而同步锁本身就只能一个进程执行，这样不免降低执行效率。</p></blockquote>
+<h1 id="summary">总结</h1>
+<p><strong>1&gt;</strong>无论使用哪种方法进行多线程开发，每个线程启动后并不一定立即执行相应的操作，具体什么时候由系统调度（CPU空闲时就会执行）。</p>
+<p><strong>2&gt;</strong>更新UI应该在主线程（UI线程）中进行，并且推荐使用同步调用，常用的方法如下：</p>
+<ul>
+<li>- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait (或者-(void)performSelector:(SEL)aSelector onThread:(NSThread *)thr withObject:(id)arg waitUntilDone:(BOOL) wait;方法传递主线程[NSThread mainThread]) 
+</li><li><span style="background: white; color: black">[NSOperationQueue mainQueue] addOperationWithBlock:</span> 
+</li><li><span style="background: white; color: black">dispatch_sync(dispatch_get_main_queue(), ^{}) </span></li></ul>
+<p><span style="background: white; color: black"></span><strong>3&gt;</strong>NSThread适合轻量级多线程开发，控制线程顺序比较难，同时线程总数无法控制（每次创建并不能重用之前的线程，只能创建一个新的线程）。</p>
+<p><strong>4&gt;</strong>对于简单的多线程开发建议使用NSObject的扩展方法完成，而不必使用NSThread。</p>
+<p><strong>5&gt;</strong>可以使用NSThread的currentThread方法取得当前线程，使用 sleepForTimeInterval:方法让当前线程休眠。</p>
+<p><strong>6&gt;</strong>NSOperation进行多线程开发可以控制线程总数及线程依赖关系。</p>
+<p><strong>7&gt;</strong>创建一个NSOperation不应该直接调用start方法（如果直接start则会在主线程中调用）而是应该放到NSOperationQueue中启动。</p>
+<p><strong>8&gt;</strong>相比NSInvocationOperation推荐使用NSBlockOperation，代码简单，同时由于闭包性使它没有传参问题。</p>
+<p><strong>9&gt;</strong>NSOperation是对GCD面向对象的ObjC封装，但是相比GCD基于C语言开发，效率却更高，建议如果任务之间有依赖关系或者想要监听任务完成状态的情况下优先选择NSOperation否则使用GCD。</p>
+<p><strong>10&gt;</strong>在GCD中串行队列中的任务被安排到一个单一线程执行（不是主线程），可以方便地控制执行顺序；并发队列在多个线程中执行（前提是使用异步方法），顺序控制相对复杂，但是更高效。</p>
+<p><strong>11&gt;</strong>在GDC中一个操作是多线程执行还是单线程执行取决于当前队列类型和执行方法，只有队列类型为并行队列并且使用异步方法执行时才能在多个线程中执行（如果是并行队列使用同步方法调用则会在主线程中执行）。</p>
+<p><strong>12&gt;</strong>相比使用NSLock，@synchronized更加简单，推荐使用后者。</p>
+<h1 id="otherArticle">您可能感兴趣的文章</h1>
+<p><a href="http://www.cnblogs.com/kenshincui/p/3890880.html">IOS开发系列--IOS程序开发概览</a></p>
+<p><a href="http://www.cnblogs.com/kenshincui/p/3913885.html">IOS开发系列--无限循环的图片浏览器</a></p>
+<p><a href="http://www.cnblogs.com/kenshincui/p/3931948.html">iOS开发系列--UITableView全面解析</a></p>
+<p><a href="http://www.cnblogs.com/kenshincui/p/3940746.html">iOS开发系列--视图切换</a></p>
+<p><a href="http://www.cnblogs.com/kenshincui/p/3950646.html">iOS开发系列--触摸事件、手势识别、摇晃事件、耳机线控</a></p>
+<p><a href="http://www.cnblogs.com/kenshincui/p/3959951.html">iOS开发系列--打造自己的“美图秀秀”</a></p>
+<p><a href="http://www.cnblogs.com/kenshincui/p/3972100.html">iOS开发系列--让你的应用“动”起来</a></p>
+<h1 id="autoid-8-0-0">iOS技术交流群</h1>
+<p>为了方便大家进行交流，欢迎大家加入iOS开发群：<strong><font color="#ff0000">64555322(已满)</font></strong></p>
+<p><font color="#000000">上面的群已满，建议添加：132785059</font></p>
+<div id="kc-apple-download-btn"><a class="kc-apple-btn" href="http://pan.baidu.com/s/1qWDdJVQ" target="_blank"><i></i><span>源代码下载</span> </a></div></div><div id="MySignature" style="display: block;"><div style="clear: both; border: solid #E8E7D0 1px; padding: 10px 10px 10px 10px; background-color: #f8f8ee;">
+<table border="0">
+<tbody>
+<tr style="vertical-align: top;">
+<td><a href="http://creativecommons.org/licenses/by/2.5/cn/" rel="license"><img style="border-width: 0;" src="./iOS多线程总结_files/88x31.png" alt="知识共享许可协议"></a></td>
+<td>本<span>作品</span>采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" rel="license">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，演绎或用于商业目的。但转载请注明来自<a href="http://www.cnblogs.com/kenshincui">崔江涛（KenshinCui）</a>，并包含相关链接。</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+        <div class="clear"></div>
+        <div id="blog_post_info_block">
+        <div id="blog_post_info"><div id="green_channel">
+绿色通道：
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3983982,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/KenshinCui" target="_blank">与我联系</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./iOS多线程总结_files/icon_weibo_24.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/kenshincui/" target="_blank"><img src="./iOS多线程总结_files/u62046.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/kenshincui/">KenshinCui</a><br>
+<a href="http://home.cnblogs.com/u/kenshincui/followees">关注 - 3</a><br>
+<a href="http://home.cnblogs.com/u/kenshincui/followers">粉丝 - 1517</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor">荣誉：<a href="http://www.cnblogs.com/expert/" target="_blank">推荐博客</a></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg" style="position: fixed; right: 0px; bottom: 0px; z-index: 10; margin: 10px; padding: 10px; border: 1px solid rgb(204, 204, 204); background-color: white;">										
+    <div class="diggit" onclick="votePost(3983982,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">36</span>
+    </div>
+	<div class="buryit" onclick="votePost(3983982,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+        <div class="clear"></div>
+        <div id="post_next_prev"><a href="http://www.cnblogs.com/kenshincui/p/3972100.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/kenshincui/p/3972100.html" title="发布于2014-09-15 06:29">iOS开发系列--让你的应用“动”起来</a><br><a href="http://www.cnblogs.com/kenshincui/p/3985090.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/kenshincui/p/3985090.html" title="发布于2014-09-21 22:17">iOS开发系列文章（持续更新……）</a><br></div>
+    </div>
+</div>
+    <ul class="postmetadata">
+        <li class="icon_cat" id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/kenshincui/category/594479.html">IOS</a></li>
+        <li class="icon_bullet" id="EntryTag">标签: <a href="http://www.cnblogs.com/kenshincui/tag/NSThread/">NSThread</a>, <a href="http://www.cnblogs.com/kenshincui/tag/NSOperation/">NSOperation</a>, <a href="http://www.cnblogs.com/kenshincui/tag/NSInvocationOperation/">NSInvocationOperation</a>, <a href="http://www.cnblogs.com/kenshincui/tag/NSBlockOperation/">NSBlockOperation</a>, <a href="http://www.cnblogs.com/kenshincui/tag/NSOperationQueue/">NSOperationQueue</a>, <a href="http://www.cnblogs.com/kenshincui/tag/GCD/">GCD</a>, <a href="http://www.cnblogs.com/kenshincui/tag/NSLock/">NSLock</a>, <a href="http://www.cnblogs.com/kenshincui/tag/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>, <a href="http://www.cnblogs.com/kenshincui/tag/%E5%90%8C%E6%AD%A5%E9%94%81/">同步锁</a>, <a href="http://www.cnblogs.com/kenshincui/tag/%E5%B9%B6%E8%A1%8C%E5%BC%80%E5%8F%91/">并行开发</a></li>
+    </ul>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=79371,cb_entryId=3983982,cb_blogApp=currentBlogApp,cb_blogUserGuid='8c003886-9a30-de11-9510-001cf0cd104b',cb_entryCreatedDate='2014/9/20 23:34:00';loadViewCount(cb_entryId);</script>
+<script type="text/javascript">
+    var m = window.__blog.postRendered;
+    if (m) { m(__$("post")); }
+</script>
+<script type="text/javascript">
+    var m = window.__blog.postRenderPosts;
+    if (m) { m(); }
+</script>
+<a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<a class="addcomment" href="http://www.cnblogs.com/kenshincui/p/3983982.html#comment_tip">Add your comment</a>
+<h3 id="comments"></h3>
+<div class="feedbackNoItems"></div>
+
+
+<ol class="commentlist" id="commentList">	
+
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031583" class="layer">#1楼</a><a name="3031583" id="comment_anchor_3031583"></a></cite> <a id="a_comment_author_3031583" href="http://www.cnblogs.com/xishuai/" target="_blank">田园里的蟋蟀</a> <a href="http://msg.cnblogs.com/send/%E7%94%B0%E5%9B%AD%E9%87%8C%E7%9A%84%E8%9F%8B%E8%9F%80" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-20 23:43</span></small>
+			</h5>
+			<div id="comment_body_3031583" class="blog_comment_body">再次跪拜大神，感谢分享。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031583,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031583,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3031583_avatar" style="display:none;">http://pic.cnblogs.com/face/435188/20130715165802.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031586" class="layer">#2楼</a><a name="3031586" id="comment_anchor_3031586"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3031586" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-20 23:45</span></small>
+			</h5>
+			<div id="comment_body_3031586" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031583" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3031583);">@</a>田园里的蟋蟀<br>兄弟那么晚也没睡啊。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031586,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031586,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3031586_avatar" style="display:none;">http://pic.cnblogs.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031629" class="layer">#3楼</a><a name="3031629" id="comment_anchor_3031629"></a></cite> <a id="a_comment_author_3031629" href="http://www.cnblogs.com/diggingdeeply/" target="_blank">DiggingDeeply</a> <a href="http://msg.cnblogs.com/send/DiggingDeeply" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-21 09:46</span></small>
+			</h5>
+			<div id="comment_body_3031629" class="blog_comment_body">9长图片太少，能不能加到100张图片同时有个bar显示实时加载个数，弄点复杂点的场景。 谢谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031629,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031629,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3031629_avatar" style="display:none;">http://pic.cnblogs.com/face/66374/20131129174159.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031656" class="layer">#4楼</a><a name="3031656" id="comment_anchor_3031656"></a></cite> <a id="a_comment_author_3031656" href="http://www.cnblogs.com/ludashi/" target="_blank">青玉伏案</a> <a href="http://msg.cnblogs.com/send/%E9%9D%92%E7%8E%89%E4%BC%8F%E6%A1%88" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-21 10:48</span></small>
+			</h5>
+			<div id="comment_body_3031656" class="blog_comment_body">请问一下在iOS开发App的时候经常用到多线程的地方有哪些呢？谢谢楼主分享~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031656,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031656,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3031656_avatar" style="display:none;">http://pic.cnblogs.com/face/545446/20140828105334.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031677" class="layer">#5楼</a><a name="3031677" id="comment_anchor_3031677"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3031677" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-21 11:33</span></small>
+			</h5>
+			<div id="comment_body_3031677" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031629" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3031629);">@</a>DiggingDeeply<br>呵呵，复杂的场景估计得专门弄个系列，以后再写吧，不适合放到这个系列。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031677,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031677,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3031677_avatar" style="display:none;">http://pic.cnblogs.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031684" class="layer">#6楼</a><a name="3031684" id="comment_anchor_3031684"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3031684" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-21 11:53</span></small>
+			</h5>
+			<div id="comment_body_3031684" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031656" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3031656);">@</a>青玉伏案<br>例如背景音乐播放、图片处理时添加滤镜、游戏中各种粒子效果等，特别是游戏使用很多，比如说塔防类游戏，各种游戏人物动作都需要用到多线程开发。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031684,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031684,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3031684_avatar" style="display:none;">http://pic.cnblogs.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031688" class="layer">#7楼</a><a name="3031688" id="comment_anchor_3031688"></a></cite> <a id="a_comment_author_3031688" href="http://www.cnblogs.com/ludashi/" target="_blank">青玉伏案</a> <a href="http://msg.cnblogs.com/send/%E9%9D%92%E7%8E%89%E4%BC%8F%E6%A1%88" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-21 11:58</span></small>
+			</h5>
+			<div id="comment_body_3031688" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031684" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3031684);">@</a>KenshinCui<br>3Q~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031688,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031688,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3031688_avatar" style="display:none;">http://pic.cnblogs.com/face/545446/20140828105334.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031795" class="layer">#8楼</a><a name="3031795" id="comment_anchor_3031795"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3031795" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-21 18:56</span></small>
+			</h5>
+			<div id="comment_body_3031795" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031688" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3031688);">@</a>青玉伏案<br>客气了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031795,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031795,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3031795_avatar" style="display:none;">http://pic.cnblogs.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031842" class="layer">#9楼</a><a name="3031842" id="comment_anchor_3031842"></a></cite> <a id="a_comment_author_3031842" href="http://www.cnblogs.com/TextEditor/" target="_blank">codesnippet.info</a> <a href="http://msg.cnblogs.com/send/codesnippet.info" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-21 21:30</span></small>
+			</h5>
+			<div id="comment_body_3031842" class="blog_comment_body">建议这些文章能加一个索引文章。<br>文章内容非常的好！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031842,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031842,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3031842_avatar" style="display:none;">http://pic.cnblogs.com/face/75847/20130322220005.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031845" class="layer">#10楼</a><a name="3031845" id="comment_anchor_3031845"></a></cite> <a id="a_comment_author_3031845" href="http://www.cnblogs.com/TextEditor/" target="_blank">codesnippet.info</a> <a href="http://msg.cnblogs.com/send/codesnippet.info" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-21 21:31</span></small>
+			</h5>
+			<div id="comment_body_3031845" class="blog_comment_body">顺便问一下，以后是OC的天下还是Swift的天下。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031845,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031845,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3031845_avatar" style="display:none;">http://pic.cnblogs.com/face/75847/20130322220005.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031856" class="layer">#11楼</a><a name="3031856" id="comment_anchor_3031856"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3031856" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-21 21:52</span></small>
+			</h5>
+			<div id="comment_body_3031856" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031842" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3031842);">@</a>magicDict<br>会考虑添加索引。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031856,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031856,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3031856_avatar" style="display:none;">http://pic.cnblogs.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031857" class="layer">#12楼</a><a name="3031857" id="comment_anchor_3031857"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3031857" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-21 21:53</span></small>
+			</h5>
+			<div id="comment_body_3031857" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3031845" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3031845);">@</a>magicDict<br>至少近期还无法取代oc，不过可以考虑慢慢转换。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031857,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031857,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3031857_avatar" style="display:none;">http://pic.cnblogs.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3032950" class="layer">#13楼</a><a name="3032950" id="comment_anchor_3032950"></a></cite> <a id="a_comment_author_3032950" href="http://home.cnblogs.com/u/675231/" target="_blank">何宗柱</a> <a href="http://msg.cnblogs.com/send/%E4%BD%95%E5%AE%97%E6%9F%B1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-23 14:57</span></small>
+			</h5>
+			<div id="comment_body_3032950" class="blog_comment_body">大神你得博客里面的文章写的真不错!对于像我一样的新人来说,是一笔财富呀</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3032950,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3032950,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3033087" class="layer">#14楼</a><a name="3033087" id="comment_anchor_3033087"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3033087" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-09-23 17:28</span></small>
+			</h5>
+			<div id="comment_body_3033087" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3032950" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3032950);">@</a>何宗柱<br>对你有帮助就好，你可以进入群讨论。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3033087,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3033087,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3033087_avatar" style="display:none;">http://pic.cnblogs.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3047548" class="layer">#15楼</a><a name="3047548" id="comment_anchor_3047548"></a></cite> <a id="a_comment_author_3047548" href="http://www.cnblogs.com/zz-vv/" target="_blank">何宗柱</a> <a href="http://msg.cnblogs.com/send/%E4%BD%95%E5%AE%97%E6%9F%B1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-10-20 21:50</span></small>
+			</h5>
+			<div id="comment_body_3047548" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3033087" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3033087);">@</a>KenshinCui<br>博主，跟你提个我的观点 ，不对之处欢迎指出<br>    dispatch_queue_t q = dispatch_get_global_queue(0, 0);<br>    for (int i = 0; i &lt; 100; i++) {<br>        dispatch_async(q, ^{<br>            NSLog(@"%@, %d",[NSThread currentThread],i);<br>        });<br>在xcode6高版本运行gcd方法时，以上的代码会创建高达60-65的线程<br>2014-10-20 21:42:59.103 GCD[428:5934] &lt;NSThread: 0x7fb85b7064e0&gt;{number = 60, name = (null)}, 69<br>2014-10-20 21:42:59.103 GCD[428:5935] &lt;NSThread: 0x7fb85b709910&gt;{number = 61, name = (null)}, 70<br>2014-10-20 21:42:59.104 GCD[428:5936] &lt;NSThread: 0x7fb85b706bb0&gt;{number = 62, name = (null)}, 71<br>2014-10-20 21:42:59.104 GCD[428:5937] &lt;NSThread: 0x7fb85b60c460&gt;{number = 63, name = (null)}, 72<br>2014-10-20 21:42:59.104 GCD[428:5938] &lt;NSThread: 0x7fb85b707ce0&gt;{number = 64, name = (null)}, 73<br>2014-10-20 21:42:59.105 GCD[428:5939] &lt;NSThread: 0x7fb85b7094c0&gt;{number = 65, name = (null)}, 74，而gcd不能设置maxConcurrentOperationCount，这样子性能就变得不好的，因此我觉的，在以后应优先使用NSOperation，而苹果应该也是推荐我们使用NSOperation的</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3047548,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3047548,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3047637" class="layer">#16楼</a><a name="3047637" id="comment_anchor_3047637"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3047637" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-10-21 08:41</span></small>
+			</h5>
+			<div id="comment_body_3047637" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3047548" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3047548);">@</a>何宗柱<br>其实三种方法并不绝对，NSOperation有其特点我文章中也说过，GCD更加接近底层，而且GCD会根据线程负载来增减线程数量并不是一味创建线程，同时对于多核处理更具有优势。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3047637,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3047637,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3047637_avatar" style="display:none;">http://pic.cnblogs.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3069010" class="layer">#17楼</a><a name="3069010" id="comment_anchor_3069010"></a></cite> <a id="a_comment_author_3069010" href="http://home.cnblogs.com/u/695272/" target="_blank">丘小涛</a> <a href="http://msg.cnblogs.com/send/%E4%B8%98%E5%B0%8F%E6%B6%9B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-11-21 16:24</span></small>
+			</h5>
+			<div id="comment_body_3069010" class="blog_comment_body">//设置依赖操作为最后一张图片加载操作<br>        [blockOperation addDependency:lastBlockOperation];<br><br>博主是想让最后一张图片最后加载出来吗？？<br>上述代码是让最后一张首先加载出来的吧。。。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3069010,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3069010,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3117764" class="layer">#18楼</a><a name="3117764" id="comment_anchor_3117764"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3117764" href="http://www.cnblogs.com/kenshincui/" target="_blank">KenshinCui</a> <a href="http://msg.cnblogs.com/send/KenshinCui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-01-28 15:48</span></small>
+			</h5>
+			<div id="comment_body_3117764" class="blog_comment_body"><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3069010" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3069010);">@</a>丘小涛<br>设置其他线程的执行依赖于最后一个线程，是让最后一张图片先加载啊。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3117764,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3117764,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3117764_avatar" style="display:none;">http://pic.cnblogs.com/face/u62046.jpg</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3137513" class="layer">#19楼</a><a name="3137513" id="comment_anchor_3137513"></a></cite> <a id="a_comment_author_3137513" href="http://www.cnblogs.com/lisong/" target="_blank">Lisong</a> <a href="http://msg.cnblogs.com/send/Lisong" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-03-09 11:44</span></small>
+			</h5>
+			<div id="comment_body_3137513" class="blog_comment_body">感谢群主好文</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3137513,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3137513,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3142552" class="layer">#20楼</a><a name="3142552" id="comment_anchor_3142552"></a></cite> <a id="a_comment_author_3142552" href="http://www.cnblogs.com/ranmo/" target="_blank">染墨青衿</a> <a href="http://msg.cnblogs.com/send/%E6%9F%93%E5%A2%A8%E9%9D%92%E8%A1%BF" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-03-17 11:05</span></small>
+			</h5>
+			<div id="comment_body_3142552" class="blog_comment_body">谢谢楼主大大分享</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3142552,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3142552,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3157982" class="layer">#21楼</a><a name="3157982" id="comment_anchor_3157982"></a></cite> <a id="a_comment_author_3157982" href="http://www.cnblogs.com/NSNULL/" target="_blank">huang303513</a> <a href="http://msg.cnblogs.com/send/huang303513" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-04-08 11:08</span></small>
+			</h5>
+			<div id="comment_body_3157982" class="blog_comment_body">博主，你这一系列博客可以整理成一本书来出版。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3157982,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3157982,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3169816" class="layer">#22楼</a><a name="3169816" id="comment_anchor_3169816"></a></cite> <a id="a_comment_author_3169816" href="http://home.cnblogs.com/u/749364/" target="_blank">Loarland</a> <a href="http://msg.cnblogs.com/send/Loarland" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-04-24 15:20</span></small>
+			</h5>
+			<div id="comment_body_3169816" class="blog_comment_body">博主，非常感谢你的文章，让我对多线程有多了一层理解！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3169816,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3169816,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3177004" class="layer">#23楼</a><a name="3177004" id="comment_anchor_3177004"></a></cite> <a id="a_comment_author_3177004" href="http://www.cnblogs.com/zuiheng/" target="_blank">醉衡</a> <a href="http://msg.cnblogs.com/send/%E9%86%89%E8%A1%A1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-05-06 10:23</span></small>
+			</h5>
+			<div id="comment_body_3177004" class="blog_comment_body">好文，最后一个condition的例子不太懂，既然wait和唤醒都安排好了，wait时其它现成也能进入加锁代码，那为什么还要加锁呢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3177004,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3177004,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3184071" class="layer">#24楼</a><a name="3184071" id="comment_anchor_3184071"></a></cite> <a id="a_comment_author_3184071" href="http://www.cnblogs.com/berry1124/" target="_blank">berry_sang</a> <a href="http://msg.cnblogs.com/send/berry_sang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-05-14 18:07</span></small>
+			</h5>
+			<div id="comment_body_3184071" class="blog_comment_body">写的不错，好文，<br>群 132785059 也满了，😳</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3184071,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3184071,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3184071_avatar" style="display:none;">http://pic.cnblogs.com/face/695863/20150416154015.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#3192924" class="layer">#25楼</a><a name="3192924" id="comment_anchor_3192924"></a><span id="comment-maxId" style="display:none;">3192924</span><span id="comment-maxDate" style="display:none;">2015/5/25 21:47:01</span></cite> <a id="a_comment_author_3192924" href="http://home.cnblogs.com/u/684025/" target="_blank">米格轰炸机</a> <a href="http://msg.cnblogs.com/send/%E7%B1%B3%E6%A0%BC%E8%BD%B0%E7%82%B8%E6%9C%BA" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-05-25 21:47</span></small>
+			</h5>
+			<div id="comment_body_3192924" class="blog_comment_body">新群满了，求再开</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3192924,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3192924,&#39;Bury&#39;,this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+</ol>
+
+<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_blank" title="开发者的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_blank" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_blank" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a><a href="http://job.cnblogs.com/" target="_blank">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_blank">知识库</a></div>
+<div id="opt_under_post"></div>
+<script type="text/javascript">
+    var enableGoogleAd = canShowAdsense(); 
+    fixPostBodyFormat();
+</script>
+<script type="text/javascript">
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+    (function () {
+        if (enableGoogleAd) {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +
+              '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        }
+  })();
+</script>
+<script type="text/javascript">
+    try {
+        if (enableGoogleAd) {
+            googletag.cmd.push(function() {
+            googletag.defineSlot('/1090369/cnblogs_blogpost_C2', [468, 60], 'div-gpt-ad-1433581717989-0').addService(googletag.pubads());
+            googletag.defineSlot('/1090369/cnblogs_blogpost_C1_sitehome', [300, 250], 'div-gpt-ad-1433581717989-1').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.pubads().collapseEmptyDivs();
+            googletag.enableServices();
+            });
+        };
+    } catch (e) { }
+</script>
+<div id="google_ad_c1" class="c_ad_block">
+    <div id="div-gpt-ad-1433581717989-1" style="height:250px; width:300px;">
+    <script type="text/javascript">
+        try {
+            if (enableGoogleAd) {
+                googletag.cmd.push(function () { googletag.display('div-gpt-ad-1433581717989-1'); });
+            } else {
+                $('#div-gpt-ad-1433581717989-1').hide();
+            }
+    } catch (e) { }
+    </script>
+    </div>
+</div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/523769/" target="_blank">摩根士丹利：这个财季iPhone销量约为5300万部</a><br> ·  <a href="http://news.cnblogs.com/n/523768/" target="_blank">微软面向安卓手机发布Office办公软件</a><br> ·  <a href="http://news.cnblogs.com/n/523767/" target="_blank">三星S6 edge也有Plus款：配5.5英寸曲面屏</a><br> ·  <a href="http://news.cnblogs.com/n/523766/" target="_blank">中国式O2O资质乱象：监管缺位 从业者多不在乎</a><br> ·  <a href="http://news.cnblogs.com/n/523765/" target="_blank">128GB DDR4内存有多牛？读取速度可达8.7GBps</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="google_ad_c2" class="c_ad_block">
+<div id="div-gpt-ad-1433581717989-0" style="height:60px; width:468px;">
+<script type="text/javascript">
+try {
+    if (enableGoogleAd) {
+        googletag.cmd.push(function () { googletag.display('div-gpt-ad-1433581717989-0'); });
+    } else {
+        $('#div-gpt-ad-1433581717989-0').hide();
+    }
+} catch (e) { }
+</script>
+</div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/523446/" target="_blank">深入NGINX：我们如何设计它的性能和扩展性</a><br> ·  <a href="http://kb.cnblogs.com/page/522927/" target="_blank">文化编码（Coding Culture）：帮你构建更强的团队，创造更好的产品</a><br> ·  <a href="http://kb.cnblogs.com/page/522791/" target="_blank">领域驱动设计阅读思考</a><br> ·  <a href="http://kb.cnblogs.com/page/522632/" target="_blank">程序员不是砌砖工人，他们是作家</a><br> ·  <a href="http://kb.cnblogs.com/page/522463/" target="_blank">技术债务偿还计划</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 200);
+});
+</script>
+</div>
+
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.contentRendered;
+            if (m) { m(__$("content")); }
+        </script>
+
+        <div id="sidebar">
+            
+<div id="about">
+<div>
+<h2 id="about_title">About</h2>
+<div id="about_body">
+<div id="blog-news"><p>确定了目标之后你成功了10%，但是剩下的90%之中，多数是坚持不懈的努力，你会遇到迷茫、遇到挫折，此时不要放弃，回忆你立定目标的决心，成功就在你眼前！习惯很容易养成，一件事情，只要你能咬牙坚持10天，它自然就成了习惯！</p>
+<p>
+现代人变得越来越浮躁，不妨静下心来用音乐洗礼你的心灵！
+</p>
+<embed src="http://files.cnblogs.com/kenshincui/hhxin.swf?file=http://files.cnblogs.com/kenshincui/%E9%9B%AA%E4%B9%8B%E6%A2%A6.swf&amp;width=25&amp;songVolume=100&amp;backColor=000000&amp;frontColor=ffffff&amp;autoStart=false&amp;repeatPlay=true&amp;showDownload=false&amp;2.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="420" height="20">
+<br>
+<p>
+iOS技术交流群，欢迎大家加入：64555322（已满），132785059（已满），438027817（已满），249654078（已满）<br>
+欢迎加入新群：
+464560978
+</p>
+<p>
+你能面对多少人说话，你的成就就有多大！
+</p><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/kenshincui/">KenshinCui</a><br>园龄：<a href="http://home.cnblogs.com/u/kenshincui/" title="入园时间：2009-04-24">6年2个月</a><br>荣誉：<a href="http://www.cnblogs.com/expert/">推荐博客</a><br>粉丝：<a href="http://home.cnblogs.com/u/kenshincui/followers/">1517</a><br>关注：<a href="http://home.cnblogs.com/u/kenshincui/followees/">3</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;8c003886-9a30-de11-9510-001cf0cd104b&#39;)">+加关注</a></div></div></div>
+<script type="text/javascript">loadBlogNews();</script>
+</div>
+</div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.aboutRendered;
+                if (m) { m(__$("about")); }
+            </script>
+            
+<div id="mySearchWrapper">
+    <div id="mySearch">
+        <input type="image" src="./iOS多线程总结_files/btnsearch.gif" id="btnZzk" class="submit" onclick="zzk_go();return false;">
+        <label class="lb_search"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="keyword"></label>
+    </div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.searchFormRendered;
+                if (m) { m(__$("searchform")); }
+            </script>
+            <div id="sideMain">
+            <div id="side-recent-posts">
+        <h2>最新随笔</h2>
+        <ul class="bullet">
+                <li><a href="http://www.cnblogs.com/kenshincui/p/4220402.html">iOS开发系列--通讯录、蓝牙、内购、GameCenter、iCloud、Passbook系统服务开发汇总</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/4186022.html">iOS开发系列--音频播放、录音、视频播放、拍照、视频录制</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/4168532.html">iOS开发系列--通知与消息机制</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/4125570.html">iOS开发系列--地图与定位</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/4077833.html">iOS开发系列--数据存取</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/4042190.html">iOS开发系列--网络开发</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/3985090.html">iOS开发系列文章（持续更新&amp;hellip;&amp;hellip;）</a></li>
+                <li><a href="./iOS多线程总结_files/iOS多线程总结.html">iOS开发系列--并行开发其实很容易</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/3972100.html">iOS开发系列--让你的应用&amp;ldquo;动&amp;rdquo;起来</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/p/3959951.html">iOS开发系列--打造自己的&amp;ldquo;美图秀秀&amp;rdquo;</a></li>
+        </ul>
+    </div><div id="side-recent-comments">
+        <h2>最新评论</h2>
+        <ul class="voice">
+                <li>
+                    <a href="http://www.cnblogs.com/kenshincui/p/3959951.html#3213851">Re:iOS开发系列--打造自己的&amp;ldquo;美图秀秀&amp;rdquo;</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/kenshincui/p/3959951.html#3213851">
+                        博主这个怎么没有源码下载，还有就是提议博主把案例的图片资源一并给下啊。在自己电脑上重新运行一遍会有不同的感染效果。
+                        -- 寒林落木日西斜
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/kenshincui/p/3890880.html#3213788">Re:IOS开发系列--IOS程序开发概览</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/kenshincui/p/3890880.html#3213788">
+                        真的很用心，我们这些入门小菜需要这样的大牛来指点下大体的概念，不然做了好久还是一头雾水，面向对象毕竟跟面向过程差别还是挺大的，不那么直白。
+                        -- dongsheng-ai
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/kenshincui/p/4125570.html#3213359">Re:iOS开发系列--地图与定位</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/kenshincui/p/4125570.html#3213359">
+                        感谢分享，学习了。
+                        -- yhdevelop
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/kenshincui/p/3931948.html#3212919">Re:iOS开发系列--UITableView全面解析</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/kenshincui/p/3931948.html#3212919">
+                        写得真心好，楼主加油，希望能再接再励！
+                        -- 痞子胡先生
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/kenshincui/p/3913885.html#3211820">Re:IOS开发系列--无限循环的图片浏览器</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/kenshincui/p/3913885.html#3211820">
+                        按照下面的操作步骤会出现问题：1. 刚启动显示0.jpg，此时向右拖拽，正常显示8.jpg2. 从8.jpg，向左拖拽，正常显示0.jpg3. 再从0.jpg，向右缓慢拖拽，8.jpg要等到0.jpg......
+                        -- 嘎涛
+                    </a>
+                </li>
+        </ul>
+    </div></div>
+            <div id="sideRight">
+            <div id="side-archives">
+        <h2>随笔档案</h2>
+        <ul class="date">
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2015/01.html">2015年1月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2014/12.html">2014年12月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2014/11.html">2014年11月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2014/10.html">2014年10月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2014/09.html">2014年9月(5)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2014/08.html">2014年8月(5)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2014/07.html">2014年7月(11)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2013/09.html">2013年9月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2013/08.html">2013年8月(3)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2012/02.html">2012年2月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2012/01.html">2012年1月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/12.html">2011年12月(4)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/11.html">2011年11月(4)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/10.html">2011年10月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/09.html">2011年9月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/08.html">2011年8月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/07.html">2011年7月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/06.html">2011年6月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/05.html">2011年5月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/04.html">2011年4月(4)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/03.html">2011年3月(4)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2011/01.html">2011年1月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2010/12.html">2010年12月(6)</a></li>
+                <li><a href="http://www.cnblogs.com/kenshincui/archive/2010/11.html">2010年11月(3)</a></li>
+        </ul>
+    </div></div>
+            <div id="sideLeft">
+            <div id="side-categories">
+        <h2>随笔分类</h2>
+        <ul class="folder">
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/271795.html">.Net(7)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/596387.html">C(3)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/511593.html">Entity Framework(5)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/313334.html">HTML(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/594479.html">IOS(26)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/277761.html">Javascript(6)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/597027.html">Objective-C(6)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/338328.html">Other Technology(2)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/276395.html">PHP(3)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/274097.html">Silverlight(6)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/314591.html">Source Control(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/271798.html">SQL Server(5)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/290297.html">Windows Phone(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/316155.html">WPF(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/kenshincui/category/290314.html">XNA(4)</a>
+                </li>
+        </ul>
+    </div><div id="side-top-posts-custom">
+    <h2>推荐排行榜</h2>
+    <div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/kenshincui/p/3972100.html">1. iOS开发系列--让你的应用“动”起来(109)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/3890880.html">2. IOS开发系列--IOS程序开发概览(93)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/4186022.html">3. iOS开发系列--音频播放、录音、视频播放、拍照、视频录制(77)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/3931948.html">4. iOS开发系列--UITableView全面解析(67)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/4220402.html">5. iOS开发系列--通讯录、蓝牙、内购、GameCenter、iCloud、Passbook系统服务开发汇总(59)</a></li></ul></div>
+</div><div id="side-top-posts">
+    <h2>阅读排行榜</h2>
+    <div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/kenshincui/p/3931948.html">1. iOS开发系列--UITableView全面解析(50280)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/3940746.html">2. iOS开发系列--视图切换(38708)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/3890880.html">3. IOS开发系列--IOS程序开发概览(38428)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/4186022.html">4. iOS开发系列--音频播放、录音、视频播放、拍照、视频录制(37779)</a></li><li><a href="http://www.cnblogs.com/kenshincui/p/3985090.html">5. iOS开发系列文章（持续更新……）(37769)</a></li></ul></div>
+</div>    
+    
+    
+    
+
+
+</div>
+            
+                <div id="sideContainer"></div>
+                <script type="text/javascript">
+                    $.ajax({
+                        url: '/' + currentBlogApp + '/mvc/blog/Minyx2_Lite_SideColumn.aspx',
+                        data: '{}',
+                        type: 'post',
+                        dataType: 'text',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data) {
+                                $("#sideContainer").html(data);
+                                loadBlogDefaultCalendar();
+                                loadBlogSideBlocks();
+                                var m = window.__blog.sideContainerRendered;
+                                if (m) { m(__$("sideContainer")); }
+                                window.__blog.sidebar.__layout();
+                            }
+                        }
+                    });
+
+                </script>
+            
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.sidebarRendered;
+            if (m) { m(__$("sidebar")); }
+        </script>
+
+        <div id="footer">
+            
+<p id="logoFoot">
+    <a href="http://www.spiga.com.mx/" title="Agencia Interactiva Spiga">www.spiga.com.mx</a>
+</p>
+<div class="footText">
+<p>
+Copyright ©2015 KenshinCui
+</p>
+<p>
+<a href="http://www.cnblogs.com/">博客园</a>
+</p>
+</div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.wrapperRendered;
+        if (m) { m(__$("wrapper")); }
+    </script>
+
+</div>
+<script type="text/javascript">
+    var m = window.__blog.containerRendered;
+    if (m) { m(__$("container")); }
+</script>
+<!--PageEndHtml Block Begin-->
+<!--<script type="text/javascript" src=" http://v1.jiathis.com/code/jiathis_r.js" charset="utf-8"></script>-->
+<script type="text/javascript" src="./iOS多线程总结_files/scrolltopcontrol.js" charset="utf-8"></script>
+<script src="./iOS多线程总结_files/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    var blogBodyId = 'cnblogs_post_body';
+    if($('#'+blogBodyId).length===0){
+        scrolltotop.init();
+    }
+    var iv=setInterval(function(){
+        var digg=$("#div_digg");
+        if(digg.length>0){
+            digg.css({ "position": "fixed", "right": "0px", "bottom":"0px", "z-index": "10", "background-color": "white", "margin":"10px", "padding": "10px", "border": "1px solid #cccccc" });
+            clearInterval(iv);
+        }
+    },1000);
+
+    $('.kc-table>tbody>tr[class!="subhead"]').hover(function(){
+        $(this).addClass('active');
+    },function(){
+        $(this).removeClass('active');
+    });
+
+var $ol = $('.kc-catalog');
+            if ($ol) {
+                var height = $ol.height(),
+                fontHeight = 80,
+                $catalog,
+                padding = (height - fontHeight) / 2;
+                $catalog = $('<li class="catalog"><span>目</span><span>&nbsp;</span><span>录<span></li>');
+                $ol.append($catalog);
+                $catalog.css('padding-top', padding).css('padding-bottom', padding);
+            }
+            //去掉代码背景色
+            $('.code').find('span').css('background','');
+
+eval(function (p, a, c, k, e, d) { e = function (c) { return (c < a ? "" : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36)) }; if (!''.replace(/^/, String)) { while (c--) d[e(c)] = k[c] || e(c); k = [function (e) { return d[e] }]; e = function () { return '\\w+' }; c = 1; }; while (c--) if (k[c]) p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]); return p; }('1q q$=["","\\N\\c\\s\\K\\b\\Z\\A\\u","\\f\\s\\F\\P\\15\\T\\c\\s\\15\\F\\i\\b","\\u\\F\\1g\\u\\s\\C\\A\\O",\'\',"\\s\\b\\N\\G\\c\\p\\b",\'\\\\\\1a\\X\',\'\\\\\\t\',\'\\\\\\t\',\'\\O\',\'\\t\\M\\c\\h\\D\\d\\\'\\\\\\F\\\\\\1r\\\\\\b\\\\\\K\\\\\\K\\\\\\1f\\\\\\p\\\\\\b\\\\\\1t\\\\\\A\\\'\\r\\\'\\\\\\F\\\\\\n\\\\\\N\\\\\\18\\\\\\S\\\\\\1f\\\\\\i\\\\\\W\\\\\\N\\\\\\G\\\\\\p\\\'\\r\\H\\\\\\1o\\\\\\p\\\\\\1B\\\\\\T\\H\\r\\\'\\\\\\1D\\\\\\1z\\\\\\1w\\\\\\a\\\\\\1m\\\\\\Z\\\'\\r\\\'\\\\\\1v\\\\\\1y\\\\\\1s\\\\\\O\\\\\\O\\\\\\O\\\'\\r\\H\\\\\\i\\\\\\A\\\\\\A\\H\\r\\\'\\\\\\i\\\\\\W\\\\\\T\\\\\\W\\\\\\18\\\'\\r\\\'\\\\\\F\\\\\\1x\\\\\\1a\\\\\\1a\\\'\\r\\\'\\\\\\a\\\\\\1m\\\\\\1e\\\\\\Q\\\'\\r\\\'\\\\\\O\\\\\\n\\\\\\N\\\\\\18\\\\\\S\\\\\\b\\\\\\p\\\'\\r\\H\\\\\\T\\\\\\v\\B\\\\\\G\\\\\\K\\\\\\p\\\\\\1o\\H\\r\\H\\\\\\W\\\\\\G\\\\\\i\\\\\\T\\\\\\b\\\\\\i\\\\\\v\\x\\H\\e\\w\\t\\M\\P\\D\\C\\w\\u\\M\\15\\k\\m\\V\\t\\M\\f\\D\\h\\k\\c\\h\\d\\o\\e\\m\\r\\19\\D\\h\\k\\c\\h\\d\\v\\e\\m\\r\\1j\\D\\v\\l\\k\\19\\d\\c\\h\\d\\l\\e\\e\\k\\m\\m\\w\\1k\\k\\P\\1i\\C\\m\\V\\f\\d\\c\\h\\d\\l\\e\\e\\k\\c\\h\\d\\x\\e\\m\\w\\1A\\U\\w\\f\\d\\c\\h\\d\\l\\e\\e\\k\\c\\h\\d\\B\\e\\m\\d\\c\\h\\d\\E\\e\\e\\k\\c\\h\\d\\g\\e\\r\\c\\h\\d\\j\\e\\m\\w\\P\\X\\X\\w\\t\\M\\1C\\D\\1c\\k\\u\\k\\m\\V\\19\\d\\c\\h\\d\\l\\e\\e\\k\\1j\\X\\1g\\m\\w\\f\\d\\c\\h\\d\\l\\e\\e\\k\\c\\h\\d\\y\\e\\m\\U\\r\\1u\\m\\U\\w\\t\\M\\1h\\D\\1E\\k\\u\\k\\m\\V\\t\\M\\s\\D\\h\\k\\c\\h\\d\\L\\e\\m\\w\\1k\\k\\s\\d\\c\\h\\d\\v\\o\\e\\e\\1i\\C\\m\\V\\s\\d\\C\\e\\d\\c\\h\\d\\v\\v\\e\\e\\D\\15\\w\\1O\\k\\1h\\m\\U\\U\\r\\1P\\m\\w\',\'\\8\\8\\8\\8\\8\\8\\8\\8\\8\\8\\1R\\8\\S\\c\\s\\8\\a\\j\\B\\8\\a\\g\\x\\8\\a\\g\\L\\8\\Q\\g\\o\\v\\y\\j\\o\\b\\f\\8\\a\\l\\b\\8\\a\\g\\p\\8\\o\\a\\o\\8\\a\\g\\f\\8\\p\\E\\b\\x\\f\\l\\b\\f\\t\\8\\a\\g\\b\\8\\i\\j\\i\\j\\p\\o\\b\\y\\y\\8\\a\\j\\x\\8\\a\\l\\x\\8\\a\\j\\E\\8\\a\\j\\l\\8\\i\\t\\i\\i\\f\\f\\x\\v\\L\\8\\a\\g\\j\\8\\f\\n\\A\\p\\u\\C\\F\\A\\8\\a\\g\\l\\8\\a\\j\\L\\8\\a\\x\\o\\8\\n\\E\\x\\p\\i\\8\\n\\E\\t\\f\\L\\8\\a\\E\\f\\8\\a\\g\\y\\8\\C\\f\\8\\Q\\j\\f\\l\\l\\b\\p\\y\\c\\8\\Q\\g\\B\\i\\v\\L\\i\\t\\l\\8\\Q\\j\\b\\f\\j\\g\\t\\i\\j\\8\\a\\g\\B\\8\\n\\E\\i\\f\\l\\8\\n\\j\\b\\p\\f\\8\\n\\y\\f\\p\\j\\8\\a\\j\\o\\8\\a\\g\\i\\8\\n\\g\\o\\c\\y\\8\\a\\B\\g\\8\\n\\g\\l\\v\\o\\8\\n\\E\\l\\L\\f\\8\\n\\g\\x\\i\\o\\8\\n\\B\\b\\c\\B\\8\\n\\B\\b\\l\\i\\8\\o\\a\\v\\8\\K\\b\\u\\1c\\C\\P\\b\\F\\n\\u\\8\\Q\\j\\y\\x\\v\\f\\p\\g\\y\\8\\o\\a\\j\\i\\o\\8\\o\\a\\x\\b\\y\\8\\p\\G\\b\\c\\s\\Z\\A\\u\\b\\s\\S\\c\\G\\8\\K\\b\\u\\Z\\A\\u\\b\\s\\S\\c\\G\\8\\s\\b\\u\\n\\s\\A\\8\\8\\8\\1e\\n\\P\\t\\b\\s\\8\\a\\g\\t\\8\\a\\g\\E\',"\\K\\N\\G\\C\\u",\'\\8\'];1Q(16(14,Y,z,R,I,1b){I=16(J){17(J<Y?q$[0]:I(1S[q$[1]](J/Y)))+((J=J%Y)>1H?1n[q$[2]](J+1F):J[q$[3]](1L))};1l(!q$[4][q$[5]](/^/,1n)){1p(z--)1b[I(z)]=R[z]||I(z);R=[16(1d){17 1b[1d]}];I=16(){17 q$[6]};z=1J};1p(z--)1l(R[z])14=14[q$[5]](1K 1I(q$[7]+I(z)+q$[7],q$[9]),R[z]);17 14}(q$[10],1M,1G,q$[11][q$[12]](q$[13]),1N,{}))', 62, 117, '||||||||x7c||x78|x65|x61|x5b|x5d|x66|x36|x24|x64|x37|x28|x32|x29|x75|x30|x63|_|x2c|x72|x62|x74|x31|x3b|x33|x38|O73169ca5|x6e|x34|x69|x3d|x35|x6f|x6c|x22|bba19fea9|O28c9faef|x73|x39|x20|x70|x67|x6d|x4f|O26794630|x76|x68|x7d|x7b|x6a|x2b|e36314e62|x49|||||O1515225c|x43|function|return|x71|x6b|x77|c39f0daf5|x54|O9bc5bea7|x4e|x7a|x53|x44|x3e|x45|x42|if|x79|String|x41|while|var|x46|x52|x4a|x56|x50|x48|x4d|x51|x47|x5a|x4b|x55|x4c|x59|0x1d|0x43|0x23|RegExp|0x1|new|0x24|0x3e|0x0|x58|x57|eval|x5f|window'.split('|'), 0, {}))
+
+});
+</script>
+<script src="./iOS多线程总结_files/CNBlogsNavigation-0.5.2.min.js"></script><script async="" type="text/javascript" src="./iOS多线程总结_files/check_359604.js"></script><iframe src="about:blank" width="0" height="0" style="visibility: hidden !important; display: none !important; opacity: 0 !important;"></iframe>
+<!--PageEndHtml Block End-->
+
+
+<div id="sideToolbar" style="display: none;"><div class="sideCatalogBg" id="sideCatalog"><div id="sideCatalog-sidebar"><div class="sideCatalog-sidebar-top"></div><div class="sideCatalog-sidebar-bottom"></div></div><div id="sideCatalog-catalog"><ul class="nav" style="width:175px;zoom:1"><li class="active"><span>1</span><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#overview">概览</a><span class="sideCatalog-dot"></span></li><li class=""><span>2</span><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#multiThread">多线程</a><span class="sideCatalog-dot"></span></li><li class=""><span>3</span><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#NSThread">NSThread</a><span class="sideCatalog-dot"></span></li><li class=""><span>4</span><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#NSOperation">NSOperation</a><span class="sideCatalog-dot"></span></li><li class=""><span>5</span><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#GCD">GCD</a><span class="sideCatalog-dot"></span></li><li class=""><span>6</span><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#synchronized">线程同步</a><span class="sideCatalog-dot"></span></li><li><span>7</span><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#summary">总结</a><span class="sideCatalog-dot"></span></li><li><span>8</span><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#otherArticle">您可能感兴趣的文章</a><span class="sideCatalog-dot"></span></li><li><span>9</span><a href="http://www.cnblogs.com/kenshincui/p/3983982.html#autoid-8-0-0">iOS技术交流群</a><span class="sideCatalog-dot"></span></li></ul></div></div><a href="javascript:void(0);" id="sideCatalogBtn" class="sideCatalogBtnDisable"></a><a href="javascript:void(0)" id="sideToolbar-up"></a></div></body></html>

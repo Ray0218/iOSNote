@@ -1,0 +1,26 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACUtil.showMultipleOffers(
+{ "offers" : [
+
+{ "offer" : "<div> <h2>联系 Apple 支持</h2> <p>需要帮助？为了节省时间，您可以在线发起支持请求，而后我们将帮助您与专家取得联系。</p> <a onclick=\"ACHistory.addOfferReason(\'zh_CN\')\" href=\"https://expresslane.apple.com/GetproductgroupList.do?caller=ikb&PRKEYS=PL171,PL170,PF4,135122,PL139,PF13,PF16,PF15,PF17,PL153,PF10,PF12,PP23,133741,PL128,PF6,PF7,PF8,PF9,133314,133333,134327,PF26,productcategory,132617,PL165,PF22,PF20&locale=zh_CN\" class=\"more\">使用入门</a> <img src=\"https://km.support.apple.com/library/content/dam/edam/applecare/images/en_US/applecare/contact-support_apac-1.png\" width=\"180\" height=\"160\" alt=\"\" data-hires=\"true\"> </div>", "position" : "BOTTOM"
+}
+
+] }
+);

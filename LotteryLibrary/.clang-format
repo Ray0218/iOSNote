@@ -1,0 +1,16 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+UseTab: Never
+IndentCaseLabels: true
+ColumnLimit: 0
+ObjCSpaceAfterProperty: true
+AllowShortBlocksOnASingleLine: true
+AllowShortFunctionsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+AccessModifierOffset: -4
+# MaxEmptyLinesToKeep: 4
+# PenaltyBreakComment: 1
+# SpacesBeforeTrailingComments: 1
+# BreakBeforeBraces: Linux
+# AccessModifierOffset: -4	# The extra indent or outdent of access modifiers, e.g. public:.

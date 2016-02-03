@@ -1,0 +1,110 @@
+$(document).ready(function(){
+    $('#sidelist').mousemove(function(){
+	$(this).find('.i-list').show();
+	$(this).find('h3').addClass('hover');
+	});
+	$('#sidelist').mouseleave(function(){
+	$(this).find('.i-list').hide();
+	$(this).find('h3').removeClass('hover');
+	});
+});
+$(document).ready(function(){
+    $('#sidelist1').mousemove(function(){
+	$(this).find('#i-list1').show();
+	$(this).find('h4').addClass('hover2');
+	});
+	$('#sidelist1').mouseleave(function(){
+	$(this).find('#i-list1').hide();
+	$(this).find('h4').removeClass('hover2');
+	});
+});
+$(document).ready(function(){
+    $('#sidelist2').mousemove(function(){
+	$(this).find('#i-list2').show();
+	$(this).find('h4').addClass('hover2');
+	});
+	$('#sidelist2').mouseleave(function(){
+	$(this).find('#i-list2').hide();
+	$(this).find('h4').removeClass('hover2');
+	});
+});
+$(document).ready(function(){
+    $('#sidelist3').mousemove(function(){
+	$(this).find('#i-list3').show();
+	$(this).find('h4').addClass('hover2');
+	});
+	$('#sidelist3').mouseleave(function(){
+	$(this).find('#i-list3').hide();
+	$(this).find('h4').removeClass('hover2');
+	});
+});
+$(document).ready(function(){
+    $('#sidelist4').mousemove(function(){
+	$(this).find('#i-list4').show();
+	$(this).find('h4').addClass('hover2');
+	});
+	$('#sidelist4').mouseleave(function(){
+	$(this).find('#i-list4').hide();
+	$(this).find('h4').removeClass('hover2');
+	});
+});$(document).ready(function(){
+    $('#sidelist5').mousemove(function(){
+	$(this).find('#i-list5').show();
+	$(this).find('h4').addClass('hover2');
+	});
+	$('#sidelist5').mouseleave(function(){
+	$(this).find('#i-list5').hide();
+	$(this).find('h4').removeClass('hover2');
+	});
+});
+$(document).ready(function(){
+    $('#sidelist6').mousemove(function(){
+	$(this).find('#i-list6').show();
+	$(this).find('h4').addClass('hover2');
+	});
+	$('#sidelist6').mouseleave(function(){
+	$(this).find('#i-list6').hide();
+	$(this).find('h4').removeClass('hover2');
+	});
+})
+;$(document).ready(function(){
+    $('#sidelist7').mousemove(function(){
+	$(this).find('#i-list7').show();
+	$(this).find('h4').addClass('hover2');
+	});
+	$('#sidelist7').mouseleave(function(){
+	$(this).find('#i-list7').hide();
+	$(this).find('h4').removeClass('hover2');
+	});
+});
+$(document).ready(function(){
+    $('#sidelist8').mousemove(function(){
+	$(this).find('#i-list8').show();
+	$(this).find('h4').addClass('hover2');
+	});
+	$('#sidelist8').mouseleave(function(){
+	$(this).find('#i-list8').hide();
+	$(this).find('h4').removeClass('hover2');
+	});
+});
+;$(document).ready(function(){
+    $('#sidelist9').mousemove(function(){
+	$(this).find('#i-list9').show();
+	$(this).find('h4').addClass('hover2');
+	});
+	$('#sidelist9').mouseleave(function(){
+	$(this).find('#i-list9').hide();
+	$(this).find('h4').removeClass('hover2');
+	});
+});
+$(document).ready(function(){
+    $('#sidelist10').mousemove(function(){
+	$(this).find('#i-list10').show();
+	$(this).find('h4').addClass('hover2');
+	});
+	$('#sidelist10').mouseleave(function(){
+	$(this).find('#i-list10').hide();
+	$(this).find('h4').removeClass('hover2');
+	});
+});
+

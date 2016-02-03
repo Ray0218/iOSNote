@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/>
+<title>ios界面动画小结 - v2m - 博客园</title>
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=q30CyB4PfsbdgEweXDsZ3CMih9P1crbpoDmTwGcl5MI1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="/skins/Minyx2_Lite/bundle-Minyx2_Lite.css?v=box8Dmmj5G0VFMZyypCbLIqNJsuu5lz6TpJ4OOK0WkE1"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/v2m_/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/v2m_/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/v2m_/wlwmanifest.xml"/>
+<script src="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'v2m_', cb_enable_mathjax=false;</script>
+<script src="/bundles/blog-common.js?v=_F6vMpUraZDFoT85Xf9mf4IazxZUUUCHJBFoubR7iR01" type="text/javascript"></script>
+<script src="/skins/Minyx2_Lite/bundle-Minyx2_Lite.js?v=dAK2Rw4GyogXqBvhMZEW0IkYD2kjtuL3y_BKRj-vp4g1" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+
+<div id="container">
+    <a class="minyx" href="http://www.cnblogs.com/">代码改变世界</a>
+    <ul id="topMnu">
+        <!-- 统计数据 -->
+        <li>
+            
+                
+Posts - 43, 
+Articles - 0, 
+Comments - 40
+<!---->
+            
+        </li>
+        <!-- 这边可以增加一些链接 -->
+        <!-- 博客园 -->
+        <li><a href="http://www.cnblogs.com">Cnblogs</a></li>
+        <!-- 管理 -->
+        <li id="topMnu-dashboard">
+            <a id="lnkDashboard" href="http://www.cnblogs.com/v2m_/admin/EditPosts.aspx">Dashboard</a></li>
+        <li>
+            <a id="lnkLogin" href="http://passport.cnblogs.com/login.aspx?ReturnUrl=http://www.cnblogs.com/v2m_/archive/2011/10/28/2227979.html">Login</a></li>
+    </ul>
+
+    <script type="text/javascript">
+        var m = window.__blog.topMenuRendered;
+        if (m) { m(__$("topMnu")); }
+    </script>
+
+    <div id="header">
+        <ul id="menu">
+            <!-- 首页，当前section加上current类 -->
+            <li id="menu-home" class="current">
+                <a id="lnkHome" href="http://www.cnblogs.com/v2m_/">Home</a></li>
+            <!-- 联系 -->
+            <li id="menu-contact">
+                <a id="lnkContact" href="http://space.cnblogs.com/msg/send/v2m">Contact</a></li>
+            <!-- 相册 -->
+            <li id="menu-gallary">
+                <a id="lnkGallery" href="http://www.cnblogs.com/v2m_/gallery.html">Gallery</a></li>
+            <!-- Rss订阅 -->
+            <li id="rss">
+                <a id="lnkRss" href="http://www.cnblogs.com/v2m_/rss">RSS</a></li>
+        </ul>
+        <div id="newmsg"></div>
+        <h1>
+            <!-- 主标题 -->
+            <a id="lnkBlogTitle" href="http://www.cnblogs.com/v2m_/">茫茫茫茫</a>
+            <!-- 子标题 -->
+            <small>
+                </small>
+        </h1>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.headerRendered;
+        if (m) { m(__$("header")); }
+    </script>
+
+    <div id="wrapper">
+        <div id="content">
+            <script type="text/javascript">
+                var m = window.__blog.preRenderPosts;
+                if (m) { m(); }
+            </script>
+            
+
+<div class="post" id="post">
+    <a name="top"></a>
+    <h2><a id="cb_post_title_url" href="http://www.cnblogs.com/v2m_/archive/2011/10/28/2227979.html">ios界面动画小结</a></h2>
+    <small>2011-10-28 17:22 by v2m, <span id="post_view_count">...</span> 阅读, <span id="post_comment_count">...</span> 评论, <a href="#" onclick="AddToWz({0});return false;">收藏</a>,  <a href ="http://i.cnblogs.com/EditPosts.aspx?postid=2227979" rel="nofollow">编辑</a></small>
+    <div class="entry">
+        <div id="cnblogs_post_body"><p><span style="font-size: 15px;"><strong>一.基本方式:使用UIView类的UIViewAnimation扩展</strong></span><br />函数说明</p>
+<div class="cnblogs_code">
+<pre>+ (<span style="color: #0000ff;">void</span>)beginAnimations:(NSString *)animationID context:(<span style="color: #0000ff;">void</span> *)context; <span style="color: #008000;">//</span><span style="color: #008000;"> 开始准备动画</span><span style="color: #008000;"><br /></span>+ (<span style="color: #0000ff;">void</span>)commitAnimations; <span style="color: #008000;">//</span><span style="color: #008000;"> 运行动画<br /><br /></span><span style="color: #008000;">//</span><span style="color: #008000;"> 没有get方法,下面的set在快外调用无效</span><span style="color: #008000;"><br /></span>+ (<span style="color: #0000ff;">void</span>)setAnimationDelegate:(<span style="color: #0000ff;">id</span>)<span style="color: #0000ff;">delegate</span>; <span style="color: #008000;">//</span><span style="color: #008000;"> 委托default = nil</span><span style="color: #008000;"><br /></span>+ (<span style="color: #0000ff;">void</span>)setAnimationWillStartSelector:(SEL)selector; <span style="color: #008000;">//</span><span style="color: #008000;"> default = NULL. -animationWillStart:(NSString *)animationID context:(void *)context</span><span style="color: #008000;"><br /></span>+ (<span style="color: #0000ff;">void</span>)setAnimationDidStopSelector:(SEL)selector; <span style="color: #008000;">//</span><span style="color: #008000;"> default = NULL. -animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context</span><span style="color: #008000;"><br /></span>+ (<span style="color: #0000ff;">void</span>)setAnimationDuration:(NSTimeInterval)duration; <span style="color: #008000;">//</span><span style="color: #008000;"> default = 0.2动画时间</span><span style="color: #008000;"><br /></span>+ (<span style="color: #0000ff;">void</span>)setAnimationDelay:(NSTimeInterval)delay; <span style="color: #008000;">//</span><span style="color: #008000;"> default = 0.0延迟多少时间开始执行动画</span><span style="color: #008000;"><br /></span>+ (<span style="color: #0000ff;">void</span>)setAnimationStartDate:(NSDate *)startDate; <span style="color: #008000;">//</span><span style="color: #008000;"> default = now ([NSDate date])动画开始日期?不知道啥用.- -</span><span style="color: #008000;"><br /></span>+ (<span style="color: #0000ff;">void</span>)setAnimationCurve:(UIViewAnimationCurve)curve; <span style="color: #008000;">//</span><span style="color: #008000;"> default = UIViewAnimationCurveEaseInOut动画方式</span><span style="color: #008000;"><br /></span>+ (<span style="color: #0000ff;">void</span>)setAnimationRepeatCount:(<span style="color: #0000ff;">float</span>)repeatCount; <span style="color: #008000;">//</span><span style="color: #008000;"> default = 0.0. May be fractional重复次数</span><span style="color: #008000;"><br /></span>+ (<span style="color: #0000ff;">void</span>)setAnimationRepeatAutoreverses:(BOOL)repeatAutoreverses; <span style="color: #008000;">//</span><span style="color: #008000;"> default = NO. YES的话,动画(非最后一次)结束后动态复原到最开始状态</span><span style="color: #008000;"><br /></span>+ (<span style="color: #0000ff;">void</span>)setAnimationBeginsFromCurrentState:(BOOL)fromCurrentState; <span style="color: #008000;">//</span><span style="color: #008000;"> default = NO. YES,停止之前的动画,从现在这里开始新动画the current view position is always used for new animations -- allowing animations to "pile up" on each other. Otherwise, the last end state is used for the animation (the default).</span><span style="color: #008000;"><br /></span><br />+ (<span style="color: #0000ff;">void</span>)setAnimationTransition:(UIViewAnimationTransition)transition forView:(UIView *)view cache:(BOOL)cache; <span style="color: #008000;">//</span><span style="color: #008000;"> 添加动画到view上,cache是YES的时候比较高效,但是动画过程中不能更新界面上的内容,NO时每一帧都重新画,可以实时更新</span><span style="color: #008000;"><br /></span>+ (<span style="color: #0000ff;">void</span>)setAnimationsEnabled:(BOOL)enabled; <span style="color: #008000;">//</span><span style="color: #008000;"> 是否忽略一些动画设置</span><span style="color: #008000;"><br /></span>+ (BOOL)areAnimationsEnabled;</pre>
+</div>
+<p><br />一个动画的代码</p>
+<div class="cnblogs_code">
+<pre>[UIView beginAnimations:nil context:nil];<br />[UIView setAnimationCurve:UIViewAnimationCurveLinear];<br />[UIView setAnimationDuration:<span style="color: #800080;">2.7</span>];<br />[UIView setAnimationTransition:transition forView:self.view cache:YES];<br /><span style="color: #008000;">//</span><span style="color: #008000;"> operation&gt;&gt;&gt;</span><span style="color: #008000;"><br /></span>[self.view exchangeSubviewAtIndex:<span style="color: #800080;">0</span> withSubviewAtIndex:<span style="color: #800080;">1</span>];<br /><span style="color: #008000;">//</span><span style="color: #008000;"> end&lt;&lt;&lt;&lt;&lt;&lt;</span><span style="color: #008000;"><br /></span>[UIView commitAnimations];</pre>
+</div>
+<p>其中transition取值范围</p>
+<div class="cnblogs_code">
+<pre>typedef <span style="color: #0000ff;">enum</span> {<br />UIViewAnimationTransitionNone,<br />UIViewAnimationTransitionFlipFromLeft,<br />UIViewAnimationTransitionFlipFromRight,<br />UIViewAnimationTransitionCurlUp,<br />UIViewAnimationTransitionCurlDown,<br />} UIViewAnimationTransition;</pre>
+</div>
+<p>特点:基础,使用方便,但是效果有限</p>
+<p><strong><span style="font-size: 15px;">二.block方式:使用UIView类的UIViewAnimationWithBlocks扩展</span></strong></p>
+<p><strong></strong>函数说明</p>
+<div class="cnblogs_code">
+<pre>+ (<span style="color: #0000ff;">void</span>)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(<span style="color: #0000ff;">void</span> (^)(<span style="color: #0000ff;">void</span>))animations completion:(<span style="color: #0000ff;">void</span> (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);<span style="color: #008000;">//</span><span style="color: #008000;">间隔,延迟,动画参数(好像没用?),界面更改块,结束块</span><span style="color: #008000;"><br /></span><br />+ (<span style="color: #0000ff;">void</span>)animateWithDuration:(NSTimeInterval)duration animations:(<span style="color: #0000ff;">void</span> (^)(<span style="color: #0000ff;">void</span>))animations completion:(<span style="color: #0000ff;">void</span> (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0); <span style="color: #008000;">//</span><span style="color: #008000;"> delay = 0.0, options = 0</span><span style="color: #008000;"><br /></span><br />+ (<span style="color: #0000ff;">void</span>)animateWithDuration:(NSTimeInterval)duration animations:(<span style="color: #0000ff;">void</span> (^)(<span style="color: #0000ff;">void</span>))animations __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0); <span style="color: #008000;">//</span><span style="color: #008000;"> delay = 0.0, options = 0, completion = NULL</span><span style="color: #008000;"><br /></span><br />+ (<span style="color: #0000ff;">void</span>)transitionWithView:(UIView *)view duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options animations:(<span style="color: #0000ff;">void</span> (^)(<span style="color: #0000ff;">void</span>))animations completion:(<span style="color: #0000ff;">void</span> (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);<br /><br />+ (<span style="color: #0000ff;">void</span>)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(<span style="color: #0000ff;">void</span> (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0); <span style="color: #008000;">//</span><span style="color: #008000;"> toView added to fromView.superview, fromView removed from its superview界面替换,这里的options参数有效</span></pre>
+</div>
+<p>举例:</p>
+<div class="cnblogs_code">
+<pre>[UIView animateWithDuration:<span style="color: #800080;">0.7</span> delay:<span style="color: #800080;">0</span> options:<span style="color: #800080;">0</span> animations:^(){<br />self.view.alpha = <span style="color: #800080;">0.2</span>;<br />[self.view exchangeSubviewAtIndex:<span style="color: #800080;">1</span> withSubviewAtIndex:<span style="color: #800080;">0</span>];<br />self.view.alpha = <span style="color: #800080;">1</span>;<br />} completion:^(BOOL finished)<br />{<br /><br />}];</pre>
+</div>
+<p>当areAnimationsEnabled为NO时,上面不能动画显示</p>
+<div class="cnblogs_code">
+<pre>[UIView transitionFromView:lImage toView:mImage duration:<span style="color: #800080;">0.7</span> options:options completion:^(BOOL finished)<br />{<br /><span style="color: #0000ff;">if</span> (finished) {<br />[self.view addSubview:lImage];<br />[self.view sendSubviewToBack:lImage];<br />[self.view sendSubviewToBack:mImage];<br />} <br />}];</pre>
+</div>
+<p>options取值范围</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">enum</span> {<br />UIViewAnimationOptionLayoutSubviews = <span style="color: #800080;">1</span> &lt;&lt; <span style="color: #800080;">0</span>,<br />UIViewAnimationOptionAllowUserInteraction = <span style="color: #800080;">1</span> &lt;&lt; <span style="color: #800080;">1</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> turn on user interaction while animating</span><span style="color: #008000;"><br /></span>UIViewAnimationOptionBeginFromCurrentState = <span style="color: #800080;">1</span> &lt;&lt; <span style="color: #800080;">2</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> start all views from current value, not initial value</span><span style="color: #008000;"><br /></span>UIViewAnimationOptionRepeat = <span style="color: #800080;">1</span> &lt;&lt; <span style="color: #800080;">3</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> repeat animation indefinitely</span><span style="color: #008000;"><br /></span>UIViewAnimationOptionAutoreverse = <span style="color: #800080;">1</span> &lt;&lt; <span style="color: #800080;">4</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> if repeat, run animation back and forth</span><span style="color: #008000;"><br /></span>UIViewAnimationOptionOverrideInheritedDuration = <span style="color: #800080;">1</span> &lt;&lt; <span style="color: #800080;">5</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> ignore nested duration</span><span style="color: #008000;"><br /></span>UIViewAnimationOptionOverrideInheritedCurve = <span style="color: #800080;">1</span> &lt;&lt; <span style="color: #800080;">6</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> ignore nested curve</span><span style="color: #008000;"><br /></span>UIViewAnimationOptionAllowAnimatedContent = <span style="color: #800080;">1</span> &lt;&lt; <span style="color: #800080;">7</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> animate contents (applies to transitions only)</span><span style="color: #008000;"><br /></span>UIViewAnimationOptionShowHideTransitionViews = <span style="color: #800080;">1</span> &lt;&lt; <span style="color: #800080;">8</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> flip to/from hidden state instead of adding/removing</span><span style="color: #008000;"><br /></span><br />UIViewAnimationOptionCurveEaseInOut = <span style="color: #800080;">0</span> &lt;&lt; <span style="color: #800080;">16</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> default</span><span style="color: #008000;"><br /></span>UIViewAnimationOptionCurveEaseIn = <span style="color: #800080;">1</span> &lt;&lt; <span style="color: #800080;">16</span>,<br />UIViewAnimationOptionCurveEaseOut = <span style="color: #800080;">2</span> &lt;&lt; <span style="color: #800080;">16</span>,<br />UIViewAnimationOptionCurveLinear = <span style="color: #800080;">3</span> &lt;&lt; <span style="color: #800080;">16</span>,<br /><br />UIViewAnimationOptionTransitionNone = <span style="color: #800080;">0</span> &lt;&lt; <span style="color: #800080;">20</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> default</span><span style="color: #008000;"><br /></span>UIViewAnimationOptionTransitionFlipFromLeft = <span style="color: #800080;">1</span> &lt;&lt; <span style="color: #800080;">20</span>,<br />UIViewAnimationOptionTransitionFlipFromRight = <span style="color: #800080;">2</span> &lt;&lt; <span style="color: #800080;">20</span>,<br />UIViewAnimationOptionTransitionCurlUp = <span style="color: #800080;">3</span> &lt;&lt; <span style="color: #800080;">20</span>,<br />UIViewAnimationOptionTransitionCurlDown = <span style="color: #800080;">4</span> &lt;&lt; <span style="color: #800080;">20</span>,<br />UIViewAnimationOptionTransitionCrossDissolve = <span style="color: #800080;">5</span> &lt;&lt; <span style="color: #800080;">20</span>,<span style="color: #008000;">//</span><span style="color: #008000;">ios5</span><span style="color: #008000;"><br /></span>UIViewAnimationOptionTransitionFlipFromTop = <span style="color: #800080;">6</span> &lt;&lt; <span style="color: #800080;">20</span>,<span style="color: #008000;">//</span><span style="color: #008000;">ios5</span><span style="color: #008000;"><br /></span>UIViewAnimationOptionTransitionFlipFromBottom = <span style="color: #800080;">7</span> &lt;&lt; <span style="color: #800080;">20</span>,<span style="color: #008000;">//</span><span style="color: #008000;">ios5</span><span style="color: #008000;"><br /></span>};<br />typedef NSUInteger UIViewAnimationOptions;</pre>
+</div>
+<p>特点:快捷方便,效果更多.可以如上示例1那样实现界面个元素属性渐进变化的动态展示</p>
+<p><strong><span style="font-size: 15px;">三.core方式:使用CATransition类</span></strong><br />使用要引入QuartzCore.framework<br />官方有个示例:<span style="background-color: #888888;">ViewTransitions</span><br />基本上就是</p>
+<div class="cnblogs_code">
+<pre>CATransition *transition = [CATransition animation];<br />transition.duration = <span style="color: #800080;">0.7</span>;<br />transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];<br />transition.type = kCATransitionMoveIn;<span style="color: #008000;">//</span><span style="color: #008000;">{kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade};<br /><br /></span><span style="color: #008000;">//</span><span style="color: #008000;">更多私有{@"cube",@"suckEffect",@"oglFlip",@"rippleEffect",@"pageCurl",@"pageUnCurl",@"cameraIrisHollowOpen",@"cameraIrisHollowClose"};</span><span style="color: #008000;"><br /></span>transition.subtype = kCATransitionFromLeft;<span style="color: #008000;">//</span><span style="color: #008000;">{kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom};</span><span style="color: #008000;"><br /></span><br />transition.<span style="color: #0000ff;">delegate</span> = self;<br />[self.view.layer addAnimation:transition forKey:nil];<br /><br /><span style="color: #008000;">//</span><span style="color: #008000;"> 要做的</span><span style="color: #008000;"><br /></span>[self.view exchangeSubviewAtIndex:<span style="color: #800080;">1</span> withSubviewAtIndex:<span style="color: #800080;">0</span>];</pre>
+</div>
+<p>其中需要注意的是:界面调整(动画前后展示的两个界面)需要在动画时间内完成,否则没有效果,对下次也有影响,我测的不是太完整,大家自己写个performSelector: withObject: afterDelay:试验下看看就知道.</p>
+<p>特点:动画效果较多(但是私有),可以实现UIViewController之间的动画</p>
+<p><img src="http://pic002.cnblogs.com/images/2011/241349/2011102817204661.jpg" alt="" /></p>
+<p>demo:<a href="http://files.cnblogs.com/v2m_/animations.zip">animations.zip</a></p></div><div id="MySignature"></div>
+        <div class="clear"></div>
+        <div id="blog_post_info_block">
+        <div id="blog_post_info">
+        </div>
+        <div class="clear"></div>
+        <div id="post_next_prev"></div>
+    </div>
+</div>
+    <ul class="postmetadata">
+        <li class="icon_cat" id="BlogPostCategory"></li>
+        <li class="icon_bullet" id="EntryTag"></li>
+    </ul>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=81103,cb_entryId=2227979,cb_blogApp=currentBlogApp,cb_blogUserGuid='330deeb9-6607-e011-ac81-842b2b196315',cb_entryCreatedDate='2011/10/28 17:22:00';loadViewCount(cb_entryId);</script>
+<script type="text/javascript">
+    var m = window.__blog.postRendered;
+    if (m) { m(__$("post")); }
+</script>
+<script type="text/javascript">
+    var m = window.__blog.postRenderPosts;
+    if (m) { m(); }
+</script>
+<a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_blank" title="开发者的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_blank" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_blank" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a><a href="http://job.cnblogs.com/" target="_blank">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_blank">知识库</a></div>
+<div id="opt_under_post"></div>
+<script type="text/javascript">
+    var enableGoogleAd = canShowAdsense(); var googletag = googletag || {}; googletag.cmd = googletag.cmd || [];
+    fixPostBodyFormat();
+</script>
+<div id="ad_under_post_holder">
+<script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function () {
+        if (enableGoogleAd) {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        }
+    })();
+</script>
+<script type='text/javascript'>
+    try {
+        if (enableGoogleAd) {
+            googletag.cmd.push(function () {
+                googletag.defineSlot('/1090369/cnblogs_blogpost_C1_sitehome', [300, 250], 'div-gpt-ad-1346480159711-0').addService(googletag.pubads());
+                googletag.defineSlot('/1090369/cnblogs_blogpost_C2', [468, 60], 'div-gpt-ad-1410860226396-0').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+        };
+    } catch (e) { }
+</script>
+<div id="google_ad_c1" class="c_ad_block">
+    <div id='div-gpt-ad-1346480159711-0' style='width:300px; height:250px;'>
+    <script type='text/javascript'>
+        try {
+            if (enableGoogleAd) {
+                googletag.cmd.push(function () { googletag.display('div-gpt-ad-1346480159711-0'); });            
+            } else {
+                $('#div-gpt-ad-1346480159711-0').hide();
+            }
+    } catch (e) { }
+    </script>
+    </div>
+</div>
+</div>
+<div id="under_post_news"></div>
+<div id="google_ad_c2" class="c_ad_block">
+<div id='div-gpt-ad-1410860226396-0' style='width:468px; height:60px;'>
+<script type='text/javascript'>
+try {
+    if (enableGoogleAd) {
+        googletag.cmd.push(function () { googletag.display('div-gpt-ad-1410860226396-0'); });
+    } else {
+        $('#div-gpt-ad-1346480159711-0').hide();
+    }
+} catch (e) { }
+</script>
+</div>
+</div>
+<div id="under_post_kb"></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 200);
+});
+</script>
+</div>
+
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.contentRendered;
+            if (m) { m(__$("content")); }
+        </script>
+
+        <div id="sidebar">
+            
+<div id="about">
+<div>
+<h2 id="about_title">About</h2>
+<div id="about_body">
+<div id="blog-news"></div>
+<script type="text/javascript">loadBlogNews();</script>
+</div>
+</div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.aboutRendered;
+                if (m) { m(__$("about")); }
+            </script>
+            
+<div id="mySearchWrapper">
+    <div id="mySearch">
+        <input type="image" src="/skins/Minyx2_Lite/images/btnsearch.gif" id="btnZzk"  class="submit" onclick="zzk_go();return false;"/>
+        <label class="lb_search"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="keyword" /></label>
+    </div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.searchFormRendered;
+                if (m) { m(__$("searchform")); }
+            </script>
+            <div id="sideMain">
+            </div>
+            <div id="sideRight">
+            </div>
+            <div id="sideLeft">
+            </div>
+            
+                <div id="sideContainer">
+                </div>
+                <script type="text/javascript">
+                    $.ajax({
+                        url: '/' + currentBlogApp + '/mvc/blog/Minyx2_Lite_SideColumn.aspx',
+                        data: '{}',
+                        type: 'post',
+                        dataType: 'text',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data) {
+                                $("#sideContainer").html(data);
+                                loadBlogDefaultCalendar();
+                                loadBlogSideBlocks();
+                                var m = window.__blog.sideContainerRendered;
+                                if (m) { m(__$("sideContainer")); }
+                                window.__blog.sidebar.__layout();
+                            }
+                        }
+                    });
+
+                </script>
+            
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.sidebarRendered;
+            if (m) { m(__$("sidebar")); }
+        </script>
+
+        <div id="footer">
+            
+<p id="logoFoot">
+    <a href="http://www.spiga.com.mx/" title="Agencia Interactiva Spiga">www.spiga.com.mx</a>
+</p>
+<div class="footText">
+<p>
+Copyright &copy;2014 v2m
+</p>
+<p>
+<a href="http://www.cnblogs.com">博客园</a>
+</p>
+</div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.wrapperRendered;
+        if (m) { m(__$("wrapper")); }
+    </script>
+
+</div>
+<script type="text/javascript">
+    var m = window.__blog.containerRendered;
+    if (m) { m(__$("container")); }
+</script>
+</body>
+</html>

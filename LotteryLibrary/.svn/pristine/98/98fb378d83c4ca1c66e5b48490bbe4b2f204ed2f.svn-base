@@ -1,0 +1,194 @@
+//
+//  lottery_ljy.cpp
+//  LotteryLibrary
+//
+//  Created by wufan on 15/4/30.
+//  Copyright (c) 2015年 DACAI. All rights reserved.
+//
+
+#include <openssl/aes.h>
+#include "lottery_ljy.h"
+#include "smart_basket.h"
+#include "error_code.h"
+#include "network_service.h"
+
+namespace lottlib {
+    
+    LotteryLjy::LotteryLjy() {
+        basket_ = new SmartBasket();
+    }
+    LotteryLjy::~LotteryLjy() {
+        delete basket_;
+    }
+    
+    int LotteryLjy::NWRefresh(NetworkCaller caller) {
+//        NetworkService::Get("/live/GetZqLiveMatchs?gameTypeId=110", 11, caller, CALLBACK(LotteryLjy, CallbackRefresh));
+//        NetworkService::Get("/live/GetZqLiveMatchs?gameTypeId=110", 11, caller, CALLBACK(LotteryLjy, CallbackRefresh));
+        int hash_id = HASH_ID(caller);
+        std::string *json = new std::string("12345678901");
+        NetworkService::Posts("/", json, 12, hash_id, CALLBACK(LotteryLjy, CallbackRefresh));
+        
+//        AES_KEY key = { 0 };
+//        unsigned char userKey[] = "\x01\x01\x01\x01\x02\x01\x01\x01\x01\x01\x01\x01\x01\x01\x01\x01";
+//        AES_set_encrypt_key(userKey, 128, &key);
+//        
+//        
+//        unsigned char in_buf[80] = { 0 };
+//        unsigned char out_buf[80] = { 0 };
+//        
+//        const unsigned char *in = in_buf;
+//        unsigned char *out = out_buf;
+//        
+//        AES_encrypt(in, out, &key);
+        
+        return 0;
+    }
+    
+    
+    int LotteryLjy::CallbackRefresh(int result, Message msg) {
+        return 0;
+    }
+    
+#pragma mark - 网络数据相关
+    
+    int LotteryLjy::Cleanup() {
+        return 0;
+    }
+    
+    int LotteryLjy::HasData() {
+        return 0;
+    }
+    
+    int LotteryLjy::GetGameStatus(int &game_name, std::string &deadline, std::string &draw_date) {
+        return 0;
+    }
+    
+    int LotteryLjy::GetHistory(int index, int &game_name, int results[7]) {
+        return 0;
+    }
+    
+    int LotteryLjy::GetMiss(int index, int miss_value[LJY_NUMBER_COUNT]) {
+        return 0;
+    }
+    
+#pragma mark - 存储相关
+    int LotteryLjy::NotesCalculate(int num1[LJY_NUMBER_COUNT], int num2[LJY_NUMBER_COUNT], int num3[LJY_NUMBER_COUNT], int num4[LJY_NUMBER_COUNT],
+                                   int num5[LJY_NUMBER_COUNT], int num6[LJY_NUMBER_COUNT], int num7[LJY_NUMBER_COUNT]) {
+        int count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0, count7 = 0;
+        for (int i = 0; i < LJY_NUMBER_COUNT; i++) {
+            count1 += num1[i] ? 1 : 0;
+            count2 += num2[i] ? 1 : 0;
+            count3 += num3[i] ? 1 : 0;
+            count4 += num4[i] ? 1 : 0;
+            count5 += num5[i] ? 1 : 0;
+            count6 += num6[i] ? 1 : 0;
+            count7 += num7[i] ? 1 : 0;
+        }
+        return count1 * count2 * count3 * count4 * count5 * count6 * count7;
+    }
+    
+    int LotteryLjy::GetTarget(int index, int &note, int num1[LJY_NUMBER_COUNT], int num2[LJY_NUMBER_COUNT], int num3[LJY_NUMBER_COUNT],
+                              int num4[LJY_NUMBER_COUNT], int num5[LJY_NUMBER_COUNT], int num6[LJY_NUMBER_COUNT], int num7[LJY_NUMBER_COUNT]) {
+        int target[CELL_TARGET_NUM_MAX_LEN] = { 0 };
+        int type = 0;
+        int ret = basket_->GetTarget(index, type, note, target);
+        if (ret >= 0) {
+            memcpy(num1, target, sizeof(int) * LJY_NUMBER_COUNT);
+            memcpy(num2, target + LJY_NUMBER_COUNT, sizeof(int) * LJY_NUMBER_COUNT);
+            memcpy(num3, target + LJY_NUMBER_COUNT * 2, sizeof(int) * LJY_NUMBER_COUNT);
+            memcpy(num4, target + LJY_NUMBER_COUNT * 3, sizeof(int) * LJY_NUMBER_COUNT);
+            memcpy(num5, target + LJY_NUMBER_COUNT * 4, sizeof(int) * LJY_NUMBER_COUNT);
+            memcpy(num6, target + LJY_NUMBER_COUNT * 5, sizeof(int) * LJY_NUMBER_COUNT);
+            memcpy(num7, target + LJY_NUMBER_COUNT * 6, sizeof(int) * LJY_NUMBER_COUNT);
+        }
+        return ret;
+    }
+    
+    int LotteryLjy::AddTarget(int num1[LJY_NUMBER_COUNT], int num2[LJY_NUMBER_COUNT], int num3[LJY_NUMBER_COUNT],
+                              int num4[LJY_NUMBER_COUNT], int num5[LJY_NUMBER_COUNT], int num6[LJY_NUMBER_COUNT], int num7[LJY_NUMBER_COUNT]) {
+        int note = NotesCalculate(num1, num2, num3, num4, num5, num6, num7);
+        if (note <= 0) {
+            return ERROR_INVAILD_LOTTERY;
+        }
+        int target[CELL_TARGET_NUM_MAX_LEN] = { 0 };
+        memcpy(target, num1, sizeof(int) * LJY_NUMBER_COUNT);
+        memcpy(target + LJY_NUMBER_COUNT, num2, sizeof(int) * LJY_NUMBER_COUNT);
+        memcpy(target + LJY_NUMBER_COUNT * 2, num3, sizeof(int) * LJY_NUMBER_COUNT);
+        memcpy(target + LJY_NUMBER_COUNT * 3, num4, sizeof(int) * LJY_NUMBER_COUNT);
+        memcpy(target + LJY_NUMBER_COUNT * 4, num5, sizeof(int) * LJY_NUMBER_COUNT);
+        memcpy(target + LJY_NUMBER_COUNT * 5, num6, sizeof(int) * LJY_NUMBER_COUNT);
+        memcpy(target + LJY_NUMBER_COUNT * 6, num7, sizeof(int) * LJY_NUMBER_COUNT);
+        return basket_->AddTarget(0, note, target);
+    }
+    
+    int LotteryLjy::ModifyTarget(int index, int num1[LJY_NUMBER_COUNT], int num2[LJY_NUMBER_COUNT], int num3[LJY_NUMBER_COUNT],
+                                 int num4[LJY_NUMBER_COUNT], int num5[LJY_NUMBER_COUNT], int num6[LJY_NUMBER_COUNT], int num7[LJY_NUMBER_COUNT]) {
+        int note = NotesCalculate(num1, num2, num3, num4, num5, num6, num7);
+        if (note <= 0) {
+            return ERROR_INVAILD_LOTTERY;
+        }
+        int target[CELL_TARGET_NUM_MAX_LEN] = { 0 };
+        memcpy(target, num1, sizeof(int) * LJY_NUMBER_COUNT);
+        memcpy(target + LJY_NUMBER_COUNT, num2, sizeof(int) * LJY_NUMBER_COUNT);
+        memcpy(target + LJY_NUMBER_COUNT * 2, num3, sizeof(int) * LJY_NUMBER_COUNT);
+        memcpy(target + LJY_NUMBER_COUNT * 3, num4, sizeof(int) * LJY_NUMBER_COUNT);
+        memcpy(target + LJY_NUMBER_COUNT * 4, num5, sizeof(int) * LJY_NUMBER_COUNT);
+        memcpy(target + LJY_NUMBER_COUNT * 5, num6, sizeof(int) * LJY_NUMBER_COUNT);
+        memcpy(target + LJY_NUMBER_COUNT * 6, num7, sizeof(int) * LJY_NUMBER_COUNT);
+        return basket_->ModifyTarget(index, 0, note, target);
+    }
+    
+    int LotteryLjy::DeleteTarget(int index) {
+        return basket_->DeleteTarget(index);
+    }
+    
+    int LotteryLjy::GetTargetCount() {
+        return basket_->GetTargetCount();
+    }
+    
+    int LotteryLjy::GetTotalNotes() {
+        return basket_->GetTotalNotes();
+    }
+    
+    int LotteryLjy::SetPurchaseInfo(int multiple) {
+        return basket_->SetPurchaseInfo(multiple, 1);
+    }
+    
+    int LotteryLjy::SplitOrders() {
+        return basket_->SplitOrders();
+    }
+    
+    int LotteryLjy::GetOrderCount() {
+        return basket_->GetOrderCount();
+    }
+    
+    int LotteryLjy::GetOrderInfo(int order, int &multiple, int &note) {
+        return basket_->GetOrderInfo(order, multiple, note);
+    }
+    
+    int LotteryLjy::GetOrderTargetCount(int order) {
+        return basket_->GetOrderTargetCount(order);
+    }
+    
+    int LotteryLjy::GetOrderTarget(int order, int index, int &note, int num1[LJY_NUMBER_COUNT], int num2[LJY_NUMBER_COUNT], int num3[LJY_NUMBER_COUNT],
+                                   int num4[LJY_NUMBER_COUNT], int num5[LJY_NUMBER_COUNT], int num6[LJY_NUMBER_COUNT], int num7[LJY_NUMBER_COUNT]) {
+        int target[CELL_TARGET_NUM_MAX_LEN] = { 0 };
+        int type = 0;
+        int ret = basket_->GetOrderTarget(order, index, type, note, target);
+        if (ret >= 0) {
+            memcpy(num1, target, sizeof(int) * LJY_NUMBER_COUNT);
+            memcpy(num2, target + LJY_NUMBER_COUNT, sizeof(int) * LJY_NUMBER_COUNT);
+            memcpy(num3, target + LJY_NUMBER_COUNT * 2, sizeof(int) * LJY_NUMBER_COUNT);
+            memcpy(num4, target + LJY_NUMBER_COUNT * 3, sizeof(int) * LJY_NUMBER_COUNT);
+            memcpy(num5, target + LJY_NUMBER_COUNT * 4, sizeof(int) * LJY_NUMBER_COUNT);
+            memcpy(num6, target + LJY_NUMBER_COUNT * 5, sizeof(int) * LJY_NUMBER_COUNT);
+            memcpy(num7, target + LJY_NUMBER_COUNT * 6, sizeof(int) * LJY_NUMBER_COUNT);
+        }
+        return ret;
+    }
+    
+    int LotteryLjy::DeleteOrder(int order) {
+        return basket_->DeleteOrder(order);
+    }
+    
+}

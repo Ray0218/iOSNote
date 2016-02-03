@@ -1,0 +1,16 @@
+//
+//  lottery_news.h
+//  LotteryLibrary
+//
+//  Created by wufan on 15/4/29.
+//  Copyright (c) 2015年 DACAI. All rights reserved.
+//
+//  彩票资讯
+//
+
+#ifndef lottlib_lottery_news_h_
+#define lottlib_lottery_news_h_
+
+#include "common_macro.h"
+
+#endif /* defined(lottlib_lottery_news_h_) */

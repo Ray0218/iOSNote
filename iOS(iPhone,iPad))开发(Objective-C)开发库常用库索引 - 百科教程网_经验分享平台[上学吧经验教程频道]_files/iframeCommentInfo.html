@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0067)http://www.shangxueba.com/jingyan/iframeCommentInfo.aspx?id=2268417 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+	用户评论
+</title><link type="text/css" rel="stylesheet" href="base.css"><link type="text/css" rel="stylesheet" href="nei.css">
+    <style type="text/css">
+        html,body{ overflow:hidden; background-color:#fff;}
+    </style>
+    <script type="text/javascript" language="javascript">
+        function Addsubmit()
+        {
+            if(document.getElementById("txtComment").value=="")
+            {
+                alert("请输入评论内容!");
+                document.getElementById("txtComment").focus();
+                return false;
+            }
+            if(document.getElementById("txtVerifycode").value=="" ||  document.getElementById("txtVerifycode").value=="请输入验证码")
+            {
+                alert("请输入验证码!");
+                document.getElementById("txtVerifycode").focus();
+                return false;
+            }
+            else if(document.getElementById("txtVerifycode").value.length != 4)
+            {
+                alert("验证码输入错误!");
+                document.getElementById("txtVerifycode").focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body style="margin:0px; border:0px;" onload="setHeight()">
+    <form name="form1" method="post" action="iframeCommentInfo.html" id="form1">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE1Nzc4MzEyMDUPZBYCAgMPZBYCAgMPFgIeB1Zpc2libGVoFgICAQ8WAh4LXyFJdGVtQ291bnRmZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAQUMSW1hZ2VCdXR0b24xPVKe8rj2cj60zvahw5IylL60SR8=">
+</div>
+
+        <div class="user_dis">
+            <h1>
+                用户评价</h1>
+            <div class="h10">
+            </div>
+            <textarea name="txtComment" rows="2" cols="20" id="txtComment" style="height: 80px; width: 647px; line-height: 20px; border: 1px solid #ddd;"></textarea>
+            <div class="h15">
+            </div>
+            <ul>
+                <li style="padding-top: 2px;">
+                    <input name="txtVerifycode" type="text" value="请输入验证码" id="txtVerifycode" onfocus="if(this.value==&#39;请输入验证码&#39;) {this.value=&#39;&#39;}" onblur="if (this.value==&#39;&#39;){this.value=&#39;请输入验证码&#39;}" style="width: 92px; height: 27px; line-height: 27px; border: 1px solid #cdcdcd;">
+                </li>
+                <li style="padding-top: 2px;">
+                    <img width="65" height="29" src="VerifyCode.aspx" style="cursor: pointer; float:none; height:29px; " title="看不清？点击更换" alt="看不清？点击更换" onclick="this.src=this.src+&#39;?&#39;"></li>
+                <li>
+                    <input type="image" name="ImageButton1" id="ImageButton1" class="tj_an" src="submit.png" onclick="return Addsubmit();" style="border-width:0px;"></li>
+            </ul>
+            
+        </div>        
+        <div class="h16">
+        </div>
+        <script type="text/javascript" language="javascript">
+            function setHeight() 
+            {
+                var pTar = parent.document.getElementById("Iframe1");          
+                var count = 0;
+                var pageSize = 2;
+                if(parent.document.getElementById("LiteCommCount1") != null)
+                    parent.document.getElementById("LiteCommCount1").innerHTML = count;
+                if(parent.document.getElementById("LiteCommCount2") != null)
+                    parent.document.getElementById("LiteCommCount2").innerHTML = count;
+                if(count>0)
+                {
+                    var hei = 170;
+                    if(pageSize > count)
+                        hei = 280 + (count * 90);
+                    else
+                        hei = 280 + (pageSize * 90)
+                    pTar.height = hei+"px";
+                }
+            }
+        </script>
+    </form>
+
+
+</body></html>

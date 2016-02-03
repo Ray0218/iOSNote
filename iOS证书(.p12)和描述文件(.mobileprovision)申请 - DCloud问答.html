@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://ask.dcloud.net.cn/article/152 -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+<meta name="renderer" content="webkit">
+<title>iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答</title>
+<meta name="keywords" content="ios,证书,.p12,描述,文件,.mobileprovision,申请">
+<meta name="description" content="iOS证书(.p12)和描述文件(.mobileprovision)申请 - iOS有两种证书和描述文件：
+  证书类型  使用场景  开发(Development)证书和描述文件  用于开发测试，在HBuilder中打包后可在真机环境通过Safari调试  发布(Distribution)证书和描述文件  用于提交Appstore...">
+<!--<base href="http://ask.dcloud.net.cn/">--><base href="."><!--[if IE]></base><![endif]-->
+<link href="http://ask.dcloud.net.cn/static/css/classblack/img/favicon.png?v=20141207" rel="shortcut icon" type="image/x-icon">
+<script src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/hm.js"></script><script type="text/javascript">
+	window.source = "";
+</script>
+<link rel="stylesheet" type="text/css" href="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/aw-font.css">
+
+<link href="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/common.css" rel="stylesheet" type="text/css">
+<link href="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/link.css" rel="stylesheet" type="text/css">
+<link href="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/style.css" rel="stylesheet" type="text/css">
+<link href="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/prettify.css" rel="stylesheet" type="text/css">
+<link href="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/prettify.sons.css" rel="stylesheet" type="text/css">
+
+<link href="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/classblack.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+	var _438645799988E0C755BF88B9CF57DAFF='';
+	var G_POST_HASH=_438645799988E0C755BF88B9CF57DAFF;
+	var G_INDEX_SCRIPT = '';
+	var G_SITE_NAME = 'DCloud问答';
+	var G_BASE_URL = 'http://ask.dcloud.net.cn';
+	var G_STATIC_URL = 'http://ask.dcloud.net.cn/static';
+	var G_UPLOAD_URL = 'http://ask.dcloud.net.cn/uploads';
+	var G_USER_ID = 0;
+	var G_USER_NAME = '';
+	var G_UPLOAD_ENABLE = 'N';
+	var G_UNREAD_NOTIFICATION = 0;
+	var G_NOTIFICATION_INTERVAL = 300000;
+	var G_CAN_CREATE_TOPIC = '';
+	
+	</script><style type="text/css"></style>
+<script src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/jquery.2.js" type="text/javascript"></script>
+<script src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/jquery.form.js" type="text/javascript"></script>
+<script src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/plug-in_module.js" type="text/javascript"></script>
+<script src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/functions.js" type="text/javascript"></script>
+<script src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/aw_template.js" type="text/javascript"></script>
+<script src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/common.js" type="text/javascript"></script>
+<script src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/app.js" type="text/javascript"></script>
+<script src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/prettify.js" type="text/javascript"></script>
+<script src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/jquery.lazyload.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/compatibility.js"></script>
+<!--[if lte IE 8]>
+	<script type="text/javascript" src="http://ask.dcloud.net.cn/static/js/respond.js"></script>
+<![endif]-->
+<style type="text/css">.fancybox-margin{margin-right:15px;}</style></head>
+
+<body>
+	<div class="aw-top-menu-wrap">
+		<div class="aw-wecenter aw-top-menu clearfix">
+			<div class="container">
+				<!-- logo -->
+				<div class="aw-logo hidden-xs">
+					<a href="http://ask.dcloud.net.cn/"></a>
+				</div>
+				<!-- end logo -->
+				<!-- 搜索框 -->
+				<div class="aw-search-box  hidden-xs hidden-sm">
+					<form class="navbar-search pull-right" action="http://ask.dcloud.net.cn/search/" id="global_search_form" method="post">
+						<div class="input-group">
+							<input value="" class="form-control" type="text" placeholder="搜索问题、话题或人" autocomplete="off" name="q" id="aw-search-query">
+							<span class="input-group-addon" title="搜索" id="global_search_btns" onclick="$(&#39;#global_search_form&#39;).submit();"><i class="fa fa-search"></i></span>
+							<div class="clearfix"></div>
+							<div class="aw-dropdown">
+								<i class="i-dropdown-triangle"></i>
+								<p class="title">输入关键字或相关内容进行搜索</p>
+								<ul class="aw-dropdown-list"></ul>
+								<p class="search"><span>搜索:</span><a onclick="$(&#39;#global_search_form&#39;).submit();"></a></p>
+								<p><a href="http://ask.dcloud.net.cn/publish" onclick="$(&#39;#header_publish&#39;).click();" class="pull-right btn btn-normal btn-success publish">发起问题</a></p>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- end 搜索框 -->
+				<!-- 导航 -->
+				<div class="aw-top-nav navbar">
+					<div class="navbar-header">
+				      <button class="navbar-toggle pull-left">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				    </div>
+					<nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+				      <ul class="nav navbar-nav">
+				        
+						<li><a href="http://ask.dcloud.net.cn/docs/">文档</a></li>
+						<li><a href="http://ask.dcloud.net.cn/explore/" class="">问答</a></li>
+						
+						<!-- <li><a href="http://ask.dcloud.net.cn/question/square/" class="">问题</a></li>
+
+						<li><a href="http://ask.dcloud.net.cn/article/square/" class="active">文章</a></li> -->
+						
+						<li><a href="http://ask.dcloud.net.cn/topic/">话题</a></li>
+						
+						<li><a href="http://ask.dcloud.net.cn/people/list/">排行</a></li>
+						
+																      </ul>
+				    </nav>
+				</div>
+				<!-- end 导航 -->
+				<!-- 用户栏 -->
+				<div class="aw-user-nav">
+					<!-- 登陆&注册栏 -->
+											<span>
+							<a href="http://ask.dcloud.net.cn/account/register/">注册</a>
+							<a href="http://ask.dcloud.net.cn/account/login/">登录</a>
+						</span>
+										<!-- end 登陆&注册栏 -->
+				</div>
+				<!-- end 用户栏 -->
+				<!-- 发起 -->
+								<!-- end 发起 -->
+			</div>
+		</div>
+	</div>
+
+<div class="aw-container-wrap">
+	<div class="aw-container aw-wecenter">
+		<div class="container">
+			<div class="row aw-content-wrap">
+				<div class="col-sm-12 col-md-9 aw-main-content" id="divcontainer">
+					<div class="aw-mod aw-item aw-question-detail-title aw-article-detail-title">
+						<div class="aw-mod-head">
+							<h1>
+								iOS证书(.p12)和描述文件(.mobileprovision)申请							</h1>
+							
+														
+							<div class="aw-topic-editor" data-type="article" data-id="152">
+																<a href="http://ask.dcloud.net.cn/topic/5%2BApp%E5%BC%80%E5%8F%91" class="aw-topic-name" data-id="25"><span>5+App开发</span></a>
+																<a href="http://ask.dcloud.net.cn/topic/Apple%E8%AF%81%E4%B9%A6" class="aw-topic-name" data-id="255"><span>Apple证书</span></a>
+																<a href="http://ask.dcloud.net.cn/topic/iOS%E8%AF%81%E4%B9%A6" class="aw-topic-name" data-id="256"><span>iOS证书</span></a>
+																							</div>
+						</div>
+						<div class="aw-mod-body">
+							<div class="aw-question-detail-txt markitup-box" id="markdownbody">
+								<p>iOS有两种证书和描述文件：<br>
+</p><table class="table table-hover table-bordered"><thead><tr>  <th>证书类型</th>  <th>使用场景</th></tr></thead><tbody><tr>  <td>开发(Development)证书和描述文件</td>  <td>用于开发测试，在HBuilder中打包后可在真机环境通过<a href="http://ask.dcloud.net.cn/article/143">Safari调试</a></td></tr><tr>  <td>发布(Distribution)证书和描述文件</td>  <td>用于提交Appstore，在HBuilder中打包后可使用Application Loader提交到Appstore审核发布</td></tr></tbody></table><p></p><h2>准备环境</h2><ul><br>
+<li>必需要有苹果开发者账号，并且加入了“iOS Developer Program”</li><br>
+<li>Mac OS 10.9以上系统（如果已经申请p12证书则不需要）</li><br>
+</ul><h2>登录iOS Dev Center</h2><p>打开网站<a href="https://developer.apple.com/devcenter/ios/index.action">iOS Dev Center</a><br>
+使用苹果开发者账号登录iOS Dev Center：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/idc_login.jpg" data-original="http://www.dcloud.io/docs/a/cert/idc_login.jpg" alt="" style="display: inline;"><br>
+登录成功后在页面右侧选择“Certificates, Identifiers &amp; Profiles”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/idc_cip.png" data-original="http://www.dcloud.io/docs/a/cert/idc_cip.png" alt="" style="display: inline;"><br>
+在“Certificates, Identifiers &amp; Profiles”页面的“iOS Apps”栏中任选一项，如“Certificates”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/idc_iosapps.png" data-original="http://www.dcloud.io/docs/a/cert/idc_iosapps.png" alt="" style="display: inline;"><br>
+打开“iOS Certificates”页面，可以看到所有已经申请的证书及描述文件：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/idc_ioscert.png" data-original="http://www.dcloud.io/docs/a/cert/idc_ioscert.png" alt="" style="display: inline;"></p><h2>申请苹果App ID</h2><p>(如果已经申请，可跳过此节)<br>
+在“iOS Certificates”页面“Identifiers"下选择“App IDs"，可查看到已申请的所有App ID，点击右上角的加号可创建新“App ID”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/id_new.jpg" data-original="http://www.dcloud.io/docs/a/cert/id_new.jpg" alt="" style="display: inline;"><br>
+打开“Register iOS App ID”页面，在“App ID Description”栏下的“Name”项中输入名称(如“HBuilderApp”)：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/id_name.png" data-original="http://www.dcloud.io/docs/a/cert/id_name.png" alt="" style="display: inline;"><br>
+在“Explicit App ID”栏下的“Bundle ID”项中输入App ID(使用反向域名格式字符串，如“io.dcloud.HBuilderApp”)：<br>
+<strong>注意：HBuilder中App云端打包界面的AppID栏需要输入此值</strong><br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/id_id.png" data-original="http://www.dcloud.io/docs/a/cert/id_id.png" alt="" style="display: inline;"><br>
+在“App Services”栏下选择应用要使用到的服务（如需要使用到消息推送功能，则选择“VPN Configuration &amp; Control”）：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/id_services.png" data-original="http://www.dcloud.io/docs/a/cert/id_services.png" alt="" style="display: inline;"><br>
+设置完成后选择“Continue”，弹出确认页面：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/id_confirm.png" data-original="http://www.dcloud.io/docs/a/cert/id_confirm.png" alt="" style="display: inline;"><br>
+确认后选择“Submit”提交，再次确认就可以在“App IDs"页面看到刚创建的App ID：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/id_list.jpg" data-original="http://www.dcloud.io/docs/a/cert/id_list.jpg" alt="" style="display: inline;"></p><h2>生成证书请求文件</h2><p>不管是申请开发(Development)证书还是发布(Distribution)证书，都需要使用证书请求(.certSigningRequest)文件，证书请求文件需在Mac OS上使用“Keychain Access”工具生成。<br>
+在“Spltlight Search”中搜索“Keychain”并打开“Keychain Access”工具：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/ka_start.jpg" data-original="http://www.dcloud.io/docs/a/cert/ka_start.jpg" alt="" style="display: inline;"><br>
+打开菜单“Keychain Access”-&gt;“Certificate Assistant”，选择“Request a Certificate From a Certificate Authority...”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/ka_create.jpg" data-original="http://www.dcloud.io/docs/a/cert/ka_create.jpg" alt="" style="display: inline;"><br>
+打开创建请求证书页面，在页面中输入用户邮件地址(User Email Address)、证书名称(Common Name)，请求类型（Request is）选择保存到磁盘(Saved to disk)：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/ka_inf.jpg" data-original="http://www.dcloud.io/docs/a/cert/ka_inf.jpg" alt="" style="display: inline;"><br>
+点击“Continue”后弹出保存路径：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/ka_save.jpg" data-original="http://www.dcloud.io/docs/a/cert/ka_save.jpg" alt="" style="display: inline;"><br>
+点击“Save”后保存证书请求文件，成功提示：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/ka_success.jpg" data-original="http://www.dcloud.io/docs/a/cert/ka_success.jpg" alt="" style="display: inline;"><br>
+保存文件名称为“CertificateSigningRequest.certSigningRequest”，后面申请开发(Development)证书和发布(Production)证书时用到。</p><h2>申请开发(Development)证书和描述文件</h2><p>开发(Development)证书用于测试环境下使用，可以直接安装到手机上(不用提交到Appstore)，但一个描述文件最多只能绑定100台设备(因此通过这种证书正式发布应用是行不通的)。</p><h3>申请开发(Development)证书</h3><p>在“Certificates, Identifiers &amp; Profiles”页面“Certificates"下选择“Development"，可查看到已申请的所有开发(Development)证书，点击右上角的加号可创建新证书：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_new.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_new.jpg" alt="" style="display: inline;"><br>
+打开“Add iOS Certificate”页面，在“Development”栏下选中“iOS App Development”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_dev.png" data-original="http://www.dcloud.io/docs/a/cert/devcert_dev.png" alt="" style="display: inline;"><br>
+在页面底部选择“Continue”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_continue.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_continue.jpg" alt="" style="display: inline;"><br>
+打开确认证书请求页面，点击“Continue”继续：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_request.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_request.jpg" alt="" style="display: inline;"><br>
+打开证书生成页面，点击“Choose File...”选择“生成证书请求文件”章节生成的“CertificateSigningRequest.certSigningRequest”文件，点击“Generate”生成cer证书成功：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_gen.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_gen.jpg" alt="" style="display: inline;"><br>
+生成证书成功后打开证书下载页面，选择“Download”下载保存证书(ios_development.cer)：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_download.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_download.jpg" alt="" style="display: inline;"><br>
+双击保存到本地的ios_development.cer文件导入到“Keychain Access”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_import.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_import.jpg" alt="" style="display: inline;"><br>
+导入成功后，可以在证书列表中显示：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_list.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_list.jpg" alt="" style="display: inline;"><br>
+选中导入的证书，右键选择“Export "Developer" ...”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_export.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_export.jpg" alt="" style="display: inline;"><br>
+打开证书保存页面，输入文件名、选择路径后点击“Save”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_export_save.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_export_save.jpg" alt="" style="display: inline;"><br>
+打开设置证书密码页面，输入密码及确认密码后点击“OK”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_export_pwd.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_export_pwd.jpg" alt="" style="display: inline;"><br>
+打开访问“Keychain Access”密码页面，输入Mac OS管理员密码，点击“Allow”，保存开发(Development)证书(如“HBuilderCert.p12”)。</p><h3>添加调试设备</h3><p>开发描述文件必须绑定设备，所以在申请开发描述文件之前，先添加调试的设备。<br>
+(如果已经添加设备，可跳过此节)<br>
+在“Certificates, Identifiers &amp; Profiles”页面“Devices”下选择“All"，可查看到已添加的所有设备信息，点击右上角的加号可添加新设备：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/idc_devices.jpg" data-original="http://www.dcloud.io/docs/a/cert/idc_devices.jpg" alt="" style="display: inline;"><br>
+打开“Registering a New Device or Multiple Devices”页面，输入设备名称和UDID：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devices_input.png" data-original="http://www.dcloud.io/docs/a/cert/devices_input.png" alt="" style="display: inline;"><br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devices_continue.jpg" data-original="http://www.dcloud.io/docs/a/cert/devices_continue.jpg" alt="" style="display: inline;"><br>
+<strong>将设备连接到电脑，启动iTunes，点击次区域可切换显示设备的UDID，右键选择复制</strong><br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/ios_udid.jpg" data-original="http://www.dcloud.io/docs/a/cert/ios_udid.jpg" alt="" style="display: inline;"><br>
+输入完成后，点击“Continue”继续，确认输入信息：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devices_confirm.jpg" data-original="http://www.dcloud.io/docs/a/cert/devices_confirm.jpg" alt="" style="display: inline;"><br>
+点击“Register”，完成添加。</p><h3>申请开发(Development)描述文件</h3><p>在“Certificates, Identifiers &amp; Profiles”页面“Provisioning Profiles”下选择“Development"，可查看到已申请的所有开发(Development)描述文件，点击右上角的加号可创建新描述文件：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/idc_profiles.jpg" data-original="http://www.dcloud.io/docs/a/cert/idc_profiles.jpg" alt="" style="display: inline;"><br>
+打开“Add iOS Provisioning Profile”页面，在“Development”栏下选中“iOS App Development”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devprf_dev.jpg" data-original="http://www.dcloud.io/docs/a/cert/devprf_dev.jpg" alt="" style="display: inline;"><br>
+点击“Continue”按钮，打开“App ID”选择页面，选择要使用的“App ID”(如之前创建的“io.dcloud.HBuildApp”)，点击“Continue”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devprf_id.jpg" data-original="http://www.dcloud.io/docs/a/cert/devprf_id.jpg" alt="" style="display: inline;"><br>
+打开“Select certificates”页面，选择前面创建的开发证书：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devprf_cert.jpg" data-original="http://www.dcloud.io/docs/a/cert/devprf_cert.jpg" alt="" style="display: inline;"><br>
+点击“Continue”，打开选择调试设备页面，选择用于调试安装的设备(最多100太设备)：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devprf_devices.jpg" data-original="http://www.dcloud.io/docs/a/cert/devprf_devices.jpg" alt="" style="display: inline;"><br>
+点击“Continue”，输入描述文件的名称（如“HBuilderProfile”）：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devprf_gen.jpg" data-original="http://www.dcloud.io/docs/a/cert/devprf_gen.jpg" alt="" style="display: inline;"><br>
+点击“Generage”，生成描述文件成功：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devprf_down.jpg" data-original="http://www.dcloud.io/docs/a/cert/devprf_down.jpg" alt="" style="display: inline;"><br>
+点击“Download”下载保存开发描述文件（如HBuilderProfile.mobileprovision）。</p><h2>申请发布(Distribution)证书和描述文件</h2><p>发布(Production)证书用于正式发布环境下使用，用于提交到Appstore审核发布。</p><h3>申请发布(Production)证书</h3><p>在“Certificates, Identifiers &amp; Profiles”页面“Certificates"Production"，可查看到已申请的所有发布(Production)证书，点击右上角的加号可创建新证书：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/discert_new.png" data-original="http://www.dcloud.io/docs/a/cert/discert_new.png" alt="" style="display: inline;"><br>
+打开“Add iOS Certificate”页面，在“Production”栏下选中“App Store and Ad Hoc”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/discert_appstore.jpg" data-original="http://www.dcloud.io/docs/a/cert/discert_appstore.jpg" alt="" style="display: inline;"><br>
+在页面底部选择“Continue”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_continue.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_continue.jpg" alt="" style="display: inline;"><br>
+打开确认证书请求页面，点击“Continue”继续：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/discert_request.jpg" data-original="http://www.dcloud.io/docs/a/cert/discert_request.jpg" alt="" style="display: inline;"><br>
+打开证书生成页面，先点击“Choose File...”选择“生成证书请求文件”章节生成的“CertificateSigningRequest.certSigningRequest”文件，再点击“Generate”生成cer证书：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/discert_gen.jpg" data-original="http://www.dcloud.io/docs/a/cert/discert_gen.jpg" alt="" style="display: inline;"><br>
+生成证书成功后打开证书下载页面，选择“Download”下载保存证书(ios_production.cer)：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/discert_down.jpg" data-original="http://www.dcloud.io/docs/a/cert/discert_down.jpg" alt="" style="display: inline;"><br>
+双击保存到本地的ios_production.cer文件导入到“Keychain Access”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_import.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_import.jpg" alt="" style="display: inline;"><br>
+导入成功后，可以在证书列表中显示：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/discert_list.jpg" data-original="http://www.dcloud.io/docs/a/cert/discert_list.jpg" alt="" style="display: inline;"><br>
+选中导入的证书，右键选择“Export "Developer" ...”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_export.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_export.jpg" alt="" style="display: inline;"><br>
+打开证书保存页面，输入文件名、选择路径后点击“Save”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_export_save.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_export_save.jpg" alt="" style="display: inline;"><br>
+打开设置证书密码页面，输入密码及确认密码后点击“OK”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/devcert_export_pwd.jpg" data-original="http://www.dcloud.io/docs/a/cert/devcert_export_pwd.jpg" alt="" style="display: inline;"><br>
+打开访问“Keychain Access”密码页面，输入Mac OS管理员密码，点击“Allow”，保存开发(Production)证书(如“HBuilderCert.p12”)。</p><h3>申请发布(Distribution)描述文件</h3><p>在“Certificates, Identifiers &amp; Profiles”页面“Provisioning Profiles”下选择“Distribution"，可查看到已申请的所有发布(Distribution)描述文件，点击右上角的加号可创建新描述文件：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/idc_profiles_dis.png" data-original="http://www.dcloud.io/docs/a/cert/idc_profiles_dis.png" alt="" style="display: inline;"><br>
+打开“Add iOS Provisioning Profile”页面，在“Development”栏下选中“iOS App Development”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/disprf_dis.jpg" data-original="http://www.dcloud.io/docs/a/cert/disprf_dis.jpg" alt="" style="display: inline;"><br>
+点击“Continue”按钮，打开“App ID”选择页面，选择要使用的“App ID”(如之前创建的“io.dcloud.HBuildApp”)，点击“Continue”：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/disprf_id.jpg" data-original="http://www.dcloud.io/docs/a/cert/disprf_id.jpg" alt="" style="display: inline;"><br>
+打开“Select certificates”页面，选择前面创建的发布证书：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/disprf_cert.jpg" data-original="http://www.dcloud.io/docs/a/cert/disprf_cert.jpg" alt="" style="display: inline;"><br>
+点击“Continue”，输入描述文件的名称（如“HBuilderProfileDistribution”）：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/disprf_gen.jpg" data-original="http://www.dcloud.io/docs/a/cert/disprf_gen.jpg" alt="" style="display: inline;"><br>
+点击“Generage”，生成描述文件成功：<br>
+<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/disprf_down.jpg" data-original="http://www.dcloud.io/docs/a/cert/disprf_down.jpg" alt="" style="display: inline;"><br>
+点击“Download”下载保存开发描述文件（如HBuilderProfileDistribution.mobileprovision）。</p><br>
+								
+																
+															</div>
+							<div class="aw-question-detail-meta aw-article-detail-meta">
+								<span class="aw-article-vote disabled">
+									<a href="javascript:;" class="agree" onclick=""><i class="fa fa-thumbs-up"></i> <b>8</b> 赞</a>
+									<a href="javascript:;" class="disagree" onclick=""><i class="fa fa-thumbs-down"></i></a>
+								</span>
+								
+								<a class="aw-text-color-999 pull-right" onclick="$.dialog(&#39;shareOut&#39;, {item_type:&#39;article&#39;, item_id:152});"><i class="fa fa-share"></i>分享</a>
+															</div>
+							
+														<div class="aw-article-voter">
+																<a href="http://ask.dcloud.net.cn/people/%E5%A4%9A%E4%B8%B2%E5%90%9B" class="voter" data-toggle="tooltip" data-placement="right" data-original-title="多串君"><img alt="多串君" src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/76_avatar_mid.jpg"></a>
+																<a href="http://ask.dcloud.net.cn/people/MrLoading" class="voter" data-toggle="tooltip" data-placement="right" data-original-title="MrLoading"><img alt="MrLoading" src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png"></a>
+																<a href="http://ask.dcloud.net.cn/people/%E9%A3%8E%E5%90%9B" class="voter" data-toggle="tooltip" data-placement="right" data-original-title="风君"><img alt="风君" src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/59_avatar_mid.jpg"></a>
+																<a href="http://ask.dcloud.net.cn/people/fanrong33" class="voter" data-toggle="tooltip" data-placement="right" data-original-title="蔡繁荣"><img alt="蔡繁荣" src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/74_avatar_mid.jpg"></a>
+																<a href="http://ask.dcloud.net.cn/people/ztingjian" class="voter" data-toggle="tooltip" data-placement="right" data-original-title="ztingjian"><img alt="ztingjian" src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/52_avatar_mid.jpg"></a>
+																<a href="http://ask.dcloud.net.cn/people/jackzlz" class="voter" data-toggle="tooltip" data-placement="right" data-original-title="jackzlz"><img alt="jackzlz" src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png"></a>
+																<a href="http://ask.dcloud.net.cn/people/%E6%88%91%E5%8B%92%E4%B8%AA%E5%8E%BB" class="voter" data-toggle="tooltip" data-placement="right" data-original-title="我勒个去"><img alt="我勒个去" src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png"></a>
+																<a href="http://ask.dcloud.net.cn/people/%E5%8F%AF%E6%80%9C%E7%9A%84%E5%85%89%E5%A4%B4%E5%BC%BA" class="voter" data-toggle="tooltip" data-placement="right" data-original-title="可怜的光头强"><img alt="可怜的光头强" src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/33_avatar_mid.jpg"></a>
+																<!--<a class="more-voters">...</a>-->
+							</div>
+													</div>
+					</div>
+					
+					<div class="aw-mod aw-question-comment-box">
+						<div class="aw-mod-head">
+							<ul class="nav nav-tabs aw-reset-nav-tabs">
+																
+								<h2>24 个评论</h2>
+							</ul>
+						</div>
+						
+												<div class="aw-mod-body aw-dynamic-topic aw-article-detail">
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/fengqiaoju">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/82_avatar_mid.jpg" alt="枫桥">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/fengqiaoju">枫桥</a>									</p>
+									<div class="markitup-box">
+										作为一名不是ios开发者,看起来费老劲了									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">1 赞</span>
+										
+										<span>2015-04-20 14:59</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/stock2">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/94_avatar_mid.jpg" alt="stock2">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/stock2">stock2</a>									</p>
+									<div class="markitup-box">
+										有人成功过吗&gt;									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-04-27 15:39</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/1%E5%8F%B7%E6%88%BF">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/18_avatar_mid.jpg" alt="1号房">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/1%E5%8F%B7%E6%88%BF">1号房</a>									</p>
+									<div class="markitup-box">
+										以前成功过一次，现在又郁闷了									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-04-27 17:27</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/%E4%BA%91%E9%92%A6">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/63_avatar_mid.jpg" alt="云钦">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/%E4%BA%91%E9%92%A6">云钦</a>									</p>
+									<div class="markitup-box">
+										提示制作成功，但是没有ipa文件，生成只是临时文件的样子，手动下载页面内容为“{"error":"Document not found"}”									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-05-14 11:24</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/Junr">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="Junr">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/Junr">Junr</a>									</p>
+									<div class="markitup-box">
+										作为一个前端开发者，这些东西看着很晕									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-05-16 11:34</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/CaiN">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="CaiN">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/CaiN">CaiN</a>									</p>
+									<div class="markitup-box">
+										实在是太费劲了									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-07-17 14:54</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/bulanni00">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/37_avatar_mid.jpg" alt="刘俊朋">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/bulanni00">刘俊朋</a>									</p>
+									<div class="markitup-box">
+										狗娘养的苹果, 不争气的中华, 腐败的社会, 只能适应, 不能改变									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">1 赞</span>
+										
+										<span>2015-07-26 13:53</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/%E9%9D%92%E5%88%9B">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="青创">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/%E9%9D%92%E5%88%9B">青创</a>									</p>
+									<div class="markitup-box">
+										这tmd已经不能用费劲形容了，iturns 各种不能改信息，绑定id不能改，名字不能改，名字不能重复，提交了审核不过永远不能删除！卧槽他大爷的苹果！									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">1 赞</span>
+										
+										<span>2015-08-01 03:00</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/%E6%97%AD%E6%97%A5">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="旭日">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/%E6%97%AD%E6%97%A5">旭日</a>									</p>
+									<div class="markitup-box">
+										作为一个有十年.NET开发经验的程序员，我只想对苹果公司说一下： 你TMD的那天破产了。我一定发一挂鞭炮！ 祝您早日破产！ 让你的封闭去死吧！									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">1 赞</span>
+										
+										<span>2015-09-10 11:22</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/Danny">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/43_avatar_mid.jpg" alt="Danny">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/Danny">Danny</a>									</p>
+									<div class="markitup-box">
+										企业开发者账号，Development模式的证书、p12、描述文件获取成功，打包也成功了。但是Production模式的哈不行，这是为啥啊啊啊									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-09-25 19:00</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/YL">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="YL">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/YL">YL</a>									</p>
+									<div class="markitup-box">
+										按照上面说的，生成开发证书打包成功也可以安装，生成发布证书，打包成功，但是安装失败，请问这有可能是什么情况造成的啊。发布证书打的包必须发布到AppStore才能安装吗，不能直接装手机上吗									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-09-29 09:49</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/beyond88">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="beyond88">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/beyond88">beyond88</a> 回复 <a href="http://ask.dcloud.net.cn/people/YL">YL</a>									</p>
+									<div class="markitup-box">
+										您好！我到这步就失败了在打包的时候<br>
+-----END CERTIFICATE-----<br>
+Bag Attributes<br>
+    friendlyName: 									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-10-07 11:33</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/beyond88">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="beyond88">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/beyond88">beyond88</a> 回复 <a href="http://ask.dcloud.net.cn/people/beyond88">beyond88</a>									</p>
+									<div class="markitup-box">
+										请问你遇到这个情况没，是什么问题，谢谢									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-10-07 11:34</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/%E9%99%88%E5%BD%B1">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="陈影">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/%E9%99%88%E5%BD%B1">陈影</a> 回复 <a href="http://ask.dcloud.net.cn/people/YL">YL</a>									</p>
+									<div class="markitup-box">
+										我也遇到你这个问题了请问你是怎么解决的									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-10-24 16:26</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/YL">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="YL">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/YL">YL</a> 回复 <a href="http://ask.dcloud.net.cn/people/%E9%99%88%E5%BD%B1">陈影</a>									</p>
+									<div class="markitup-box">
+										AppStore审核通过了就安装了。。。									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-10-28 10:14</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/YL">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="YL">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/YL">YL</a> 回复 <a href="http://ask.dcloud.net.cn/people/beyond88">beyond88</a>									</p>
+									<div class="markitup-box">
+										没遇到这个情况，是不是生成的证书问题，我是打包成功了									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-10-28 10:16</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/MissHuang">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="MissHuang">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/MissHuang">MissHuang</a>									</p>
+									<div class="markitup-box">
+										原文说：如需要使用到消息推送功能，则选择“VPN Configuration &amp; Control”？？？ 不是选“Push Notifications”？？？									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-11-03 15:25</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/%E6%88%91%E5%8B%92%E4%B8%AA%E5%8E%BB">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="我勒个去">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/%E6%88%91%E5%8B%92%E4%B8%AA%E5%8E%BB">我勒个去</a>									</p>
+									<div class="markitup-box">
+										先收藏吧,初次接触,真的头晕,但已经按照流程生成好所有证书了									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2015-11-05 16:17</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/%E6%88%98%E5%A3%AB">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="战士">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/%E6%88%98%E5%A3%AB">战士</a>									</p>
+									<div class="markitup-box">
+										我申请了开发证书和描述证书，为什么我用开发证书可以在云端打包，但是用发布证书在云端打包就失败？									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>6 天前</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/%E6%88%98%E5%A3%AB">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="战士">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/%E6%88%98%E5%A3%AB">战士</a>									</p>
+									<div class="markitup-box">
+										我申请了开发证书和描述证书，为什么我用开发证书可以在云端打包，但是用发布证书在云端打包就失败？									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>6 天前</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/DCloud_App_Array">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/46_avatar_mid.jpg" alt="DCloud_App_Array">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/DCloud_App_Array">DCloud_App_Array</a> 回复 <a href="http://ask.dcloud.net.cn/people/%E6%88%98%E5%A3%AB">战士</a>									</p>
+									<div class="markitup-box">
+										具体原因得分析失败返回的日志，请在官方群里联系DCloud_客服_果汁 确认原因									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>6 天前</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/%E6%88%98%E5%A3%AB">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="战士">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/%E6%88%98%E5%A3%AB">战士</a> 回复 <a href="http://ask.dcloud.net.cn/people/DCloud_App_Array">DCloud_App_Array</a>									</p>
+									<div class="markitup-box">
+										官方群的QQ群号是多少了？									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>6 天前</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/%E6%88%98%E5%A3%AB">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/avatar-mid-img.png" alt="战士">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/%E6%88%98%E5%A3%AB">战士</a> 回复 <a href="http://ask.dcloud.net.cn/people/beyond88">beyond88</a>									</p>
+									<div class="markitup-box">
+										我也遇到这个问题了，请问你解决了么？									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>6 天前</span>
+																			</div>
+								</div>
+							</div>
+														<div class="aw-item">
+								<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/%E5%8F%AF%E6%80%9C%E7%9A%84%E5%85%89%E5%A4%B4%E5%BC%BA">
+									<img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/33_avatar_mid.jpg" alt="可怜的光头强">
+								</a>
+								<div class="aw-item-content">
+									<p>
+										<a href="http://ask.dcloud.net.cn/people/%E5%8F%AF%E6%80%9C%E7%9A%84%E5%85%89%E5%A4%B4%E5%BC%BA">可怜的光头强</a>									</p>
+									<div class="markitup-box">
+										这个文档写得太好了，苹果公司控制的太严了，太麻烦了。									</div>
+									<div class="aw-item-meta">
+										<span class="pull-right">0 赞</span>
+										
+										<span>2 天前</span>
+																			</div>
+								</div>
+							</div>
+													</div>
+												
+												
+											</div>
+					
+					<!-- 回复编辑器 -->
+					<div class="aw-mod aw-mod-article-replay-box">
+						<a name="answer_form"></a>
+												<p align="center">要回复文章请先<a href="http://ask.dcloud.net.cn/account/login/">登录</a>或<a href="http://ask.dcloud.net.cn/account/register/">注册</a></p>
+											</div>
+					<!-- end 回复编辑器 -->
+				</div>
+				<!-- 侧边栏 -->
+				<div class="col-sm-12 col-md-3 aw-side-bar hidden-sm hidden-xs">
+					<!--导航栏-->
+					<div class="aw-side-bar-mod user-detail" id="navigatorpart">
+						<div class="aw-mod-head">
+							<h3>文章目录树导航</h3>
+						</div>
+					<ul><li><a id="ditem0"><span>&nbsp;&nbsp;&nbsp;</span>准备环境</a></li><li><a id="ditem1"><span>&nbsp;&nbsp;&nbsp;</span>登录iOS Dev Center</a></li><li><a id="ditem2"><span>&nbsp;&nbsp;&nbsp;</span>申请苹果App ID</a></li><li><a id="ditem3"><span>&nbsp;&nbsp;&nbsp;</span>生成证书请求文件</a></li><li><a id="ditem4"><img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/unselected-article.png">申请开发(Development)证书和描述文件</a><ul><li><a id="ditem5"><span>&nbsp;&nbsp;&nbsp;</span>申请开发(Development)证书</a></li><li><a id="ditem6"><span>&nbsp;&nbsp;&nbsp;</span>添加调试设备</a></li><li><a id="ditem7"><span>&nbsp;&nbsp;&nbsp;</span>申请开发(Development)描述文件</a></li></ul></li><li><a id="ditem8"><img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/unselected-article.png">申请发布(Distribution)证书和描述文件</a><ul><li><a id="ditem9"><span>&nbsp;&nbsp;&nbsp;</span>申请发布(Production)证书</a></li><li><a id="ditem10"><span>&nbsp;&nbsp;&nbsp;</span>申请发布(Distribution)描述文件</a></li></ul></li></ul></div>
+					<div class="aw-side-bar-mod user-detail" id="navigatorpart2" style="border-bottom-style: none; display: none; height: 234px;">
+						
+					</div>
+					<!-- 发起人 -->
+										<div class="aw-side-bar-mod user-detail">
+						<div class="aw-mod-head">
+							<h3>发起人</h3>
+						</div>
+						<div class="aw-mod-body">
+							<dl>
+								<dt class="pull-left aw-border-radius-5">
+									<a href="http://ask.dcloud.net.cn/people/DCloud_App_Array"><img alt="DCloud_App_Array" src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/46_avatar_mid.jpg"></a>
+								</dt>
+								<dd class="pull-left">
+									<a class="aw-user-name" href="http://ask.dcloud.net.cn/people/DCloud_App_Array" data-id="46">DCloud_App_Array</a><i class="icon-v i-ve" title="个人认证"></i>									<p></p>
+								</dd>
+							</dl>
+						</div>
+						<div class="aw-mod-footer">
+							<ul class="aw-text-color-999">
+								<li>
+									积分: <span>8340</span>
+								</li>
+								<li>
+									威望: <span>222</span>
+								</li>
+																<li>
+									擅长话题: <a class="aw-topic-name" href="http://ask.dcloud.net.cn/topic/Native.JS" data-id="77"><span>Native.JS</span></a> <a class="aw-topic-name" href="http://ask.dcloud.net.cn/topic/mui" data-id="40"><span>mui</span></a> <a class="aw-topic-name" href="http://ask.dcloud.net.cn/topic/XMLHttpRequest" data-id="118"><span>XMLHttpRequest</span></a> <a class="aw-topic-name" href="http://ask.dcloud.net.cn/topic/Webview" data-id="151"><span>Webview</span></a> <a class="aw-topic-name" href="http://ask.dcloud.net.cn/topic/Push" data-id="324"><span>Push</span></a> 								</li>
+																<li>
+									发布时间: 2015-01-26 13:23								</li>
+							</ul>
+													</div>
+					</div>
+										<!-- end 发起人 -->
+										<!-- 相关问题 -->
+					<div class="aw-side-bar-mod aw-text-align-justify question_related_list">
+						<div class="aw-mod-head">
+							<h3>相关问题</h3>
+						</div>
+						<div class="aw-mod-body">
+							<ul class="aw-li-border-bottom">
+																<li><a href="http://ask.dcloud.net.cn/question/725">求解答 可以更新www下的文件吗</a></li>
+																<li><a href="http://ask.dcloud.net.cn/question/190">hbuilder打包ios需要的私钥和profile文件和私钥证书怎么获得</a></li>
+																<li><a href="http://ask.dcloud.net.cn/question/1869">关于定位文件的建议</a></li>
+																<li><a href="http://ask.dcloud.net.cn/question/386">写文件错误？</a></li>
+																<li><a href="http://ask.dcloud.net.cn/question/1195">修改文件保存报错</a></li>
+																<li><a href="http://ask.dcloud.net.cn/question/870">HBuilder中文件编辑的一个体验问题</a></li>
+																<li><a href="http://ask.dcloud.net.cn/question/1518">调用 plus.io 写文件时出错，有可能是什么原因引起的？</a></li>
+																<li><a href="http://ask.dcloud.net.cn/question/420">hbuilder 要怎么运行php文件</a></li>
+																<li><a href="http://ask.dcloud.net.cn/question/6767">uploader中，多文件上传时，只能发出一次UploadStateChangedCallback</a></li>
+																<li><a href="http://ask.dcloud.net.cn/question/6765">mui.ttf文件在Birdfont for Mac中打不开是怎么回事呢？大家遇到过吗？</a></li>
+																<li><a href="http://ask.dcloud.net.cn/question/147">WEb 浏览器怎么找不到html文件</a></li>
+															</ul>
+						</div>
+					</div>
+					<!-- end 相关问题 -->
+									</div>
+				<!-- end 侧边栏 -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	//隐藏textnode的值为\n的节点
+	function hideTextNode(node){
+		var _index = 0, children = node.childNodes, len = children.length;
+		for(; _index<len; _index++){
+			var node = children[_index], type = node.nodeType;
+			if(type == 1) hideTextNode(node);
+			else if(node.nodeType == 3 && node.nodeValue == '\\n'){
+				node.parentNode.removeChild(node);
+				_index--;
+				len--;
+			}
+		}
+	}
+	setTimeout(function(){
+		hideTextNode(markdownbody);
+	},1)
+	
+	$(document).ready(function () {
+		if(window.source == 'doc'){
+			$('a[href]').each(function(index, tag){
+				var t = $(tag);
+				var href = t.attr('href');
+				if(!href) return;
+				href = href.toLowerCase();
+				if(href.indexOf('http') == 0 || href.indexOf('/') == 0){
+//					console.log(t.html());
+					t.attr('target', '_blank');
+				}
+			})
+		}
+		prettyPrint();
+		if ($('.aw-article-vote.disabled').length)
+		{
+			$('.aw-article-vote.disabled a').attr('onclick', '');
+		}
+		var anchors = {};
+		var allhs = $("#markdownbody h2,#markdownbody h3,#markdownbody h4,#markdownbody h5,#markdownbody h6"),
+			len = allhs.length,
+			ul = document.createElement('ul'),
+			tagarr = [],
+			index = 0;
+		if(len == 0) {
+			navigatorpart.setAttribute('nodata', 'true');
+			navigatorpart.style.display = 'none';
+			navigatorpart.parentNode.children[2].style.cssText = 'padding-top:0'
+		}
+		for(; index<len; index++){
+			var item = allhs[index],
+				id = 'ditem' + index,
+				li = document.createElement('li'),
+				a = document.createElement('a');
+			a.id = id;
+			a.innerHTML = '<img src="/static/css/default/img/unselected-article.png"/>' + item.innerHTML;
+			li.appendChild(a);
+			anchors[id] = item;
+			tagarr.push({tagname:item.tagName, ul: ul});
+			ul.appendChild(li);
+			getChilds(li, index+1, ul);
+		}
+		
+		navigatorpart.appendChild(ul);
+		$(ul).find('a').each(function(index, a){
+			if(a.parentNode.children.length == 1){
+				$(a.children[0]).replaceWith('<span>&nbsp;&nbsp;&nbsp;</span>')
+			}
+		})
+		setTimeout(function(){
+			navigatorpart2.style.height = navigatorpart.clientHeight + 'px';
+//			navigatorpart.style.width = navigatorpart2.clientWidth + 'px'
+		},100);
+		var top = $("#divcontainer").offset().top;
+		if(len != 0){
+			$(window).scroll(function(e){
+				if(window.pageYOffset >= top){
+					navigatorpart2.style.display = 'block';
+					navigatorpart.style.cssText = 'width:' + navigatorpart2.clientWidth + 'px;position:fixed;top:0;'
+				}else{
+					navigatorpart2.style.display = 'none';
+					navigatorpart.style.cssText = ''
+				}
+			});
+		}
+		$(ul).find('li a').click(function(e){
+			var img =e.target; 
+			var ul = $(this).parent().find('>ul');
+			if(img.tagName != 'IMG'){
+				img = this.children[0];
+			}
+			if(ul.css('display') == 'block') {
+				ul.css('display', 'none');
+				img.src = '/static/css/default/img/unselected-article.png'
+			}
+			else {
+				ul.css('display', 'block');
+				img.src = '/static/css/default/img/selected-article.png'
+			}
+			if(e.target.tagName == 'IMG'){
+				return;
+			}
+			if(window.parent.scrollFunc){
+				window.parent.scrollFunc($(anchors[this.id]).offset().top - $("#divcontainer").offset().top);
+				return;
+			}
+			$(window).scrollTop($(anchors[this.id]).offset().top,100);
+		})
+		function getChilds(dom, hindex, uldom){
+			if(hindex == len) return;
+			var ul = document.createElement('ul'),
+				id = 'ditem' + hindex,
+				li = document.createElement('li'),
+				a = document.createElement('a'),
+				hasChild = false;
+			var item = allhs[hindex],
+				tagname = item.tagName,
+				pretagname = tagarr[tagarr.length -1].tagname, 
+				ispop = false;
+			if(tagname == pretagname){
+				
+			}
+			else{
+				if(getHnum(tagname) < getHnum(pretagname)) {
+					while(true){
+						ispop = true;
+						tagarr.pop();
+						var last = tagarr[tagarr.length - 1];
+						if(getHnum(tagname) >= getHnum(last.tagname)){
+							ul = last.ul;
+							break;
+						}
+					}
+//					tagarr.pop();
+//					return true;
+				}
+				else tagarr.push({tagname: tagname, ul: ul});
+			}
+			index = hindex;
+			a.id = id;
+			a.innerHTML = '<img src="/static/css/default/img/unselected-article.png"/>' + item.innerHTML;
+			li.appendChild(a);
+			anchors[id] = item;
+			if(tagname == pretagname) {
+				hasChild = true;
+				uldom.appendChild(li);
+				getChilds(li, index + 1, uldom);
+			}
+			else{
+				hasChild = true;
+				ul.appendChild(li);
+				if(!ispop)dom.appendChild(ul);
+				getChilds(li, index + 1, ul);
+			}
+		}
+		function getHnum(tagname){
+			return parseInt(tagname.charAt(1), 10);
+		}
+		
+		function collapsed(node, display){
+			var tagname = node.tagName,
+				next = node.nextElementSibling,
+				level = parseInt(tagname.charAt(1), 10);
+			var i = 0;
+			while(true){
+				if(!next) return;
+//				console.log(next.tagName + ':' + next.outerHTML)
+				if(!next.className || next.className.indexOf('collapsed') < 0) {
+					next.style.display = display;
+					next = next.nextElementSibling;
+				}else{
+					var nextlevel = parseInt(next.tagName.charAt(1), 10);
+					if(nextlevel <= level) return;
+					next.style.display = display;
+					if(next.className)next.className = next.className.replace('zhedie', '');
+					next = next.nextElementSibling;
+				}
+				
+				i++;
+//				if(i > 100){alert('to largin');return;}
+			}
+		}
+		$("#markdownbody .zhedie").each(function(index, node){
+			collapsed(node, 'none');
+		});
+		$("#markdownbody .collapsed").click(function(){
+			var This = $(this);
+			if(This.hasClass('zhedie')){
+				This.removeClass('zhedie');
+//				console.log("This.removeClass('zhedie');")
+				collapsed(this, '');
+			}else{
+//				console.log("This.addClass('zhedie');")
+				This.addClass('zhedie');
+				collapsed(this, 'none');
+			}
+//			alert(window.parent.onsizechange)
+			if(window.parent.onsizechange){
+				window.parent.onsizechange();
+			}
+			
+		});
+		setTimeout(function(){
+			$("#markdownbody img").lazyload({
+				'container': markdownbody,
+				'failure_limit': 5,
+				load: function(remain, setting){
+					if(window.parent.onsizechange){
+						window.parent.onsizechange();
+					}
+				}
+			});
+		},500)
+		
+	});
+</script>
+
+<div class="aw-footer-wrap">
+	<div class="aw-footer aw-wecenter">
+		Copyright © 2015 - DCloud问答, All Rights Reserved<br>
+
+		<span class="hidden-xs">Powered By <a href="http://www.wecenter.com/?copyright" target="blank">WeCenter 2.5.8</a></span>
+		
+		<span class="hidden-xs">当前时区: GMT +8 &nbsp; <a href="http://ask.dcloud.net.cn/feed/" target="blank"><i class="fa fa-rss-square"></i> RSS Feed</a></span>
+			</div>
+</div>
+
+
+
+<a class="aw-back-top hidden-xs" href="javascript:;" onclick="$.scrollTo(1, 600, {queue:true});" style="display: none;"><i class="fa fa-arrow-up"></i></a>
+
+
+<!-- DO NOT REMOVE -->
+<div id="aw-ajax-box" class="aw-ajax-box"></div>
+
+<div style="display:none;" id="__crond"><img src="./iOS证书(.p12)和描述文件(.mobileprovision)申请 - DCloud问答_files/1447657312" width="1" height="1"></div>
+
+<!-- Escape time: 0.13812589645386 -->
+<script type="text/javascript" id="bdshare_js" data="type=tools"></script>
+<!-- / DO NOT REMOVE -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6e3f5abe81fff35f95c912671ebfafea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,52 @@
+//
+//  framework.cpp
+//  LotteryLibrary
+//
+//  Created by wufan on 15/4/29.
+//  Copyright (c) 2015年 DACAI. All rights reserved.
+//
+
+#include "framework.h"
+#include "network_service.h"
+
+namespace lottlib {
+    
+    // 导出模块
+    LotteryPs *ModuleLotteryPs = nullptr;
+    LotterySyxw *ModuleLotterySyxw = nullptr;
+    LotteryEsxw *ModuleLotteryEsxw = nullptr;
+    LotteryZsfy *ModuleLotteryZsfy = nullptr;
+    LotteryLjy *ModuleLotteryLjy = nullptr;
+    LotteryYtdj *ModuleLotteryYtdj = nullptr;
+    
+    void Framework::Initialize() {
+        Framework *framework = new Framework();
+        ModuleLotteryPs = framework->lottery_ps_;
+        ModuleLotterySyxw = framework->lottery_syxw_;
+        ModuleLotteryEsxw = framework->lottery_esxw_;
+        ModuleLotteryZsfy = framework->lottery_zsfy_;
+        ModuleLotteryLjy = framework->lottery_ljy_;
+        ModuleLotteryYtdj = framework->lottery_ytdj_;
+        
+        // 启动网络服务
+        framework->network_service_->Start();
+    }
+    
+    Framework::Framework() {
+        lottery_ps_ = new LotteryPs();
+        lottery_syxw_ = new LotterySyxw();
+        lottery_esxw_ = new LotteryEsxw();
+        lottery_zsfy_ = new LotteryZsfy();
+        lottery_ljy_ = new LotteryLjy();
+        lottery_ytdj_ = new LotteryYtdj();
+        
+        // 使用单例
+        network_service_ = NetworkService::defaultService();
+    }
+
+    Framework::~Framework() { }
+}
+
+
+
+

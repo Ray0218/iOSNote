@@ -1,0 +1,834 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0065)http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta content="360doc" name="classification">
+    
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.360doc.cn/article/11029609_358969425.html">
+    <meta content="仓库,github,pods" name="keywords">
+    <meta content="CocoaPods详解之----制作篇" name="description">
+    <meta name="mobile-agent" content="format=html5;url=http://www.360doc.cn/article/11029609_358969425.html">
+
+    <meta content="www.360doc.com" name="author">
+
+    <title>
+        CocoaPods详解之----制作篇
+    </title>
+    <link href="./CocoaPods-制作篇_files/bdsstyle.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./CocoaPods-制作篇_files/jquery1.js"></script><style type="text/css"></style>
+    <script type="text/javascript" src="./CocoaPods-制作篇_files/jQuery.md5.js"></script>
+    
+    <script type="text/javascript" language="javascript">
+        window.onerror = ignoreError;
+        function ignoreError() {
+            return true;
+        }
+    </script>
+
+    <link href="./CocoaPods-制作篇_files/wzhead-cleaned.css" rel="stylesheet" type="text/css">
+    <link href="./CocoaPods-制作篇_files/wz20130912-cleaned.css" rel="stylesheet" type="text/css">
+
+
+    
+
+    <script type="text/javascript" src="./CocoaPods-制作篇_files/indexhead.js"></script><script type="text/javascript" src="./CocoaPods-制作篇_files/chat.js"></script><script type="text/javascript" src="./CocoaPods-制作篇_files/chatuserlist.js"></script><link rel="stylesheet" type="text/css" href="./CocoaPods-制作篇_files/chat.css">
+    <script type="text/javascript" src="./CocoaPods-制作篇_files/showarticlefollow20130912.js"></script>
+<link href="./CocoaPods-制作篇_files/bdsstyle(1).css" rel="stylesheet" type="text/css"><script type="text/javascript" src="./CocoaPods-制作篇_files/EssayforIE120425.js"></script></head>
+<body style="font-family: Arial, Helvetica, sans-serif;" onmouseup="setDragEnd()" onmousemove="DragDiv();" onclick="delAllDiv(event)"><iframe frameborder="0" style="display: none;"></iframe><div id="bdshare_s" style="display: block;"><iframe id="bdsIfr" style="position:absolute;display:none;z-index:9999;" frameborder="0"></iframe><div id="bdshare_l" style="display: none;"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_mshare mshare">一键分享</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_renren rrw">人人网</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_douban db">豆瓣网</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_sqq sqq">QQ好友</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_thx thx">和讯微博</a></li><li><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="bds_more">更多...</a></li></ul><p><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="goWebsite">百度分享</a></p></div></div></div>
+
+
+    <span id="LayerLogin"></span>
+    <div style="position: fixed; width: 100%; z-index: 1000;">
+        <div class="mainnav" style="width: 1427px;">
+            <div class="mainnav1" style="margin-left: 84.5px;">
+                <div class="lf360" style="padding-left: 5px;">
+                    <img src="./CocoaPods-制作篇_files/logoo.gif">
+                </div>
+                <div style="width: 625px; padding-top: 0px; padding-left: 4px; position: absolute;">
+                    <table height="34" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr id="daohangtr">
+                                <td style="width: 185px; _width: 0px; *width: 0px !important;"></td>
+                                <td class="navwz1" width="95">
+                                    <a href="http://www.360doc.com/index.html">首&nbsp;页</a>
+                                </td>
+                                <td width="100" class="  navwz1">
+                                    <a href="http://www.360doc.com/readroom.html">阅览室</a>
+                                </td>
+                                <td width="88" class="  navwz1">
+                                    <a href="http://www.360doc.com/weekstar.html">馆友</a>
+                                </td>
+                                <td width="132" class="  navwz1">
+                                    <a href="http://www.360doc.com/my360doc.aspx">我的图书馆</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rt360" style="padding-top: 6px; width: 133px; padding-left: 38px;" id="outerdiv"><div class="denglbj lan2"><div style=" width:43px; float:left; text-align:center;" onmouseover="this.style.backgroundColor=&#39;#e5e5e5&#39;;this.parentNode.className=&#39;denglbj2 lan2&#39;" onmouseout="this.style.backgroundColor=&#39;#fcfcfc&#39;;this.parentNode.className=&#39;denglbj lan2&#39;"><a href="javascript:void(0)" onclick="loginnew()">登录</a></div><div style=" width:1px; float:left; "></div><div style="width:46px; float:left;text-align:center; margin-left:1px;*margin-left:0px;" onmouseover="this.style.backgroundColor=&#39;#e5e5e5&#39;;this.parentNode.className=&#39;denglbj3 lan2&#39;" onmouseout="this.style.backgroundColor=&#39;#fcfcfc&#39;;this.parentNode.className=&#39;denglbj lan2&#39;" id="regdiv"><a href="http://www.360doc.com/register.aspx?refer=800" target="_blank">注册</a></div><div class="boxwid xinngdui" id="bfdiv"><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#"><img id="imgbfabc" src="./CocoaPods-制作篇_files/5.gif"></a></div><div style=" position: absolute; margin-left:35px; *margin-left:-95px;_margin-left:-93px; width:96px;display:none;z-index:200;" id="func"><div class="tugduo3" id="divfunc" style="cursor:pointer;float:right; width:41px;"><div style=" height:26px; width:39px; border:1px solid #d4d4d4; border-bottom:none; background-color:#fff;"></div></div><div class="tipzhu3  right hui2" id="layerdiv"><ul><li><a href="http://www.360doc.com/advice.html" target="_blank">留言交流</a></li><li><a href="http://www.360doc.com/helpnew.html" target="_blank">网文摘手</a></li><li><a href="http://www.360doc.com/mobilapp.htm" target="_blank">手机客户端</a></li><li style=" border:none;"><a href="http://www.360doc.com/help.html" target="_blank">帮助</a></li></ul></div></div></div></div>
+                <div class=" rt360" style="padding-top: 6px; padding-right: 0px;">
+                    <div class="lf360 serch">
+                        <input name="input2" class="serchpt" id="txtSearchword" onkeydown="ongosearch()" onkeyup="showIntelliSense()" onfocus="if(this.value==&#39;搜文章 找馆友&#39;) this.value=&#39;&#39;;this.style.color=&#39;#272727&#39;" onblur="if(!this.value) {this.value=&#39;搜文章 找馆友&#39;;this.style.color=&#39;#b2b2b2&#39;;}" onpaste="showIntelliSense1()" type="text" value="搜文章 找馆友">
+                    </div>
+                    <div class="lf360 ssuo">
+                        <a id="searchlinkid" href="javascript:gosearch();"></a>
+                    </div>
+                    <div id="divsearch" style="margin-top: 25px; margin-left: 1px; display: none; position: absolute; z-index: 100;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navxt" style="width: 1427px;">
+        </div>
+    </div>
+    <div style="height: 44px; _height: 0px; width: 100%;"></div>
+
+    <div class="both">
+    </div>
+    <div id="docTotalInfo" class="mainzt" style="width: 1047px;">
+        <table class="index_main" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td align="left" valign="top" width="727px">
+                        <div id="ADAboveArtContent"><iframe marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="0" height="0" src="about:blank" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 728px 90px;"></iframe></div>
+                        <div style="height: 7px;">
+                        </div>
+                        <table border="0" cellpadding="0" cellspacing="0" class="mainbj6" id="docArtClass">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; text-align: center;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table style="width: 100%; text-align: left;" border="0" cellpadding="0" cellspacing="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="biaoti">
+                                                                        <div class="biaoti2 lf360">
+                                                                            CocoaPods详解之----制作篇
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="height: 32px;">
+
+
+                                                                        <div style="width: 670px; height: 28px; padding-left: 26px; color: #777b7a;">
+                                                                            <table>
+                                                                                <tbody><tr>
+                                                                                    <td>收藏人：<span class="name" onclick="wzhitnew(1);"><a href="http://www.360doc.com/userhome/11029609" target="_blank">ccccshq</a></span>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="btzctsg" id="spanfollowstatus"><div class="gzbt1"><a onclick="gzuser(11029609);wzhitnew(2);" href="javascript:void(0)"></a></div></div>
+                                                                                        <script>isfollow(11029609);</script>
+
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="ytdh1"><a onclick="doctalk();wzhitnew(106);" href="javascript:void(0)"></a></div>
+
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                            </tbody></table>
+                                                                        </div>
+
+
+
+
+                                                                        <div class="wztopxx">
+                                                                            <div style="float: left; height: 28px; padding-top: 7px;">
+                                                                                <table cellpadding="0" cellspacing="0" style="position: relative; z-index: 4">
+                                                                                    <tbody>
+                                                                                        <tr>
+
+                                                                                            <td>
+                                                                                                2014-03-09&nbsp;|&nbsp;阅：<span id="360doc_Readnum">4012</span>&nbsp;&nbsp;<span style="position: relative;">转：<span onclick="wzhitnew(3)" id="360doc_saverNum"><span style="cursor:pointer;" onclick="javascript:ShowSaverUser();">10</span></span><span id="360doc_saverUser"><div id="sameArtOuter" style="display:none;position: absolute; height:305px;width:144px;left:0px;margin-top:15px;z-index:100000;"><div id="sameArt" style=" overflow-y: auto;  height:300px;overflow-x: hidden; z-index: 100;right:0px;margin-top:-10px;" onclick="event.cancelBubble=true;"></div></div></span></span>&nbsp;&nbsp;
+
+
+
+                                                                                            </td>
+
+                                                                                            <td>
+                                                                                                <div style="position: relative;">
+                                                                                                    &nbsp;|&nbsp;<span id="docsource">&nbsp;&nbsp;<a onclick="wzhitnew(14);" href="http://blog.csdn.net/wzzvictory/article/details/20067595" target="_blank">来源</a></span>
+                                                                                                </div>
+                                                                                                <div class="sekuaibox" style="display: none; margin-left: 48px;" id="zihaoboxID">
+                                                                                                    <div style="padding-top: 10px; padding-left: 5px;">
+                                                                                                        <div class="lf360 danxunbt">
+                                                                                                            <input id="artdocfont3" onclick="ChangeArtSize(3, this); wzhitnew(15); " name="radio" type="radio" value="1">
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunwz" onclick="ChangeArtSize(3,this);wzhitnew(15); " style="cursor: pointer;">
+                                                                                                            大
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunbt">
+                                                                                                            <input id="artdocfont2" onclick="ChangeArtSize(2, this); wzhitnew(16); " name="radio" type="radio" value="2">
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunwz" onclick="ChangeArtSize(2,this);wzhitnew(16); " style="cursor: pointer;">
+                                                                                                            中
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunbt">
+                                                                                                            <input id="artdocfont1" onclick="ChangeArtSize(1, this); wzhitnew(17); " name="radio" type="radio" value="3">
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunwz" onclick="ChangeArtSize(1,this);wzhitnew(17); " style="cursor: pointer;">
+                                                                                                            小
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="sekuaibox" style="margin-left: 76px; display: none;" id="sekuaiboxID">
+                                                                                                    <div style="padding-top: 10px; padding-left: 5px;">
+                                                                                                        <img src="./CocoaPods-制作篇_files/cr1.gif" id="docArtC1" onclick="ChangeArtClass(1,this);wzhitnew(18);" style="cursor: pointer;"><img src="./CocoaPods-制作篇_files/cr2.gif" id="docArtC2" onclick="ChangeArtClass(2,this);wzhitnew(19);" style="cursor: pointer;"><img src="./CocoaPods-制作篇_files/cr3.gif" id="docArtC3" onclick="ChangeArtClass(3,this);wzhitnew(20);" style="cursor: pointer;"><img src="./CocoaPods-制作篇_files/cr4.gif" id="docArtC4" onclick="ChangeArtClass(4,this);wzhitnew(21);" style="cursor: pointer;"><img src="./CocoaPods-制作篇_files/cr5.gif" id="docArtC5" onclick="ChangeArtClass(5,this);wzhitnew(22);" style="cursor: pointer;"><img src="./CocoaPods-制作篇_files/cr6-1.gif" id="docArtC6" onclick="ChangeArtClass(6,this);wzhitnew(23);" style="cursor: pointer;">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div style="padding-left: 10px;">
+                                                                                                    <a href="javascript:void(0)">
+                                                                                                        <img onmouseover="changedivdisplay(1);" src="./CocoaPods-制作篇_files/wz1.gif"></a>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div style="padding-left: 10px;" onmouseover="changedivdisplay(2);">
+                                                                                                    <a href="javascript:void(0)">
+                                                                                                        <img src="./CocoaPods-制作篇_files/wz2.gif"></a>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" onclick=" setTimeout(showShareLayer, 10);wzhitnew(4);">分享</a>&nbsp;</td>
+                                                                                            <td>
+                                                                                                <a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" onclick="  setTimeout(showShareLayer, 10);wzhitnew(5);">
+                                                                                                    <img style="cursor: pointer;" src="./CocoaPods-制作篇_files/tb10.gif"></a><div class="fenxiang" id="fenxiangLayer" style="display: none; border: none; width: 110px; margin-left: -28px; _margin-left: -40px;"><div style="border:1px solid #cbcbcb; height:240px; width:108px;"><div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare share-bar-btn"><table cellpadding="0" cellspacing="0" width="108" style=" background-color:#fff; "><tbody><tr><td width="12"></td><td height="29" onclick="wzhitnew(6);"><a class="bds_qzone" href="javascript:void(0);" title="分享到QQ空间">&nbsp;&nbsp;&nbsp;&nbsp;腾讯空间</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(9);"><a class="bds_tsina" href="javascript:void(0);" title="分享到新浪微博">&nbsp;&nbsp;&nbsp;&nbsp;新浪微博</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(10);"><a class="bds_tqq" href="javascript:void(0);" title="分享到腾讯微博">&nbsp;&nbsp;&nbsp;&nbsp;腾讯微博</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(7);"><a class="bds_renren" href="javascript:void(0);" title="分享到人人网">&nbsp;&nbsp;&nbsp;&nbsp;人人网</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(8);"><a class="bds_kaixin001" href="javascript:void(0);" title="分享到开心网">&nbsp;&nbsp;&nbsp;&nbsp;开心网</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(11);"><a class="bds_tsohu" href="javascript:void(0);" title="分享到搜狐微博">&nbsp;&nbsp;&nbsp;&nbsp;搜狐微博</a></td></tr><tr><td width="12"></td><td height="29"><a href="javascript:void(0);" onclick="showdivemail();wzhitnew(12);"><div class="bds_py">&nbsp;&nbsp;&nbsp;&nbsp;推荐给朋友</div></a></td></tr><tr><td width="12"></td><td height="29"><a href="javascript:void(0);"><div class="bds_jubao" onclick="showAlertLayer();wzhitnew(13);">&nbsp;&nbsp;&nbsp;&nbsp;举报</div></a></td></tr></tbody></table></div></div></div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                            <div id="resavelayer1" class="rt360"><div class="zswdbtn1"><a href="javascript:void(0);" onclick="SaveArt();wzhitnew(24);"></a></div><div style="position: absolute;display:none;z-index:100000;" id="fuzhitishidiv"></div></div>
+
+
+                                                                            <div id="shareweixinabove" class="rt360"> <div class="fxwx2bt"><a href="javascript:void(0);" onclick="shareWeixin();wzhitnew(65);"></a></div></div>
+
+
+                                                                            <table cellpadding="0" cellspacing="0" style="text-align: center; margin: 0px auto;">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <div id="AlertArt1" style="display: none; position: absolute;">
+                                                                                            </div>
+                                                                                            <div id="SendToFriends1" style="display: none; position: absolute; z-index: 100;">
+                                                                                            </div>
+                                                                                            <div class="lf360 zcbutton" style="margin-left: 100px;">
+                                                                                            </div>
+                                                                                            <div class="lf360">
+                                                                                                &nbsp;&nbsp;
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        
+                                                        <table class="wenzhangcss" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="xiantao">
+                                                                        </div>
+
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top" width="670px" style="height: 200px;">
+                                                                        <span id="articlecontent" onmousedown="newhighlight = true;" onmouseup="NewHighlight(event)">
+                                                                            <table>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td width="670px" style="position: relative;">
+
+                                                                                            <div style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px; text-align:center"><span style="color:rgb(0,153,0)"><span style="font-size:18px">CocoaPods详解之----制作篇</span></span><span style="font-size:18px; color:rgb(0,153,0)"><strong></strong></span></div>
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px; font-size:18px"></span><span style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px"></span><span style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px"></span><span style="color:rgb(51,51,51); font-family:Arial; font-size:14.399999618530273px; line-height:26px"></span><span style="color:rgb(51,51,51); font-family:Arial; font-size:14.399999618530273px; line-height:26px"></span><span style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px"></span><span style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px"></span>
+<div style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px">
+<span style="color:rgb(255,0,0)">作者：<a target="_blank" href="http://blog.csdn.net/wzzvictory_tjsd" style="color:rgb(51,102,153); text-decoration:none">wangzz</a></span></div>
+<div style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px">
+<span style="color:rgb(255,0,0)">原文地址：<span style="color:rgb(51,102,153)"><a target="_blank" href="http://blog.csdn.net/wzzvictory/article/details/20067595" style="color:rgb(51,102,153); text-decoration:none">http://blog.csdn.net/wzzvictory/article/details/20067595</a></span></span></div>
+<div style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px">
+<span style="font-size:18px; color:rgb(0,153,0)"><span style="color:rgb(255,0,0); font-size:14px">转载请注明出处</span></span></div>
+<div style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px">
+<span style="font-size:18px"><span style="color:rgb(255,0,0); font-size:14px">如果觉得文章对你有所帮助，请通过留言或关注微信公众帐号</span><span style="font-size:14px"><span style="color:rgb(51,51,255)">wangzzstrive</span></span><span style="color:rgb(255,0,0); font-size:14px">来支持我，谢谢！</span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><br>
+</span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)">学会使用别人的Pods依赖库以后，你一定对创建自己的依赖库跃跃欲试，今天就来揭开Pods依赖库创建过程的神秘面纱。整个创建过程都以我实现的一个名称为<span style="font-family:Arial; font-size:14px; line-height:26px">WZMarqueeView跑马灯效果的view为例，步骤如下：</span></span></span></div>
+<h2 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t0"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px">一、创建自己的github仓库</span></span></span></h2>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px">CocoaPods都托管在github上(官方链接为：<a target="_blank" href="https://github.com/CocoaPods">https://github.com/CocoaPods</a>)，所有的Pods依赖库也都依赖github，因此第一步我们需要创建一个属于自己的github仓库。仓库创建界面如下图：</span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><img src="./CocoaPods-制作篇_files/39743537_1.jpg" alt=""><br>
+</span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">上图中标了序号的共6处，对应的说明如下：</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">1、Repository name</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">仓库名称，这里写成WZMarqueeView，必填的；</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">2、Description</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">仓库的描述信息，可选的；</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">3、仓库的公开性</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">这里只能选Public，一个是因为Private是要money的，再一个Private别人看不到还共享个毛；</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">4、是否创建一个默认的README文件</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">一个完整地仓库，都需要README说明文档，建议选上。当然不嫌麻烦的话你也可以后面再手动创建一个；</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">5、是否添加.gitignore文件</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">.gitignore文件里面记录了若干中文件类型，凡是该文件包含的文件类型，git都不会将其纳入到版本管理中。是否选择看个人需要；</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">6、license类型</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">正规的仓库都应该有一个license文件，Pods依赖库对这个文件的要求更严，是必须要有的。因此最好在这里让github创建一个，也可以自己后续再创建。我使用的license类型是MIT。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">上面的各项都填写完毕后，点击Create repository按钮即可，创建成功地界面如图：</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><img src="./CocoaPods-制作篇_files/39743537_2.jpg" alt=""><br>
+</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">到这，仓库创建过程就结束了。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</div>
+<h2 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t1"></a>二、clone仓库到本地</h2>
+<div style="font-family:Arial; font-size:14px; line-height:26px">为了便于向仓库中删减内容，需要先将仓库clone到本地，操作方式有多种，推荐使用命令行：<div class="dp-highlighter bg_objc"><div class="bar"><div class="tools"><b>[objc]</b> <a href="" class="viewsource" title="view plain" oncg="dp.sh.toolbar.command(&#39;viewsource&#39;,this);return false;">view plain</a><a href="" class="copytoclipboard" title="copy" oncg="dp.sh.toolbar.command(&#39;copytoclipboard&#39;,this);return false;">copy</a><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="about" title="?" oncg="dp.sh.toolbar.command(&#39;about&#39;,this);return false;">?</a><a href="https://code.csdn.net/snippets/216827" target="_blank" title="在CODE上查看代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/CODE_ico.png" width="12" height="12" alt="在CODE上查看代码片" style="position:relative;top:1px;left:2px;"></a><a href="https://code.csdn.net/snippets/216827/fork" target="_blank" title="派生到我的代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/ico_fork.svg" width="12" height="12" alt="派生到我的代码片" style="position:relative;top:2px;left:2px;"></a><div style="position: absolute; left: 518px; top: 2171px; width: 18px; height: 18px; z-index: 99;"><embed id="ZeroClipboardMovie_1" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="18" height="18" name="ZeroClipboardMovie_1" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=18&amp;height=18" wmode="transparent"></div></div></div><ol start="1" class="dp-objc"><li class="alt"><span><span>$&nbsp;git&nbsp;clone</span><span class="vars">&nbsp;https</span><span>:</span><span class="comment">//github.com/wangzz/WZMarqueeView.git</span><span>&nbsp;&nbsp;</span></span></li></ol></div></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">操作完成后，github上对应的文件都会拷贝到本地，目录结构为：</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><img src="./CocoaPods-制作篇_files/39743537_3.jpg" alt=""><br>
+</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">github上仓库中的.gitignore文件是以.开头的隐藏文件，因此这里只能看到两个。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">后续我们的所有文件增、删、改都在这个目录下进行。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</div>
+<h2 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t2"></a><span style="background-color:rgb(255,255,255)">三、向本地git仓库中添加创建Pods依赖库所需文件</span></h2>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="background-color:rgb(255,255,255)">注意：<span style="color:#ff0000">以下描述的文件都要放在步骤二clone到本地的git仓库的根目录下面。</span></span></div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t3"></a><span style="background-color:rgb(255,255,255)">1、后缀为.podspec文件</span></h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px">该文件为Pods依赖库的描述文件，每个Pods依赖库必须有且仅有那么一个描述文件。文件名称要和我们想创建的依赖库名称保持一致，我的<span style="font-family:Arial; font-size:14px; line-height:26px">WZMarqueeView依赖库对应的文件名为<span style="font-family:Arial; font-size:14px; line-height:26px">WZMarqueeView<span style="font-family:Arial; font-size:14px; line-height:26px">.podspec。</span></span></span></div>
+<p style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">1.1
+ podspec文件内容</span></span></span></span></p>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">WZMarqueeView</span><span style="font-family:Arial; font-size:14px; line-height:26px">.podspec的保存内容为：</span><br>
+<span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"></span></span></span><div class="dp-highlighter bg_ruby"><div class="bar"><div class="tools"><b>[ruby]</b> <a href="" class="viewsource" title="view plain" oncg="dp.sh.toolbar.command(&#39;viewsource&#39;,this);return false;">view plain</a><a href="" class="copytoclipboard" title="copy" oncg="dp.sh.toolbar.command(&#39;copytoclipboard&#39;,this);return false;">copy</a><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="about" title="?" oncg="dp.sh.toolbar.command(&#39;about&#39;,this);return false;">?</a><a href="https://code.csdn.net/snippets/216827" target="_blank" title="在CODE上查看代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/CODE_ico.png" width="12" height="12" alt="在CODE上查看代码片" style="position:relative;top:1px;left:2px;"></a><a href="https://code.csdn.net/snippets/216827/fork" target="_blank" title="派生到我的代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/ico_fork.svg" width="12" height="12" alt="派生到我的代码片" style="position:relative;top:2px;left:2px;"></a><div style="position: absolute; left: 521px; top: 2791px; width: 18px; height: 18px; z-index: 99;"><embed id="ZeroClipboardMovie_2" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="18" height="18" name="ZeroClipboardMovie_2" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=2&amp;width=18&amp;height=18" wmode="transparent"></div></div></div><ol start="1" class="dp-rb"><li class="alt"><span><span>Pod::Spec.</span><span class="keyword">new</span><span>&nbsp;</span><span class="keyword">do</span><span>&nbsp;|s|&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;s.name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"WZMarqueeView"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;s.version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"1.0.0"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;s.summary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"A&nbsp;marquee&nbsp;view&nbsp;used&nbsp;on&nbsp;iOS."</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;s.description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&lt;&lt;-DESC&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It&nbsp;is&nbsp;a&nbsp;marquee&nbsp;view&nbsp;used&nbsp;on&nbsp;iOS,&nbsp;which&nbsp;implement&nbsp;by&nbsp;Objective-C.&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DESC&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;s.homepage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"https://github.com/wangzz/WZMarqueeView"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;<span class="comment">#&nbsp;s.screenshots&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;"www.example.com/screenshots_1",&nbsp;"www.example.com/screenshots_2"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;s.license&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">'MIT'</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;s.author&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;<span class="string">"王中周"</span><span>&nbsp;=&gt;&nbsp;</span><span class="string">"wzzvictory_tjsd@163.com"</span><span>&nbsp;}&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;s.source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;<span class="symbol">:git</span><span>&nbsp;=&gt;&nbsp;</span><span class="string">"https://github.com/wangzz/WZMarqueeView.git"</span><span>,&nbsp;</span><span class="symbol">:tag</span><span>&nbsp;=&gt;&nbsp;s.version.to_s&nbsp;}&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;<span class="comment">#&nbsp;s.social_media_url&nbsp;=&nbsp;'https://twitter.com/NAME'</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;s.platform&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="symbol">:ios</span><span>,&nbsp;</span><span class="string">'4.3'</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;<span class="comment">#&nbsp;s.ios.deployment_target&nbsp;=&nbsp;'5.0'</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;<span class="comment">#&nbsp;s.osx.deployment_target&nbsp;=&nbsp;'10.7'</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;s.requires_arc&nbsp;=&nbsp;<span class="keyword">true</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;s.source_files&nbsp;=&nbsp;<span class="string">'WZMarqueeView/*'</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;<span class="comment">#&nbsp;s.resources&nbsp;=&nbsp;'Assets'</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;<span class="comment">#&nbsp;s.ios.exclude_files&nbsp;=&nbsp;'Classes/osx'</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;<span class="comment">#&nbsp;s.osx.exclude_files&nbsp;=&nbsp;'Classes/ios'</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;<span class="comment">#&nbsp;s.public_header_files&nbsp;=&nbsp;'Classes/**/*.h'</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;s.frameworks&nbsp;=&nbsp;<span class="string">'Foundation'</span><span>,&nbsp;</span><span class="string">'CoreGraphics'</span><span>,&nbsp;</span><span class="string">'UIKit'</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">end</span><span>&nbsp;&nbsp;</span></span></li></ol></div>该文件是ruby文件，里面的条目都很容易知道含义。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">其中需要说明的又几个参数：</span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">①s.license</span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">Pods依赖库使用的license类型，大家填上自己对应的选择即可。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">②s.source_files</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">表示源文件的路径，<span style="color:#ff0000">注意这个路径是相对podspec文件而言的。</span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">③s.frameworks</span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">需要用到的frameworks，<span style="color:#ff0000">不需要加.frameworks后缀。</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></div>
+<p style="font-family:Arial; font-size:14px; line-height:26px">1.2 如何创建podspec文件</p>
+<div style="font-family:Arial; font-size:14px; line-height:26px">大家创建自己的<span style="font-family:Arial; font-size:14px; line-height:26px">podspec文件可以有两个途径：</span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">①copy我的<span style="font-family:Arial; font-size:14px; line-height:26px">podspec文件</span></span>然后修改对应的参数，推荐使用这种方式。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">②执行以下创建命令：<div class="dp-highlighter bg_ruby"><div class="bar"><div class="tools"><b>[ruby]</b> <a href="" class="viewsource" title="view plain" oncg="dp.sh.toolbar.command(&#39;viewsource&#39;,this);return false;">view plain</a><a href="" class="copytoclipboard" title="copy" oncg="dp.sh.toolbar.command(&#39;copytoclipboard&#39;,this);return false;">copy</a><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="about" title="?" oncg="dp.sh.toolbar.command(&#39;about&#39;,this);return false;">?</a><a href="https://code.csdn.net/snippets/216827" target="_blank" title="在CODE上查看代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/CODE_ico.png" width="12" height="12" alt="在CODE上查看代码片" style="position:relative;top:1px;left:2px;"></a><a href="https://code.csdn.net/snippets/216827/fork" target="_blank" title="派生到我的代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/ico_fork.svg" width="12" height="12" alt="派生到我的代码片" style="position:relative;top:2px;left:2px;"></a><div style="position: absolute; left: 521px; top: 3748px; width: 18px; height: 18px; z-index: 99;"><embed id="ZeroClipboardMovie_3" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="18" height="18" name="ZeroClipboardMovie_3" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=3&amp;width=18&amp;height=18" wmode="transparent"></div></div></div><ol start="1" class="dp-rb"><li class="alt"><span><span>$&nbsp;pod&nbsp;spec&nbsp;create&nbsp;WZMarqueeView&nbsp;&nbsp;</span></span></li></ol></div>也会创建名为WZMarqueeView.podspec的文件。但是打开创建完的文件你就会发现里面的东西太多了，很多都是我们不需要的。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t4"></a><span style="background-color:rgb(255,255,255)">2、LICENSE文件</span></h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="background-color:rgb(255,255,255)">CocoaPods强制要求所有的Pods依赖库都必须有license文件，否则验证不会通过。license的类型有很多种，详情可以参考网站<a target="_blank" href="https://tldrlegal.com/" style="color:rgb(255,0,0)">tl;dr
+ Legal</a>。在创建github仓库的时候，我已经选择了MIT类型的license。</span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="background-color:rgb(255,255,255)"><br>
+</span></div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t5"></a>3、主类文件</h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px">创建Pods依赖库就是为了方便别人使用我们的成果，比如我想共享给大家的WZMarqueeView类，是我想提供给广大用户使用的，这个类自然是必不可少的。我把这个类包含的两个文件放到一个名称为WZMarqueeView的文件夹中，对应的目录结构如图：</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="background-color:rgb(255,255,255)"><img src="./CocoaPods-制作篇_files/39743537_4.jpg" alt=""><br>
+</span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)">里面包含两个文件：<span style="font-family:Arial; font-size:14px; line-height:26px">WZMarqueeView.h和<span style="font-family:Arial; font-size:14px; line-height:26px">WZMarqueeView.m</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></span></div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t6"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">4、demo工程</span></span></span></span></h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px">为了快速地教会别人使用我们的Pods依赖库，通常需要提供一个demo工程。我创建的demo工程放到了一个名为WZMarqueeViewDemo的文件夹中，该目录包含的文件如下图所示：</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><img src="./CocoaPods-制作篇_files/39743537_5.jpg" alt=""><br>
+</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t7"></a>5、README.md</h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px">使用github的人应该都熟悉这个文件，它是一个成功github仓库必不可少的一部分，使用的是markdown标记语言，用于对仓库的详细说明。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">以上所说的5个是创建Pods依赖库所需最基础的文件，<span style="color:#ff0000">其中1、2、3是必需的，4、5是可选但强烈推荐创建的。</span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">添加完这些文件以后，我的github本地仓库目录就变成了下图所示的样子：</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><img src="./CocoaPods-制作篇_files/39743537_6.jpg" alt=""><br>
+</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></span></div>
+<h2 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t8"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">四、提交修改文件到github</span></span></span></span></h2>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">经过步骤三，向本地的git仓库中添加了不少文件，现在需要将它们提交到github仓库中去。提交过程分以下几步：</span></span></span></span></div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t9"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">1、pod验证</span></span></span></span></h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">执行以下命令：</span></span></span></span><div class="dp-highlighter bg_ruby"><div class="bar"><div class="tools"><b>[ruby]</b> <a href="" class="viewsource" title="view plain" oncg="dp.sh.toolbar.command(&#39;viewsource&#39;,this);return false;">view plain</a><a href="" class="copytoclipboard" title="copy" oncg="dp.sh.toolbar.command(&#39;copytoclipboard&#39;,this);return false;">copy</a><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="about" title="?" oncg="dp.sh.toolbar.command(&#39;about&#39;,this);return false;">?</a><a href="https://code.csdn.net/snippets/216827" target="_blank" title="在CODE上查看代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/CODE_ico.png" width="12" height="12" alt="在CODE上查看代码片" style="position:relative;top:1px;left:2px;"></a><a href="https://code.csdn.net/snippets/216827/fork" target="_blank" title="派生到我的代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/ico_fork.svg" width="12" height="12" alt="派生到我的代码片" style="position:relative;top:2px;left:2px;"></a><div style="position: absolute; left: 521px; top: 5351px; width: 18px; height: 18px; z-index: 99;"><embed id="ZeroClipboardMovie_4" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="18" height="18" name="ZeroClipboardMovie_4" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=4&amp;width=18&amp;height=18" wmode="transparent"></div></div></div><ol start="1" class="dp-rb"><li class="alt"><span><span>$&nbsp;set&nbsp;the&nbsp;</span><span class="keyword">new</span><span>&nbsp;version&nbsp;to&nbsp;1.0.0&nbsp;&nbsp;</span></span></li><li class=""><span>$&nbsp;set&nbsp;the&nbsp;<span class="keyword">new</span><span>&nbsp;tag&nbsp;to&nbsp;1.0.0&nbsp;&nbsp;</span></span></li></ol></div>这两条命令是为pod添加版本号并打上tag。然后执行pod验证命令：<div class="dp-highlighter bg_ruby"><div class="bar"><div class="tools"><b>[ruby]</b> <a href="" class="viewsource" title="view plain" oncg="dp.sh.toolbar.command(&#39;viewsource&#39;,this);return false;">view plain</a><a href="" class="copytoclipboard" title="copy" oncg="dp.sh.toolbar.command(&#39;copytoclipboard&#39;,this);return false;">copy</a><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="about" title="?" oncg="dp.sh.toolbar.command(&#39;about&#39;,this);return false;">?</a><a href="https://code.csdn.net/snippets/216827" target="_blank" title="在CODE上查看代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/CODE_ico.png" width="12" height="12" alt="在CODE上查看代码片" style="position:relative;top:1px;left:2px;"></a><a href="https://code.csdn.net/snippets/216827/fork" target="_blank" title="派生到我的代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/ico_fork.svg" width="12" height="12" alt="派生到我的代码片" style="position:relative;top:2px;left:2px;"></a><div style="position: absolute; left: 521px; top: 5482px; width: 18px; height: 18px; z-index: 99;"><embed id="ZeroClipboardMovie_5" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="18" height="18" name="ZeroClipboardMovie_5" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=5&amp;width=18&amp;height=18" wmode="transparent"></div></div></div><ol start="1" class="dp-rb"><li class="alt"><span><span>$&nbsp;pod&nbsp;lib&nbsp;lint&nbsp;&nbsp;</span></span></li></ol></div>如果一切正常，这条命令执行完后会出现下面的输出：</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"></span></span></span></span><div class="dp-highlighter bg_ruby"><div class="bar"><div class="tools"><b>[ruby]</b> <a href="" class="viewsource" title="view plain" oncg="dp.sh.toolbar.command(&#39;viewsource&#39;,this);return false;">view plain</a><a href="" class="copytoclipboard" title="copy" oncg="dp.sh.toolbar.command(&#39;copytoclipboard&#39;,this);return false;">copy</a><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="about" title="?" oncg="dp.sh.toolbar.command(&#39;about&#39;,this);return false;">?</a><a href="https://code.csdn.net/snippets/216827" target="_blank" title="在CODE上查看代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/CODE_ico.png" width="12" height="12" alt="在CODE上查看代码片" style="position:relative;top:1px;left:2px;"></a><a href="https://code.csdn.net/snippets/216827/fork" target="_blank" title="派生到我的代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/ico_fork.svg" width="12" height="12" alt="派生到我的代码片" style="position:relative;top:2px;left:2px;"></a><div style="position: absolute; left: 521px; top: 5595px; width: 18px; height: 18px; z-index: 99;"><embed id="ZeroClipboardMovie_6" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="18" height="18" name="ZeroClipboardMovie_6" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=6&amp;width=18&amp;height=18" wmode="transparent"></div></div></div><ol start="1" class="dp-rb"><li class="alt"><span><span>-&gt;&nbsp;WZMarqueeView&nbsp;(1.0.0)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>ZMarqueeView&nbsp;passed&nbsp;validation.&nbsp;&nbsp;</span></li></ol></div>到此，pod验证就结束了。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">需要说明的是，<span style="color:#ff0000">在执行pod验证命令的时候，打印出了任何warning或者error信息，验证都会失败！</span>如果验证出现异常，打印的信息会很详细，大家可以根据对应提示做出修改。<br>
+<br>
+</span></span></span></span></div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t10"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">2、本地git仓库修改内容上传到github仓库</span></span></span></span></h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">依次执行以下命令：</span></span></span></span><div class="dp-highlighter bg_ruby"><div class="bar"><div class="tools"><b>[ruby]</b> <a href="" class="viewsource" title="view plain" oncg="dp.sh.toolbar.command(&#39;viewsource&#39;,this);return false;">view plain</a><a href="" class="copytoclipboard" title="copy" oncg="dp.sh.toolbar.command(&#39;copytoclipboard&#39;,this);return false;">copy</a><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="about" title="?" oncg="dp.sh.toolbar.command(&#39;about&#39;,this);return false;">?</a><a href="https://code.csdn.net/snippets/216827" target="_blank" title="在CODE上查看代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/CODE_ico.png" width="12" height="12" alt="在CODE上查看代码片" style="position:relative;top:1px;left:2px;"></a><a href="https://code.csdn.net/snippets/216827/fork" target="_blank" title="派生到我的代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/ico_fork.svg" width="12" height="12" alt="派生到我的代码片" style="position:relative;top:2px;left:2px;"></a><div style="position: absolute; left: 521px; top: 5874px; width: 18px; height: 18px; z-index: 99;"><embed id="ZeroClipboardMovie_7" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="18" height="18" name="ZeroClipboardMovie_7" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=7&amp;width=18&amp;height=18" wmode="transparent"></div></div></div><ol start="1" class="dp-rb"><li class="alt"><span><span>$&nbsp;git&nbsp;add&nbsp;-A&nbsp;&amp;&amp;&nbsp;git&nbsp;commit&nbsp;-m&nbsp;</span><span class="string">"Release&nbsp;1.0.0."</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>$&nbsp;git&nbsp;tag&nbsp;<span class="string">'1.0.0'</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>$&nbsp;git&nbsp;push&nbsp;--tags&nbsp;&nbsp;</span></li><li class=""><span>$&nbsp;git&nbsp;push&nbsp;origin&nbsp;master&nbsp;&nbsp;</span></li></ol></div>上述命令均属git的范畴，这里不多述。如果一切正常，github上就应该能看到自己刚添加的内容了。如下图所示：</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><img src="./CocoaPods-制作篇_files/39743537_7.jpg" alt=""><br>
+</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></span></div>
+<h2 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t11"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">五、上传podspec文件到CocoaPods官方仓库中</span></span></span></span></h2>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">经过前边的四步操作，你可能以为已经结束了，不幸的是还早着呢。</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">要想一个Pods依赖库真正可用，还需要做最后一步操作，将我们刚才生成的podspec文件上传到CocoaPods官方的Specs仓库中，链接为：<a target="_blank" href="https://github.com/CocoaPods/Specs">https://github.com/CocoaPods/Specs</a></span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="color:#ff0000">打开这个链接你就会发现，原来我们能使用的，以及我们使用pod search命令能搜索到的所有Pods依赖库都会把它们的podspec文件上传到这个仓库中，也就是说，只有将我们的podspec文件上传到这个仓库中以后，才能成为一个真正的Pods依赖库，别人才能正常使用！</span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">按照git的规则，要想向别人的仓库中添加文件，必须先fork一份别人的仓库，做完相应地修改后，在push给仓库的原作者，等到作者审核通过，然后合并到原来的仓库中。</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">流程明白了以后，自然知道该怎么干了：</span></span></span></span></div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t12"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">1、fork一份<span style="font-family:Arial; font-size:14px; line-height:26px">CocoaPods官方的Specs仓库</span></span></span></span></span></h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">进入到刚才的官方仓库链接中，点击屏幕右上角的fork按钮，如下图：</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><img src="./CocoaPods-制作篇_files/39743537_8.jpg" alt=""><br>
+</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">然后大家会发现自己名下会多一份仓库的分支。比如我的分支为：</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><img src="./CocoaPods-制作篇_files/39743537_9.jpg" alt=""><br>
+</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></span></div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t13"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">2、将fork的仓库clone到本地</span></span></span></span></h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">执行以下命令：</span></span></span></span><div class="dp-highlighter bg_ruby"><div class="bar"><div class="tools"><b>[ruby]</b> <a href="" class="viewsource" title="view plain" oncg="dp.sh.toolbar.command(&#39;viewsource&#39;,this);return false;">view plain</a><a href="" class="copytoclipboard" title="copy" oncg="dp.sh.toolbar.command(&#39;copytoclipboard&#39;,this);return false;">copy</a><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="about" title="?" oncg="dp.sh.toolbar.command(&#39;about&#39;,this);return false;">?</a><a href="https://code.csdn.net/snippets/216827" target="_blank" title="在CODE上查看代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/CODE_ico.png" width="12" height="12" alt="在CODE上查看代码片" style="position:relative;top:1px;left:2px;"></a><a href="https://code.csdn.net/snippets/216827/fork" target="_blank" title="派生到我的代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/ico_fork.svg" width="12" height="12" alt="派生到我的代码片" style="position:relative;top:2px;left:2px;"></a><div style="position: absolute; left: 521px; top: 7453px; width: 18px; height: 18px; z-index: 99;"><embed id="ZeroClipboardMovie_8" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="18" height="18" name="ZeroClipboardMovie_8" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=8&amp;width=18&amp;height=18" wmode="transparent"></div></div></div><ol start="1" class="dp-rb"><li class="alt"><span><span>$&nbsp;git&nbsp;clone&nbsp;https://github.com/wangzz/Specs.git&nbsp;&nbsp;</span></span></li></ol></div>注意，<span style="color:#ff0000">大家需要将对应的仓库地址换成自己的。</span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">这个仓库有点大，需要有耐心啊。</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></span></div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t14"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">3、将自己的podspec文件添加到本地Specs仓库中</span></span></span></span></h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">Specs仓库clone到本地后，会放到一个名为Specs的文件夹中。podspec文件在Specs仓库中的保存原则是：</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="color:#ff0000">Pods依赖库同名文件夹---&gt;版本号同名文件夹---&gt;podspec文件</span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">照此原则，我需要在Specs文件夹下建立一个名为<span style="font-family:Arial; font-size:14px; line-height:26px">WZMarqueeView的文件夹，然后进入到<span style="font-family:Arial; font-size:14px; line-height:26px">WZMarqueeView文件夹下，建立一个名称为1.0.0的文件夹，最后进入到1.0.0这个文件夹下，并且将之前创建好的<span style="font-family:Arial; font-size:14px; line-height:26px">WZMarqueeView.podspec文件拷贝进来。</span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="color:#ff0000">不难理解，如果以后有对<span style="font-family:Arial; font-size:14px; line-height:26px">WZMarqueeView类的升级，就在<span style="font-family:Arial; font-size:14px; line-height:26px">WZMarqueeView文件夹下建立对应版本名称的文件夹，用于保存对应版本的podspec文件即可。</span></span></span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">这些操作完成后，目录层次结构如下所示：</span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><img src="./CocoaPods-制作篇_files/39743537_10.jpg" alt=""><br>
+</span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t15"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">4、上传本地Specs仓库中的修改到github仓库</span></span></span></span></h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">执行以下命令：</span></span></span></span><div class="dp-highlighter bg_ruby"><div class="bar"><div class="tools"><b>[ruby]</b> <a href="" class="viewsource" title="view plain" oncg="dp.sh.toolbar.command(&#39;viewsource&#39;,this);return false;">view plain</a><a href="" class="copytoclipboard" title="copy" oncg="dp.sh.toolbar.command(&#39;copytoclipboard&#39;,this);return false;">copy</a><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="about" title="?" oncg="dp.sh.toolbar.command(&#39;about&#39;,this);return false;">?</a><a href="https://code.csdn.net/snippets/216827" target="_blank" title="在CODE上查看代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/CODE_ico.png" width="12" height="12" alt="在CODE上查看代码片" style="position:relative;top:1px;left:2px;"></a><a href="https://code.csdn.net/snippets/216827/fork" target="_blank" title="派生到我的代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/ico_fork.svg" width="12" height="12" alt="派生到我的代码片" style="position:relative;top:2px;left:2px;"></a><div style="position: absolute; left: 521px; top: 8098px; width: 18px; height: 18px; z-index: 99;"><embed id="ZeroClipboardMovie_9" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="18" height="18" name="ZeroClipboardMovie_9" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=9&amp;width=18&amp;height=18" wmode="transparent"></div></div></div><ol start="1" class="dp-rb"><li class="alt"><span><span>$&nbsp;git&nbsp;add&nbsp;-A&nbsp;&amp;&amp;&nbsp;git&nbsp;commit&nbsp;-m&nbsp;</span><span class="string">"Add&nbsp;WZMarqueeView&nbsp;podspec&nbsp;file"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>$&nbsp;git&nbsp;push&nbsp;origin&nbsp;master&nbsp;&nbsp;</span></li></ol></div>成功以后就能在github上自己fork的Specs仓库中看到刚上传的文件了。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></span></div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t16"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">5、将在自己fork的Specs上做的修改pull给CocoaPods官方的Specs仓库</span></span></span></span></h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">进入到自己fork的Specs仓库中，会看到屏幕左上角有一个绿色按钮：</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><img src="./CocoaPods-制作篇_files/39743537_11.jpg" alt=""><br>
+</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">该按钮点进去以后会有如下图所示的界面：</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><img src="./CocoaPods-制作篇_files/39743537_12.jpg" alt=""><br>
+</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">点击图中的绿色Create
+ Pull Request按钮，即可将我们<span style="font-family:Arial; font-size:14px; line-height:26px">fork的Specs上做的修改pull给CocoaPods官方的Specs仓库。</span></span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">到这一步后，<span style="color:#ff0000">剩下的工作就只有等了，等待CocoaPods的维护人员审核并将我们pull上去的修改合并到官方的Specs仓库中，这个过程通常会有一天左右的等待时间。如果有任何消息，比如审核不通过，或者审核通过了，CocoaPods官方都会发邮件通知的。</span></span></span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">等到审核通过的时候，我们就能在官方的Specs仓库中看到自己上传的文件夹了。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</div>
+<h3 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t17"></a>6、查看审核进度</h3>
+<div style="font-family:Arial; font-size:14px; line-height:26px">当然我们也能查看审核进度，打开这个链接：<a target="_blank" href="https://github.com/CocoaPods/Specs/pulls">https://github.com/CocoaPods/Specs/pulls</a>，这里能看到所有的Specs仓库pull请求，如下图：</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><img src="./CocoaPods-制作篇_files/39743537_13.jpg" alt=""><br>
+</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">红圈标识的就是我刚才pull上来的请求，点进去以后就能看到对应的审核进度。</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></span></div>
+<h2 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t18"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">六、查看我们自己创建的Pods依赖库</span></span></span></span></h2>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">如果收到了CocoaPods官方发过来的审核通过邮件以后，你可能很着急的想在自己的电脑上执行pod
+ search命令，看看能不能搜索到自己创建的Pods依赖库。不过你肯定会失望的，因为还需要执行一条命令才能在我们的本地电脑上使用search命令搜索到我们的依赖库：</span></span></span></span><div class="dp-highlighter bg_ruby"><div class="bar"><div class="tools"><b>[ruby]</b> <a href="" class="viewsource" title="view plain" oncg="dp.sh.toolbar.command(&#39;viewsource&#39;,this);return false;">view plain</a><a href="" class="copytoclipboard" title="copy" oncg="dp.sh.toolbar.command(&#39;copytoclipboard&#39;,this);return false;">copy</a><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="about" title="?" oncg="dp.sh.toolbar.command(&#39;about&#39;,this);return false;">?</a><a href="https://code.csdn.net/snippets/216827" target="_blank" title="在CODE上查看代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/CODE_ico.png" width="12" height="12" alt="在CODE上查看代码片" style="position:relative;top:1px;left:2px;"></a><a href="https://code.csdn.net/snippets/216827/fork" target="_blank" title="派生到我的代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/ico_fork.svg" width="12" height="12" alt="派生到我的代码片" style="position:relative;top:2px;left:2px;"></a><div style="position: absolute; left: 521px; top: 9698px; width: 18px; height: 18px; z-index: 99;"><embed id="ZeroClipboardMovie_10" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="18" height="18" name="ZeroClipboardMovie_10" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=10&amp;width=18&amp;height=18" wmode="transparent"></div></div></div><ol start="1" class="dp-rb"><li class="alt"><span><span>$&nbsp;pod&nbsp;setup&nbsp;&nbsp;</span></span></li></ol></div>在我的CocoaPods系列教程中的第一篇：<a target="_blank" href="http://blog.csdn.net/wzzvictory/article/details/19178709">CocoaPods详解之----进阶篇</a>中的最后部分介绍过这条命令，它会将所有的Pods依赖库tree跟新到本地。执行完这条命令，再去执行:<div class="dp-highlighter bg_ruby"><div class="bar"><div class="tools"><b>[ruby]</b> <a href="" class="viewsource" title="view plain" oncg="dp.sh.toolbar.command(&#39;viewsource&#39;,this);return false;">view plain</a><a href="" class="copytoclipboard" title="copy" oncg="dp.sh.toolbar.command(&#39;copytoclipboard&#39;,this);return false;">copy</a><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" class="about" title="?" oncg="dp.sh.toolbar.command(&#39;about&#39;,this);return false;">?</a><a href="https://code.csdn.net/snippets/216827" target="_blank" title="在CODE上查看代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/CODE_ico.png" width="12" height="12" alt="在CODE上查看代码片" style="position:relative;top:1px;left:2px;"></a><a href="https://code.csdn.net/snippets/216827/fork" target="_blank" title="派生到我的代码片" style="text-indent:0;"><img src="./CocoaPods-制作篇_files/ico_fork.svg" width="12" height="12" alt="派生到我的代码片" style="position:relative;top:2px;left:2px;"></a><div style="position: absolute; left: 521px; top: 9837px; width: 18px; height: 18px; z-index: 99;"><embed id="ZeroClipboardMovie_11" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="18" height="18" name="ZeroClipboardMovie_11" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=11&amp;width=18&amp;height=18" wmode="transparent"></div></div></div><ol start="1" class="dp-rb"><li class="alt"><span><span>$&nbsp;pod&nbsp;search&nbsp;WZMarqueeView&nbsp;&nbsp;</span></span></li></ol></div>就能显示出对应的介绍信息了！</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></span></div>
+<div style="font-family:Arial; font-size:14px; line-height:26px">说了那么多，到这里整个Pods依赖库创建过程才算真正结束！小伙伴们，你成功了吗？？？遇到问题还请留言。</div>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px"><br>
+</span></span></span></span></div>
+<h2 style="font-family:Arial; font-size:14px; line-height:26px"><a name="t19"></a><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">七、参考文档</span></span></span></span></h2>
+<div style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-size:18px"><span style="font-size:14px; background-color:rgb(255,255,255)"><span style="font-family:Arial; font-size:14px; line-height:26px"><span style="font-family:Arial; font-size:14px; line-height:26px">1、<a target="_blank" href="http://guides.cocoapods.org/">http://guides.cocoapods.org</a></span></span></span></span></div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                            <div id="viewerPlaceHolder" style="width: 717px; height: 700px; display: none;">
+                                                                            </div>
+                                                                        </span>
+                                                                        <table>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left">
+                                                                        <a name="anchordoc1" id="anchordoc1"></a>
+                                                                        <div style="height: 28px">
+                                                                            <div style="font-size: 14px; color: #797b7a; float: left;">
+                                                                                来自：<span class="name" onclick="wzhitnew(59)"><a href="http://www.360doc.com/userhome/11029609" target="_blank">ccccshq</a></span>&nbsp;&gt;&nbsp;<span id="cname" onclick="wzhitnew(60)"><a href="http://www.360doc.com/userhome.aspx?userid=11029609&cid=53" target="_blank">《工具》</a></span>
+                                                                            </div>
+                                                                            <div style="float: left;">
+                                                                                <div class="btzctsg" id="spanfollowstatus1"><div class="gzbt1"><a onclick="gzuser(11029609);wzhitnew(61);" href="javascript:void(0)"></a></div></div>
+                                                                                <script>isfollow(11029609);</script>
+
+                                                                            </div>
+                                                                            <div style="float: left;">
+                                                                                <div class="ytdh1"><a onclick="doctalk();wzhitnew(107);" href="javascript:void(0)"></a></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div>
+                                                                            <div class="modlist lf360 list" style="padding-top: 0px;">
+                                                                                <ul>
+                                                                                    <div id="lastart"><div class="shangyp">上一篇：<a href="http://www.360doc.com/content/14/0221/22/11029609_354629019.shtml" target="_blank" onclick="wzhitnew(57);">75 Essential Tools for iOS Developers</a></div></div>
+                                                                                    <div id="nextart">下一篇：<a href="http://www.360doc.com/content/14/0309/10/11029609_358970353.shtml" target="_blank" onclick="wzhitnew(58);">CocoaPods详解之----使用篇</a></div>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left">
+                                                                        <div style="padding-top: 12px;">
+                                                                            <div id="docAdBelowContent"><iframe marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="0" height="0" src="about:blank" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 650px 120px;"></iframe></div>
+
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="text-align: left;">
+                                                                        <div style="padding-top: 15px; width: 670px;">
+                                                                            <table style="width: 670px;" cellpadding="0" cellspacing="0">
+                                                                                <tbody>
+                                                                                    <tr>
+
+                                                                                        <td style="width: 530px;">
+                                                                                            <div class=" lf360" style="cursor: pointer" onmouseover="ChangeBtnStyle(1);" onmouseout="ChangeBtnStyle(2);">
+                                                                                                <div class="zscbt">
+                                                                                                    <a href="javascript:void(0);" onclick="SaveArt();wzhitnew(26);">
+                                                                                                        <div id="zscbtword" class="lf360 xianhua" style="padding-left: 38px;">
+                                                                                                            转藏到我的图书馆
+                                                                                                        </div>
+                                                                                                    </a>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div style="margin-left: 10px; cursor: pointer;" class="lf360 xhmainbox" id="sendflowerdiv" onclick="Showflowerlayer(&quot;sendedLayer1&quot;);wzhitnew(27)" onmouseover="ChangeFlowerBtnStyle(1);" onmouseout="ChangeFlowerBtnStyle(2);">
+
+                                                                                                <div id="flowimg2" class="lf360 ">
+                                                                                                    <div style="padding-left: 10px; padding-top: 10px;">
+                                                                                                        <img id="flowimg3" src="./CocoaPods-制作篇_files/huahuanew.gif">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div id="flowimg5" class="lf360 xianhua">
+                                                                                                    献花(<span id="articleflowernum">0</span>)<div id="flowernumadd" class="addtionone">
+                                                                                                        +1
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                            </div>
+
+
+
+
+                                                                                            <div class="lf360" style="cursor: pointer; padding-left: 10px;" onmouseover="ChangeBtnStyle(3);" onmouseout="ChangeBtnStyle(4);">
+                                                                                                <div class="fxwxbt">
+
+                                                                                                    <a href="javascript:void(0);" onclick="shareWeixin();wzhitnew(64);">
+                                                                                                        <div id="fxwxword" class="lf360 xianhua" style="padding-left: 38px;">
+                                                                                                            分享到微信
+                                                                                                        </div>
+                                                                                                    </a>
+                                                                                                </div>
+                                                                                            </div>
+
+
+
+                                                                                             <div class="lf360" style="cursor: pointer; padding-left: 10px;" onmouseover="ChangeBtnStyle(5);" onmouseout="ChangeBtnStyle(6);">
+                                                                                                <div class="ywzwbt">
+
+                                                                                                    <a id="ywzwa" href="http://www.baidu.com/s?wd=%e4%bb%93%e5%ba%93+github+pods&tn=SE_hldp01010_6r0gix1f" onclick="wzhitnew(100);" target="_blank">
+                                                                                                        <div id="ywzwword" class="lf360 xianhua" style="padding-left: 44px;">
+                                                                                                            以文找文
+                                                                                                        </div>
+                                                                                                    </a>
+
+                                                                                                </div>
+                                                                                            </div>
+
+
+
+                                                                                           
+                                                                                        </td>
+                                                                                        <td style="vertical-align: bottom; font-size: 12px;" width="140">
+                                                                                            <div class="rt360" id="sharediv2"><table style=" vertical-align: text-bottom;" border="0" cellpadding="0" cellspacing="0"> <tbody><tr><td><div style="height:20px; width:105px;"><div style="float:left;"><span style="font-size:12px; line-height:16px; color:#959595;">分享：</span></div><div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare share-bar-btn2" style="float:left;"><span onclick="wzhitnew(28);"><a class="bds_qzone" title="分享到QQ空间" href="javascript:void(0);"></a></span><span onclick="wzhitnew(31);"><a class="bds_tsina" title="分享到新浪微博" href="javascript:void(0);"></a></span><span onclick="wzhitnew(32);"><a class="bds_tqq" title="分享到腾讯微博" href="javascript:void(0);"></a></span></div></div></td><td width="24"><a><img style="cursor:pointer;" src="./CocoaPods-制作篇_files/tb10.gif" onclick="setTimeout(showShareLayer2, 10);wzhitnew(34);"></a><div id="fenxiangLayer1" class="fenxiang" style=" margin-left:-100px;*margin-left:-120px!important; margin-top:5px;*margin-top:16px!important;display:none;z-index:1000;"><div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare share-bar-btn"><table cellpadding="0" cellspacing="0" width="108" style=" background-color:#fff; "><tbody><tr><td width="12"></td><td height="29" onclick="wzhitnew(29);"><a class="bds_renren" href="javascript:void(0);" title="分享到人人网">&nbsp;&nbsp;&nbsp;&nbsp;人人网</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(30);"><a class="bds_kaixin001" href="javascript:void(0);" title="分享到开心网">&nbsp;&nbsp;&nbsp;&nbsp;开心网</a></td></tr><tr><td width="12"></td><td height="29" onclick="wzhitnew(33);"><a class="bds_tsohu" href="javascript:void(0);" title="分享到搜狐微博">&nbsp;&nbsp;&nbsp;&nbsp;搜狐微博</a></td></tr><tr><td width="12"></td><td height="29"><a href="javascript:void(0);" onclick="showdivemail1();wzhitnew(35);"><div class="bds_py">&nbsp;&nbsp;&nbsp;&nbsp;推荐给朋友</div></a></td></tr><tr><td width="12"></td><td height="29"><a href="javascript:void(0);"><div class="bds_jubao" onclick="showAlertLayer1();wzhitnew(36);">&nbsp;&nbsp;&nbsp;&nbsp;举报</div></a></td></tr></tbody></table></div></div></td></tr></tbody></table><div id="AlertArt2" style="display:none; position:absolute;"></div><div id="SendToFriends2" style="display:none;position:absolute;z-index:1000;"></div></div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="10"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="lswzbox" style="padding-top: 10px;">
+                            <div>
+                                <table cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                        <tr>
+                                            <td width="330" valign="top">
+                                                <div class="lswz" style="height: 300px;">
+                                                    <div class="lstwtop">
+                                                        <div class="lswztit">
+                                                            <div class=" lf360">
+                                                                <div class="titwx1">
+                                                                    类似文章
+                                                                </div>
+                                                            </div>
+                                                            <div class="rt360" style="padding-top: 5px; padding-right: 9px;">
+                                                                <a href="http://www.360doc.com/relevant/358969425_more.shtml" target="_blank" onclick="wzhitnew(38)">更多</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modlist2 list">
+                                                            <ul>
+                                                                
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/12/0421/09/1016783_205350218.shtml" target="_blank" onclick="wzhitnew(37)">Github Pages极简教程</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/11/0629/15/6986090_130356068.shtml" target="_blank" onclick="wzhitnew(37)">GitHub与Erlang的互利共赢之路</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/13/0520/09/9437165_286702762.shtml" target="_blank" onclick="wzhitnew(37)">Git 版本管理工具（一）</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/12/0213/14/1016783_186289552.shtml" target="_blank" onclick="wzhitnew(37)">使用github作为博客引擎</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/13/1211/10/14615320_336274608.shtml" target="_blank" onclick="wzhitnew(37)">使用CocoaPods管理iOS第三方库</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/11/1113/15/1016783_164017498.shtml" target="_blank" onclick="wzhitnew(37)">windows下使用git管理github项目</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/12/0830/12/8890849_233168328.shtml" target="_blank" onclick="wzhitnew(37)">GIt入门</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/13/0912/13/11813302_313944247.shtml" target="_blank" onclick="wzhitnew(37)">Git 常用命令详解（二）</a></span></li>
+                                                                    
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                           
+                                            <td width="330" valign="top">
+                                                <div class="lswz" style="margin-left: 9px; height: 300px;">
+                                                      <div class="lstwtop">
+                                                        <div class="lswztit">
+                                                            <div class=" lf360">
+                                                                <div class="titwx1">
+                                                                    热门推广
+                                                                </div>
+                                                            </div>
+                                                            <div class="rt360" style="padding-top: 5px; padding-right: 9px;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modlist2 list" id="dochotartabovecontent"><iframe marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="0" height="0" src="about:blank" allowtransparency="true" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 298px 242px;"></iframe></div>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div style="background-color: #fafafa; width: 670px; height: 317px; margin-top: 10px;">
+                                    <div style=" padding-top:7px; padding-left:12px; "> <div style=" height:30px;"><div class="titwx3 lf360">猜你喜欢</div><div class=" rt360" style=" padding-right:18px;"><img onclick="changefiveart2(&quot;19999&quot;,&quot;19999&quot;);wzhitnew(62);" src="./CocoaPods-制作篇_files/hyz.gif" onmouseover="this.src=&quot;http://pubimage.360doc.com/wz/hyza.gif&quot;" onmouseout="this.src=&quot;http://pubimage.360doc.com/wz/hyz.gif&quot;" width="76" height="24" style="cursor:pointer;"></div></div><table cellpadding="0" cellspacing="0"><tbody><tr id="fivearttdid" style="height:138px"><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/14/0218/20/15848832_353636872.shtml" target="_blank"><img src="./CocoaPods-制作篇_files/353636872_201403081053210326.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/14/0218/20/15848832_353636872.shtml" target="_blank">怎样成就出色的销售员</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/13/1231/19/2470845_341566126.shtml" target="_blank"><img src="./CocoaPods-制作篇_files/2470845_201401070010060464.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/13/1231/19/2470845_341566126.shtml" target="_blank">百年中国诗歌流派及作品集</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/13/0628/08/11434012_296059107.shtml" target="_blank"><img src="./CocoaPods-制作篇_files/296059107_201310070930550389.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/13/0628/08/11434012_296059107.shtml" target="_blank">一位母亲在女儿婚宴上讲的三句话</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/12/0914/06/3147467_236009722.shtml" target="_blank"><img src="./CocoaPods-制作篇_files/236009722_201310031552160999.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/12/0914/06/3147467_236009722.shtml" target="_blank">罕见的玫瑰，太美了！【唯美组图】</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/13/1114/20/5254276_329247214.shtml" target="_blank"><img src="./CocoaPods-制作篇_files/5254276_201311210010010421.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/13/1114/20/5254276_329247214.shtml" target="_blank">公共Wifi的秘密</a></div></td></tr><tr id="fivearttdidtwo"><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/13/1110/10/6930745_328088286.shtml" target="_blank"><img src="./CocoaPods-制作篇_files/328088286_201311201102260455.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/13/1110/10/6930745_328088286.shtml" target="_blank">马云:饭局里的学问,老板从饭局看人</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/14/1123/08/9267364_427324523.shtml" target="_blank"><img src="./CocoaPods-制作篇_files/427324523_201412080837180653.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/14/1123/08/9267364_427324523.shtml" target="_blank">治痔疮的妙方,你确定不看看?</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/14/0611/09/16936399_385597645.shtml" target="_blank"><img src="./CocoaPods-制作篇_files/16936399_201406160010240344.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/14/0611/09/16936399_385597645.shtml" target="_blank">千万不要轻易去考验人性</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/14/0522/17/535749_379983897.shtml" target="_blank"><img src="./CocoaPods-制作篇_files/379983897_201406081716350254.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/14/0522/17/535749_379983897.shtml" target="_blank">越南国书曾承认中国拥有南海主权</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/14/1226/20/1204156_436002511.shtml" target="_blank"><img src="./CocoaPods-制作篇_files/1204156_201501070010590241.jpg" width="114" height="86"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/14/1226/20/1204156_436002511.shtml" target="_blank">野外生火秘籍</a></div></td></tr></tbody></table></div>
+                                   
+                                    <div id="adabtest" style="display: none;">
+                                    </div>
+
+                                </div>
+
+
+
+
+
+                                <div id="Reflction" style="padding-top: 15px; padding-left: 15px;">
+                                    <div id="360docRefTN" style="display: none;"></div>
+                                    <div id="360docRefCT"></div>
+                                    <div id="360docRefPB" align="center" style="display: none;"></div>
+                                </div>
+                                <a name="sf"></a>
+                                
+                                <div id="ReflectionPart"><div style=" height:206px; margin:0px 0px;"><div class="plbox"><div class="plmain"><div class="titwx" style=" height:23px;">发表评论：</div><div class="deluwx">您好，请&nbsp;<span><a href="javascript:void(0);" onclick="ReflectionLoginform();wzhitnew(45);">登录</a></span>&nbsp;或者&nbsp;<span><a href="http://www.360doc.com/register.aspx?refer=53&reurl=showweb/0/0/358969425.aspx" onclick="InsertLogData(4);wzhitnew(46);">注册</a></span>&nbsp;后再进行评论 </div><div class=" rt360"><div style=" float:left; color:#959595; width:90px; "><div style="padding-top:4px;">其它帐号登录：</div></div><div style=" float:left ; width:70px;"><img onclick="toSNSLogin(&#39;smb&#39;);wzhitnew(47);" style="cursor:pointer;" src="./CocoaPods-制作篇_files/tb25.gif">&nbsp;&nbsp;&nbsp;<img onclick="toSNSLogin(&#39;qq&#39;);wzhitnew(48);" style="cursor:pointer;" src="./CocoaPods-制作篇_files/tb26.gif">&nbsp;&nbsp;&nbsp;<img onclick="toSNSLogin(&#39;rr&#39;);wzhitnew(49);" style="cursor:pointer;" src="./CocoaPods-制作篇_files/tb27.gif"></div> </div> </div></div></div></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td align="center" valign="top" width="18px"></td>
+                    <td align="left" valign="top" width="252px">
+                        
+
+
+<div style="height: 98px" id="artrightad1"><iframe marginwidth="0" id="Iframeadabtest" marginheight="0" frameborder="0" scrolling="no" width="0" height="0" src="about:blank" allowtransparency="true" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 300px 90px;"></iframe></div>
+
+
+    <div class="remenwz" style="height:219px;"><div class="rementop"><div class="titwx" style=" padding-top:10px; padding-left:24px;">最新文章</div></div><div class="modlist3 list" style=" padding-left:15px;"><ul><li><span><a href="http://www.360doc.com/content/15/0517/12/11029609_471191052.shtml" target="_blank" onclick="wzhitnew(51)">ssh非交互式密码授权(三)：使用...</a></span></li><li><span><a href="http://www.360doc.com/content/15/0517/11/11029609_471180277.shtml" target="_blank" onclick="wzhitnew(51)">使用git同步管理自己的网站 | ...</a></span></li><li><span><a href="http://www.360doc.com/content/15/0517/11/11029609_471179977.shtml" target="_blank" onclick="wzhitnew(51)">通过SSH创建私有git仓库 | 东东...</a></span></li><li><span><a href="http://www.360doc.com/content/15/0517/11/11029609_471177069.shtml" target="_blank" onclick="wzhitnew(51)">Ubuntu环境下SSH的安装及使用</a></span></li><li><span><a href="http://www.360doc.com/content/15/0515/17/11029609_470724472.shtml" target="_blank" onclick="wzhitnew(51)">Android学习之 移动应用<app...< a=""></app...<></a></span></li><li><a href="http://www.360doc.com/content/15/0515/17/11029609_470724472.shtml" target="_blank" onclick="wzhitnew(51)"><span></span></a><a href="http://www.360doc.com/content/15/0512/18/11029609_469982903.shtml" target="_blank" onclick="wzhitnew(51)">FragmentTabHost切换Fragment时...</a></li></ul> <div class=" rt360" style=" padding-right:23px;"><a href="http://www.360doc.com/userhome/11029609" target="_blank" onclick="wzhitnew(52);">更多</a></div></div></div>
+
+
+<div class="both" style="padding-top: 10px; height: 260px;">
+   <iframe id="ifartad1" height="0" width="0" frameborder="0" scrolling="no" src="about:blank" style="display: none !important; visibility: hidden !important; opacity: 0 !important;"></iframe>
+    <div style="height: 10px;">
+    </div>
+</div>
+
+<div class="remenwz" id="artrighthotarticle" style="width: 300px;">
+    <div class="rementop">
+        <div class="titwx" style="padding-top: 10px; padding-left: 24px;">
+            热门文章</div>
+    </div>
+    <div class="modlist3 list" style="padding-left: 15px;">
+        <ul>
+            
+                    <li><span>
+                        <a href="http://www.360doc.com/content/13/1201/22/11285146_333750164.shtml" target="_blank" onclick="wzhitnew(55)">奇难杂症立愈方</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0707/19/16884979_392694190.shtml" target="_blank" onclick="wzhitnew(55)">让阅卷老师赞叹的100个美丽句子...</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0729/06/3243271_397793328.shtml" target="_blank" onclick="wzhitnew(55)">品种最全的蛋糕制作教程----烘...</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/15/0421/09/5719126_464779403.shtml" target="_blank" onclick="wzhitnew(55)">读书读书再读书</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0526/22/9890766_381260664.shtml" target="_blank" onclick="wzhitnew(55)">网络流行歌曲45首</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/15/0109/19/7436990_439480998.shtml" target="_blank" onclick="wzhitnew(55)">【12种超好吃蒸菜的做法】简单...</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0801/16/1781451_398638904.shtml" target="_blank" onclick="wzhitnew(55)">历经千百年验证的乌发偏方验方</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/15/0122/09/5846940_442744039.shtml" target="_blank" onclick="wzhitnew(55)">挺胸长城【图】</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/1014/21/156610_417021317.shtml" target="_blank" onclick="wzhitnew(55)">图解中国特种部队格斗术</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/15/0521/09/903511_472120379.shtml" target="_blank" onclick="wzhitnew(55)">最能降服女人的十句话</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0608/15/10692060_384831872.shtml" target="_blank" onclick="wzhitnew(55)">出家师父傳传授的神奇疗效药酒...</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0909/14/380005_408147194.shtml" target="_blank" onclick="wzhitnew(55)">三招教你变成优雅的女人</a></span></li>
+                
+        </ul>
+        <div class=" rt360" style="padding-right: 23px;">
+            <a href="http://www.360doc.com/readroom.html" target="_blank" onclick="wzhitnew(56)">更多&gt;&gt;</a></div>
+    </div>
+</div>
+
+<div class="both" style="padding-top: 10px;">
+    <iframe id="ifartad2" height="0" width="0" frameborder="0" scrolling="no" src="about:blank" style="display: none !important; visibility: hidden !important; opacity: 0 !important;"></iframe>
+</div>
+<br>
+
+
+ <iframe id="ifartrightsogou" height="0" width="0" frameborder="0" scrolling="no" src="about:blank" style="display: none !important; visibility: hidden !important; opacity: 0 !important;"></iframe>
+
+
+
+<script>
+    function change(pro_name, i) {
+        var pro = document.getElementById(pro_name); 
+        var pro_arr = pro.getElementsByTagName("span");
+
+        for (var m = 0; m < pro_arr.length; m++) {
+            pro_arr[m].className = "unclecked link_black";
+        }
+        pro_arr[i].className = "checked link_bai";
+
+        if (i == 1) {
+            document.getElementById("qh_ul_1").style.display = "";
+            document.getElementById("qh_ul_0").style.display = "none";
+        }
+        else if (i == 0) {
+            document.getElementById("qh_ul_1").style.display = "none";
+            document.getElementById("qh_ul_0").style.display = "";
+        }
+    }
+</script>
+
+                        <div class="both" id="divad5" style="padding-top: 11px; zoom: 1; position: fixed; top: 55px; left: 0px;">
+                            <div id="divad4" style="">
+                                <div>
+                                    <iframe id="ifartad" height="0" width="0" frameborder="0" scrolling="no" src="about:blank" style="display: none !important; visibility: hidden !important; opacity: 0 !important;"></iframe>
+                                </div>
+                                <div class="ggwz">
+                                    <a href="javascript:void(0);" onclick="closead(2);">关闭</a>
+                                </div>
+                                <div style="height: 13px;">
+                                </div>
+                            </div>
+                            <div style="clear: both;" id="divad6">
+                                <div id="adfloatbaidu">
+                                    <iframe id="ifartadfloadbaidu" height="0" width="0" frameborder="0" scrolling="no" src="about:blank" style="display: none !important; visibility: hidden !important; opacity: 0 !important;"></iframe>
+                                </div>
+                                <div class="ggwz">
+                                    <a href="javascript:void(0);" onclick="closead(3);">关闭</a>
+                                </div>
+                                <div style="height: 13px;">
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <input type="hidden" id="docarttitle" value="CocoaPods%e8%af%a6%e8%a7%a3%e4%b9%8b----%e5%88%b6%e4%bd%9c%e7%af%87">
+    <input type="hidden" id="artreadroomid" value="0">
+    <script>var asw='%e4%bb%93%e5%ba%93+github+pods'</script>
+    <div id="docdiviframe"></div>
+
+
+    <script language="javascript" type="text/javascript">
+        var appName = navigator.appName.toLowerCase();
+        if (appName.indexOf("microsoft internet explorer") > -1) {
+            document.write("<scr" + "ipt type='text/javascript' src='http://www.360doc.com/js/StickySystemIE20130911.js?t=2015073105'></sc" + "ript>");
+        }
+        else {
+
+            document.write("<scr" + "ipt type='text/javascript' src='http://www.360doc.com/js/StickySystemOther20130911.js?t=2015073105'></sc" + "ript>");
+        }
+    </script><script type="text/javascript" src="./CocoaPods-制作篇_files/StickySystemOther20130911.js"></script>
+
+    <script>GerLookingUserInfo(1,11029609,1,0,'-1',-1,10,0);OutputSource('http%3a%2f%2fblog.csdn.net%2fwzzvictory%2farticle%2fdetails%2f20067595');OutputCategory(11029609,53,'%e3%80%8a%e5%b7%a5%e5%85%b7%e3%80%8b');OutputLastNextArt('75+Essential+Tools+for+iOS+Developers','http://www.360doc.com/content/14/0221/22/11029609_354629019.shtml',0);OutputLastNextArt('CocoaPods%e8%af%a6%e8%a7%a3%e4%b9%8b----%e4%bd%bf%e7%94%a8%e7%af%87','http://www.360doc.com/content/14/0309/10/11029609_358970353.shtml',1);</script>
+
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd86954201130d615136257dde062a503' type='text/javascript'%3E%3C/script%3E"));
+    </script><script src="./CocoaPods-制作篇_files/h.js" type="text/javascript"></script>
+
+    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6857724" src="./CocoaPods-制作篇_files/bds_s_v2.js"></script>
+
+    <script type="text/javascript">
+        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000);
+    </script>
+    <!-- Baidu Button END -->
+    <script src="./CocoaPods-制作篇_files/logger.js"></script>
+
+
+
+
+<div id="goTop2" style="left: 1466.5px; display: block;"><div id="goTop"><a href="http://www.360doc.com/content/14/0309/10/11029609_358969425.shtml#" id="go_top"></a></div><div id="goTop1"><a href="javascript:void(0);" id="go_top1"></a></div><div><div id="artweixinDiv" style="position: relative;display:none;"><div style="position: absolute; z-index: 2001;margin-left:-220px;*margin-left:-244px;!important;margin-top:-34px;*margin-top:-134px;!important;"><img src="./CocoaPods-制作篇_files/wzweixin.gif"></div></div><div id="goTop3" onmouseover="document.getElementById(&#39;artweixinDiv&#39;).style.display=&#39;&#39;;" onmouseout="document.getElementById(&#39;artweixinDiv&#39;).style.display=&#39;none&#39;;"><a href="javascript:void(0);" id="go_top3"></a></div></div></div></body></html>

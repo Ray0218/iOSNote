@@ -1,0 +1,692 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0050)http://www.jcodecraeer.com/IOS/2015/0308/2560.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK"><script src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/id.php" charset="utf-8"></script><script src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/shares.php" charset="utf-8"></script>
+
+<title>iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子</title>
+<meta name="keywords" content="字符串">
+<meta name="description" content="搜索 在一个字符串中搜索子字符串 最灵活的方法 -(NSRange)rangeOfString:(NSString*)aStringoptions:(NSStringCompareOptions)maskrange:(NSRange)searchRangelocale:(NSLocale*)locale 格式化字符串 3个方法 -initWithFormat:-initWithFormat:arguments:+s">
+<link href="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/new.css" rel="stylesheet" type="text/css">
+<script language="javascript" type="text/javascript" src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/jquery-1.7.1.min.js"></script><style type="text/css"></style>
+<script type="text/javascript" src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/shCore.js"></script>
+<script type="text/javascript" src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/shBrushJScript.js"></script>
+<link href="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/shThemeMDUltra.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/shCoreDefault.css">
+<script language="javascript" type="text/javascript" src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/myajax.js"></script>
+<script language="javascript" type="text/javascript">
+	function CheckLogin(){
+	    var taget_obj = document.getElementById('login_info');
+	    myajax = new MyAjax(taget_obj,false,false,'','','');
+	    myajax.SendGet2("/member/ajax_loginsta.php");
+	    DedeXHTTP = null;
+	}
+	function checkSubmit(){
+		if(document.feedback.msg.value!='') document.feedback.submit();
+		else alert("评论内容不能为空！");
+	}		
+
+	function postBadGood(ftype,fid)
+	{
+		var taget_obj = document.getElementById(ftype+fid);
+		var saveid = GetCookie('badgoodid');
+		if(saveid != null)
+		{
+			var saveids = saveid.split(',');
+			var hasid = false;
+			saveid = '';
+			j = 1;
+			for(i=saveids.length-1;i>=0;i--)
+			{
+				if(saveids[i]==fid && hasid) continue;
+				else {
+					if(saveids[i]==fid && !hasid) hasid = true;
+					saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+					j++;
+					if(j==10 && hasid) break;
+					if(j==9 && !hasid) break;
+				}
+			}
+			if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+			else saveid += ','+fid;
+			SetCookie('badgoodid',saveid,1);
+		}
+		else
+		{
+			SetCookie('badgoodid',fid,1);
+		}
+		myajax = new MyAjax(taget_obj,false,false,'','','');
+		myajax.SendGet2("/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+	}
+	function postStow(aid)
+	{
+		var taget_obj = document.getElementById('newdigg');
+ 
+		myajax = new MyAjax(taget_obj,false,false,'','','');
+		myajax.SendGet2("/plus/stow.php?aid="+aid);
+	}
+	function postDigg(ftype,aid)
+	{
+		var taget_obj = document.getElementById('newdigg');
+		var saveid = GetCookie('diggid');
+		if(saveid != null)
+		{
+			var saveids = saveid.split(',');
+			var hasid = false;
+			saveid = '';
+			j = 1;
+			for(i=saveids.length-1;i>=0;i--)
+			{
+				if(saveids[i]==aid && hasid) continue;
+				else {
+					if(saveids[i]==aid && !hasid) hasid = true;
+					saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+					j++;
+					if(j==20 && hasid) break;
+					if(j==19 && !hasid) break;
+				}
+			}
+			if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+			else saveid += ','+aid;
+			SetCookie('diggid',saveid,1);
+		}
+		else
+		{
+			SetCookie('diggid',aid,1);
+		}
+		myajax = new MyAjax(taget_obj,false,false,'','','');
+		var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+		myajax.SendGet2(url);
+	}
+	function getDigg(aid)
+	{
+		var taget_obj = document.getElementById('newdigg');
+		myajax = new MyAjax(taget_obj,false,false,'','','');
+		myajax.SendGet2("/plus/digg_ajax.php?id="+aid);
+		DedeXHTTP = null;
+	} 
+	jQuery(document).ready(function($) {
+	    SyntaxHighlighter.all(); 
+	
+	   //注意最后的@me必须要加两重引号，不然js语法会出错
+	   var htmlstr =  '';
+	   $(".arc_body").prepend(htmlstr); 
+	});
+			
+</script>
+
+</head>
+<body><link href="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/jiathis_counter.css" rel="stylesheet" type="text/css"><link href="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/jiathis_share.css" rel="stylesheet" type="text/css"><iframe frameborder="0" style="position: absolute; display: none; opacity: 0;"></iframe><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; top: 50%; left: 50%; overflow: auto;"></div><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; overflow: auto;"></div><iframe frameborder="0" src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/jiathis_utility.html" style="display: none;"></iframe>
+
+<div class="header" id="header">
+	<div class="container clearfix">
+		<a href="http://www.jcodecraeer.com/" class="logo"><img width="181" src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/logo.png"><em></em></a>
+		<ul class="header-nav">
+		  <li class="item"><a href="http://www.jcodecraeer.com/" class="trigger">首页</a></li>
+		  <li class="item"><a href="http://www.jcodecraeer.com/plus/list.php?tid=31" class="trigger">代码</a></li>
+	 
+		  <li class="item"><a href="http://www.jcodecraeer.com/ask" class="trigger">问答</a></li>
+		  <li class="item"><a href="http://www.jcodecraeer.com/tags.php" class="trigger">标签</a></li>
+          <li class="item"><a href="http://www.jcodecraeer.com/about.html" class="trigger">关于</a></li>		  
+		</ul>
+        <div class="search-con">
+			<form class="search-form" action="http://www.jcodecraeer.com/plus/search.php" method="get">
+			  <input type="hidden" name="kwtype" value="0">
+			  <input class="search-input" value="" name="q" placeholder="search" type="text">
+			  <input class="search-btn" value="" id="searchbtn" type="submit">
+			</form>
+		</div>
+
+		<div class="appdownload-btn">
+		  <a href="http://www.jcodecraeer.com/appdown.html"> <span class="glyphicon glyphicon-cloud-download"></span> <span class="glyphicon-class">客户端</span></a>
+		</div>
+
+		<div class="user-status-bar" id="login_info">
+			<a href="http://www.jcodecraeer.com/member/login.php" class="status-item  sign-status-item" id="signin-status-item">登录</a>
+			<a href="http://www.jcodecraeer.com/member/reg_new.php" class="status-item sign-status-item" id="signup-status-item">注册</a>
+		</div>
+		<script language="javascript" type="text/javascript">CheckLogin();</script>
+	</div> 
+
+</div>
+
+  
+
+
+<div class="container main">
+	<div class="row">
+
+        <div id="" class="auto_left">
+            <div class="real_left">
+				<div class="arc_position">
+					<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>  当前位置: <a href="http://www.jcodecraeer.com/">主页</a> &gt; <a href="http://www.jcodecraeer.com/plus/list.php?tid=27">IOS开发</a> &gt; <a href="http://www.jcodecraeer.com/plus/list.php?tid=30">文章教程</a> &gt; 
+				</div>				
+                <div class="articlecon clearfix">
+					<h1 class="title">iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器)</h1>
+					<div class="subinfo clearfix">              
+							 泡在网上的日子  发表于 2015-03-08 10:57   
+							<span>第</span> 
+						<script src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/count.php" type="text/javascript" language="javascript"></script>395 
+						<span>次阅读</span>
+						<span class="tags" id="arc_tags">                            
+							<a href="http://www.jcodecraeer.com/tags.php?/%D7%D6%B7%FB%B4%AE/" class="tag">字符串</a>
+						 </span>
+						<script src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/is_admin.php" type="text/javascript" language="javascript"> </script>  
+					</div>
+					<!-- JiaThis Button BEGIN -->
+					<div class="jiathis_style" style=" height:30px; width:180px; margin:auto;text-align:center;">
+						<a class="jiathis_button_qzone" title="分享到QQ空间"><span class="jiathis_txt jtico jtico_qzone"></span></a>
+						<a class="jiathis_button_tsina" title="分享到新浪微博"><span class="jiathis_txt jtico jtico_tsina"></span></a>
+						<a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jiathis_txt jtico jtico_tqq"></span></a>
+						<a class="jiathis_button_weixin" title="分享到微信"><span class="jiathis_txt jtico jtico_weixin"></span></a>
+						<a class="jiathis_button_renren" title="分享到人人网"><span class="jiathis_txt jtico jtico_renren"></span></a>
+						<a class="jiathis_button_xiaoyou" title="分享到朋友网"><span class="jiathis_txt jtico jtico_xiaoyou"></span></a>
+						<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+						<a class="jiathis_counter_style"><span class="jiathis_button_expanded jiathis_counter jiathis_bubble_style" id="jiathis_counter_21" title="累计分享0次">0</span></a>
+					</div>
+					<script type="text/javascript" src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/jia.js" charset="utf-8"></script><script type="text/javascript" src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/plugin.client.js" charset="utf-8"></script>
+					<!-- JiaThis Button END -->
+					<!-- 谷歌横幅广告 -->
+					<div style="text-align:center;">						
+						<script src="http://www.jcodecraeer.com/plus/ad_js.php?aid=23" language="javascript"></script>
+					</div>
+					<!-- 谷歌横幅广告结束 -->
+					<div id="main_richtext">                         
+						<div class="arc_body"> 
+						 <h1>搜索</h1><h2>在一个字符串中搜索子字符串</h2><ul class="task-list list-paddingleft-2"><li><p>最灵活的方法</p></li></ul><div><div id="highlighter_909095" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">-&nbsp;(NSRange)rangeOfString:(NSString&nbsp;*)aString&nbsp;options:(NSStringCompareOptions)mask&nbsp;range:(NSRange)searchRange&nbsp;locale:(NSLocale&nbsp;*)locale</code></div></div></td></tr></tbody></table></div></div><h1>格式化字符串</h1><ul class="task-list list-paddingleft-2"><li><p>3个方法</p></li></ul><div><div id="highlighter_970025" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">-initWithFormat:</code></div><div class="line number2 index1 alt1"><code class="js plain">-initWithFormat:arguments:</code></div><div class="line number3 index2 alt2"><code class="js plain">+stringWithFormat:</code></div></div></td></tr></tbody></table></div></div><h1>整数</h1><ul class="task-list list-paddingleft-2"><li><p>可以同时工作在32位和64位的</p></li></ul><div><div id="highlighter_647217" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">uint64_t&nbsp;p&nbsp;=&nbsp;2305843009213693951;</code></div><div class="line number2 index1 alt1"><code class="js plain">NSString&nbsp;*s&nbsp;=&nbsp;[NSString&nbsp;stringWithFormat:@</code><code class="js string">"The&nbsp;ninth&nbsp;Mersenne&nbsp;prime&nbsp;is&nbsp;%llu"</code><code class="js plain">,&nbsp;(unsigned&nbsp;long&nbsp;long)&nbsp;p];</code></div><div class="line number3 index2 alt2"><code class="js comments">//&nbsp;"The&nbsp;ninth&nbsp;Mersenne&nbsp;prime&nbsp;is&nbsp;2305843009213693951"</code></div></div></td></tr></tbody></table></div></div><table><thead><tr class="firstRow"><th align="left">Modifier</th><th align="left">d, i</th><th align="right">o, u, x, X</th></tr></thead><tbody><tr><td align="left">hh</td><td align="left">signed char</td><td align="right">unsigned char</td></tr><tr><td align="left">h</td><td align="left">short</td><td align="right">unsigned short</td></tr><tr><td align="left">(none)</td><td align="left">int</td><td align="right">unsigned int</td></tr><tr><td align="left">l(ell)</td><td align="left">long</td><td align="right">unsigned long</td></tr><tr><td align="left">j</td><td align="left">intmax_t</td><td align="right">uintmax_t</td></tr><tr><td align="left">t</td><td align="left">ptrdiff_t</td><td align="right"><br></td></tr><tr><td align="left">z</td><td align="left"><br></td><td align="right">size_t</td></tr></tbody></table><ul class="task-list list-paddingleft-2"><li><p>转换规则</p></li></ul><div><div id="highlighter_585724" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">int&nbsp;m&nbsp;=&nbsp;-150004021;</code></div><div class="line number2 index1 alt1"><code class="js plain">uint&nbsp;n&nbsp;=&nbsp;150004021U;</code></div><div class="line number3 index2 alt2"><code class="js plain">NSString&nbsp;*s&nbsp;=&nbsp;[NSString&nbsp;stringWithFormat:@</code><code class="js string">"d:%d&nbsp;i:%i&nbsp;o:%o&nbsp;u:%u&nbsp;x:%x&nbsp;X:%X"</code><code class="js plain">,&nbsp;m,&nbsp;m,&nbsp;n,&nbsp;n,&nbsp;n,&nbsp;n];</code></div><div class="line number4 index3 alt1"><code class="js comments">//&nbsp;"d:-150004021&nbsp;i:-150004021&nbsp;o:1074160465&nbsp;u:150004021&nbsp;x:8f0e135&nbsp;X:8F0E135"</code></div><div class="line number5 index4 alt2"><code class="js comments">//o是八进制</code></div></div></td></tr></tbody></table></div></div><ul class="task-list list-paddingleft-2"><li><p>设置最小字段宽度和最小数字位数</p></li></ul><div><div id="highlighter_504448" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">int&nbsp;m&nbsp;=&nbsp;42;</code></div><div class="line number2 index1 alt1"><code class="js plain">NSString&nbsp;*s&nbsp;=&nbsp;[NSString&nbsp;stringWithFormat:@</code><code class="js string">"'%4d'&nbsp;'%-4d'&nbsp;'%+4d'&nbsp;'%4.3d'&nbsp;'%04d'"</code><code class="js plain">,&nbsp;m,&nbsp;m,&nbsp;m,&nbsp;m,&nbsp;m];</code></div><div class="line number3 index2 alt2"><code class="js comments">//&nbsp;"[&nbsp;42]&nbsp;[42&nbsp;]&nbsp;[&nbsp;+42]&nbsp;[&nbsp;042]&nbsp;[0042]"</code></div><div class="line number4 index3 alt1"><code class="js plain">m&nbsp;=&nbsp;-42;</code></div><div class="line number5 index4 alt2"><code class="js plain">NSString&nbsp;*s&nbsp;=&nbsp;[NSString&nbsp;stringWithFormat:@</code><code class="js string">"'%4d'&nbsp;'%-4d'&nbsp;'%+4d'&nbsp;'%4.3d'&nbsp;'%04d'"</code><code class="js plain">,&nbsp;m,&nbsp;m,&nbsp;m,&nbsp;m,&nbsp;m];</code></div><div class="line number6 index5 alt1"><code class="js comments">//&nbsp;"[&nbsp;-42]&nbsp;[-42&nbsp;]&nbsp;[&nbsp;-42]&nbsp;[-042]&nbsp;[-042]"</code></div></div></td></tr></tbody></table></div></div><ul class="task-list list-paddingleft-2"><li><p>%p可打印指针，和%#x不同的是它可以同时在32位和64位执行</p></li></ul><h1>浮点数</h1><ul class="task-list list-paddingleft-2"><li><p>使用%f和%g</p></li></ul><div><div id="highlighter_219888" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">double&nbsp;v[5]&nbsp;=&nbsp;{12345,&nbsp;12,&nbsp;0.12,&nbsp;0.12345678901234,&nbsp;0.0000012345678901234};</code></div><div class="line number2 index1 alt1"><code class="js plain">NSString&nbsp;*s&nbsp;=&nbsp;[NSString&nbsp;stringWithFormat:@</code><code class="js string">"%g&nbsp;%g&nbsp;%g&nbsp;%g&nbsp;%g"</code><code class="js plain">,&nbsp;v[0],&nbsp;v[1],&nbsp;v[2],&nbsp;v[3],&nbsp;v[4]];</code></div><div class="line number3 index2 alt2"><code class="js comments">//&nbsp;"12345&nbsp;12&nbsp;0.12&nbsp;0.123457&nbsp;1.23457e-06"</code></div><div class="line number4 index3 alt1"><code class="js plain">NSString&nbsp;*s&nbsp;=&nbsp;[NSString&nbsp;stringWithFormat:@</code><code class="js string">"%f&nbsp;%f&nbsp;%f&nbsp;%f&nbsp;%f"</code><code class="js plain">,&nbsp;v[0],&nbsp;v[1],&nbsp;v[2],&nbsp;v[3],&nbsp;v[4]];</code></div><div class="line number5 index4 alt2"><code class="js comments">//&nbsp;"12345.000000&nbsp;12.000000&nbsp;0.120000&nbsp;0.123457&nbsp;0.000001"</code></div></div></td></tr></tbody></table></div></div><h1>多行文字</h1><ul class="task-list list-paddingleft-2"><li><p>使用
+来</p></li></ul><div><div id="highlighter_559873" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSString&nbsp;*limerick&nbsp;=&nbsp;@</code><code class="js string">"A&nbsp;lively&nbsp;young&nbsp;damsel&nbsp;named&nbsp;Menzies</code></div><div class="line number2 index1 alt1"><code class="js string">"</code></div><div class="line number3 index2 alt2"><code class="js plain">@</code><code class="js string">"Inquired:&nbsp;&#171;Do&nbsp;you&nbsp;know&nbsp;what&nbsp;this&nbsp;thenzies?&#187;</code></div><div class="line number4 index3 alt1"><code class="js string">"</code></div><div class="line number5 index4 alt2"><code class="js plain">@</code><code class="js string">"Her&nbsp;aunt,&nbsp;with&nbsp;a&nbsp;gasp,</code></div><div class="line number6 index5 alt1"><code class="js string">"</code></div><div class="line number7 index6 alt2"><code class="js plain">@</code><code class="js string">"Replied:&nbsp;"</code><code class="js plain">It</code><code class="js string">'s&nbsp;a&nbsp;wasp,</code></div><div class="line number8 index7 alt1"><code class="js string">"</code></div><div class="line number9 index8 alt2"><code class="js string">@"And&nbsp;you'</code><code class="js plain">re&nbsp;holding&nbsp;the&nbsp;end&nbsp;where&nbsp;the&nbsp;stenzies.</code></div><div class="line number10 index9 alt1"><code class="js plain">";</code></div></div></td></tr></tbody></table></div></div><ul class="task-list list-paddingleft-2"><li><p>等价写法</p></li></ul><div><div id="highlighter_340432" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSString&nbsp;*limerick&nbsp;=&nbsp;@</code><code class="js string">"A&nbsp;lively&nbsp;young&nbsp;damsel&nbsp;named&nbsp;Menzies</code></div><div class="line number2 index1 alt1"><code class="js string">Inquired:&nbsp;&#171;Do&nbsp;you&nbsp;know&nbsp;what&nbsp;this&nbsp;thenzies?&#187;</code></div><div class="line number3 index2 alt2"><code class="js string">Her&nbsp;aunt,&nbsp;with&nbsp;a&nbsp;gasp,</code></div><div class="line number4 index3 alt1"><code class="js string">Replied:&nbsp;"</code><code class="js plain">It</code><code class="js string">'s&nbsp;a&nbsp;wasp,</code></div><div class="line number5 index4 alt2"><code class="js string">And&nbsp;you'</code><code class="js plain">re&nbsp;holding&nbsp;the&nbsp;end&nbsp;where&nbsp;the&nbsp;stenzies.</code></div><div class="line number6 index5 alt1"><code class="js plain">";</code></div></div></td></tr></tbody></table></div></div><p>更简洁的方法</p><div><div id="highlighter_991245" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSString&nbsp;*&nbsp;string&nbsp;=&nbsp;@</code><code class="js string">"The&nbsp;man&nbsp;"</code>&nbsp;<code class="js plain">@</code><code class="js string">"who&nbsp;knows&nbsp;everything&nbsp;"</code>&nbsp;<code class="js plain">@</code><code class="js string">"learns&nbsp;nothing"</code>&nbsp;<code class="js plain">@</code><code class="js string">"."</code><code class="js plain">;</code></div></div></td></tr></tbody></table></div></div><h1>替换字符串</h1><ul class="task-list list-paddingleft-2"><li><p>NSMutableString的四个方法</p></li></ul><div><div id="highlighter_177091" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">-deleteCharactersInRange:</code></div><div class="line number2 index1 alt1"><code class="js plain">-insertString:atIndex:</code></div><div class="line number3 index2 alt2"><code class="js plain">-replaceCharactersInRange:withString:</code></div><div class="line number4 index3 alt1"><code class="js plain">-replaceOccurrencesOfString:withString:options:range:</code></div></div></td></tr></tbody></table></div></div><p>NSString的方法</p><div><div id="highlighter_993512" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">-stringByReplacingOccurrencesOfString:withString:</code></div><div class="line number2 index1 alt1"><code class="js plain">-stringByReplacingOccurrencesOfString:withString:options:range:</code></div><div class="line number3 index2 alt2"><code class="js plain">-stringByReplacingCharactersInRange:withString:</code></div></div></td></tr></tbody></table></div></div><p>NSMutableString不会创建新字符串，性能会好点</p><div><div id="highlighter_849307" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSMutableString&nbsp;*string;&nbsp;</code><code class="js comments">//&nbsp;假设我们已经有了一个名为&nbsp;string&nbsp;的字符串</code></div><div class="line number2 index1 alt1"><code class="js comments">//&nbsp;现在要去掉它的一个前缀，做法如下:</code></div><div class="line number3 index2 alt2"><code class="js plain">NSString&nbsp;*prefix&nbsp;=&nbsp;@</code><code class="js string">"WeDon’tWantThisPrefix"</code></div><div class="line number4 index3 alt1"><code class="js plain">NSRange&nbsp;r&nbsp;=&nbsp;[string&nbsp;rangeOfString:prefix&nbsp;options:NSAnchoredSearch&nbsp;range:NSMakeRange(0,&nbsp;string.length)&nbsp;locale:nil];</code></div><div class="line number5 index4 alt2"><code class="js keyword">if</code>&nbsp;<code class="js plain">(r.location&nbsp;!=&nbsp;NSNotFound)&nbsp;{</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[string&nbsp;deleteCharactersInRange:r];</code></div><div class="line number7 index6 alt2"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><h1>连接字符串</h1><div><div id="highlighter_228035" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSArray&nbsp;*names&nbsp;=&nbsp;@[</code><code class="js string">"Hildr"</code><code class="js plain">,&nbsp;@</code><code class="js string">"Heidrun"</code><code class="js plain">,&nbsp;@</code><code class="js string">"Gerd"</code><code class="js plain">,&nbsp;@</code><code class="js string">"Guerún"</code><code class="js plain">,&nbsp;@</code><code class="js string">"Freya"</code><code class="js plain">,&nbsp;@</code><code class="js string">"Nanna"</code><code class="js plain">,&nbsp;@</code><code class="js string">"Siv"</code><code class="js plain">,&nbsp;@</code><code class="js string">"Skaei"</code><code class="js plain">,&nbsp;@</code><code class="js string">"Gróa"</code><code class="js plain">];</code></div><div class="line number2 index1 alt1"><code class="js plain">NSString&nbsp;*result&nbsp;=&nbsp;[names&nbsp;componentsJoinedByString:@</code><code class="js string">",&nbsp;"</code><code class="js plain">];</code></div></div></td></tr></tbody></table></div></div><h1>字符串解析</h1><h2>正则表达式</h2><div><div id="highlighter_566667" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSError&nbsp;*error&nbsp;=&nbsp;nil;</code></div><div class="line number2 index1 alt1"><code class="js plain">NSString&nbsp;*pattern&nbsp;=&nbsp;@</code><code class="js string">"(\w+)&nbsp;=&nbsp;#(\p{Hex_Digit}{6})"</code><code class="js plain">;</code></div><div class="line number3 index2 alt2"><code class="js plain">NSRegularExpression&nbsp;*expression&nbsp;=&nbsp;[NSRegularExpression&nbsp;regularExpressionWithPattern:pattern</code></div><div class="line number4 index3 alt1"><code class="js plain">options:0</code></div><div class="line number5 index4 alt2"><code class="js plain">error:&amp;error];</code></div><div class="line number6 index5 alt1"><code class="js plain">NSTextCheckingResult&nbsp;*result&nbsp;=&nbsp;[expression&nbsp;firstMatchInString:string</code></div><div class="line number7 index6 alt2"><code class="js plain">options:0</code></div><div class="line number8 index7 alt1"><code class="js plain">range:NSMakeRange(0,&nbsp;string.length)];</code></div><div class="line number9 index8 alt2"><code class="js plain">NSString&nbsp;*key&nbsp;=&nbsp;[string&nbsp;substringWithRange:[result&nbsp;rangeAtIndex:1]];</code></div><div class="line number10 index9 alt1"><code class="js plain">NSString&nbsp;*value&nbsp;=&nbsp;[string&nbsp;substringWithRange:[result&nbsp;rangeAtIndex:2]];</code></div></div></td></tr></tbody></table></div></div><p>将字符串分解成数组，使用componentsSeparatedByString:这个方法，或者
+enumerateSubstringsInRange:options:usingBlock:。如果是按照行来进行分解可以使用option这个参数
+传NSStringEnumerationByLines</p><div><div id="highlighter_44394" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSString&nbsp;*input&nbsp;=&nbsp;@“</code></div><div class="line number2 index1 alt1"><code class="js plain">backgroundColor&nbsp;=&nbsp;</code><code class="js preprocessor">#ff0000</code></div><div class="line number3 index2 alt2"><code class="js plain">textColor&nbsp;=&nbsp;</code><code class="js preprocessor">#0000ff</code></div><div class="line number4 index3 alt1"><code class="js string">"</code></div><div class="line number5 index4 alt2"><code class="js string">NSString&nbsp;*pattern&nbsp;=&nbsp;@"</code><code class="js plain">(\w+)&nbsp;=&nbsp;</code><code class="js preprocessor">#([\da-f]{6})";</code></div><div class="line number6 index5 alt1"><code class="js plain">NSRegularExpression&nbsp;*expression&nbsp;=&nbsp;[NSRegularExpression&nbsp;regularExpressionWithPattern:pattern</code></div><div class="line number7 index6 alt2"><code class="js plain">options:0</code></div><div class="line number8 index7 alt1"><code class="js plain">error:NULL];</code></div><div class="line number9 index8 alt2"><code class="js plain">NSArray&nbsp;*lines&nbsp;=&nbsp;[input&nbsp;componentsSeparatedByCharactersInSet:[NSCharacterSet&nbsp;newlineCharacterSet]];</code></div><div class="line number10 index9 alt1"><code class="js plain">NSMutableDictionary&nbsp;*result&nbsp;=&nbsp;[NSMutableDictionary&nbsp;dictionary];</code></div><div class="line number11 index10 alt2"><code class="js keyword">for</code>&nbsp;<code class="js plain">(NSString&nbsp;*line&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">lines)&nbsp;{</code></div><div class="line number12 index11 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSTextCheckingResult&nbsp;*textCheckingResult&nbsp;=&nbsp;[expression&nbsp;firstMatchInString:line</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">options:0</code></div><div class="line number14 index13 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">range:NSMakeRange(0,&nbsp;line.length)];</code></div><div class="line number15 index14 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSString*&nbsp;key&nbsp;=&nbsp;[line&nbsp;substringWithRange:[textCheckingResult&nbsp;rangeAtIndex:1]];</code></div><div class="line number16 index15 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSString*&nbsp;value&nbsp;=&nbsp;[line&nbsp;substringWithRange:[textCheckingResult&nbsp;rangeAtIndex:2]];</code></div><div class="line number17 index16 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">result[key]&nbsp;=&nbsp;value;</code></div><div class="line number18 index17 alt1"><code class="js plain">}</code></div><div class="line number19 index18 alt2"><code class="js keyword">return</code>&nbsp;<code class="js plain">result;</code></div></div></td></tr></tbody></table></div></div><h2>扫描</h2><ul class="task-list list-paddingleft-2"><li><p>NSScanner</p></li></ul><div><div id="highlighter_468258" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSScanner&nbsp;*scanner&nbsp;=&nbsp;[NSScanner&nbsp;scannerWithString:string];</code></div><div class="line number2 index1 alt1"><code class="js comments">//默认情况下，扫描器会跳过所有空格符和换行符。但这里我们只希望跳过空格符</code></div><div class="line number3 index2 alt2"><code class="js plain">scanner.charactersToBeSkipped&nbsp;=&nbsp;[NSCharacterSet&nbsp;whitespaceCharacterSet];</code></div><div class="line number4 index3 alt1"><code class="js comments">//定义一个十六进制字符集</code></div><div class="line number5 index4 alt2"><code class="js plain">NSCharacterSet&nbsp;*hexadecimalCharacterSet&nbsp;=</code></div><div class="line number6 index5 alt1"><code class="js plain">[NSCharacterSet&nbsp;characterSetWithCharactersInString:@</code><code class="js string">"0123456789abcdefABCDEF"</code><code class="js plain">];</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="js plain">NSMutableDictionary&nbsp;*result&nbsp;=&nbsp;[NSMutableDictionary&nbsp;dictionary];</code></div><div class="line number9 index8 alt2"><code class="js keyword">while</code>&nbsp;<code class="js plain">(!scanner.isAtEnd)&nbsp;{</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSString&nbsp;*key&nbsp;=&nbsp;nil;</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSString&nbsp;*value&nbsp;=&nbsp;nil;</code></div><div class="line number12 index11 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSCharacterSet&nbsp;*letters&nbsp;=&nbsp;[NSCharacterSet&nbsp;letterCharacterSet];</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">BOOL&nbsp;didScan&nbsp;=&nbsp;[scanner&nbsp;scanCharactersFromSet:letters&nbsp;intoString:&amp;key]&nbsp;&amp;&amp;</code></div><div class="line number14 index13 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[scanner&nbsp;scanString:@</code><code class="js string">"="</code>&nbsp;<code class="js plain">intoString:NULL]&nbsp;&amp;&amp;</code></div><div class="line number15 index14 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[scanner&nbsp;scanString:@</code><code class="js string">"#"</code>&nbsp;<code class="js plain">intoString:NULL]&nbsp;&amp;&amp;</code></div><div class="line number16 index15 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[scanner&nbsp;scanCharactersFromSet:hexadecimalCharacterSet&nbsp;intoString:&amp;value]&nbsp;&amp;&amp;</code></div><div class="line number17 index16 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">value.length&nbsp;==&nbsp;6;</code></div><div class="line number18 index17 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">result[key]&nbsp;=&nbsp;value;</code></div><div class="line number19 index18 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[scanner&nbsp;scanCharactersFromSet:[NSCharacterSet&nbsp;newlineCharacterSet]</code></div><div class="line number20 index19 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">intoString:NULL];&nbsp;</code><code class="js comments">//&nbsp;继续扫描下一行</code></div><div class="line number21 index20 alt2"><code class="js plain">}</code></div><div class="line number22 index21 alt1"><code class="js keyword">return</code>&nbsp;<code class="js plain">result;</code></div></div></td></tr></tbody></table></div></div><h2>解析器</h2><ul class="task-list list-paddingleft-2"><li><p>设计一个能够用(100,0,255)或者#ff0000这样的字符来定义颜色的方法。</p></li></ul><div><div id="highlighter_495887" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div><div class="line number41 index40 alt2">41</div><div class="line number42 index41 alt1">42</div><div class="line number43 index42 alt2">43</div><div class="line number44 index43 alt1">44</div><div class="line number45 index44 alt2">45</div><div class="line number46 index45 alt1">46</div><div class="line number47 index46 alt2">47</div><div class="line number48 index47 alt1">48</div><div class="line number49 index48 alt2">49</div><div class="line number50 index49 alt1">50</div><div class="line number51 index50 alt2">51</div><div class="line number52 index51 alt1">52</div><div class="line number53 index52 alt2">53</div><div class="line number54 index53 alt1">54</div><div class="line number55 index54 alt2">55</div><div class="line number56 index55 alt1">56</div><div class="line number57 index56 alt2">57</div><div class="line number58 index57 alt1">58</div><div class="line number59 index58 alt2">59</div><div class="line number60 index59 alt1">60</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">-&nbsp;(NSDictionary&nbsp;*)parse:(NSString&nbsp;*)string&nbsp;error:(NSError&nbsp;**)error</code></div><div class="line number2 index1 alt1"><code class="js plain">{</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">self.scanner&nbsp;=&nbsp;[NSScanner&nbsp;scannerWithString:string];</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">self.scanner.charactersToBeSkipped&nbsp;=&nbsp;[NSCharacterSet&nbsp;whitespaceCharacterSet];</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSMutableDictionary&nbsp;*result&nbsp;=&nbsp;[NSMutableDictionary&nbsp;dictionary];</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSCharacterSet&nbsp;*letters&nbsp;=&nbsp;[NSCharacterSet&nbsp;letterCharacterSet]</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">while</code>&nbsp;<code class="js plain">(!self.scanner.isAtEnd)&nbsp;{</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSString&nbsp;*key&nbsp;=&nbsp;nil;</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">UIColor&nbsp;*value&nbsp;=&nbsp;nil;</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">BOOL&nbsp;didScan&nbsp;=&nbsp;[self.scanner&nbsp;scanCharactersFromSet:letters&nbsp;intoString:&amp;key]&nbsp;&amp;&amp;</code></div><div class="line number12 index11 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self.scanner&nbsp;scanString:@</code><code class="js string">"="</code>&nbsp;<code class="js plain">intoString:NULL]&nbsp;&amp;&amp;</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;scanColor:&amp;value];</code></div><div class="line number14 index13 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">result[key]&nbsp;=&nbsp;value;</code></div><div class="line number15 index14 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self.scanner&nbsp;scanCharactersFromSet:[NSCharacterSet&nbsp;newlineCharacterSet]</code></div><div class="line number16 index15 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">intoString:NULL];&nbsp;</code><code class="js comments">//&nbsp;继续扫描下一行</code></div><div class="line number17 index16 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number18 index17 alt1"><code class="js plain">}</code></div><div class="line number19 index18 alt2">&nbsp;</div><div class="line number20 index19 alt1"><code class="js plain">-&nbsp;(BOOL)scanColor:(UIColor&nbsp;**)out</code></div><div class="line number21 index20 alt2"><code class="js plain">{</code></div><div class="line number22 index21 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">[self&nbsp;scanHexColorIntoColor:out]&nbsp;||&nbsp;[self&nbsp;scanTupleColorIntoColor:out];</code></div><div class="line number23 index22 alt2"><code class="js plain">}</code></div><div class="line number24 index23 alt1">&nbsp;</div><div class="line number25 index24 alt2"><code class="js comments">//扫描设置#ff0000这样的</code></div><div class="line number26 index25 alt1"><code class="js plain">-&nbsp;(BOOL)scanHexColorIntoColor:(UIColor&nbsp;**)out</code></div><div class="line number27 index26 alt2"><code class="js plain">{</code></div><div class="line number28 index27 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSCharacterSet&nbsp;*hexadecimalCharacterSet&nbsp;=</code></div><div class="line number29 index28 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[NSCharacterSet&nbsp;characterSetWithCharactersInString:@</code><code class="js string">"0123456789abcdefABCDEF"</code><code class="js plain">];</code></div><div class="line number30 index29 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSString&nbsp;*colorString&nbsp;=&nbsp;NULL;</code></div><div class="line number31 index30 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">([self.scanner&nbsp;scanString:@</code><code class="js string">"#"</code>&nbsp;<code class="js plain">intoString:NULL]&nbsp;&amp;&amp;</code></div><div class="line number32 index31 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self.scanner&nbsp;scanCharactersFromSet:hexadecimalCharacterSet</code></div><div class="line number33 index32 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">intoString:&amp;colorString]&nbsp;&amp;&amp;</code></div><div class="line number34 index33 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">colorString.length&nbsp;==&nbsp;6)&nbsp;{</code></div><div class="line number35 index34 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">*out&nbsp;=&nbsp;[UIColor&nbsp;colorWithHexString:colorString];</code></div><div class="line number36 index35 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">YES;</code></div><div class="line number37 index36 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number38 index37 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">NO;</code></div><div class="line number39 index38 alt2"><code class="js plain">}</code></div><div class="line number40 index39 alt1">&nbsp;</div><div class="line number41 index40 alt2"><code class="js plain">-&nbsp;(BOOL)scanTupleColorIntoColor:(UIColor&nbsp;**)out</code></div><div class="line number42 index41 alt1"><code class="js plain">{</code></div><div class="line number43 index42 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSInteger&nbsp;red,&nbsp;green,&nbsp;blue&nbsp;=&nbsp;0;</code></div><div class="line number44 index43 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">BOOL&nbsp;didScan&nbsp;=&nbsp;[self.scanner&nbsp;scanString:@</code><code class="js string">"("</code>&nbsp;<code class="js plain">intoString:NULL]&nbsp;&amp;&amp;</code></div><div class="line number45 index44 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self.scanner&nbsp;scanInteger:&amp;red]&nbsp;&amp;&amp;</code></div><div class="line number46 index45 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self.scanner&nbsp;scanString:@</code><code class="js string">","</code>&nbsp;<code class="js plain">intoString:NULL]&nbsp;&amp;&amp;</code></div><div class="line number47 index46 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self.scanner&nbsp;scanInteger:&amp;green]&nbsp;&amp;&amp;</code></div><div class="line number48 index47 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self.scanner&nbsp;scanString:@</code><code class="js string">","</code>&nbsp;<code class="js plain">intoString:NULL]&nbsp;&amp;&amp;</code></div><div class="line number49 index48 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self.scanner&nbsp;scanInteger:&amp;blue]&nbsp;&amp;&amp;</code></div><div class="line number50 index49 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self.scanner&nbsp;scanString:@</code><code class="js string">")"</code>&nbsp;<code class="js plain">intoString:NULL];</code></div><div class="line number51 index50 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(didScan)&nbsp;{</code></div><div class="line number52 index51 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">*out&nbsp;=&nbsp;[UIColor&nbsp;colorWithRed:(CGFloat)red/255.</code></div><div class="line number53 index52 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">green:(CGFloat)green/255.</code></div><div class="line number54 index53 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">blue:(CGFloat)blue/255.</code></div><div class="line number55 index54 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">alpha:1];</code></div><div class="line number56 index55 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">YES;</code></div><div class="line number57 index56 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}&nbsp;</code><code class="js keyword">else</code>&nbsp;<code class="js plain">{</code></div><div class="line number58 index57 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">NO;</code></div><div class="line number59 index58 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number60 index59 alt1"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><h1>符号化处理</h1><p>先进星扫描，使用NSScanner来解析这个表达式</p><div><div id="highlighter_847513" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myView.left&nbsp;=&nbsp;otherView.right&nbsp;*&nbsp;2&nbsp;+&nbsp;10</code></div><div class="line number2 index1 alt1"><code class="js plain">viewController.view.centerX&nbsp;+&nbsp;myConstant&nbsp;&lt;=&nbsp;self.view.centerX</code></div></div></td></tr></tbody></table></div></div><div><div id="highlighter_627450" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSScanner&nbsp;*scanner&nbsp;=&nbsp;[NSScanner&nbsp;scannerWithString:contents];</code></div><div class="line number2 index1 alt1"><code class="js plain">NSMutableArray&nbsp;*tokens&nbsp;=&nbsp;[NSMutableArray&nbsp;array];</code></div><div class="line number3 index2 alt2"><code class="js keyword">while</code>&nbsp;<code class="js plain">(![scanner&nbsp;isAtEnd])&nbsp;{</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">for</code>&nbsp;<code class="js plain">(NSString&nbsp;*operator&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">@[@</code><code class="js string">"="</code><code class="js plain">,&nbsp;@</code><code class="js string">"+"</code><code class="js plain">,&nbsp;@</code><code class="js string">"*"</code><code class="js plain">,&nbsp;@</code><code class="js string">"&gt;="</code><code class="js plain">,&nbsp;@</code><code class="js string">"&lt;="</code><code class="js plain">,&nbsp;@</code><code class="js string">"."</code><code class="js plain">])&nbsp;{</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">([scanner&nbsp;scanString:operator&nbsp;intoString:NULL])&nbsp;{</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[tokens&nbsp;addObject:operator];</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number9 index8 alt2"><code class="js plain">}</code></div><div class="line number10 index9 alt1"><code class="js comments">//接下来识别非符号的只包含字母的string</code></div><div class="line number11 index10 alt2"><code class="js plain">NSString&nbsp;*result&nbsp;=&nbsp;nil;</code></div><div class="line number12 index11 alt1"><code class="js keyword">if</code>&nbsp;<code class="js plain">([scanner&nbsp;scanCharactersFromSet:[NSCharacterSet&nbsp;letterCharacterSet]</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">intoString:&amp;result])&nbsp;{</code></div><div class="line number14 index13 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[tokens&nbsp;addObject:result];</code></div><div class="line number15 index14 alt2"><code class="js plain">}</code></div><div class="line number16 index15 alt1">&nbsp;</div><div class="line number17 index16 alt2"><code class="js comments">//NSScanner有scanDouble:来扫描double</code></div><div class="line number18 index17 alt1"><code class="js plain">double&nbsp;doubleResult&nbsp;=&nbsp;0;</code></div><div class="line number19 index18 alt2"><code class="js keyword">if</code>&nbsp;<code class="js plain">([scanner&nbsp;scanDouble:&amp;doubleResult])&nbsp;{</code></div><div class="line number20 index19 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[tokens&nbsp;addObject:@(doubleResult)];</code></div><div class="line number21 index20 alt2"><code class="js plain">}</code></div><div class="line number22 index21 alt1"><code class="js comments">//完成后用将需要解析的表达式放入试试</code></div><div class="line number23 index22 alt2"><code class="js plain">NSString*&nbsp;example&nbsp;=&nbsp;@</code><code class="js string">"myConstant&nbsp;=&nbsp;100</code></div><div class="line number24 index23 alt1"><code class="js string">"</code></div><div class="line number25 index24 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"</code></div><div class="line number26 index25 alt1"><code class="js string">myView.left&nbsp;=&nbsp;otherView.right&nbsp;*&nbsp;2&nbsp;+&nbsp;10</code></div><div class="line number27 index26 alt2"><code class="js string">"</code></div><div class="line number28 index27 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"viewController.view.centerX&nbsp;+&nbsp;myConstant&nbsp;&lt;=&nbsp;self.view.centerX"</code><code class="js plain">;</code></div><div class="line number29 index28 alt2"><code class="js plain">NSArray&nbsp;*result&nbsp;=&nbsp;[self.scanner&nbsp;tokenize:example];</code></div><div class="line number30 index29 alt1"><code class="js plain">NSArray&nbsp;*expected&nbsp;=&nbsp;@[@</code><code class="js string">"myConstant"</code><code class="js plain">,&nbsp;@</code><code class="js string">"="</code><code class="js plain">,&nbsp;@100,&nbsp;@</code><code class="js string">"myView"</code><code class="js plain">,&nbsp;@</code><code class="js string">"."</code><code class="js plain">,&nbsp;@</code><code class="js string">"left"</code><code class="js plain">,</code></div><div class="line number31 index30 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"="</code><code class="js plain">,&nbsp;@</code><code class="js string">"otherView"</code><code class="js plain">,&nbsp;@</code><code class="js string">"."</code><code class="js plain">,&nbsp;@</code><code class="js string">"right"</code><code class="js plain">,&nbsp;@</code><code class="js string">"*"</code><code class="js plain">,&nbsp;@2,&nbsp;@</code><code class="js string">"+"</code><code class="js plain">,</code></div><div class="line number32 index31 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@10,&nbsp;@</code><code class="js string">"viewController"</code><code class="js plain">,&nbsp;@</code><code class="js string">"."</code><code class="js plain">,&nbsp;@</code><code class="js string">"view"</code><code class="js plain">,&nbsp;@</code><code class="js string">"."</code><code class="js plain">,</code></div><div class="line number33 index32 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"centerX"</code><code class="js plain">,&nbsp;@</code><code class="js string">"+"</code><code class="js plain">,&nbsp;@</code><code class="js string">"myConstant"</code><code class="js plain">,&nbsp;@</code><code class="js string">"&lt;="</code><code class="js plain">,&nbsp;@</code><code class="js string">"self"</code><code class="js plain">,</code></div><div class="line number34 index33 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"."</code><code class="js plain">,&nbsp;@</code><code class="js string">"view"</code><code class="js plain">,&nbsp;@</code><code class="js string">"."</code><code class="js plain">,&nbsp;@</code><code class="js string">"centerX"</code><code class="js plain">];</code></div><div class="line number35 index34 alt2"><code class="js plain">XCTAssertEqualObjects(result,&nbsp;expected);</code></div></div></td></tr></tbody></table></div></div><p>进行语法解析，需要语法分析库描述我们的语言。下面代码就是为那个布局约束语言写的解析语法，用的扩展的巴科斯范式<a href="http://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form">EBNF</a>写法：</p><div><div id="highlighter_1714" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">constraint&nbsp;=&nbsp;expression&nbsp;comparator&nbsp;expression</code></div><div class="line number2 index1 alt1"><code class="js plain">comparator&nbsp;=&nbsp;</code><code class="js string">"="</code>&nbsp;<code class="js plain">|&nbsp;</code><code class="js string">"&gt;="</code>&nbsp;<code class="js plain">|&nbsp;</code><code class="js string">"&lt;="</code></div><div class="line number3 index2 alt2"><code class="js plain">expression&nbsp;=&nbsp;keyPath&nbsp;</code><code class="js string">"."</code>&nbsp;<code class="js plain">attribute&nbsp;addMultiplier&nbsp;addConstant</code></div><div class="line number4 index3 alt1"><code class="js plain">keyPath&nbsp;=&nbsp;identifier&nbsp;|&nbsp;identifier&nbsp;</code><code class="js string">"."</code>&nbsp;<code class="js plain">keyPath</code></div><div class="line number5 index4 alt2"><code class="js plain">attribute&nbsp;=&nbsp;</code><code class="js string">"left"</code>&nbsp;<code class="js plain">|&nbsp;</code><code class="js string">"right"</code>&nbsp;<code class="js plain">|&nbsp;</code><code class="js string">"top"</code>&nbsp;<code class="js plain">|&nbsp;</code><code class="js string">"bottom"</code>&nbsp;<code class="js plain">|&nbsp;</code><code class="js string">"leading"</code>&nbsp;<code class="js plain">|&nbsp;</code><code class="js string">"trailing"</code>&nbsp;<code class="js plain">|&nbsp;</code><code class="js string">"width"</code>&nbsp;<code class="js plain">|&nbsp;</code><code class="js string">"height"</code>&nbsp;<code class="js plain">|&nbsp;</code><code class="js string">"centerX"</code>&nbsp;<code class="js plain">|&nbsp;</code><code class="js string">"centerY"</code>&nbsp;<code class="js plain">|&nbsp;</code><code class="js string">"baseline"</code></div><div class="line number6 index5 alt1"><code class="js plain">addMultiplier&nbsp;=&nbsp;</code><code class="js string">"*"</code>&nbsp;<code class="js plain">atom</code></div><div class="line number7 index6 alt2"><code class="js plain">addConstant&nbsp;=&nbsp;</code><code class="js string">"+"</code>&nbsp;<code class="js plain">atom</code></div><div class="line number8 index7 alt1"><code class="js plain">atom&nbsp;=&nbsp;number&nbsp;|&nbsp;identifier</code></div></div></td></tr></tbody></table></div></div><p>还有很多Objective-C的语法解析，更多的可以在CocoaPods上找到：<a href="http://cocoapods.org/?q=parse">http://cocoapods.org/?q=parse</a>。比较好的就是CoreParse，地址：<a href="https://github.com/beelsebob/CoreParse">https://github.com/beelsebob/CoreParse</a>，但是需要使用它支持的语法。下面就是CoreParse支持的格式：</p><div><div id="highlighter_985617" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSString*&nbsp;grammarString&nbsp;=&nbsp;[@[</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"Atom&nbsp;::=&nbsp;num@'Number'&nbsp;|&nbsp;ident@'Identifier';"</code><code class="js plain">,</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"Constant&nbsp;::=&nbsp;name@'Identifier'&nbsp;'='&nbsp;value@&lt;Atom&gt;;"</code><code class="js plain">,</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"Relation&nbsp;::=&nbsp;'='&nbsp;|&nbsp;'&gt;='&nbsp;|&nbsp;'&lt;=';"</code><code class="js plain">,</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"Attribute&nbsp;::=&nbsp;'left'&nbsp;|&nbsp;'right'&nbsp;|&nbsp;'top'&nbsp;|&nbsp;'bottom'&nbsp;|&nbsp;'leading'&nbsp;|&nbsp;'trailing'&nbsp;|&nbsp;'width'&nbsp;|&nbsp;'height'&nbsp;|&nbsp;'centerX'&nbsp;|&nbsp;'centerY'&nbsp;|&nbsp;'baseline';"</code><code class="js plain">,</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"Multiplier&nbsp;::=&nbsp;'*'&nbsp;num@'Number';"</code><code class="js plain">,</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"AddConstant&nbsp;::=&nbsp;'+'&nbsp;num@'Number';"</code><code class="js plain">,</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"KeypathAndAttribute&nbsp;::=&nbsp;'Identifier'&nbsp;'.'&nbsp;&lt;AttributeOrRest&gt;;"</code><code class="js plain">,</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"AttributeOrRest&nbsp;::=&nbsp;att@&lt;Attribute&gt;&nbsp;|&nbsp;'Identifier'&nbsp;'.'&nbsp;&lt;AttributeOrRest&gt;;"</code><code class="js plain">,</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"Expression&nbsp;::=&nbsp;&lt;KeypathAndAttribute&gt;&nbsp;&lt;Multiplier&gt;?&nbsp;&lt;AddConstant&gt;?;"</code><code class="js plain">,</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"LayoutConstraint&nbsp;::=&nbsp;lhs@&lt;Expression&gt;&nbsp;rel@&lt;Relation&gt;&nbsp;rhs@&lt;Expression&gt;;"</code><code class="js plain">,</code></div><div class="line number12 index11 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">@</code><code class="js string">"Rule&nbsp;::=&nbsp;&lt;Atom&gt;&nbsp;|&nbsp;&lt;LayoutConstraint&gt;;"</code><code class="js plain">,</code></div><div class="line number13 index12 alt2"><code class="js plain">]&nbsp;componentsJoinedByString:@</code><code class="js string">"</code></div><div class="line number14 index13 alt1"><code class="js string">"</code><code class="js plain">];</code></div></div></td></tr></tbody></table></div></div><p>一个规则匹配后解析器就找到同样名称的类</p><div><div id="highlighter_566111" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">-&nbsp;(id)parser:(CPParser&nbsp;*)parser&nbsp;didProduceSyntaxTree:(CPSyntaxTree&nbsp;*)syntaxTree</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSString&nbsp;*ruleName&nbsp;=&nbsp;syntaxTree.rule.name;</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">([ruleName&nbsp;isEqualToString:@</code><code class="js string">"Attribute"</code><code class="js plain">])&nbsp;{</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">self.layoutAttributes[[[syntaxTree&nbsp;childAtIndex:0]&nbsp;keyword]];</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number6 index5 alt1"><code class="js plain">...</code></div><div class="line number7 index6 alt2"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><p>完整的解析器代码在：<a href="https://github.com/objcio/issue-9-string-parsing">https://github.com/objcio/issue-9-string-parsing</a>。里面有个解析类可以用来解析复杂的布局约束，如下：</p><div><div id="highlighter_73519" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">viewController.view.centerX&nbsp;+&nbsp;20&nbsp;&lt;=&nbsp;self.view.centerX&nbsp;*&nbsp;0.5</code></div></div></td></tr></tbody></table></div></div><p>可以得到如下结果，方便转换成NSLayoutConstraint对象</p><div><div id="highlighter_664490" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(&lt;Expression:&nbsp;self.keyPath=(viewController,&nbsp;view),</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">self.attribute=9,</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">self.multiplier=1,</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">self.constant=20&gt;</code></div><div class="line number5 index4 alt2"><code class="js plain">-1</code></div><div class="line number6 index5 alt1"><code class="js plain">&lt;Expression:&nbsp;self.keyPath=(self,&nbsp;view),</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">self.attribute=9,</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">self.multiplier=0.5,</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">self.constant=0&gt;)</code></div></div></td></tr></tbody></table></div></div><h1>字符串的渲染</h1><h2>UILabel</h2><ul class="task-list list-paddingleft-2"><li><p>label默认显示一行，如果设置numberOfLines为大于1的话可以显示指定行数，如果设置为0，则多少行都显示</p></li><li><p>attributedText属性可以显示富文本</p></li><li><p>label的font,textColor,textAlignment,shadowColor和shadowOffset属性可以改变外观。</p></li><li><p>改变程序内所有Label的风格，可以使用[UILabel appearance]方法</p></li></ul><h2>UITextField</h2><ul class="task-list list-paddingleft-2"><li><p>text field只限于单行</p></li><li><p>UITextfield实现了UITextInputTraits协议，这个协议需要指定键盘外观和操作等细节。比如显示什么键盘和返回按键响应等</p></li><li><p>可以通过设置左右辅助视图，或者设置背景来自定义输入框风格了。</p></li></ul><h2>UITextView</h2><ul class="task-list list-paddingleft-2"><li><p>相比较UITextField，它能够处理多行文本</p></li><li><p>可以使用定制Text Kit，官方文档：<a href="https://developer.apple.com/Library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/CustomTextProcessing/CustomTextProcessing.html">https://developer.apple.com/Library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/CustomTextProcessing/CustomTextProcessing.html</a></p></li><li><p>可以为layout manager，text container或text storage自定义行为或替换自定义子类。</p></li><li><p>在iOS7之前是基于WebKit的功能少，之后会有很多不同具体可以参考这两篇文章：Peter的<a href="http://petersteinberger.com/blog/2014/fixing-uitextview-on-ios-7/">http://petersteinberger.com/blog/2014/fixing-uitextview-on-ios-7/</a>，Brent的<a href="http://inessential.com/2014/01/07/uitextview_the_solution">http://inessential.com/2014/01/07/uitextview_the_solution</a></p></li></ul><h2>TableView中显示动态文本</h2><p>Table view的Delegate有个方法用来计算高度：tableView:heightForRowAtIndexPath:。自定义一个UITableViewCell的子类</p><div><div id="highlighter_495225" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">-&nbsp;(void)layoutSubviews</code></div><div class="line number2 index1 alt1"><code class="js plain">{</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[</code><code class="js keyword">super</code>&nbsp;<code class="js plain">layoutSubviews];</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">self.textLabel.frame&nbsp;=&nbsp;CGRectInset(self.bounds,</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">MyTableViewCellInset,</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">MyTableViewCellInset);</code></div><div class="line number7 index6 alt2"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><p>计算真实高度需要使用boundingRectWithSize:options:context: 这个方法</p><div><div id="highlighter_71515" class="syntaxhighlighter  js "><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">-&nbsp;(CGFloat)tableView:(UITableView&nbsp;*)tableView&nbsp;heightForRowAtIndexPath:(NSIndexPath&nbsp;*)indexPath</code></div><div class="line number2 index1 alt1"><code class="js plain">{</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">CGFloat&nbsp;labelWidth&nbsp;=&nbsp;self.tableView.bounds.size.width&nbsp;-&nbsp;MyTableViewCellInset*2;</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSAttributedString&nbsp;*text&nbsp;=&nbsp;[self&nbsp;attributedBodyTextAtIndexPath:indexPath];</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSStringDrawingOptions&nbsp;options&nbsp;=&nbsp;NSStringDrawingUsesLineFragmentOrigin&nbsp;|</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSStringDrawingUsesFontLeading;</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">CGRect&nbsp;boundingRect&nbsp;=&nbsp;[text&nbsp;boundingRectWithSize:CGSizeMake(labelWidth,&nbsp;CGFLOAT_MAX)</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">options:options</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">context:nil];</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">(CGFloat)&nbsp;(ceil(boundingRect.size.height)&nbsp;+&nbsp;MyTableViewCellInset*2);</code></div><div class="line number12 index11 alt1"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><h2>使用Text Kit和NSAttributedString进行布局</h2><p>先设置attributes</p><div><div id="highlighter_329679" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">CGFloat&nbsp;const&nbsp;fontSize&nbsp;=&nbsp;15;</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="js plain">NSMutableDictionary&nbsp;*body1stAttributes&nbsp;=&nbsp;[NSMutableDictionary&nbsp;dictionary];</code></div><div class="line number4 index3 alt1"><code class="js plain">body1stAttributes[NSFontAttributeName]&nbsp;=&nbsp;[UIFont&nbsp;fontWithName:@</code><code class="js string">"BodoniSvtyTwoITCTT-Book"</code></div><div class="line number5 index4 alt2"><code class="js plain">size:fontSize];</code></div><div class="line number6 index5 alt1"><code class="js plain">NSMutableParagraphStyle&nbsp;*body1stParagraph&nbsp;=&nbsp;[[NSParagraphStyle&nbsp;defaultParagraphStyle]&nbsp;mutableCopy];</code></div><div class="line number7 index6 alt2"><code class="js plain">body1stParagraph.alignment&nbsp;=&nbsp;NSTextAlignmentJustified;</code></div><div class="line number8 index7 alt1"><code class="js plain">body1stParagraph.minimumLineHeight&nbsp;=&nbsp;fontSize&nbsp;+&nbsp;3;</code></div><div class="line number9 index8 alt2"><code class="js plain">body1stParagraph.maximumLineHeight&nbsp;=&nbsp;body1stParagraph.minimumLineHeight;</code></div><div class="line number10 index9 alt1"><code class="js plain">body1stParagraph.hyphenationFactor&nbsp;=&nbsp;0.97;</code></div><div class="line number11 index10 alt2"><code class="js plain">body1stAttributes[NSParagraphStyleAttributeName]&nbsp;=&nbsp;body1stParag</code></div><div class="line number12 index11 alt1"><code class="js plain">raph;</code></div></div></td></tr></tbody></table></div></div><p>这里字体为BodoniSvtyTwoITCTT，如果需要查看更多字体可以使用 +[UIFont familyNames]这个方法。为了得到字体的名字，可以使用 +[UIFont fontNamesForFamilyName:]。接下来创建段落的属性</p><div><div id="highlighter_900136" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSMutableDictionary&nbsp;*bodyAttributes&nbsp;=&nbsp;[body1stAttributes&nbsp;mutableCopy];</code></div><div class="line number2 index1 alt1"><code class="js plain">NSMutableParagraphStyle&nbsp;*bodyParagraph&nbsp;=</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[bodyAttributes[NSParagraphStyleAttributeName]&nbsp;mutableCopy];</code></div><div class="line number4 index3 alt1"><code class="js plain">bodyParagraph.firstLineHeadIndent&nbsp;=&nbsp;fontSize;</code></div><div class="line number5 index4 alt2"><code class="js plain">bodyAttributes[NSParagraphStyleAttributeName]&nbsp;=&nbsp;bodyParagraph;</code></div></div></td></tr></tbody></table></div></div><p>装饰段落风格，使用装饰字体将文本居中对齐，装饰字符的前后加上空白段落</p><div><div id="highlighter_456690" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSMutableDictionary&nbsp;*ornamentAttributes&nbsp;=&nbsp;[NSMutableDictionary&nbsp;dictionary];</code></div><div class="line number2 index1 alt1"><code class="js plain">ornamentAttributes[NSFontAttributeName]&nbsp;=&nbsp;[UIFont&nbsp;fontWithName:@</code><code class="js string">"BodoniOrnamentsITCTT"</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">size:36];</code></div><div class="line number4 index3 alt1"><code class="js plain">NSMutableParagraphStyle&nbsp;*ornamentParagraph&nbsp;=&nbsp;[[NSParagraphStyle&nbsp;defaultParagraphStyle]&nbsp;mutableCopy];</code></div><div class="line number5 index4 alt2"><code class="js plain">ornamentParagraph.alignment&nbsp;=&nbsp;NSTextAlignmentCenter;</code></div><div class="line number6 index5 alt1"><code class="js plain">ornamentParagraph.paragraphSpacingBefore&nbsp;=&nbsp;fontSize;</code></div><div class="line number7 index6 alt2"><code class="js plain">ornamentParagraph.paragraphSpacing&nbsp;=&nbsp;fontSize;</code></div><div class="line number8 index7 alt1"><code class="js plain">ornamentAttributes[NSParagraphStyleAttributeName]&nbsp;=&nbsp;ornamentParagraph;</code></div></div></td></tr></tbody></table></div></div><p>显示数字表格table，表格布局示例</p><div><div id="highlighter_193410" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSCharacterSet&nbsp;*decimalTerminator&nbsp;=&nbsp;[NSCharacterSet</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">characterSetWithCharactersInString:decimalFormatter.decimalSeparator];</code></div><div class="line number3 index2 alt2"><code class="js plain">NSTextTab&nbsp;*decimalTab&nbsp;=&nbsp;[[NSTextTab&nbsp;alloc]</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">initWithTextAlignment:NSTextAlignmentCenter</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">location:100</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">options:@{NSTabColumnTerminatorsAttributeName:decimalTerminator}];</code></div><div class="line number7 index6 alt2"><code class="js plain">NSTextTab&nbsp;*percentTab&nbsp;=&nbsp;[[NSTextTab&nbsp;alloc]&nbsp;initWithTextAlignment:NSTextAlignmentRight</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">location:200</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">options:nil];</code></div><div class="line number10 index9 alt1"><code class="js plain">NSMutableParagraphStyle&nbsp;*tableParagraphStyle&nbsp;=</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[[NSParagraphStyle&nbsp;defaultParagraphStyle]&nbsp;mutableCopy];</code></div><div class="line number12 index11 alt1"><code class="js plain">tableParagraphStyle.tabStops&nbsp;=&nbsp;@[decimalTab,&nbsp;percentTab];</code></div></div></td></tr></tbody></table></div></div><p>显示列表的属性设置如下</p><div><div id="highlighter_220521" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSMutableDictionary&nbsp;*listAttributes&nbsp;=&nbsp;[bodyAttributes&nbsp;mutableCopy];</code></div><div class="line number2 index1 alt1"><code class="js plain">NSMutableParagraphStyle&nbsp;*listParagraph&nbsp;=</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[listAttributes[NSParagraphStyleAttributeName]&nbsp;mutableCopy];</code></div><div class="line number4 index3 alt1"><code class="js plain">listParagraph.headIndent&nbsp;=&nbsp;fontSize&nbsp;*&nbsp;3;</code></div><div class="line number5 index4 alt2"><code class="js plain">listParagraph.firstLineHeadIndent&nbsp;=&nbsp;fontSize;</code></div><div class="line number6 index5 alt1"><code class="js plain">NSTextTab&nbsp;*listTab&nbsp;=&nbsp;[[NSTextTab&nbsp;alloc]&nbsp;initWithTextAlignment:NSTextAlignmentNatural</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">location:fontSize&nbsp;*&nbsp;3</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">options:nil];</code></div><div class="line number9 index8 alt2"><code class="js plain">listParagraph.tabStops&nbsp;=&nbsp;@[listTab];</code></div><div class="line number10 index9 alt1"><code class="js plain">listAttributes[NSParagraphStyleAttributeName]&nbsp;=&nbsp;listParagraph;</code></div></div></td></tr></tbody></table></div></div><h1>字符串本地化</h1><ul class="task-list list-paddingleft-2"><li><p>使用NSLocalizedString，可查看文章《字符串本地化》：（中文）<a href="http://objccn.io/issue-9-3/">http://objccn.io/issue-9-3/</a>&nbsp;（英文）<a href="http://www.objc.io/issue-9/string-localization.html">http://www.objc.io/issue-9/string-localization.html</a></p></li></ul><p>
+	</p><p>原文：<a href="http://www.starming.com/index.php?v=index&view=63" target="_blank">http://www.starming.com/index.php?v=index&amp;view=63</a></p><p><br></p>
+						</div>
+					</div> 
+					
+					<div class="pageActive" id="newdigg"><a href="javascript:void(0)" class="pageActive-item" onclick="postStow(2560)"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>收藏</a>
+			<a href="javascript:void(0)" class="pageActive-item" onclick="postDigg(&#39;good&#39;,2560)"> <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>赞(0)</a>
+			<a href="javascript:void(0)" class="pageActive-item" onclick="postDigg(&#39;bad&#39;,2560)"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>踩(0)</a>
+          							
+					</div>				
+					<div class="related_arc">
+						<script src="http://www.jcodecraeer.com/plus/ad_js.php?aid=24" language="javascript"></script>				
+					</div>							
+					<div class="related_arc">
+						<h3>相关文章</h3>
+						<div class="rearc_list clearfix">
+							<ul>                          
+							<li>
+								 <a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2013/0409/1144.html" target="_blank">android中如何获取一个字符串占用的宽度（长度）</a>  <span class="pull-right"> 2013-04-09 </span></li>
+<li>
+								 <a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0521/2905.html" target="_blank">Android字符串资源的格式化和样式</a>  <span class="pull-right"> 2015-05-21 </span></li>
+
+							</ul>
+				   
+						</div>  						
+					</div>						
+                </div>				
+                 
+                <div style="width:680px;"></div> 
+
+                <div class="wrapper"> 
+                    <div class="pre_next">
+						<div class="div_button">上一篇：<a href="http://www.jcodecraeer.com/IOS/2015/0305/2548.html">iOS 性能优化：Instruments 工具的救命三招</a> <div>你的 iOS 应用，运行速度靠谱吗？中枪的同学莫要愁，性能优化咱有妙招。用 Xcode 自家的调试工具 Instruments，揪出那些堵线程、占内存、耗资源的问题代码，彻底破掉迷局，让应用扬眉吐气！ 对于每位 iOS 开发者来说，代码性能是个避不开的话题。随着项目的</div></div>
+						<div class="div_button">下一篇：<a href="http://www.jcodecraeer.com/IOS/2015/0329/2658.html">iOS富文本组件的实现—DTCoreText源码解析 数据篇</a> <div>2015-3-23 DTCoreText 是个开源的iOS富文本组件，它可以解析HTML与CSS最终用CoreText绘制出来，通常用于在一些需要显示富文本的场景下代替低性能的UIWebView，来看看它是怎样解析和渲染HTML+CSS的，总体上分成两步： 数据解析—把HTML+CSS转换成NSAttributeS</div></div>
+                    </div>
+                </div>
+                <div class="dede_comment_post">
+    				
+<div class="comments_body">
+	<form action="http://www.jcodecraeer.com/IOS/2015/0308/2560.html#" method="post" name="feedback" onsubmit="return false;">
+		<input type="hidden" name="dopost" value="send">
+		<input type="hidden" name="comtype" value="comments">
+		<input type="hidden" name="arcauthor" value="1 ">
+		<input type="hidden" name="aid" value="2560">
+		<input type="hidden" name="fid" id="feedbackfid" value="0">
+		<div class="post_box clearfix">
+            <div class="wrapper">
+                <textarea cols="60" name="msg" id="cm_content" rows="5" class="ipt-txt"></textarea>
+            </div>		
+            <div class="post_act">
+            	<button type="button clearfix" onclick="PostComment()">发表评论</button>
+            </div>
+		</div>
+		
+		
+    </form>	
+</div>
+
+
+<!-- //评论表单区结束 -->
+<!-- //评论内容区 -->
+<a name="commettop"></a>
+
+<div id="commetcontentNew">
+
+</div>
+<div id="commetcontent"></div>
+<!--
+//由于评论载入时使用异步传输，因此必须在最后一步加载（DIGG和评论框须放在评论内容前面）
+//如果一定需要提前的把myajax.SendGet改为myajax.SendGet2，但可能会引起页面阻滞
+-->
+<script language="javascript">
+function LoadCommets(page)
+{
+		var taget_obj = document.getElementById('commetcontent');
+		var waithtml = "<div style='line-height:50px'><img src='/images/loadinglit.gif' />评论加载中...</div>";
+		var myajax = new MyAjax(taget_obj, true, true, '', 'x', waithtml);
+		myajax.SendGet2("/plus/feedback_ajax.php?dopost=getlist&aid=2560&page="+page);
+		DedeXHTTP = null;
+}
+function updatetag(){
+	var tags = $DE("tags").value;
+	var nfeedbacktype = 'feedback';
+	var taget_obj = $DE('tag_response');
+	var myajax = new MyAjax(taget_obj, false, true, '', '', "...");
+	myajax.sendlang = 'gb2312';
+	myajax.AddKeyN('dopost', 'send');
+	myajax.AddKeyN('id', '2560');
+	myajax.AddKeyN('tags', tags);
+	myajax.SendPost2('/action/update_tags.php');	
+}
+function PostComment()
+{
+		var f = document.feedback;
+		var msg = $DE("cm_content").value;
+		var nface = '6';
+		var nfeedbacktype = 'feedback';
+		var nvalidate = '';
+		var nnotuser = '';
+		var nusername = '';
+		var npwd = '';
+		var taget_obj = $DE('commetcontentNew');
+		var waithtml = "<div style='line-height:30px'><img src='/images/loadinglit.gif' />正在发送中...</div>";
+		if(msg=='')
+		{
+			alert("评论内容不能为空！");
+			return;
+		}
+		if(f.validate)
+		{
+			if(f.validate.value=='') {
+				alert("请填写验证码！");
+				return;
+			}
+			else {
+				nvalidate = f.validate.value;
+			}
+		}
+		if(msg.length > 500)
+		{
+			alert("你的评论是不是太长了？请填写500字以内的评论。");
+			return;
+		}
+		if(f.feedbacktype) {
+			for(var i=0; i < f.feedbacktype.length; i++)
+				if(f.feedbacktype[i].checked) nfeedbacktype = f.feedbacktype[i].value;
+		}
+		/*
+		if(f.face) {
+			for(var j=0; j < f.face.length; j++)
+				if(f.face[j].checked) nface = f.face[j].value;
+		}
+		*/
+
+		
+		var myajax = new MyAjax(taget_obj, false, true, '', '', waithtml);
+		myajax.sendlang = 'gb2312';
+		myajax.AddKeyN('dopost', 'send');
+		myajax.AddKeyN('aid', '2560');
+		myajax.AddKeyN('fid', f.fid.value);
+		myajax.AddKeyN('face', nface);
+		myajax.AddKeyN('feedbacktype', nfeedbacktype);
+		myajax.AddKeyN('validate', nvalidate);
+		myajax.AddKeyN('notuser', nnotuser);
+		myajax.AddKeyN('username', nusername);
+		myajax.AddKeyN('pwd', npwd);
+		myajax.AddKeyN('msg', msg);
+		myajax.AddKeyN('arcauthor', f.arcauthor.value);
+
+		myajax.SendPost2('/plus/feedback_ajax.php');
+		//msg = '';
+		CKEDITOR.instances.msg.setData('');
+		//taget_obj.removeAttribute('id');
+		f.fid.value = 0;
+		if(f.validate)
+		{
+			if($DE('validateimg')) $DE('validateimg').src = "/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+		
+}
+function quoteCommet(fid)
+{
+	    document.feedback.fid.value = fid;
+}
+  
+function ajaxFeedback(aid, fid, type)
+{
+	var taget_obj = $DE('ajaxfeedback_'+fid);
+	if(taget_obj.innerHTML == '')
+	{
+		var myajax = new MyAjax(taget_obj, true, true, '', 'x');
+		myajax.SendGet2("/plus/feedback.php?aid="+aid+"&fid="+fid+"&action=quote&type=ajax");
+		eval('var result = typeof CKEDITOR.instances.msg_'+fid);
+		if(result != 'undefined')
+		{
+			// 删除实例
+			eval('var edit = CKEDITOR.instances.msg_'+fid);
+			CKEDITOR.remove(edit);
+		}
+		CKEDITOR.replace(document.getElementById('msg_'+fid) , CKEDITOR.instances.msg.config);
+		scroll(0, taget_obj.offsetTop - 120);
+		var formname = 'f = document.ajaxfeedback_'+fid;
+		eval(formname);
+		if(f.validate)
+		{
+			if($DE('vdimg_'+fid)) $DE('vdimg_'+fid).src = "/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+		
+		DedeXHTTP = null;
+	}else{
+		taget_obj.innerHTML = '';
+	}
+}
+
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new MyAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+
+function ajaxQuotePost(fid)
+{
+	var formname = 'f = document.ajaxfeedback_'+fid;
+	eval(formname);
+	//var f = document.formname;
+	//var f = f[0];
+	var nvalidate = '';
+	var nnotuser = '';
+	var nusername = '';
+	var npwd = '';
+	var taget_obj = $DE('commetcontentNew');
+	var waithtml = "<div style='line-height:30px'><img src='/images/loadinglit.gif' />正在发送中...</div>";
+	eval('var msg = $DE("msg_'+fid+'").value');
+	if(f.validate)
+	{
+		if(f.validate.value=='') {
+			alert("请填写验证码！");
+			return;
+		}
+		else {
+			nvalidate = f.validate.value;
+		}
+	}
+	var myajax = new MyAjax(taget_obj, false, true, '', '', waithtml);
+	
+
+	
+	myajax.sendlang = 'gb2312';
+	myajax.AddKeyN('dopost', 'send');
+	myajax.AddKeyN('aid', '2560');
+	myajax.AddKeyN('fid', f.fid.value);
+	myajax.AddKeyN('type', 'ajax');
+	myajax.AddKeyN('comtype', f.comtype.value);
+	myajax.AddKeyN('isconfirm','yes');
+	
+	myajax.AddKeyN('typeid', f.typeid.value);
+	myajax.AddKeyN('quotemsg', f.quotemsg.value);
+	myajax.AddKeyN('validate', nvalidate);
+	myajax.AddKeyN('notuser', nnotuser);
+	myajax.AddKeyN('username', nusername);
+	myajax.AddKeyN('pwd', npwd);
+	myajax.AddKeyN('msg', msg);
+	myajax.SendPost2('/plus/feedback_ajax.php');
+	//alert(f.quotemsg.value);
+	if($DE('ajaxfeedback_'+fid).innerHTML != null)
+	{
+		$DE('ajaxfeedback_'+fid).innerHTML = '';
+	}
+	scroll(0, taget_obj.offsetTop);
+}
+LoadCommets(1);
+</script>
+<!-- //评论内容区结束 -->
+
+     			</div>  
+            </div> 
+                                   
+        </div>  
+        <!-- end  of  content -->
+
+        <div class="fix_right">   
+             
+			<div class="advertise-box">
+			  <div class="advertise-heading">
+				<h3 class="advertise-title">赞助商</h3>
+			  </div>
+			  <div class="advertise-body">
+				<script src="http://www.jcodecraeer.com/plus/ad_js.php?aid=22" language="javascript"></script>
+				<div class="divider"></div>
+				<script src="http://www.jcodecraeer.com/plus/ad_js.php?aid=29" language="javascript"></script>					
+			  </div>
+			</div>	
+			
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+				<h3 class="panel-title">推荐文章</h3>
+			  </div>
+			  <div class="panel-body">
+				<ul class="sidearticle_c clearfix">                     
+					<li><a href="http://www.jcodecraeer.com/IOS/2015/0617/3061.html" target="_blank">10步成为专业iOS开发者——从零起步</a></li>
+<li><a href="http://www.jcodecraeer.com/IOS/2015/0204/2413.html" target="_blank">UIView.frame的骗局</a></li>
+
+				</ul>				 
+			  </div>
+			</div>
+			
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+				<h3 class="panel-title">热门文章</h3>
+			  </div>
+			  <div class="panel-body">
+				<ul class="sidearticle_c clearfix">                     
+					<li> <a href="http://www.jcodecraeer.com/IOS/2015/0617/3061.html" target="_blank">10步成为专业iOS开发者——从零起步</a></li>
+<li> <a href="http://www.jcodecraeer.com/IOS/2015/0204/2414.html" target="_blank">iOS重绘机制drawRect</a></li>
+<li> <a href="http://www.jcodecraeer.com/IOS/2015/0204/2413.html" target="_blank">UIView.frame的骗局</a></li>
+<li> <a href="http://www.jcodecraeer.com/IOS/2015/0204/2412.html" target="_blank">UITableViewCell点击时背景颜色</a></li>
+<li> <a href="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子.html" target="_blank">iOS字符串处理笔记(正则表达式、NSScann...</a></li>
+<li> <a href="http://www.jcodecraeer.com/IOS/2015/0305/2537.html" target="_blank">iOS开发路线简述</a></li>
+
+				</ul>				 
+			  </div>
+			</div>
+                                                                              
+            <div id="floatbox" style="top: 0px; position: static; width: 255px;">   
+				<script src="http://www.jcodecraeer.com/plus/ad_js.php?aid=25" language="javascript"></script>	
+         	</div>
+            
+        </div>        
+    
+        <div style="clear:both;"></div>
+	</div> 	
+</div> 
+<script src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/jcodecraeer.js"></script>
+<!-- 返回顶部 -->
+<div id="gotop" style="display: none;"></div>
+<div id="top_comment" style="display: none;">
+
+	<div class="tips">
+    	猜你喜欢
+    </div>
+    <ul>                          
+    <li>
+             <a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2013/0409/1144.html" target="_blank">
+             	 <div class="imgcontainer"><img src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/defaultpic.gif" width="50" height="50"></div>
+                 <div class="title">
+                 android中如何获取一个字符串占用的宽度...
+                 </div>
+             </a>
+         </li>
+<li>
+             <a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0521/2905.html" target="_blank">
+             	 <div class="imgcontainer"><img src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/defaultpic.gif" width="50" height="50"></div>
+                 <div class="title">
+                 Android字符串资源的格式化和样式
+                 </div>
+             </a>
+         </li>
+
+    </ul>
+    <div style="clear:both;"></div>
+</div>
+<script type="text/javascript">
+	backTop=function (btnId){
+		var btn=document.getElementById(btnId);
+		var topco=document.getElementById('top_comment');
+		var d=document.documentElement;
+		var b=document.body;
+		window.onscroll=set;
+		btn.onclick=function (){
+			btn.style.display="none";
+			window.onscroll=null;
+			this.timer=setInterval(function(){
+				d.scrollTop-=Math.ceil((d.scrollTop+b.scrollTop)*0.1);
+				b.scrollTop-=Math.ceil((d.scrollTop+b.scrollTop)*0.1);
+				if((d.scrollTop+b.scrollTop)==0) clearInterval(btn.timer,window.onscroll=set);
+			},10);
+		};
+		function set(){
+			btn.style.display=(d.scrollTop+b.scrollTop>100)?'block':"none";
+			topco.style.display=(d.scrollTop+b.scrollTop> document.documentElement.clientHeight-100)?'block':"none";
+		}
+	};
+	backTop('gotop');
+	
+	(new SidebarFollow()).init({
+		element: jQuery('#floatbox'),
+		distanceToTop: 0
+	});	
+	
+</script>
+
+
+<!-- 返回顶部END -->
+<style>
+#gotop {
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAAANAgMAAACP9jv8AAAACVBMVEX///////8AAACO9MPsAAAAAXRSTlMAQObYZgAAAGhJREFUeF49zsEJwCAMBdBvoRfvWaJTOEIPZp+O4lEyZcn/RIl+SMJDAG2gTlfc7+k8H8Pm6cRiuFfjip3RphXUV4ghJIaQjVZQoCfkLDI7C7kgiAuRDK+YvJwLQnBPhovRw7ER5of3DyPbFp8RB9axAAAAAElFTkSuQmCC") no-repeat scroll 18px 21px #000000;
+    bottom: 200px;
+    cursor: pointer;
+    display: block;
+    height: 60px;
+    opacity: 0.5;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in 0s, opacity 0.3s ease-out 0s;
+     right: 10px;
+    position: fixed;
+    top: auto;
+    width: 60px;
+    z-index: 999;
+}
+ 
+#top_comment{
+    bottom: 0px;
+    display: block;
+    height: 120px;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in 0s, opacity 0.3s ease-out 0s;
+    right: 0px;
+    position: fixed;
+    top: auto;
+    z-index: 999;
+	background: #FFF;
+	border-top:solid 2px #626262;
+	border-left:solid 1px #EFEFEF;
+	
+	padding-right:10px;
+}
+#top_comment .tips{
+	width:18px;
+	float:left;
+	padding-left:10px;
+	padding-top:8px;
+	font-family:"Courier New", Courier, monospace;
+}
+
+#top_comment li{
+	width:50px;
+	text-align:center;
+	float:left;
+	font-size:12px;
+	padding:8px;
+}
+#top_comment li .imgcontainer{
+	width:50px;
+	height:50px;
+	overflow:hidden;
+}
+#top_comment li a{
+	display:block;
+	
+}
+#top_comment li:hover{
+	background-color: #EAFACF;	
+}
+#top_comment li .title{
+	height:60px;
+	overflow:hidden;	
+}
+</style>
+<div class="footer">
+	<div class="row clearfix">
+		<div class="copyright z">
+			<p>Copyright  2011 - 2014 jcodecraeer.com All Rights Reversed.</p>
+			<p>蜀ICP备12021840号-1</p>
+			<p>本站文章用于学习交流</p>
+		</div>
+		<div class="footer-nav y">	
+			<ul class="clearfix">
+				<li><a href="http://weibo.com/u/2711441293" target="_blank">新浪微博</a></li>
+				<li>qq群一161644793</li>
+				<li>qq群二98711210</li> 
+			</ul>
+			<ul class="clearfix">
+				<li><a href="http://www.jcodecraeer.com/sitemap/" target="_blank">网站地图</a></li>	
+				<li>				
+				<script type="text/javascript">
+				var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+				document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2f2ac530df20294f718580cea710780e' type='text/javascript'%3E%3C/script%3E"));
+				</script><script src="./iOS字符串处理笔记(正则表达式、NSScanner扫描、CoreParse解析器) - 泡在网上的日子_files/h.js" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=2f2ac530df20294f718580cea710780e" target="_blank">网站统计</a> 
+				</li>	 
+			</ul>			
+		</div>
+	</div>	
+</div>
+
+ 
+</body></html>

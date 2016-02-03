@@ -1,0 +1,130 @@
+//
+//  toolkit.h
+//  LotteryLibrary
+//
+//  Created by wufan on 15/4/29.
+//  Copyright (c) 2015年 DACAI. All rights reserved.
+//
+
+#ifndef lottlib_toolkit_h_
+#define lottlib_toolkit_h_
+
+#include <vector>
+#include <stdint.h>
+#include "common_macro.h"
+
+namespace lottlib {
+    namespace math {
+
+        /**
+        *  tea加密算法
+        *
+        *  @param num_rounds [in]混淆轮数
+        *  @param v          [in]明文, 8字节
+        *  @param key        [in]秘钥, 16字节
+        */
+        void tea_encipher(int num_rounds, uint32_t v[2], uint32_t const key[4]);
+        /**
+        *  tea解密算法
+        *
+        *  @param num_rounds [in]混淆轮数
+        *  @param v          [in]密文, 8字节
+        *  @param key        [in]秘钥, 16字节
+        */
+        void tea_decipher(int num_rounds, uint32_t v[2], uint32_t const key[4]);
+
+        /**
+        *  HTTP gzip decompress. gzip解压数据算法.
+        *
+        *  @param zdata  [in]gzip数据
+        *  @param nzdata [in]gzip数据长度
+        *  @param data   [out]缓存区, 用于保存解压后的数据
+        *  @param ndata  [out]缓冲区长度
+        *
+        *  @return 返回解压后数据实际的大小
+        */
+        int httpgzdecompress(const void *zdata, int nzdata,
+            void *data, int *ndata);
+
+        /**
+         *  n个数中取m个数的组合个数
+         *
+         *  @param n [in]n
+         *  @param m [in]m
+         *
+         *  @return 组合个数
+         */
+        int combination(int n, int m);
+        
+        
+        /**
+         *  n个数中取m个数的所有组合
+         *
+         *  @param source [in]数据源
+         *  @param length [in]数据源的大小, 即n
+         *  @param count  [in]目标的大小, 即m
+         *
+         *  @return 最终生成的所有组合
+         */
+        template <class T>
+        std::vector<T *> *create_combination_groups(const T *source, int length, int count) {
+            int * range_lowers = new int[count];
+            int * range_uppers = new int[count];
+            int * current_indexs = new int[count];
+            
+            std::vector<T *> *groups = new std::vector<T *>();
+            
+            for (int i = 0; i < count; i++) {
+                range_lowers[i] = i;
+                range_uppers[i] = length - count + i;
+                current_indexs[i] = i;
+            }
+            
+            bool carry = true;
+            do {
+                T *sub = new T[count];
+                for (int i = 0; i < count; i++) {
+                    sub[i] = source[current_indexs[i]];
+                }
+                groups->push_back(sub);
+                
+                carry = true;   // 需要进位
+                for (int i = count - 1; carry && i >= 0; i--) {
+                    carry = current_indexs[i] >= range_uppers[i];
+                    if (!carry) {
+                        current_indexs[i]++;
+                        for (int j = 1; j < count - i; j++) {
+                            current_indexs[i + j] = current_indexs[i] + j;
+                        }
+                    }
+                }
+            } while (!carry);
+            
+            delete []range_lowers;
+            delete []range_uppers;
+            delete []current_indexs;
+            
+            return groups;
+        }
+        
+        /**
+         *  释放回收内存
+         *
+         *  @param groups [in]指针, 由create_combination_groups返回
+         *
+         *  @see create_combination_groups
+         *
+         */
+        template <class T>
+        void release_combination_groups(std::vector<T *> *groups) {
+            for (int i = 0; i < groups->size(); i++) {
+                delete [] groups->at(i);
+            }
+            groups->clear();
+            delete groups;
+        }
+    }
+}
+
+
+#endif /* defined(lottlib_toolkit_h_) */

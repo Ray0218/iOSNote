@@ -1,0 +1,16 @@
+//
+//  secure_center.h
+//  LotteryLibrary
+//
+//  Created by wufan on 15/4/29.
+//  Copyright (c) 2015年 DACAI. All rights reserved.
+//
+//  安全中心模块, 提供登录注册, 购彩账户开通, 实名认证等功能
+//
+
+#ifndef lottlib_secure_center_h_
+#define lottlib_secure_center_h_
+
+#include "common_macro.h"
+
+#endif /* defined(lottlib_secure_center_h_) */

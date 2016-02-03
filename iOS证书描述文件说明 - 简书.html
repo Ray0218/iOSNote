@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.jianshu.com/p/68ba9838a5d7 -->
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="description" content="iOS证书分类说明？开发者证书：（分为开发和发布两种，类型为iosDevelopment,iosDistribution），这个是最基础的，不论是真机调试，还是上传到appstore都是需要的，是一个基证书，用来证明自己开发者身份的。Distributon（发布证书）:用...">
+  <meta property="wb:webmaster" content="294ec9de89e7fadb">
+  <meta property="qc:admins" content="104102651453316562112116375">
+  <meta property="qc:admins" content="11635613706305617">
+  <meta property="qc:admins" content="1163561616621163056375">
+  <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4">
+  <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI">
+  <meta http-equiv="mobile-agent" content="format=html5; url=http://www.jianshu.com/p/68ba9838a5d7">
+    <!--  Meta for Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/1536872">
+  <!-- End -->
+
+  <!--  Meta for Twitter Card -->
+  <meta content="summary" property="twitter:card">
+  <meta content="@jianshucom" property="twitter:site">
+  <meta content="iOS证书描述文件说明" property="twitter:title">
+  <meta content="iOS证书分类说明？开发者证书：（分为开发和发布两种，类型为iosDevelopment,iosDistribution），这个是最基础的，不论是真机调试，还是上传到appstore都是需要的，是一个基证书，用来证明自己开发者身份的。Distributon（发布证书）:用..." property="twitter:description">
+  <meta content="http://www.jianshu.com/p/68ba9838a5d7" property="twitter:url">
+  <!-- End -->
+
+  <!--  Meta for OpenGraph -->
+  <meta property="fb:app_id" content="865829053512461">
+  <meta property="og:site_name" content="简书">
+  <meta property="og:title" content="iOS证书描述文件说明">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.jianshu.com/p/68ba9838a5d7">
+  <meta property="og:description" content="iOS证书分类说明？开发者证书：（分为开发和发布两种，类型为iosDevelopment,iosDistribution），这个是最基础的，不论是真机调试，还是上传到appstore都是需要的，...">
+
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-d79f168e85ff180c.png">
+    <meta property="og:image:width" content="537">
+    <meta property="og:image:height" content="210">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-118c3b09c77e89c8.png">
+    <meta property="og:image:width" content="713">
+    <meta property="og:image:height" content="130">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-ed56a208cad1c8cb.png">
+    <meta property="og:image:width" content="717">
+    <meta property="og:image:height" content="447">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-2ddbdd476ca3c5b5.png">
+    <meta property="og:image:width" content="728">
+    <meta property="og:image:height" content="108">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-ccb7cb08c0f8aaad.png">
+    <meta property="og:image:width" content="402">
+    <meta property="og:image:height" content="265">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-635e675a95c2e142.png">
+    <meta property="og:image:width" content="548">
+    <meta property="og:image:height" content="497">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-283044b4f0ba8b80.png">
+    <meta property="og:image:width" content="720">
+    <meta property="og:image:height" content="288">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-edeb7d56dd766bf9.png">
+    <meta property="og:image:width" content="458">
+    <meta property="og:image:height" content="321">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-343da60ad4f9fef2.png">
+    <meta property="og:image:width" content="1081">
+    <meta property="og:image:height" content="671">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-7acbae0d954a0580.png">
+    <meta property="og:image:width" content="702">
+    <meta property="og:image:height" content="514">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-e84ef019ef4984b2.png">
+    <meta property="og:image:width" content="573">
+    <meta property="og:image:height" content="355">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-bf5b8c4f6af3fc80.png">
+    <meta property="og:image:width" content="705">
+    <meta property="og:image:height" content="489">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-8fbe26de30676ade.png">
+    <meta property="og:image:width" content="699">
+    <meta property="og:image:height" content="426">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-854cb197673bcdae.png">
+    <meta property="og:image:width" content="423">
+    <meta property="og:image:height" content="155">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-cf5d6cc8ed735689.png">
+    <meta property="og:image:width" content="656">
+    <meta property="og:image:height" content="349">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-1251b312510b5bee.png">
+    <meta property="og:image:width" content="705">
+    <meta property="og:image:height" content="85">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/455017-e572ee3c1baf1226.png">
+    <meta property="og:image:width" content="614">
+    <meta property="og:image:height" content="168">
+    <meta property="og:image:type" content="image/png">
+  <!-- End -->
+
+  <!--  Meta for Facebook Applinks -->
+  <meta property="al:ios:url" content="jianshu://notes/1536872">
+  <meta property="al:ios:app_store_id" content="888237539">
+  <meta property="al:ios:app_name" content="简书">
+
+  <meta property="al:android:url" content="jianshu://notes/1536872">
+  <meta property="al:android:package" content="com.jianshu.haruki">
+  <meta property="al:android:app_name" content="简书">
+  <!-- End -->
+
+  <title>iOS证书描述文件说明 - 简书</title>
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="zxBDSGGPKn8mKy3BTuDFBdmMxN6se1bJ4HGZ/APYCc0DNt+VRNDvYfabNU/EX5W22r8MY+68e1eFAqT/9Q6eJQ==">
+  <!--[if lte IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/base-238f8c63cbd10f22d8e9a83c04291235.css">
+
+    <link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/reading-note-e17740f24eff30f15f7448b8f4893c2d.css">
+  <link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/base-read-mode-2400119c5a397547ddac185dfa1db236.css">
+  <script type="text/javascript" async="" src="./iOS证书描述文件说明 - 简书_files/ga.js"></script><script src="./iOS证书描述文件说明 - 简书_files/modernizr-8310b02f56277a1101d09f83069a465d.js"></script><style type="text/css"></style>
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if IE 8]><link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/scaffolding/for_ie-c6182786e742ff7467a374a2af472828.css" /><![endif]-->
+  <!--[if lt IE 9]><link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/scaffolding/for_ie-c6182786e742ff7467a374a2af472828.css" /><![endif]-->
+  <link href="http://baijii-common.b0.upaiyun.com/icons/favicon.ico" rel="icon">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/57-81d0037ed3568acd57efd815c8d2cf2b.png" sizes="57x57">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/72-66ff2e87b6f9265ed45a02a42edec7eb.png" sizes="72x72">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/76-bf7d467ba6aaf96794d2633212795759.png" sizes="76x76">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/114-c0e5e04e94be0eefdc94d177150d951b.png" sizes="114x114">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/120-e1cdbf04f0908fcb0c44d74a7fd7adf7.png" sizes="120x120">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/152-89405a461a7a5693b27c7de9126a6164.png" sizes="152x152">
+  <script>
+    var _czc = _czc || [];
+    _czc.push(["_setAccount", "1253183112"]);
+  </script>
+<style type="text/css"></style></head>
+
+<body class="post output zh cn mac reader-day-mode reader-font2" data-js-module="note-show" data-locale="zh-CN">
+  
+  <div class="navbar navbar-jianshu shrink hide-wrap-btn">
+  <div class="dropdown">
+    <a class="dropdown-toggle logo" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0)">
+      简
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+      <li><a href="http://www.jianshu.com/"><i class="fa fa-home"></i> 首页</a></li>
+      <li><a href="http://www.jianshu.com/collections"><i class="fa fa-th"></i> 专题</a></li>
+      <li><a href="http://www.jianshu.com/user_invitations"><i class="fa fa-money"></i> 发钱啦</a></li>
+    </ul>
+  </div>
+</div>
+<div class="navbar-user">
+    <a class="login" data-signup-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_up">
+      <i class="fa fa-user"></i> 注册
+</a>    <a class="login" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+      <i class="fa fa-sign-in"></i> 登录
+</a>    <a class="daytime set-view-mode pull-right" href="javascript:void(0)"><i class="fa fa-moon-o"></i></a>
+</div>
+<div class="navbar navbar-jianshu expanded">
+  <div class="dropdown">
+      <a class="active logo" role="button" data-original-title="个人主页" data-container="div.expanded" href="http://www.jianshu.com/">
+        <b>简</b><i class="fa fa-home"></i><span class="title">首页</span>
+</a>      <a data-toggle="tooltip" data-placement="right" data-original-title="专题" data-container="div.expanded" href="http://www.jianshu.com/collections">
+        <i class="fa fa-th"></i><span class="title">专题</span>
+</a>    <a data-toggle="tooltip" data-placement="right" data-original-title="下载手机应用" data-container="body" href="http://www.jianshu.com/apps">
+      <i class="fa fa-mobile"></i><span class="title">下载手机应用</span>
+</a>  </div>
+  <div class="nav-user">
+      <a href="http://www.jianshu.com/p/68ba9838a5d7#view-mode-modal" data-toggle="modal"><i class="fa fa-font"></i><span class="title">显示模式</span></a>
+
+      <a class="signin" data-signin-link="true" data-toggle="modal" data-placement="right" data-original-title="登录" data-container="div.expanded" href="http://www.jianshu.com/sign_in">
+        <i class="fa fa-sign-in"></i><span class="title">登录</span>
+</a>    </div>
+  </div>
+
+  
+    <div class="fixed-btn">
+    <a class="go-top" href="http://www.jianshu.com/p/68ba9838a5d7#"> <i class="fa fa-angle-up"></i></a>
+    <a class="qrcode" data-target="#bottom-qrcode" data-toggle="modal" href="javascript:void(0)"><i class="fa fa-qrcode"></i></a>
+    <a class="writer" href="http://www.jianshu.com/writer#/" data-toggle="tooltip" data-placement="left" title="" data-original-title="写篇文章"><i class="fa fa-pencil"></i></a>
+    <!-- qrcode modal -->
+    <div id="bottom-qrcode" class="modal panel-modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <h4>下载简书移动应用</h4>
+      <div class="panel-body"><img alt="Download app qrcode" src="./iOS证书描述文件说明 - 简书_files/download-app-qrcode-54b80569dd46614b3507ca15811edd62.png"></div>
+    </div>
+  </div>
+
+
+  <div id="show-note-container" class="imagebubble-container imagebubble-mode-off">
+    
+
+<div class="post-bg" id="flag">
+  <div class="wrap-btn hide-wrap-btn" style="top: -1px;">
+    <!-- Notebook and collections button upper left -->
+      <div class="article-related pull-left">
+          <a data-toggle="tooltip" data-placement="bottom" data-original-title="未加入专题" href="javascript:void(null);">
+            <i class="fa fa-th"></i>
+</a>          <a class="notebooks-menu-btn" data-toggle="modal" data-target="#notebooks-menu" href="javascript:void(null);"><i class="fa fa-list-ul"></i></a>
+        <div class="related-avatar-group activities"></div>
+      </div>
+    <!-- ******* -->
+
+      <a class="login" data-signup-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_up">
+    <i class="fa fa-user"></i> 注册
+</a>  <a class="login" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+    <i class="fa fa-sign-in"></i> 登录
+</a>
+
+    <!-- Buttons upper right -->
+    <!-- ******* -->
+  </div>
+
+  <div class="container">
+    <!-- Article activities for width under 768px -->
+    <div class="related-avatar-group activities"></div>
+      <div class="article">
+        <div class="preview">
+          <div class="author-info">
+              <div class="btn btn-small btn-success follow">
+    <a data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in"><i class="fa fa-plus"></i>  <span>添加关注</span></a>
+  </div>
+
+            <a class="avatar" href="http://www.jianshu.com/users/4a75df10917e">
+              <img thumbnail="90x90" quality="100" src="./iOS证书描述文件说明 - 简书_files/62a6f1d9cd23.jpg" alt="62a6f1d9cd23">
+</a>            <span class="label">作者</span>
+            <a class="author-name blue-link" href="http://www.jianshu.com/users/4a75df10917e">
+              <span>EchoYing0716</span>
+</a>              <span data-toggle="tooltip" data-original-title="最后编辑于 2015.06.03 13:50">2015.06.03 12:00*</span>
+            <div>
+              <span>写了5520字</span>，<span>被24人关注</span>，<span>获得了16个喜欢</span>
+            </div>
+          </div>
+          <h1 class="title">iOS证书描述文件说明</h1>
+          <div class="meta-top">
+            <span class="wordage">字数1650</span>
+            <span class="views-count">阅读653</span>
+            <span class="comments-count">评论1</span>
+            <span class="likes-count">喜欢2</span>
+          </div>
+
+          <!-- Collection/Bookmark/Share for width under 768px -->
+          <div class="article-share">  
+    <a class="bookmark" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+    <i class="fa fa-bookmark-o"></i><span>收藏文章</span>
+</a>
+  <span>
+    <a href="javascript:void(null)" data-toggle="dropdown"><i class="fa fa-share-square-o"></i> 分享</a>
+    <ul class="dropdown-menu arrow-top">
+        <li><a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=1881139527',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','http://cwb.assets.jianshu.io/notes/images/1536872/weibo/image_7c8206533b30.jpg', '推荐 @EchoYing_5078 的文章《iOS证书描述文件说明》（ 分享自 @简书 ）','http://www.jianshu.com/p/68ba9838a5d7','页面编码gb2312|utf-8默认gb2312'));"><img src="./iOS证书描述文件说明 - 简书_files/weibo.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:'',r='http://www.douban.com/recommend/?url='+e('http://www.jianshu.com/p/68ba9838a5d7')+'&title='+e('iOS证书描述文件说明')+'&sel='+e(s)+'&v=1',x=function(){if(!window.open(r,'douban','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r+'&r=1'};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()"><img src="./iOS证书描述文件说明 - 简书_files/douban.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://share.v.t.qq.com/index.php?c=share&a=index&url='+e('http://www.jianshu.com/p/68ba9838a5d7')+'&title='+e('推荐 EchoYing0716 的文章《iOS证书描述文件说明》（ 分享自 @jianshuio ）'),x=function(){if(!window.open(r,'tweibo','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS证书描述文件说明 - 简书_files/tweibo.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+e('http://www.jianshu.com/p/68ba9838a5d7')+'&title='+e('推荐 EchoYing0716 的文章《iOS证书描述文件说明》'),x=function(){if(!window.open(r,'qzone','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS证书描述文件说明 - 简书_files/qzone.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://twitter.com/share?url='+e('http://www.jianshu.com/p/68ba9838a5d7')+'&text='+e('推荐 EchoYing0716 的文章《iOS证书描述文件说明》（ 分享自 @jianshucom ）')+'&related='+e('jianshucom'),x=function(){if(!window.open(r,'twitter','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS证书描述文件说明 - 简书_files/twitter.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://www.facebook.com/sharer.php?s=100&p[url]='+e('http://www.jianshu.com/p/68ba9838a5d7')+'&p[title]='+e('iOS证书描述文件说明 - 简书社')+'&p[summary]='+e('推荐 EchoYing0716 的文章《iOS证书描述文件说明》'),x=function(){if(!window.open(r,'facebook','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS证书描述文件说明 - 简书_files/facebook.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://plus.google.com/share?url='+e('http://www.jianshu.com/p/68ba9838a5d7'),x=function(){if(!window.open(r,'google_plus','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS证书描述文件说明 - 简书_files/google_plus.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://widget.renren.com/dialog/share?resourceUrl='+e('http://www.jianshu.com/p/68ba9838a5d7')+'&description='+e('推荐 EchoYing0716 的文章《iOS证书描述文件说明》')+'&title='+e('iOS证书描述文件说明'),x=function(){if(!window.open(r,'renren','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS证书描述文件说明 - 简书_files/renren.png"></a></li>
+    </ul>
+  </span>
+</div>
+          <!-- -->
+
+          <div class="show-content"><p><b>iOS证书分类说明？</b><br></p><p><b>开发者证书</b>：（分为<b>开发和发布</b>两种，类型为ios Development,ios Distribution），这个是最基础的，不论是真机调试，还是上传到appstore都是需要的，是一个基证书，用来证明自己开发者身份的。Distributon（发布证书）: 用于上传应用 ，同一开发者最多只能创建两个此证书，以公司名 命名此证书 。Development（开发证书）:用于发开应用 ，以子开发者名 命名此证书。</p><p>iOS证书如下：</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-d79f168e85ff180c.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-d79f168e85ff180c.png" data-image-slug="d79f168e85ff180c" data-width="537" data-height="210" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p><b>App ID</b>：这是每一个应用的独立标识，在设置项中可以配置该应用的权限，比如是否用到了PassBook,GameCenter,以及更常见的push服务，如果选中了push服务，那么就可以创建生成下面所提到的推送证书，所以，在所有和推送相关的配置中，首先要做的就是先开通支持推送服务的appID。如下：</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-118c3b09c77e89c8.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-118c3b09c77e89c8.png" data-image-slug="118c3b09c77e89c8" data-width="713" data-height="130" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-ed56a208cad1c8cb.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-ed56a208cad1c8cb.png" data-image-slug="ed56a208cad1c8cb" data-width="717" data-height="447" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p><b>推送证书：</b>（分为开发和发布两种，类型分别为APNs Development ios,APNs Distribution ios）,该证书在appID配置中创建生成，和开发者证书一样，安装到开发电脑上。本质作用是服务器需要证书导出的p12文件用于相关配置，完成推送功能与应用的上传无关。推送通知证分为两种即APNs Production 和APNs Developent类型。</p><p><b>Device: &nbsp; &nbsp;&nbsp;</b>就是iOS设备。Devices中包含了该账户中所有可用于开发和测试的设备。 每台设备使用UDID来唯一标识。每个账户中的设备数量限制是100个。Disable 一台设备也不会增加名额，只能在membership year 开始的时候才能通过删除设备来增加名额。</p><p><b>Provisioning Profiles（描述文件）</b>：一个Provisioning Profile文件包含了上述的所有内容：证书、App ID、设备。分为Distribution、和Development两种类型、将AppID、证书、设备绑定，在开发者中心配置好后可以添加到Xcode上，也可以直接在Xcode上连接开发者中心生成，真机调试时需要在PP文件中添加真机的udid；是真机调试和必架必备之珍品。Distribution （用于发布）创建基于app ID，基于发布证书。 具有推送功能的描述文件：创建基于app ID。Development（用于开发）创建基于app ID，基于任意测试证书，真机设备。 具有推送功能的描述文件：创建基于app ID，基于任意测试证书，真机设备。 通配描述文件：创建基于通配的app ID，基于任意测试证书，真机设备。</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-2ddbdd476ca3c5b5.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-2ddbdd476ca3c5b5.png" data-image-slug="2ddbdd476ca3c5b5" data-width="728" data-height="108" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-ccb7cb08c0f8aaad.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-ccb7cb08c0f8aaad.png" data-image-slug="ccb7cb08c0f8aaad" data-width="402" data-height="265" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-635e675a95c2e142.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-635e675a95c2e142.png" data-image-slug="635e675a95c2e142" data-width="548" data-height="497" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-283044b4f0ba8b80.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-283044b4f0ba8b80.png" data-image-slug="283044b4f0ba8b80" data-width="720" data-height="288" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p><b>iOS开发者证书申请流程？<br></b></p><p>补充说明：我们申请一个Certificate之前，需要先申请一个Certificate Signing Request (CSR) 文件，而这个过程中实际上是生成了一对公钥和私钥，保存在你Mac的Keychain中。代码签名正是使用这种基于非对称秘钥的加密方式，用私钥进行签名，用公钥进行验证。在你Mac的keychain的login中存储着相关的公钥和私钥，而证书中包含了公钥。你只能用私钥来进行签名，所以如果没有了私钥，就意味着你不能进行签名了，所以就无法使用这个证书了，此时你只能revoke之前的证书再申请一个。因此在申请完证书时，最好导出并保存好你的私钥。当你想与其他人或其他设备共享证书时，把私钥传给它就可以了。私钥保存在你的Mac中，而苹果生成的Certificate中包含了公钥。当你用自己的私钥对代码签名后，苹果就可以用证书中的公钥来进行验证，确保是你对代码进行了签名，而不是别人冒充你，同时也确保代码的完整性等。如下图：</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-edeb7d56dd766bf9.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-edeb7d56dd766bf9.png" data-image-slug="edeb7d56dd766bf9" data-width="458" data-height="321" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p><b>参考网址：http://blog.csdn.net/sampoowoo/article/details/40301461</b><br></p><p>1、首先登陆到开发者中心，点进证书，会显示如下界面，点击右上角的加号。</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-343da60ad4f9fef2.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-343da60ad4f9fef2.png" data-image-slug="343da60ad4f9fef2" data-width="1081" data-height="671" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p>2.分别创建开发测试证书和发布证书，开发测试证书用于真机调试，发布证书用于提交到appStore,我们以开发测试证书为例，选择第一个红框中的内容；</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-7acbae0d954a0580.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-7acbae0d954a0580.png" data-image-slug="7acbae0d954a0580" data-width="702" data-height="514" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p>3.创建CSR文件，也就是证书签名请求文件。</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-e84ef019ef4984b2.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-e84ef019ef4984b2.png" data-image-slug="e84ef019ef4984b2" data-width="573" data-height="355" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p>4.在开发者中心将该CSR文件提交并生成证书。</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-bf5b8c4f6af3fc80.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-bf5b8c4f6af3fc80.png" data-image-slug="bf5b8c4f6af3fc80" data-width="705" data-height="489" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-8fbe26de30676ade.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-8fbe26de30676ade.png" data-image-slug="8fbe26de30676ade" data-width="699" data-height="426" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p>5.同样的方法配置一下Distribution发布证书，下载保存，双击安装；在钥题串登陆证书中可以查看，其中专用密钥的名字即为CSR请求文件中的常用名称。</p><p><b>iOS开发/真机调试流程？</b></p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-854cb197673bcdae.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-854cb197673bcdae.png" data-image-slug="854cb197673bcdae" data-width="423" data-height="155" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-cf5d6cc8ed735689.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-cf5d6cc8ed735689.png" data-image-slug="cf5d6cc8ed735689" data-width="656" data-height="349" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-1251b312510b5bee.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-1251b312510b5bee.png" data-image-slug="1251b312510b5bee" data-width="705" data-height="85" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p><b>iOS发布流程？</b></p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS证书描述文件说明 - 简书_files/455017-e572ee3c1baf1226.png" data-original-src="http://upload-images.jianshu.io/upload_images/455017-e572ee3c1baf1226.png" data-image-slug="e572ee3c1baf1226" data-width="614" data-height="168" class="imagebubble-image"><br><div class="image-caption"></div>
+</div><p><b>iOS证书补充说明？</b></p><p>（1）certSigningRequest文件，该文件在MAC系统中生成，用于在Apple网站上申请推送证书文件。<br></p><p>生成过程：打开应用程序中的“钥匙串访问”软件，从菜单中选择 “钥匙串访问”-》“证书助理”-》“从证书颁发机构请求证书”，邮箱和名称随便填写，然后选择保存到磁盘，就可以在本地生成一个CertificateSigningRequest.certSigningRequest文件。</p><p>（2）注册一个支持push的app id，后面会用到。</p><p>生成过程：进入developer.apple.com，选择member center -&nbsp;Certificates, Identifiers &amp; Profiles&nbsp;&nbsp;-&nbsp;&nbsp;Identifiers- App Ids，然后选择注册app id，设置appid名称，同时，app id&nbsp;suffix一栏必须选择explicit app id，然后设置bundle id，最后勾选&nbsp;App Services中的&nbsp;Push Notifications，这样就可以注册一个支持push的aphid。</p><p>（3） 推送证书cer文件，该文件在<a href="http://developer.apple.com/" target="_blank">developer.apple.com</a>中生成，用于生成服务端需要的文件。</p><p>生成过程：进入developer.apple.com，选择member center -&nbsp;Certificates, Identifiers &amp; Profiles&nbsp;&nbsp;-&nbsp;&nbsp;Certificates，然后选择创建certificate，类型分为Development和Product。这里以Development为例，选择Apple Push Notification service SSL (Sandbox) ，然后下一步，选择之前生成的支持push的AppId，然后下一步，提交之前创建的CSR文件，再下一步就可以生成cer文件，然后保存到本地。</p><p>（4）生成服务端使用的证书文件。如果是使用网上的mac 版PushMeBaby工具，在mac机器上进行推送消息的发送，那么有上面的cer文件就够了。如果是使用PHP、java/c#开发自己的服务端，那么还需要将上面的cer文件做一个转换，生成pem文件或者p12文件。</p></div>
+        </div>
+      </div>
+
+      <div class="visitor_edit">
+        <!-- further readings -->
+        <div id="further-readings" data-user-slug="" data-user-nickname="">
+          <div id="further-reading-line" class="hide further-reading-line"></div>
+          <ul id="further-readings-list" class="reading-list unstyled"></ul>
+          <div id="further-reading-new" class="reading-edit">
+              <a data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+                <i class="fa fa-plus-circle"></i> 推荐拓展阅读
+</a>            <div id="further-reading-form"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reward / Support Author -->
+        <div class="support-author">
+          <p>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+            <a class="btn btn-pay" data-toggle="modal" href="http://www.jianshu.com/p/68ba9838a5d7#pay-modal">¥ 打赏支持</a>
+          <div class="avatar-list">
+</div>
+        </div>
+
+      <!-- article meta bottom -->
+      <div class="meta-bottom clearfix">
+        <!--  Like Button -->
+        <div class="like ">
+            <div class="like-button">
+              <a id="like-note" class="like-content" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+                <i class="fa fa-heart-o"></i>  喜欢
+</a></div>          <span id="likes-count" data-toggle="tooltip" data-placement="right" title="" data-original-title="查看所有喜欢的用户">2</span>        </div>
+        <!--  share group -->
+        <div class="share-group pull-right">
+          <a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=1881139527',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','http://cwb.assets.jianshu.io/notes/images/1536872/weibo/image_7c8206533b30.jpg', '推荐 @EchoYing_5078 的文章《iOS证书描述文件说明》（ 分享自 @简书 ）','http://www.jianshu.com/p/68ba9838a5d7','页面编码gb2312|utf-8默认gb2312'));" data-name="weibo">
+            <i class="fa fa-weibo"></i><span>分享到微博</span>
+          </a>
+          <a data-toggle="modal" href="http://www.jianshu.com/p/68ba9838a5d7#share-weixin-modal" data-name="weixin">
+            <i class="fa fa-weixin"></i><span>分享到微信</span>
+          </a>
+          <div class="more">
+            <a href="javascript:void(0)" data-toggle="dropdown">更多分享<i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu arrow-top">
+                <li><a href="http://cwb.assets.jianshu.io/notes/images/1536872/weibo/image_7c8206533b30.jpg" target="_blank" data-name="changweibo"><i class="fa fa-arrow-circle-o-down"></i> 下载长微博图片</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://share.v.t.qq.com/index.php?c=share&a=index&url='+e('http://www.jianshu.com/p/68ba9838a5d7')+'&title='+e('推荐 EchoYing0716 的文章《iOS证书描述文件说明》（ 分享自 @jianshuio ）'),x=function(){if(!window.open(r,'tweibo','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="tweibo"><img src="./iOS证书描述文件说明 - 简书_files/tweibo.png">分享到腾讯微博</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+e('http://www.jianshu.com/p/68ba9838a5d7')+'&title='+e('推荐 EchoYing0716 的文章《iOS证书描述文件说明》'),x=function(){if(!window.open(r,'qzone','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="qzone"><img src="./iOS证书描述文件说明 - 简书_files/qzone.png">分享到QQ空间</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://twitter.com/share?url='+e('http://www.jianshu.com/p/68ba9838a5d7')+'&text='+e('推荐 EchoYing0716 的文章《iOS证书描述文件说明》（ 分享自 @jianshucom ）')+'&related='+e('jianshucom'),x=function(){if(!window.open(r,'twitter','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="twitter"><img src="./iOS证书描述文件说明 - 简书_files/twitter.png">分享到Twitter</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://www.facebook.com/sharer.php?s=100&p[url]='+e('http://www.jianshu.com/p/68ba9838a5d7')+'&p[title]='+e('iOS证书描述文件说明 - 简书社')+'&p[summary]='+e('推荐 EchoYing0716 的文章《iOS证书描述文件说明》'),x=function(){if(!window.open(r,'facebook','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="facebook"><img src="./iOS证书描述文件说明 - 简书_files/facebook.png">分享到Facebook</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://plus.google.com/share?url='+e('http://www.jianshu.com/p/68ba9838a5d7'),x=function(){if(!window.open(r,'google_plus','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="google_plus"><img src="./iOS证书描述文件说明 - 简书_files/google_plus.png">分享到Google+</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://widget.renren.com/dialog/share?resourceUrl='+e('http://www.jianshu.com/p/68ba9838a5d7')+'&description='+e('推荐 EchoYing0716 的文章《iOS证书描述文件说明》')+'&title='+e('iOS证书描述文件说明'),x=function(){if(!window.open(r,'renren','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="renren"><img src="./iOS证书描述文件说明 - 简书_files/renren.png">分享到人人网</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:'',r='http://www.douban.com/recommend/?url='+e('http://www.jianshu.com/p/68ba9838a5d7')+'&title='+e('iOS证书描述文件说明')+'&sel='+e(s)+'&v=1',x=function(){if(!window.open(r,'douban','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r+'&r=1'};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()" data-name="douban"><img src="./iOS证书描述文件说明 - 简书_files/douban.png">分享到豆瓣</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modals -->
+      <div id="share-weixin-modal" class="modal hide fade share-weixin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body" title="http://www.jianshu.com/p/68ba9838a5d7?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weixin">
+    <h5>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</h5>
+  <canvas width="170" height="170" style="display: none;"></canvas><img src="data:image/png;base64,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" style="display: block;"></div>
+</div>
+
+      
+      <div id="notebooks-menu" class="panel notebooks-menu arrow-top modal hide fade"><img class="loader-tiny" src="./iOS证书描述文件说明 - 简书_files/tiny.gif" alt="Tiny"></div>
+      <div id="collection-menu" class="panel collection-menu arrow-top modal hide fade"><img class="loader-tiny" src="./iOS证书描述文件说明 - 简书_files/tiny.gif" alt="Tiny"></div>
+      
+      <div id="likes-modal" class="modal modal_new support_list-modal fullscreen hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>喜欢的用户</h3>
+      </div>
+      <div class="modal-body">
+        <ul class="unstyled users"><li data-user-id="427550">
+  <a class="avatar" href="http://www.jianshu.com/users/09ff84efdbcc"><img thumbnail="90x90" quality="100" src="./iOS证书描述文件说明 - 简书_files/b171c7a0e15c.jpg" alt="B171c7a0e15c"></a>
+  <a class="blue-link" href="http://www.jianshu.com/users/09ff84efdbcc">sclcoder</a>
+  <span class="time">2015.11.19 22:37</span>
+</li>
+<li data-user-id="761">
+  <a class="avatar" href="http://www.jianshu.com/users/ZXEY43"><img thumbnail="90x90" quality="100" src="./iOS证书描述文件说明 - 简书_files/759ca8452d26.png" alt="759ca8452d26"></a>
+  <a class="blue-link" href="http://www.jianshu.com/users/ZXEY43">tailang</a>
+  <span class="time">2015.06.26 23:44</span>
+</li>
+
+</ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Comments -->
+    <div id="comments" class="comment-list clearfix">
+        <div class="comment-head clearfix">
+          1条评论
+          <span class="order">
+            （
+            <a data-order="asc" class="active" href="javascript:void(0)">按时间正序</a>·
+            <a data-order="desc" href="javascript:void(0)">按时间倒序</a>·
+            <a data-order="likes_count" href="javascript:void(0)">按喜欢排序</a>
+            ）
+          </span>
+            <a class="goto-comment pull-right" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+              <i class="fa fa-pencil"></i>添加新评论
+</a>        </div>
+        <div id="comment-list"><script type="application/json" data-name="comments-info">
+  {"comments":[{"id":903499,"children_count":0,"likes_count":0}]}
+</script>
+
+
+<div class="note-comment clearfix" id="comment-903499">
+  <div class="content">
+      <div class="meta-top">
+        <a class="avatar" href="http://www.jianshu.com/users/09ff84efdbcc">
+          <img thumbnail="90x90" quality="100" src="./iOS证书描述文件说明 - 简书_files/b171c7a0e15c.jpg" alt="B171c7a0e15c">
+</a>        <p>
+          <a class="author-name" href="http://www.jianshu.com/users/09ff84efdbcc">sclcoder</a>
+        </p>
+        <span class="reply-time">
+          <small>2 楼 · </small>
+          <a href="http://www.jianshu.com/p/68ba9838a5d7/comments/903499#comment-903499">2015.11.19 22:46</a></span>
+      </div>
+      <p>感谢<img src="./iOS证书描述文件说明 - 简书_files/smile.png" alt=":smile:" title=":smile:" class="emoji" width="20" height="20"></p>
+      <div class="comment-footer clearfix text-right">
+        <a data-id="903499" class="like pull-left" href="javascript:void(0)">
+          <i class="fa fa-heart-o"></i>喜欢<span>(0)</span>
+</a>        
+
+        <a data-id="903499" data-nickname="sclcoder" class="reply" href="javascript:void(0)">回复</a>
+        
+        
+      </div>
+    <div class="child-comment-list hide">
+      
+      <div data-state="remaining-child-comments"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+          <p class="signout-comment">
+    <a class="btn btn-info" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+      登录后发表评论
+</a>  </p>
+
+    </div>
+    <!-- -->
+
+  </div>
+
+  <script type="application/json" data-name="note">
+    {"id":1536872,"abbr":"iOS证书分类说明？开发者证书：（分为开发和发布两种，类型为iosDevelopment,iosDistribution），这个是最基础的，不论是真机调试，还是上传到appstore都是需要的，是一个基证书，用来证明自己开发者身份的。Distributon（发布证书）:用...","slug":"68ba9838a5d7","url":"http://www.jianshu.com/p/68ba9838a5d7","image_url":"http://cwb.assets.jianshu.io/notes/images/1536872/weibo/image_7c8206533b30.jpg","wordage":1650,"has_further_readings":false,"views_count":653,"likes_count":2,"comments_count":1,"rewards_total_count":0}
+  </script>
+
+  <script type="application/json" data-name="uuid">
+    {"uuid":"24277160-760f-0133-b2e6-5254003881ca"}
+  </script>
+
+  <script type="application/json" data-name="author">
+    {"id":455017,"nickname":"EchoYing0716","slug":"4a75df10917e","public_notes_count":11,"followers_count":24,"total_likes_count":16,"is_current_user":false}
+  </script>
+
+
+
+  <!-- Modal -->
+    <div class="modal pay-modal text-center hide fade" id="pay-modal">
+  <div class="modal-header clearfix">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <form id="new_reward" class="new_reward" target="_blank" action="http://www.jianshu.com/notes/1536872/rewards" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="zxBDSGGPKn8mKy3BTuDFBdmMxN6se1bJ4HGZ/APYCc0DNt+VRNDvYfabNU/EX5W22r8MY+68e1eFAqT/9Q6eJQ==">
+    <div class="modal-body">
+      <a href="http://www.jianshu.com/users/4a75df10917e">
+        <div class="avatar"><img thumbnail="90x90" quality="100" src="./iOS证书描述文件说明 - 简书_files/62a6f1d9cd23.jpg" alt="62a6f1d9cd23"></div>
+</a>      <p><i class="fa fa-quote-left pull-left"></i>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！<i class="fa fa-quote-right pull-right"></i></p>
+      <div class="main-inputs text-left">
+        <div class="control-group">
+          <label for="reward_amount">打赏金额</label><i class="fa fa-yen"></i>
+          <input value="2.00" type="text" name="reward[amount_in_yuan]" id="reward_amount_in_yuan">
+        </div>
+        <div class="control-group message">
+          <textarea placeholder="给Ta留言" name="reward[message]" id="reward_message"></textarea>
+        </div>
+      </div>
+      <div class="choose-pay text-left">
+        <h5>选择支付方式：</h5>
+        <div>
+          <label for="reward_channel_alipay">
+            <div class="iradio_minimal checked" style="position: relative;"><input type="radio" value="alipay" checked="checked" name="reward[channel]" id="reward_channel_alipay" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+            <span class="alipay-bg"></span>
+</label>
+          
+          <label for="reward_channel_wx_pub_qr">
+            <div class="iradio_minimal" style="position: relative;"><input type="radio" value="wx_pub_qr" name="reward[channel]" id="reward_channel_wx_pub_qr" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+            微信支付
+</label>        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button name="button" type="submit" class="btn btn-large btn-pay">立即支付</button>
+    </div>
+</form></div>
+
+    <div class="modal success-pay text-center hide fade" id="success-pay">
+  <div class="modal-header clearfix">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body">
+    <h3><i class="icon-ok"></i>打赏成功</h3>
+    <img src="./iOS证书描述文件说明 - 简书_files/complete-pay-42a51932f3a745f4f2f7a81b04d6fb02.png" alt="Complete pay">
+  </div>
+  <div class="modal-footer">
+    
+  </div>
+</div>
+
+</div>
+
+  <div class="imagebubble-backmask image-package" style="z-index: 1000;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-d79f168e85ff180c(1).png" style="top: 542px; left: 329px; width: 537px; height: 210px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-635e675a95c2e142(1).png" style="top: 2374px; left: 323.5px; width: 548px; height: 497px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-ed56a208cad1c8cb(1).png" style="top: 1038px; left: 287.5px; width: 620px; height: 387px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-ccb7cb08c0f8aaad(1).png" style="top: 2089px; left: 396.5px; width: 402px; height: 265px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-2ddbdd476ca3c5b5(1).png" style="top: 1978px; left: 287.5px; width: 620px; height: 92px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-118c3b09c77e89c8(1).png" style="top: 905px; left: 287.5px; width: 620px; height: 113px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-7acbae0d954a0580(1).png" style="top: 4434px; left: 287.5px; width: 620px; height: 454px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-edeb7d56dd766bf9(1).png" style="top: 3506px; left: 368.5px; width: 458px; height: 321px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-283044b4f0ba8b80(1).png" style="top: 2891px; left: 287.5px; width: 620px; height: 248px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-e84ef019ef4984b2(1).png" style="top: 4959px; left: 311px; width: 573px; height: 355px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-bf5b8c4f6af3fc80(1).png" style="top: 5386px; left: 287.5px; width: 620px; height: 430px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-343da60ad4f9fef2(1).png" style="top: 3951px; left: 287.5px; width: 620px; height: 385px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-854cb197673bcdae(1).png" style="top: 6364px; left: 386px; width: 423px; height: 155px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-cf5d6cc8ed735689(1).png" style="top: 6539px; left: 287.5px; width: 620px; height: 330px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-1251b312510b5bee(1).png" style="top: 6888px; left: 287.5px; width: 620px; height: 75px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-e572ee3c1baf1226(1).png" style="top: 7034px; left: 290.5px; width: 614px; height: 168px;"><img class="imagebubble-ghost" src="./iOS证书描述文件说明 - 简书_files/455017-8fbe26de30676ade(1).png" style="top: 5836px; left: 287.5px; width: 620px; height: 378px;"></div></div>
+  <div id="flash" class="hide"></div>
+  
+  <div id="view-mode-modal" tabindex="-1" class="modal hide read-modal" aria-hidden="false" data-js-module="view-mode-modal">
+    <div class="btn-group change-background" data-toggle="buttons-radio">
+      <a class="btn btn-daytime active" data-mode="day" href="javascript:void(null);">
+        <i class="fa fa-sun-o"></i>
+</a>      <a class="btn btn-nighttime " data-mode="night" href="javascript:void(null);">
+        <i class="fa fa-moon-o"></i>
+</a>    </div>
+    <div class="btn-group change-font" data-toggle="buttons-radio">
+      <a class="btn font " data-font="font1" href="javascript:void(null);">宋体</a>
+      <a class="btn font hei active" data-font="font2" href="javascript:void(null);">黑体</a>
+    </div>
+    <div class="btn-group change-locale" data-toggle="buttons-radio">
+      <a class="btn font active" data-locale="zh-CN" href="javascript:void(null);">简</a>
+      <a class="btn font hei " data-locale="zh-TW" href="javascript:void(null);">繁</a>
+    </div>
+  </div>
+
+  
+
+  <script src="./iOS证书描述文件说明 - 简书_files/base-c39afd602844983c1c2211b338c37b91.js"></script>
+  
+  <script src="./iOS证书描述文件说明 - 简书_files/reading-base-ab825a9033707c8e5468464842a37acc.js"></script>
+  <script src="./iOS证书描述文件说明 - 简书_files/note_show-9bc4dbe88efca06c25faf51bc32d5951.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35169517-1']);
+  _gaq.push(['_setCustomVar', 2, 'User Type', 'Visitor', 1 ]);
+  _gaq.push(['_trackPageview']);
+
+  
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<div style="display:none">
+<script src="./iOS证书描述文件说明 - 简书_files/z_stat.php" language="JavaScript"></script><script src="./iOS证书描述文件说明 - 简书_files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1253183112" target="_blank" title="站长统计">站长统计</a>
+</div>
+
+
+</body></html>

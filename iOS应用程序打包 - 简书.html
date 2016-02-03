@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.jianshu.com/p/bd953c3e389f -->
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<script type="text/javascript" async="" src="./iOS应用程序打包 - 简书_files/ga.js"></script><script type="text/javascript">window.BWEUM||(BWEUM={});BWEUM.info={"beacon":"bi-collector.oneapm.com/beacon/rum/ruby","errorBeacon":"bi-collector.oneapm.com/beacon/error/ruby","licenseKey":"JAb~enriQzVIVYfB","applicationID":1987,"transactionName":"FRIgBzBRBT4nUkEMXSxYLDw2VRhiNVlaEg==","queueTime":0,"applicationTime":104,"agent":"//bi-collector.oneapm.com/static/js/bw-send-411.4.5.js"}</script>
+<script type="text/javascript" src="./iOS应用程序打包 - 简书_files/bw-loader-411.4.5.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="description" content="该文章属于&amp;lt;简书—刘小壮&amp;gt;原创，转载请注明：&amp;lt;简书—刘小壮&amp;gt;http://www.jianshu.com/p/bd953c3e389f应用程序上线首先需要打包，下面说一下应用程序打包。一.首先生成打包证书点击加号，申请打包证...">
+  <meta property="wb:webmaster" content="294ec9de89e7fadb">
+  <meta property="qc:admins" content="104102651453316562112116375">
+  <meta property="qc:admins" content="11635613706305617">
+  <meta property="qc:admins" content="1163561616621163056375">
+  <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4">
+  <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI">
+  <meta http-equiv="mobile-agent" content="format=html5; url=http://www.jianshu.com/p/bd953c3e389f">
+    <!--  Meta for Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/1502323">
+  <!-- End -->
+
+  <!--  Meta for Twitter Card -->
+  <meta content="summary" property="twitter:card">
+  <meta content="@jianshucom" property="twitter:site">
+  <meta content="iOS应用程序打包" property="twitter:title">
+  <meta content="该文章属于&amp;lt;简书—刘小壮&amp;gt;原创，转载请注明：&amp;lt;简书—刘小壮&amp;gt;http://www.jianshu.com/p/bd953c3e389f应用程序上线首先需要打包，下面说一下应用程序打包。一.首先生成打包证书点击加号，申请打包证..." property="twitter:description">
+  <meta content="http://www.jianshu.com/p/bd953c3e389f" property="twitter:url">
+  <!-- End -->
+
+  <!--  Meta for OpenGraph -->
+  <meta property="fb:app_id" content="865829053512461">
+  <meta property="og:site_name" content="简书">
+  <meta property="og:title" content="iOS应用程序打包">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.jianshu.com/p/bd953c3e389f">
+  <meta property="og:description" content="该文章属于&amp;lt;简书—刘小壮&amp;gt;原创，转载请注明：&amp;lt;简书—刘小壮&amp;gt;http://www.jianshu.com/p/bd953c3e389f应用程序上线首先需要打包，下面说一下...">
+
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-7914b4a6bae26ff5.png">
+    <meta property="og:image:width" content="1974">
+    <meta property="og:image:height" content="698">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-7fe7cb938a95f74c.png">
+    <meta property="og:image:width" content="1536">
+    <meta property="og:image:height" content="1168">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-85b6310ed125e291.png">
+    <meta property="og:image:width" content="1202">
+    <meta property="og:image:height" content="914">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-5e70a942c2467efe.png">
+    <meta property="og:image:width" content="1562">
+    <meta property="og:image:height" content="1044">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-b77f3ed196fbe7ef.png">
+    <meta property="og:image:width" content="1178">
+    <meta property="og:image:height" content="828">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-4944906753a7ca14.png">
+    <meta property="og:image:width" content="1176">
+    <meta property="og:image:height" content="856">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-da7e8127c0afc67b.png">
+    <meta property="og:image:width" content="1246">
+    <meta property="og:image:height" content="888">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-f8a9863119b268b1.png">
+    <meta property="og:image:width" content="1592">
+    <meta property="og:image:height" content="986">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-cc187cd5ebec9aaa.png">
+    <meta property="og:image:width" content="1206">
+    <meta property="og:image:height" content="992">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-50e59faab4342904.png">
+    <meta property="og:image:width" content="1182">
+    <meta property="og:image:height" content="832">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-86e2b67904ae1af3.png">
+    <meta property="og:image:width" content="1202">
+    <meta property="og:image:height" content="848">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-93cbcb566563ed30.png">
+    <meta property="og:image:width" content="1186">
+    <meta property="og:image:height" content="868">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-6c7c8c2ebff48524.png">
+    <meta property="og:image:width" content="1158">
+    <meta property="og:image:height" content="452">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/270478-e5ece9ac1d948f68.png">
+    <meta property="og:image:width" content="814">
+    <meta property="og:image:height" content="370">
+    <meta property="og:image:type" content="image/png">
+  <!-- End -->
+
+  <!--  Meta for Facebook Applinks -->
+  <meta property="al:ios:url" content="jianshu://notes/1502323">
+  <meta property="al:ios:app_store_id" content="888237539">
+  <meta property="al:ios:app_name" content="简书">
+
+  <meta property="al:android:url" content="jianshu://notes/1502323">
+  <meta property="al:android:package" content="com.jianshu.haruki">
+  <meta property="al:android:app_name" content="简书">
+  <!-- End -->
+
+  <title>iOS应用程序打包 - 简书</title>
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="OVfUTb27UKQwuJdFDwmTvVOJ5KMd0kWu8rxo71IH3rL1cUiQmOSVuuAIj8uFtsMOULosHl8VaDCXz1XspNFJWg==">
+  <!--[if lte IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/base-238f8c63cbd10f22d8e9a83c04291235.css">
+
+    <link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/reading-note-e17740f24eff30f15f7448b8f4893c2d.css">
+  <link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/base-read-mode-2400119c5a397547ddac185dfa1db236.css">
+  <script src="./iOS应用程序打包 - 简书_files/modernizr-8310b02f56277a1101d09f83069a465d.js"></script><style type="text/css"></style>
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if IE 8]><link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/scaffolding/for_ie-c6182786e742ff7467a374a2af472828.css" /><![endif]-->
+  <!--[if lt IE 9]><link rel="stylesheet" media="all" href="http://cdn0.jianshu.io/assets/scaffolding/for_ie-c6182786e742ff7467a374a2af472828.css" /><![endif]-->
+  <link href="http://baijii-common.b0.upaiyun.com/icons/favicon.ico" rel="icon">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/57-81d0037ed3568acd57efd815c8d2cf2b.png" sizes="57x57">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/72-66ff2e87b6f9265ed45a02a42edec7eb.png" sizes="72x72">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/76-bf7d467ba6aaf96794d2633212795759.png" sizes="76x76">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/114-c0e5e04e94be0eefdc94d177150d951b.png" sizes="114x114">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/120-e1cdbf04f0908fcb0c44d74a7fd7adf7.png" sizes="120x120">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn0.jianshu.io/assets/apple-touch-icons/152-89405a461a7a5693b27c7de9126a6164.png" sizes="152x152">
+  <script>
+    var _czc = _czc || [];
+    _czc.push(["_setAccount", "1253183112"]);
+  </script>
+<style type="text/css"></style></head>
+
+<body class="post output zh cn mac reader-day-mode reader-font2" data-js-module="note-show" data-locale="zh-CN">
+  
+  <div class="navbar navbar-jianshu shrink">
+  <div class="dropdown">
+    <a class="dropdown-toggle logo" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0)">
+      简
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+      <li><a href="http://www.jianshu.com/"><i class="fa fa-home"></i> 首页</a></li>
+      <li><a href="http://www.jianshu.com/collections"><i class="fa fa-th"></i> 专题</a></li>
+      <li><a href="http://www.jianshu.com/user_invitations"><i class="fa fa-money"></i> 发钱啦</a></li>
+    </ul>
+  </div>
+</div>
+<div class="navbar-user">
+    <a class="login" data-signup-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_up">
+      <i class="fa fa-user"></i> 注册
+</a>    <a class="login" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+      <i class="fa fa-sign-in"></i> 登录
+</a>    <a class="daytime set-view-mode pull-right" href="javascript:void(0)"><i class="fa fa-moon-o"></i></a>
+</div>
+<div class="navbar navbar-jianshu expanded">
+  <div class="dropdown">
+      <a class="active logo" role="button" data-original-title="个人主页" data-container="div.expanded" href="http://www.jianshu.com/">
+        <b>简</b><i class="fa fa-home"></i><span class="title">首页</span>
+</a>      <a data-toggle="tooltip" data-placement="right" data-original-title="专题" data-container="div.expanded" href="http://www.jianshu.com/collections">
+        <i class="fa fa-th"></i><span class="title">专题</span>
+</a>    <a data-toggle="tooltip" data-placement="right" data-original-title="下载手机应用" data-container="body" href="http://www.jianshu.com/apps">
+      <i class="fa fa-mobile"></i><span class="title">下载手机应用</span>
+</a>  </div>
+  <div class="nav-user">
+      <a href="http://www.jianshu.com/p/bd953c3e389f#view-mode-modal" data-toggle="modal"><i class="fa fa-font"></i><span class="title">显示模式</span></a>
+
+      <a class="signin" data-signin-link="true" data-toggle="modal" data-placement="right" data-original-title="登录" data-container="div.expanded" href="http://www.jianshu.com/sign_in">
+        <i class="fa fa-sign-in"></i><span class="title">登录</span>
+</a>    </div>
+  </div>
+
+  
+    <div class="fixed-btn">
+    <a class="go-top hide-go-top" href="http://www.jianshu.com/p/bd953c3e389f#"> <i class="fa fa-angle-up"></i></a>
+    <a class="qrcode" data-target="#bottom-qrcode" data-toggle="modal" href="javascript:void(0)"><i class="fa fa-qrcode"></i></a>
+    <a class="writer" href="http://www.jianshu.com/writer#/" data-toggle="tooltip" data-placement="left" title="" data-original-title="写篇文章"><i class="fa fa-pencil"></i></a>
+    <!-- qrcode modal -->
+    <div id="bottom-qrcode" class="modal panel-modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <h4>下载简书移动应用</h4>
+      <div class="panel-body"><img alt="Download app qrcode" src="./iOS应用程序打包 - 简书_files/download-app-qrcode-54b80569dd46614b3507ca15811edd62.png"></div>
+    </div>
+  </div>
+
+
+  <div id="show-note-container" class="imagebubble-container imagebubble-mode-off">
+    
+
+<div class="post-bg" id="flag">
+  <div class="wrap-btn" style="top: -1px;">
+    <!-- Notebook and collections button upper left -->
+      <div class="article-related pull-left">
+          <a data-toggle="tooltip" data-placement="bottom" data-original-title="未加入专题" href="javascript:void(null);">
+            <i class="fa fa-th"></i>
+</a>          <a class="notebooks-menu-btn" data-toggle="modal" data-target="#notebooks-menu" href="javascript:void(null);"><i class="fa fa-list-ul"></i></a>
+        <div class="related-avatar-group activities"></div>
+      </div>
+    <!-- ******* -->
+
+      <a class="login" data-signup-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_up">
+    <i class="fa fa-user"></i> 注册
+</a>  <a class="login" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+    <i class="fa fa-sign-in"></i> 登录
+</a>
+
+    <!-- Buttons upper right -->
+    <!-- ******* -->
+  </div>
+
+  <div class="container">
+    <!-- Article activities for width under 768px -->
+    <div class="related-avatar-group activities"></div>
+      <div class="article">
+        <div class="preview">
+          <div class="author-info">
+              <div class="btn btn-small btn-success follow">
+    <a data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in"><i class="fa fa-plus"></i>  <span>添加关注</span></a>
+  </div>
+
+            <a class="avatar" href="http://www.jianshu.com/users/2de707c93dc4">
+              <img thumbnail="90x90" quality="100" src="./iOS应用程序打包 - 简书_files/1f040fbe4bb8.jpg" alt="1f040fbe4bb8">
+</a>            <span class="label">作者</span>
+            <a class="author-name blue-link" href="http://www.jianshu.com/users/2de707c93dc4">
+              <span>刘小壮</span>
+</a>              <span data-toggle="tooltip" data-original-title="最后编辑于 2015.05.19 14:54">2015.05.19 11:25*</span>
+            <div>
+              <span>写了20226字</span>，<span>被14人关注</span>，<span>获得了17个喜欢</span>
+            </div>
+          </div>
+          <h1 class="title">iOS应用程序打包</h1>
+          <div class="meta-top">
+            <span class="wordage">字数713</span>
+            <span class="views-count">阅读224</span>
+            <span class="comments-count">评论0</span>
+            <span class="likes-count">喜欢0</span>
+          </div>
+
+          <!-- Collection/Bookmark/Share for width under 768px -->
+          <div class="article-share">  
+    <a class="bookmark" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+    <i class="fa fa-bookmark-o"></i><span>收藏文章</span>
+</a>
+  <span>
+    <a href="javascript:void(null)" data-toggle="dropdown"><i class="fa fa-share-square-o"></i> 分享</a>
+    <ul class="dropdown-menu arrow-top">
+        <li><a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=1881139527',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','http://cwb.assets.jianshu.io/notes/images/1502323/weibo/image_f62de7540dff.jpg', '推荐 刘小壮 的文章《iOS应用程序打包》（ 分享自 @简书 ）','http://www.jianshu.com/p/bd953c3e389f','页面编码gb2312|utf-8默认gb2312'));"><img src="./iOS应用程序打包 - 简书_files/weibo.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:'',r='http://www.douban.com/recommend/?url='+e('http://www.jianshu.com/p/bd953c3e389f')+'&title='+e('iOS应用程序打包')+'&sel='+e(s)+'&v=1',x=function(){if(!window.open(r,'douban','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r+'&r=1'};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()"><img src="./iOS应用程序打包 - 简书_files/douban.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://share.v.t.qq.com/index.php?c=share&a=index&url='+e('http://www.jianshu.com/p/bd953c3e389f')+'&title='+e('推荐 刘小壮 的文章《iOS应用程序打包》（ 分享自 @jianshuio ）'),x=function(){if(!window.open(r,'tweibo','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS应用程序打包 - 简书_files/tweibo.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+e('http://www.jianshu.com/p/bd953c3e389f')+'&title='+e('推荐 刘小壮 的文章《iOS应用程序打包》'),x=function(){if(!window.open(r,'qzone','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS应用程序打包 - 简书_files/qzone.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://twitter.com/share?url='+e('http://www.jianshu.com/p/bd953c3e389f')+'&text='+e('推荐 刘小壮 的文章《iOS应用程序打包》（ 分享自 @jianshucom ）')+'&related='+e('jianshucom'),x=function(){if(!window.open(r,'twitter','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS应用程序打包 - 简书_files/twitter.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://www.facebook.com/sharer.php?s=100&p[url]='+e('http://www.jianshu.com/p/bd953c3e389f')+'&p[title]='+e('iOS应用程序打包 - 简书社')+'&p[summary]='+e('推荐 刘小壮 的文章《iOS应用程序打包》'),x=function(){if(!window.open(r,'facebook','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS应用程序打包 - 简书_files/facebook.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://plus.google.com/share?url='+e('http://www.jianshu.com/p/bd953c3e389f'),x=function(){if(!window.open(r,'google_plus','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS应用程序打包 - 简书_files/google_plus.png"></a></li>
+        <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://widget.renren.com/dialog/share?resourceUrl='+e('http://www.jianshu.com/p/bd953c3e389f')+'&description='+e('推荐 刘小壮 的文章《iOS应用程序打包》')+'&title='+e('iOS应用程序打包'),x=function(){if(!window.open(r,'renren','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS应用程序打包 - 简书_files/renren.png"></a></li>
+    </ul>
+  </span>
+</div>
+          <!-- -->
+
+          <div class="show-content"><p>该文章属于&lt;简书 — 刘小壮&gt;原创，转载请注明：<br></p><p><a href="./iOS应用程序打包 - 简书_files/iOS应用程序打包 - 简书.html" target="_blank">&lt;简书 — 刘小壮&gt; http://www.jianshu.com/p/bd953c3e389f</a></p><h4>应用程序上线首先需要打包，下面说一下应用程序打包。<br>
+</h4><p>一. 首先生成打包证书</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-7914b4a6bae26ff5.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-7914b4a6bae26ff5.png" data-image-slug="7914b4a6bae26ff5" data-width="1974" data-height="698" class="imagebubble-image"><br><div class="image-caption">点击加号，申请打包证书</div>
+</div><p>这里写的是App Store and Ad Hoc，所以打包和上传Apple Store的证书可以使用同一个证书。</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-7fe7cb938a95f74c.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-7fe7cb938a95f74c.png" data-image-slug="7fe7cb938a95f74c" data-width="1536" data-height="1168" class="imagebubble-image"><br><div class="image-caption">首先生成一个打包证书，选择App Store and Ad Hoc</div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-85b6310ed125e291.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-85b6310ed125e291.png" data-image-slug="85b6310ed125e291" data-width="1202" data-height="914" class="imagebubble-image"><br><div class="image-caption">上传本地生成的CSR证书</div>
+</div><blockquote>
+<p>CertificateSigningRequest.certSigningRequest证书的作用：<br></p>
+<p>* 包含了电脑的信息</p>
+<p>* 发送给苹果服务器, 苹果服务器根据文件信息来生成一个电脑证书</p>
+<p>* 生成的证书就可以让对应的电脑具备某个特殊的能力</p>
+</blockquote><p>证书生成完毕，下载到本地安装。<br></p><p>二. 生成打包配置文件。</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-5e70a942c2467efe.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-5e70a942c2467efe.png" data-image-slug="5e70a942c2467efe" data-width="1562" data-height="1044" class="imagebubble-image"><br><div class="image-caption">点击Ad Hoc，生成打包配置文件</div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-b77f3ed196fbe7ef.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-b77f3ed196fbe7ef.png" data-image-slug="b77f3ed196fbe7ef" data-width="1178" data-height="828" class="imagebubble-image"><br><div class="image-caption">选择要打包应用的App ID</div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-4944906753a7ca14.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-4944906753a7ca14.png" data-image-slug="4944906753a7ca14" data-width="1176" data-height="856" class="imagebubble-image"><br><div class="image-caption">选择上面生成的发布及打包证书</div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-da7e8127c0afc67b.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-da7e8127c0afc67b.png" data-image-slug="da7e8127c0afc67b" data-width="1246" data-height="888" class="imagebubble-image"><br><div class="image-caption">选择真机设备，一般都是All</div>
+</div><p>生成完毕，下载到本地之后，双击安装到Xcode中。</p><p>描述文件的作用:</p><p>1&gt; 能知道在哪台电脑上, 为哪台设备打包哪个程序</p><p>2&gt; 哪台设备需要安装打包哪个程序</p><p>3&gt; 里面包含了3个信息:ios_distribution.cer + 设备UDID + App ID</p><p>三. 生成发布配置文件。</p><p>发布证书和打包证书是同一个证书，已经在上面生成打包证书时一同生成。下面来生成一下发布应用的配置文件。</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-f8a9863119b268b1.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-f8a9863119b268b1.png" data-image-slug="f8a9863119b268b1" data-width="1592" data-height="986" class="imagebubble-image"><br><div class="image-caption">点击加号添加发布配置文件</div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-cc187cd5ebec9aaa.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-cc187cd5ebec9aaa.png" data-image-slug="cc187cd5ebec9aaa" data-width="1206" data-height="992" class="imagebubble-image"><br><div class="image-caption">因为是发布到App Store,所以选择上面的选项</div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-50e59faab4342904.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-50e59faab4342904.png" data-image-slug="50e59faab4342904" data-width="1182" data-height="832" class="imagebubble-image"><br><div class="image-caption">选择相应的App ID</div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-86e2b67904ae1af3.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-86e2b67904ae1af3.png" data-image-slug="86e2b67904ae1af3" data-width="1202" data-height="848" class="imagebubble-image"><br><div class="image-caption">选择打包时生成的证书</div>
+</div><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-93cbcb566563ed30.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-93cbcb566563ed30.png" data-image-slug="93cbcb566563ed30" data-width="1186" data-height="868" class="imagebubble-image"><br><div class="image-caption">给配置文件起一个名字</div>
+</div><p>配置完成之后，下载到本地。在Xcode打开的状态下双击安装。</p><blockquote>
+<p>1&gt;	发布的证书, 说清楚哪台电脑可以发布程序<br></p>
+<p>2&gt;	添加发布的描述文件，描述在哪台计算机上能够发布哪些应用程序</p>
+</blockquote><p>四. 打包ipa文件。</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-6c7c8c2ebff48524.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-6c7c8c2ebff48524.png" data-image-slug="6c7c8c2ebff48524" data-width="1158" data-height="452" class="imagebubble-image"><br><div class="image-caption">首先在Xcode中进行配置</div>
+</div><p>然后在项目中Scheme右边的设备选择真机设备，如果没有真机设备，选择iOS Device也可以。点击archive打包应用程序。</p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS应用程序打包 - 简书_files/270478-e5ece9ac1d948f68.png" data-original-src="http://upload-images.jianshu.io/upload_images/270478-e5ece9ac1d948f68.png" data-image-slug="e5ece9ac1d948f68" data-width="814" data-height="370" class="imagebubble-image"><br><div class="image-caption">打包应用程序</div>
+</div><p>打包完成之后，会弹出archives界面。在这个界面中选择export —&gt; save for Ad hoc Deployment，一路点下去，最后选择位置到桌面保存。</p><p>ipa就生成在本地了。生成一个ipa文件的作用很多，发给测试人员和客户测试；或者在fir.im等第三方发布平台发布等。<br></p><blockquote>
+<p>* ipa本质是zip</p>
+<p>* android的安装包是APK格式,本质也是zip</p>
+</blockquote></div>
+        </div>
+      </div>
+
+      <div class="visitor_edit">
+        <!-- further readings -->
+        <div id="further-readings" data-user-slug="" data-user-nickname="">
+          <div id="further-reading-line" class="hide further-reading-line"></div>
+          <ul id="further-readings-list" class="reading-list unstyled"></ul>
+          <div id="further-reading-new" class="reading-edit">
+              <a data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+                <i class="fa fa-plus-circle"></i> 推荐拓展阅读
+</a>            <div id="further-reading-form"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reward / Support Author -->
+        <div class="support-author">
+          <p>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+            <a class="btn btn-pay" data-toggle="modal" href="http://www.jianshu.com/p/bd953c3e389f#pay-modal">¥ 打赏支持</a>
+          <div class="avatar-list">
+</div>
+        </div>
+
+      <!-- article meta bottom -->
+      <div class="meta-bottom clearfix">
+        <!--  Like Button -->
+        <div class="like ">
+            <div class="like-button">
+              <a id="like-note" class="like-content" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+                <i class="fa fa-heart-o"></i>  喜欢
+</a></div>          <span id="likes-count" data-toggle="tooltip" data-placement="right" title="" data-original-title="查看所有喜欢的用户">0</span>        </div>
+        <!--  share group -->
+        <div class="share-group pull-right">
+          <a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=1881139527',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','http://cwb.assets.jianshu.io/notes/images/1502323/weibo/image_f62de7540dff.jpg', '推荐 刘小壮 的文章《iOS应用程序打包》（ 分享自 @简书 ）','http://www.jianshu.com/p/bd953c3e389f','页面编码gb2312|utf-8默认gb2312'));" data-name="weibo">
+            <i class="fa fa-weibo"></i><span>分享到微博</span>
+          </a>
+          <a data-toggle="modal" href="http://www.jianshu.com/p/bd953c3e389f#share-weixin-modal" data-name="weixin">
+            <i class="fa fa-weixin"></i><span>分享到微信</span>
+          </a>
+          <div class="more">
+            <a href="javascript:void(0)" data-toggle="dropdown">更多分享<i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu arrow-top">
+                <li><a href="http://cwb.assets.jianshu.io/notes/images/1502323/weibo/image_f62de7540dff.jpg" target="_blank" data-name="changweibo"><i class="fa fa-arrow-circle-o-down"></i> 下载长微博图片</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://share.v.t.qq.com/index.php?c=share&a=index&url='+e('http://www.jianshu.com/p/bd953c3e389f')+'&title='+e('推荐 刘小壮 的文章《iOS应用程序打包》（ 分享自 @jianshuio ）'),x=function(){if(!window.open(r,'tweibo','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="tweibo"><img src="./iOS应用程序打包 - 简书_files/tweibo.png">分享到腾讯微博</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+e('http://www.jianshu.com/p/bd953c3e389f')+'&title='+e('推荐 刘小壮 的文章《iOS应用程序打包》'),x=function(){if(!window.open(r,'qzone','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="qzone"><img src="./iOS应用程序打包 - 简书_files/qzone.png">分享到QQ空间</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://twitter.com/share?url='+e('http://www.jianshu.com/p/bd953c3e389f')+'&text='+e('推荐 刘小壮 的文章《iOS应用程序打包》（ 分享自 @jianshucom ）')+'&related='+e('jianshucom'),x=function(){if(!window.open(r,'twitter','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="twitter"><img src="./iOS应用程序打包 - 简书_files/twitter.png">分享到Twitter</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://www.facebook.com/sharer.php?s=100&p[url]='+e('http://www.jianshu.com/p/bd953c3e389f')+'&p[title]='+e('iOS应用程序打包 - 简书社')+'&p[summary]='+e('推荐 刘小壮 的文章《iOS应用程序打包》'),x=function(){if(!window.open(r,'facebook','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="facebook"><img src="./iOS应用程序打包 - 简书_files/facebook.png">分享到Facebook</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://plus.google.com/share?url='+e('http://www.jianshu.com/p/bd953c3e389f'),x=function(){if(!window.open(r,'google_plus','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="google_plus"><img src="./iOS应用程序打包 - 简书_files/google_plus.png">分享到Google+</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://widget.renren.com/dialog/share?resourceUrl='+e('http://www.jianshu.com/p/bd953c3e389f')+'&description='+e('推荐 刘小壮 的文章《iOS应用程序打包》')+'&title='+e('iOS应用程序打包'),x=function(){if(!window.open(r,'renren','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();" data-name="renren"><img src="./iOS应用程序打包 - 简书_files/renren.png">分享到人人网</a></li>
+                <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:'',r='http://www.douban.com/recommend/?url='+e('http://www.jianshu.com/p/bd953c3e389f')+'&title='+e('iOS应用程序打包')+'&sel='+e(s)+'&v=1',x=function(){if(!window.open(r,'douban','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r+'&r=1'};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()" data-name="douban"><img src="./iOS应用程序打包 - 简书_files/douban.png">分享到豆瓣</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modals -->
+      <div id="share-weixin-modal" class="modal hide fade share-weixin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body" title="http://www.jianshu.com/p/bd953c3e389f?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weixin">
+    <h5>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</h5>
+  <canvas width="170" height="170" style="display: none;"></canvas><img src="data:image/png;base64,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" style="display: block;"></div>
+</div>
+
+      
+      <div id="notebooks-menu" class="panel notebooks-menu arrow-top modal hide fade"><img class="loader-tiny" src="./iOS应用程序打包 - 简书_files/tiny.gif" alt="Tiny"></div>
+      <div id="collection-menu" class="panel collection-menu arrow-top modal hide fade"><img class="loader-tiny" src="./iOS应用程序打包 - 简书_files/tiny.gif" alt="Tiny"></div>
+      
+      <div id="likes-modal" class="modal modal_new support_list-modal fullscreen hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>喜欢的用户</h3>
+      </div>
+      <div class="modal-body">
+        <ul class="unstyled users">
+</ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Comments -->
+    <div id="comments" class="comment-list clearfix">
+        <div class="comment-head clearfix">
+          0条评论
+          <span class="order">
+            （
+            <a data-order="asc" class="active" href="javascript:void(0)">按时间正序</a>·
+            <a data-order="desc" href="javascript:void(0)">按时间倒序</a>·
+            <a data-order="likes_count" href="javascript:void(0)">按喜欢排序</a>
+            ）
+          </span>
+            <a class="goto-comment pull-right" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+              <i class="fa fa-pencil"></i>添加新评论
+</a>        </div>
+        <div id="comment-list"><script type="application/json" data-name="comments-info">
+  {"comments":[]}
+</script>
+
+
+
+</div>
+          <p class="signout-comment">
+    <a class="btn btn-info" data-signin-link="true" data-toggle="modal" href="http://www.jianshu.com/sign_in">
+      登录后发表评论
+</a>  </p>
+
+    </div>
+    <!-- -->
+
+  </div>
+
+  <script type="application/json" data-name="note">
+    {"id":1502323,"abbr":"该文章属于&lt;简书—刘小壮&gt;原创，转载请注明：&lt;简书—刘小壮&gt;http://www.jianshu.com/p/bd953c3e389f应用程序上线首先需要打包，下面说一下应用程序打包。一.首先生成打包证书点击加号，申请打包证...","slug":"bd953c3e389f","url":"http://www.jianshu.com/p/bd953c3e389f","image_url":"http://cwb.assets.jianshu.io/notes/images/1502323/weibo/image_f62de7540dff.jpg","wordage":713,"has_further_readings":false,"views_count":224,"likes_count":0,"comments_count":0,"rewards_total_count":0}
+  </script>
+
+  <script type="application/json" data-name="uuid">
+    {"uuid":"a6491330-754f-0133-a268-525400918cd7"}
+  </script>
+
+  <script type="application/json" data-name="author">
+    {"id":270478,"nickname":"刘小壮","slug":"2de707c93dc4","public_notes_count":20,"followers_count":14,"total_likes_count":17,"is_current_user":false}
+  </script>
+
+
+
+  <!-- Modal -->
+    <div class="modal pay-modal text-center hide fade" id="pay-modal">
+  <div class="modal-header clearfix">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <form id="new_reward" class="new_reward" target="_blank" action="http://www.jianshu.com/notes/1502323/rewards" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="OVfUTb27UKQwuJdFDwmTvVOJ5KMd0kWu8rxo71IH3rL1cUiQmOSVuuAIj8uFtsMOULosHl8VaDCXz1XspNFJWg==">
+    <div class="modal-body">
+      <a href="http://www.jianshu.com/users/2de707c93dc4">
+        <div class="avatar"><img thumbnail="90x90" quality="100" src="./iOS应用程序打包 - 简书_files/1f040fbe4bb8.jpg" alt="1f040fbe4bb8"></div>
+</a>      <p><i class="fa fa-quote-left pull-left"></i>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！<i class="fa fa-quote-right pull-right"></i></p>
+      <div class="main-inputs text-left">
+        <div class="control-group">
+          <label for="reward_amount">打赏金额</label><i class="fa fa-yen"></i>
+          <input value="2.00" type="text" name="reward[amount_in_yuan]" id="reward_amount_in_yuan">
+        </div>
+        <div class="control-group message">
+          <textarea placeholder="给Ta留言" name="reward[message]" id="reward_message"></textarea>
+        </div>
+      </div>
+      <div class="choose-pay text-left">
+        <h5>选择支付方式：</h5>
+        <div>
+          <label for="reward_channel_alipay">
+            <div class="iradio_minimal checked" style="position: relative;"><input type="radio" value="alipay" checked="checked" name="reward[channel]" id="reward_channel_alipay" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+            <span class="alipay-bg"></span>
+</label>
+          
+          <label for="reward_channel_wx_pub_qr">
+            <div class="iradio_minimal" style="position: relative;"><input type="radio" value="wx_pub_qr" name="reward[channel]" id="reward_channel_wx_pub_qr" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+            微信支付
+</label>        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button name="button" type="submit" class="btn btn-large btn-pay">立即支付</button>
+    </div>
+</form></div>
+
+    <div class="modal success-pay text-center hide fade" id="success-pay">
+  <div class="modal-header clearfix">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body">
+    <h3><i class="icon-ok"></i>打赏成功</h3>
+    <img src="./iOS应用程序打包 - 简书_files/complete-pay-42a51932f3a745f4f2f7a81b04d6fb02.png" alt="Complete pay">
+  </div>
+  <div class="modal-footer">
+    
+  </div>
+</div>
+
+</div>
+
+  <div class="imagebubble-backmask image-package" style="z-index: 1000;"><div class="image-caption">点击加号，申请打包证书</div><div class="image-caption">首先生成一个打包证书，选择App Store and Ad Hoc</div><div class="image-caption">上传本地生成的CSR证书</div><div class="image-caption">点击Ad Hoc，生成打包配置文件</div><div class="image-caption">选择要打包应用的App ID</div><div class="image-caption">选择上面生成的发布及打包证书</div><div class="image-caption">选择真机设备，一般都是All</div><div class="image-caption">点击加号添加发布配置文件</div><div class="image-caption">因为是发布到App Store,所以选择上面的选项</div><div class="image-caption">选择相应的App ID</div><div class="image-caption">选择打包时生成的证书</div><div class="image-caption">给配置文件起一个名字</div><div class="image-caption">首先在Xcode中进行配置</div><div class="image-caption">打包应用程序</div><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-7914b4a6bae26ff5(1).png" style="top: -266px; left: 287.5px; width: 620px; height: 219px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-7fe7cb938a95f74c(1).png" style="top: 95px; left: 287.5px; width: 620px; height: 472px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-4944906753a7ca14(1).png" style="top: 2457px; left: 287.5px; width: 620px; height: 451px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-5e70a942c2467efe(1).png" style="top: 1482px; left: 287.5px; width: 620px; height: 415px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-cc187cd5ebec9aaa(1).png" style="top: 4314px; left: 287.5px; width: 620px; height: 510px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-da7e8127c0afc67b(1).png" style="top: 2971px; left: 287.5px; width: 620px; height: 442px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-85b6310ed125e291(1).png" style="top: 629px; left: 287.5px; width: 620px; height: 471px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-b77f3ed196fbe7ef(1).png" style="top: 1959px; left: 287.5px; width: 620px; height: 436px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-f8a9863119b268b1(1).png" style="top: 3867px; left: 287.5px; width: 620px; height: 384px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-6c7c8c2ebff48524(1).png" style="top: 6620px; left: 287.5px; width: 620px; height: 242px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-93cbcb566563ed30(1).png" style="top: 5885px; left: 287.5px; width: 620px; height: 454px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-e5ece9ac1d948f68(1).png" style="top: 7004px; left: 287.5px; width: 620px; height: 282px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-50e59faab4342904(1).png" style="top: 4886px; left: 287.5px; width: 620px; height: 436px;"><img class="imagebubble-ghost" src="./iOS应用程序打包 - 简书_files/270478-86e2b67904ae1af3(1).png" style="top: 6121px; left: 287.5px; width: 620px; height: 437px;"></div></div>
+  <div id="flash" class="hide"></div>
+  
+  <div id="view-mode-modal" tabindex="-1" class="modal hide read-modal" aria-hidden="false" data-js-module="view-mode-modal">
+    <div class="btn-group change-background" data-toggle="buttons-radio">
+      <a class="btn btn-daytime active" data-mode="day" href="javascript:void(null);">
+        <i class="fa fa-sun-o"></i>
+</a>      <a class="btn btn-nighttime " data-mode="night" href="javascript:void(null);">
+        <i class="fa fa-moon-o"></i>
+</a>    </div>
+    <div class="btn-group change-font" data-toggle="buttons-radio">
+      <a class="btn font " data-font="font1" href="javascript:void(null);">宋体</a>
+      <a class="btn font hei active" data-font="font2" href="javascript:void(null);">黑体</a>
+    </div>
+    <div class="btn-group change-locale" data-toggle="buttons-radio">
+      <a class="btn font active" data-locale="zh-CN" href="javascript:void(null);">简</a>
+      <a class="btn font hei " data-locale="zh-TW" href="javascript:void(null);">繁</a>
+    </div>
+  </div>
+
+  
+
+  <script src="./iOS应用程序打包 - 简书_files/base-a4a7c7f705b1bb61cc8daf0618f8c611.js"></script>
+  
+  <script src="./iOS应用程序打包 - 简书_files/reading-base-ab825a9033707c8e5468464842a37acc.js"></script>
+  <script src="./iOS应用程序打包 - 简书_files/note_show-78a98f3d4e7b85cde56894cfe3df5cfa.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35169517-1']);
+  _gaq.push(['_setCustomVar', 2, 'User Type', 'Visitor', 1 ]);
+  _gaq.push(['_trackPageview']);
+
+  
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<div style="display:none">
+<script src="./iOS应用程序打包 - 简书_files/z_stat.php" language="JavaScript"></script><script src="./iOS应用程序打包 - 简书_files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1253183112" target="_blank" title="站长统计">站长统计</a>
+</div>
+
+
+<script src="./iOS应用程序打包 - 简书_files/bw-send-411.4.5.js"></script><script type="text/javascript" src="./iOS应用程序打包 - 简书_files/saved_resource" async=""></script></body></html>
